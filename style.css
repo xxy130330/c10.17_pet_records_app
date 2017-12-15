@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
 }
+body {
+    height: 100vh;
+    width: 100vw;
+}
 header {
     text-align: center;
     height: 12vh;
@@ -10,22 +14,41 @@ header {
 h1 {
     color: white;
     margin: 0;
-    font-size: 10rem;
+    font-size: 4rem;
     position: relative;
     display: inline-block;
-    top: 50%;
+    top: 6vh;
     transform: translateY(-50%);
 }
 .logoContainer {
     text-align: center;
     height: 15vh;
+    margin: 5% auto 0 auto;
+
 }
 .logo {
-    background-image: url('./images/kitten_temp_logo.jpg');
+    background-image: url(./images/kitten_temp_logo.jpg);
     background-repeat: no-repeat;
     position: relative;
     height: 100%;
-    width: 100%;
+    width: 103px;
     display: inline-block;
-    margin: auto;
+    background-size: contain;
+    border: 5px solid orange;
+    border-radius: 50%;
+}
+
+input {
+    height: 20%;
+}
+.container {
+    width: 85%;
+    margin-top: 5%;
+}
+.buttonContainer {
+    text-align: right;
+}
+input:focus {
+    border: 2px solid orange !important;
+    color: #0c5460;
 }
