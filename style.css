@@ -2,10 +2,7 @@
     margin: 0;
     padding: 0;
 }
-body {
-    height: 100vh;
-    width: 100vw;
-}
+
 header {
     text-align: center;
     height: 12vh;
@@ -22,8 +19,9 @@ h1 {
 }
 .logoContainer {
     text-align: center;
-    height: 15vh;
+    height: 100px;
     margin: 5% auto 0 auto;
+
 
 }
 .logo {
@@ -43,7 +41,7 @@ input {
 }
 .container {
     width: 85%;
-    margin-top: 5%;
+
 }
 .buttonContainer {
     text-align: right;
