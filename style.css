@@ -4,7 +4,7 @@
 }
 header {
     text-align: center;
-    height: 10vh;
+    height: 12vh;
     background-color: #0c5460;
 }
 h1 {
@@ -15,4 +15,17 @@ h1 {
     display: inline-block;
     top: 50%;
     transform: translateY(-50%);
+}
+.logoContainer {
+    text-align: center;
+    height: 15vh;
+}
+.logo {
+    background-image: url('./images/kitten_temp_logo.jpg');
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    margin: auto;
 }
