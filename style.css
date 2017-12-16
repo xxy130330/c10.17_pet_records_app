@@ -52,3 +52,24 @@ input:focus {
     color: #0c5460;
 }
 
+.picture{
+    margin: 0 auto;
+    padding: 0;
+    width: 40%;
+    height: 30vmin;
+
+    border: 1px dashed black;
+    border-radius: 15%;
+
+    position: relative;
+}
+
+.picture > img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 40%;
+    margin: 0 auto;
+    transform: translateY(-50%) translateX(-50%);
+
+}
