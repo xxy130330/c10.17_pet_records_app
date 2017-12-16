@@ -57,7 +57,7 @@ input:focus {
 }
 footer {
     overflow: hidden;
-    background-color: orange;
+    background-color: #0c5460;
     position: fixed;
     bottom: 0;
     width: 100%;
