@@ -1,11 +1,12 @@
 * {
     margin: 0;
     padding: 0;
+
 }
 body {
-    height: 100vh;
-    width: 100vw;
+    height: 110vh;
 }
+
 header {
     text-align: center;
     height: 12vh;
@@ -19,11 +20,14 @@ h1 {
     display: inline-block;
     top: 6vh;
     transform: translateY(-50%);
+
 }
+
 .logoContainer {
     text-align: center;
-    height: 15vh;
+    height: 100px;
     margin: 5% auto 0 auto;
+
 
 }
 .logo {
@@ -43,7 +47,7 @@ input {
 }
 .container {
     width: 85%;
-    margin-top: 5%;
+
 }
 .buttonContainer {
     text-align: right;
@@ -52,3 +56,49 @@ input:focus {
     border: 2px solid orange !important;
     color: #0c5460;
 }
+
+
+.picture{
+    margin: 0 auto;
+    padding: 0;
+    width: 40%;
+    height: 30vmin;
+
+    border: 1px dashed black;
+    border-radius: 15%;
+
+    position: relative;
+}
+
+.picture > img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 40%;
+    margin: 0 auto;
+    transform: translateY(-50%) translateX(-50%);
+
+}
+
+footer {
+    overflow: hidden;
+    background-color: #0c5460;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+}
+div.iconNav{
+    width: 24%;
+    height: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+span {
+    color: white;
+    top: 50% !important;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 3rem;
+ }
+
