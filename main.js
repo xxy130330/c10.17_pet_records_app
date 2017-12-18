@@ -73,8 +73,8 @@
 })(jQuery);
 
 $("body").touchwipe({
-    // wipeLeft: function() { alert("left"); },
-    wipeRight: function() {showPetList; },
+    wipeLeft: function()  {hidePetList() },
+    wipeRight: function() {showPetList() },
     // wipeUp: function() { alert("up"); },
     // wipeDown: function() { alert("down"); },
     min_move_x: 20,
@@ -83,5 +83,8 @@ $("body").touchwipe({
 });
 
 function showPetList() {
-    $('.petListSwipe').toggleClass('showPetList');
+    $('.petListSwipe').addClass('showPetList');
+}
+function hidePetList() {
+    $('.petListSwipe').removeClass('showPetList');
 }
