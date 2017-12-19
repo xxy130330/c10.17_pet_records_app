@@ -46,8 +46,8 @@ input {
     margin-top: 5%;
 }
 .buttonContainer {
-    text-align: right;
-}
+     text-align: right;
+ }
 input:focus {
     border: 2px solid orange !important;
     color: #0c5460;
