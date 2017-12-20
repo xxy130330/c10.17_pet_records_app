@@ -10,11 +10,13 @@
 
 </head>
 <script>
-
-
-
     $(document).ready(function() {
         generatePetList();
+        $('.pet').on('click', function(event) {
+            const petSelection = event.target.innerHTML;
+            localStorage.setItem('fetchPetDataFor', petSelection);
+            window.open("pet_page.html", "_self");
+        })
     });
     const petsObj = [
         {name: 'Momo', animalType: 'Dog', avatar: './images/dog_momo.jpg'},
@@ -31,8 +33,6 @@
             $('.usersPetContainer').append(newPetDiv);
         }
     }
-
-
 </script>
 <body>
 
