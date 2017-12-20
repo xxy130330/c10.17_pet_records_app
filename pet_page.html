@@ -11,7 +11,7 @@
 
 <script>
     $(document).ready(function() {
-        generatePetDetails('Momo');
+        generatePetDetails('Noodle');
     })
     const petsObj = [
         {name: 'Momo', animalType: 'Dog', breed: 'fluffy dog', dob: 'Jan 11, 2008',avatar: './images/dog_momo.jpg', medicalRecords: ['Rabies vaccine', 'Dental surgery', 'Ophthalmic surgery']},
@@ -29,7 +29,7 @@
 
             let records = petsObj[index].medicalRecords;
             for (let i=0; i<records.length; i++) {
-                let newRecord = $('<h2>').text(records[i]);
+                let newRecord = $('<h3>').text(records[i]);
                 let emphasis = $('<hr>');
 
                 $('.recordList').append(newRecord, emphasis);
@@ -50,16 +50,11 @@
 </header>
 <div class='petInfoContainer'>
     <div class="petImgContainer">
-        <!--<div class="petImg">-->
-            <!--<img src="https://cdn.images.express.co.uk/img/dynamic/galleries/x701/177020.jpg" alt="">-->
-        <!--</div>-->
     </div>
     <div class="petInfoDiv">
 
         <div class="petInfo">
-            <!--<h4>Name: Spicy Noddle</h4>-->
-            <!--<h4>DOB: Aug 16, 2017</h4>-->
-            <!--<h4>Breed: Ragdoll</h4>-->
+
         </div>
 
     </div>
