@@ -20,14 +20,11 @@ h1 {
     display: inline-block;
     top: 6vh;
     transform: translateY(-50%);
-
 }
 .logoContainer {
     text-align: center;
     height: 100px;
     margin: 5% auto 0 auto;
-
-
 }
 .logo {
     background-image: url(./images/kitten_temp_logo.jpg);
@@ -39,21 +36,6 @@ h1 {
     background-size: contain;
     border: 5px solid orange;
     border-radius: 50%;
-}
-
-input {
-    height: 20%;
-}
-.container {
-    width: 85%;
-
-}
-.buttonContainer {
-    text-align: right;
-}
-input:focus {
-    border: 2px solid orange !important;
-    color: #0c5460;
 }
 footer {
     overflow: hidden;
@@ -76,28 +58,38 @@ span {
     transform: translate(-50%,-50%);
     font-size: 3rem;
  }
-.petListSwipe {
-    width: 80%;
-    height: 90vh;
-    background-color: black;
-    position: absolute;
-    top: 0;
-    transform: translateX(-100%);
-    transition: .5s;
-    text-align: center;
-}
-.showPetList {
-    transform: translateX(0);
+.petListContainer {
+    width: 100%;
+    height: 110vh;
+    background-color: rgba(0,0,0, .8);
 }
 .petListTitle {
     text-align: center;
-    color: white;
+    display: block;
+    text-decoration: underline;
 }
 .usersPetContainer {
+    margin-top: 10%;
+    height: 100%;
     width: 100%;
-    height: 85%;
-    background-color: white;
+}
+.petAvatar {
+    height: 15vh;
+    width: 15vh;
+    background-image: url(./images/cat_noodle.png);
+    background-position: center;
+    border: 2px solid orange;
+    border-radius: 50%;
+    background-size: 211%;
+    display: inline-block;
     position: relative;
-    margin: auto;
-    top: 5%;
+    margin-left: 10%;
+}
+.petName {
+    display: inline-block;
+    color: white;
+    position: relative;
+    bottom: 5vh;
+    left: 10%;
+    font-size: 3rem;
 }

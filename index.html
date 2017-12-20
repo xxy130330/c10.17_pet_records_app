@@ -7,9 +7,43 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='style.css'>
-    <script src='./main.js'></script>
+
 </head>
+<script>
+
+
+
+    $(document).ready(function() {
+        generatePetList();
+    });
+    const petsObj = [
+        {name: 'Momo', animalType: 'Dog', avatar: './images/dog_momo.jpg'},
+        {name: 'Noodle', animalType: 'Cat', avatar: './images/cat_noodle.png'}
+    ]
+
+    function generatePetList() {
+        for (let i=0; i<petsObj.length; i++) {
+            let newPetDiv = $('<div>').addClass('pet');
+            let petAvatarDiv = $('<div>').addClass('petAvatar').css('background-image', 'url('+petsObj[i].avatar+')');
+            let newp = $('<p>').addClass('petName').text(petsObj[i].name);
+
+            $(newPetDiv).append(petAvatarDiv, newp);
+            $('.usersPetContainer').append(newPetDiv);
+        }
+    }
+
+
+</script>
 <body>
+
+    <header>
+        <h1 class='title'>Pet to Vet</h1>
+    </header>
+    <div class='petListContainer'>
+        <h1 class='petListTitle'>Pet List</h1>
+        <div class='usersPetContainer'>
+        </div>
+    </div>
     <footer>
         <div class='iconNav'>
             <a href="#"><span class="glyphicon glyphicon-home"></span></a>
@@ -24,42 +58,6 @@
             <a href="#"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
     </footer>
-    <header>
-        <h1 class='title'>Pet to Vet</h1>
-    </header>
-    <div class='logoContainer'>
-        <div class='logo'></div>
-    </div>
-    <form class='container'>
-        <div class='form-group'>
-            <label>User Name</label>
-            <input class='form-control input-lg' type='text'/>
-        </div>
-        <div class='form-group'>
-            <label>Password</label>
-            <input class='form-control input-lg' type='password'/>
-        </div>
-        <div class='form-group'>
-            <label>Confirm Password</label>
-            <input class='form-control input-lg' type='password'/>
-        </div>
-        <div class='form-group'>
-            <label>Email</label>
-            <input class='form-control input-lg' type='text'/>
-        </div>
-        <div class='form-group'>
-            <label>Vet License No.</label>
-            <input class='form-control input-lg' type='text'/>
-        </div>
-        <div class='buttonContainer'>
-            <button class='btn btn-primary'>Login</button>
-            <button class='btn btn-success'>Sign Up</button>
-        </div>
-    </form>
-    <div class='petListSwipe'>
-        <h1 class='petListTitle'>Pet List</h1>
-        <div class='usersPetContainer'></div>
-    </div>
 
 </body>
 </html>
