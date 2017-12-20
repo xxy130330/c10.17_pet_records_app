@@ -15,12 +15,13 @@
         $('.pet').on('click', function(event) {
             const petSelection = event.target.innerHTML;
             localStorage.setItem('fetchPetDataFor', petSelection);
+            console.log(localStorage.getItem('fetchPetDataFor'));
             window.open("pet_page.html", "_self");
         })
     });
     const petsObj = [
-        {name: 'Momo', animalType: 'Dog', avatar: './images/dog_momo.jpg'},
-        {name: 'Noodle', animalType: 'Cat', avatar: './images/cat_noodle.png'}
+        {name: 'Momo', animalType: 'Dog', avatar: '../images/dog_momo.jpg'},
+        {name: 'Noodle', animalType: 'Cat', avatar: '../images/cat_noodle.png'}
     ]
 
     function generatePetList() {

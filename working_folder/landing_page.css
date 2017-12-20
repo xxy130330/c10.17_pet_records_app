@@ -31,7 +31,7 @@ h1 {
 
 }
 .logo {
-    background-image: url(./images/kitten_temp_logo.jpg);
+    background-image: url(../images/kitten_temp_logo.jpg);
     background-repeat: no-repeat;
     position: relative;
     height: 100%;
@@ -49,14 +49,13 @@ input {
     width: 85%;
 
 }
-/* .buttonContainer {
-    text-align: right;
-} */
+.buttonContainer {
+    text-align: center;
+}
 input:focus {
     border: 2px solid orange !important;
     color: #0c5460;
 }
-
 
 .picture{
     margin: 0 auto;
@@ -102,3 +101,6 @@ span {
     font-size: 3rem;
  }
 
+ .home-msg {
+     margin: 10%;
+ }
