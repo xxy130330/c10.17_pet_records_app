@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vet Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='new_pet_list_styles.css'>
+
+</head>
+<script>
+
+
+
+    $(document).ready(function() {
+        generatePetList();
+    });
+    const petsObj = [
+        {name: 'Momo', animalType: 'Dog', avatar: './images/dog_momo.jpg'},
+        {name: 'Noodle', animalType: 'Cat', avatar: './images/cat_noodle.png'}
+    ]
+
+    function generatePetList() {
+        for (let i=0; i<petsObj.length; i++) {
+            let newPetDiv = $('<div>').addClass('pet');
+            let petAvatarDiv = $('<div>').addClass('petAvatar').css('background-image', 'url('+petsObj[i].avatar+')');
+            let newp = $('<p>').addClass('petName').text(petsObj[i].name);
+
+            $(newPetDiv).append(petAvatarDiv, newp);
+            $('.usersPetContainer').append(newPetDiv);
+        }
+    }
+
+
+</script>
+<body>
+
+    <header>
+        <h1 class='title'>Pet to Vet</h1>
+    </header>
+    <div class='petListContainer'>
+        <h1 class='petListTitle'>Pet List</h1>
+        <div class='usersPetContainer'>
+        </div>
+    </div>
+    <footer>
+        <div class='iconNav'>
+            <a href="#"><span class="glyphicon glyphicon-home"></span></a>
+        </div>
+        <div class='iconNav'>
+            <a href="#"><span class="glyphicon glyphicon-calendar"></span></a>
+        </div>
+        <div class='iconNav'>
+            <a href="#"><span class="glyphicon glyphicon-folder-open"></span></a>
+        </div>
+        <div class='iconNav'>
+            <a href="#"><span class="glyphicon glyphicon-plus"></span></a>
+        </div>
+    </footer>
+
+</body>
+</html>
