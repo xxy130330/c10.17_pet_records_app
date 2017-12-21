@@ -29,7 +29,7 @@ h1 {
 
 }
 .logo {
-    background-image: url(../images/kitten_temp_logo.jpg);
+    background-image: url(../../assets/images/kitten_temp_logo.jpg);
     background-repeat: no-repeat;
     position: relative;
     height: 100%;
