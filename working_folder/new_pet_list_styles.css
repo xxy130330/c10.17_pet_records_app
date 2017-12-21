@@ -96,3 +96,6 @@ span {
     left: 10%;
     font-size: 3rem;
 }
+.pet:nth-child(odd) {
+    background-color: rgba(0,0,0, .4);
+}
