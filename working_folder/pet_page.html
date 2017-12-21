@@ -40,13 +40,14 @@
 
                 let records = petsObj[index].medicalRecords;
                 for (let i=0; i<records.length; i++) {
+                    let newDiv = $('<div>').addClass('recordContainer');
                     let newRecord = $('<h3>').text(records[i].type).addClass('record');
                     newRecord[0].date = records[i].date;
                     newRecord[0].details = records[i].details;
                     newRecord[0].procedure = records[i].type;
-                    let emphasis = $('<hr>');
 
-                    $('.recordList').append(newRecord, emphasis);
+                    $(newDiv).append(newRecord);
+                    $('.recordList').append(newDiv);
                 }
 
                 $('.petImgContainer').append(imgContainer);
@@ -76,7 +77,6 @@
     </div>
 </div>
 
-<hr>
 
 
 <div class="medicalRecord">
