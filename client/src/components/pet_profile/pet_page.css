@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 120vh;
+    width: 100vw;
+}
+header {
+    text-align: center;
+    width: 100%;
+    height: 12vh;
+    background-color: #0c5460;
+}
+h1 {
+    color: white;
+    margin: 0;
+    font-size: 4rem;
+    position: relative;
+    display: inline-block;
+    top: 6vh;
+    transform: translateY(-50%);
+}
+
+footer {
+    overflow: hidden;
+    background-color: #0c5460;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10vh;
+}
+div.iconNav{
+    width: 24%;
+    height: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+span {
+    color: white;
+    top: 50% !important;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 3rem;
+}
+
+
+.add{
+   left: 18%;
+}
+
+.petInfoContainer{
+    /*border: 1px solid black;*/
+    position: relative;
+    height: 20%;
+}
+
+.petImgContainer{
+    width: 45%;
+    height: 100%;
+    position: absolute;
+    /*border: 1px solid red;*/
+}
+.petImg{
+    left: 5%;
+    top: 12%;
+    border-radius: 50%;
+    border: 2px solid orange;
+    position: absolute;
+    height: 70%;
+    width: 70%;
+    background-image: url(../../assets/images/cat_noodle.png);
+    background-position: center;
+    background-size: 150%;
+
+}
+
+.petImg > img{
+    width: 100%;
+}
+
+.petInfoDiv{
+    width: 55%;
+    height: 100%;
+    left: 45%;
+    position: absolute;
+    /*border: 1px solid green;*/
+}
+
+.petInfo{
+    top: 20%;
+    width: 100%;
+    position: absolute;
+    /*border: 1px solid pink;*/
+}
