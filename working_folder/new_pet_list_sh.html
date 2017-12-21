@@ -10,29 +10,35 @@
 
 </head>
 <script>
-
-
-
     $(document).ready(function() {
         generatePetList();
+        $('body').on('click', '.pet',function(event) {
+            const petSelection = event.target.animalName;
+            console.log(petSelection);
+            localStorage.setItem('fetchPetDataFor', petSelection);
+            window.open("pet_page.html", "_self");
+        })
     });
     const petsObj = [
-        {name: 'Momo', animalType: 'Dog', avatar: './images/dog_momo.jpg'},
-        {name: 'Noodle', animalType: 'Cat', avatar: './images/cat_noodle.png'}
+        {name: 'Momo', animalType: 'Dog', avatar: '../images/dog_momo.jpg'},
+        {name: 'Noodle', animalType: 'Cat', avatar: '../images/cat_noodle.png'}
     ]
 
     function generatePetList() {
         for (let i=0; i<petsObj.length; i++) {
             let newPetDiv = $('<div>').addClass('pet');
+
             let petAvatarDiv = $('<div>').addClass('petAvatar').css('background-image', 'url('+petsObj[i].avatar+')');
             let newp = $('<p>').addClass('petName').text(petsObj[i].name);
+
+            petAvatarDiv[0].animalName = petsObj[i].name;
+            newp[0].animalName = petsObj[i].name;
+            newPetDiv[0].animalName = petsObj[i].name;
 
             $(newPetDiv).append(petAvatarDiv, newp);
             $('.usersPetContainer').append(newPetDiv);
         }
     }
-
-
 </script>
 <body>
 

@@ -8,8 +8,15 @@ body {
 }
 header {
     text-align: center;
+    width: 100%;
     height: 12vh;
     background-color: #0c5460;
+}
+h3 {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 h1 {
     color: white;
@@ -43,7 +50,6 @@ span {
     font-size: 3rem;
 }
 
-
 .add{
    left: 18%;
 }
@@ -52,6 +58,7 @@ span {
     /*border: 1px solid black;*/
     position: relative;
     height: 20%;
+    /*background-color: rgba(0,100,255, .3);*/
 }
 
 .petImgContainer{
@@ -68,7 +75,7 @@ span {
     position: absolute;
     height: 70%;
     width: 70%;
-    background-image: url(./images/cat_noodle.png);
+    background-image: url(../images/cat_noodle.png);
     background-position: center;
     background-size: 150%;
 
@@ -85,10 +92,16 @@ span {
     position: absolute;
     /*border: 1px solid green;*/
 }
-
 .petInfo{
     top: 20%;
     width: 100%;
     position: absolute;
     /*border: 1px solid pink;*/
+}
+.recordContainer {
+    height: 8vh;
+    position: relative;
+}
+.recordContainer:nth-child(odd) {
+    background-color: rgba(255,165,0, .2);
 }
