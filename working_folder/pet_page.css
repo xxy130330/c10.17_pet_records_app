@@ -12,6 +12,12 @@ header {
     height: 12vh;
     background-color: #0c5460;
 }
+h3 {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 h1 {
     color: white;
     margin: 0;
@@ -44,7 +50,6 @@ span {
     font-size: 3rem;
 }
 
-
 .add{
    left: 18%;
 }
@@ -53,7 +58,7 @@ span {
     /*border: 1px solid black;*/
     position: relative;
     height: 20%;
-    background-color: rgba(0,100,255, .3);
+    /*background-color: rgba(0,100,255, .3);*/
 }
 
 .petImgContainer{
@@ -92,4 +97,11 @@ span {
     width: 100%;
     position: absolute;
     /*border: 1px solid pink;*/
+}
+.recordContainer {
+    height: 8vh;
+    position: relative;
+}
+.recordContainer:nth-child(odd) {
+    background-color: rgba(0,0,0, .2);
 }
