@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import PetData from '../pet_data';
+import './record_item.css';
 
 class RecordItem extends Component{
     render(){
         return(
-            <div>
+            <div className='record_item_body'>
                 <header>
                     {/*<!--<div class='logoContainer'>-->*/}
                     {/*<!--<div class='logo'></div>-->*/}
@@ -11,6 +13,10 @@ class RecordItem extends Component{
                     <h1 className='title'>Pet to Vet</h1>
                 </header>
                 <div className=" record_item_container">
+                    <h2 className='record_item_header'>{PetData[0].medicalRecords[0].type}</h2>
+                    <h3 className='record_item_date'>{PetData[0].medicalRecords[0].date}</h3>
+                    <hr/>
+                    <p>{PetData[0].medicalRecords[0].details}</p>
                 </div>
                 <footer>
                     <div className='iconNav'>
