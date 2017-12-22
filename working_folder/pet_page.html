@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pet Page</title>
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel='stylesheet' href='pet_page.css'>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel='stylesheet' href='../client/src/components/pet_profile/pet_page.css'>
 </head>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         generatePetDetails(localStorage.getItem('fetchPetDataFor'));
-        $('body').on('click', '.record', function(event) {
+        $('body').on('click', '.record', function (event) {
             //pass props through components not using local storage most likely when we move to react
             localStorage.setItem('procedure', event.target.procedure);
             localStorage.setItem('details', event.target.details);
@@ -23,8 +25,8 @@
         });
     });
     const petsObj = [
-        {name: 'Momo', animalType: 'Dog', breed: 'fluffy dog', dob: 'Jan 11, 2008',avatar: '../images/dog_momo.jpg', medicalRecords: [{type: 'Rabies vaccine', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam cum distinctio, eius et fuga, illo libero minus nam non odit officia porro possimus qui quia, quibusdam quo quos repellat unde voluptatibus. Accusantium adipisci, asperiores autem deserunt eaque in laboriosam, nam neque nulla pariatur perspiciatis quisquam sapiente sint soluta, suscipit.', date: '12/27/2004'}, {type: 'Dental surgery', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aperiam aspernatur, aut beatae commodi consectetur cum dignissimos dolore doloremque enim eos esse explicabo fugit impedit in laboriosam mollitia nam nemo neque, nobis pariatur quidem quod rem sed tempore ut. Distinctio ea, excepturi facilis fugiat in libero maxime voluptas voluptates.', date: '12/27/2004' }, {type: 'Ophthalmic surgery', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad at deserunt error facere maxime neque, nobis nulla perspiciatis praesentium provident quaerat quasi quo, reprehenderit sed tenetur. A accusamus aperiam consequatur, cumque deserunt dignissimos dolore doloribus hic ipsum iste nihil ratione rem sequi ut voluptatem! Facilis labore quisquam recusandae sit tenetur.', date: '12/27/2004' }]},
-        {name: 'Noodle', animalType: 'Cat', breed: 'poofy cat', dob: 'Feb 2 2011', avatar: '../images/cat_noodle.png', medicalRecords: [{type: 'Pacemaker implantation', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, quasi, tempore. Accusamus adipisci animi beatae blanditiis consectetur cumque deserunt dolor ea, eius, excepturi explicabo id, ipsa necessitatibus nesciunt praesentium quam qui sapiente unde vitae voluptatum. Ab accusantium fuga hic in laudantium magni, minus nostrum possimus quibusdam voluptates? Cupiditate, odio, repellendus.', date: '12/27/2004'}, {type: 'Titanium crown', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam asperiores ea fuga id impedit, labore odio perferendis praesentium quas, qui sapiente, sed? At cum dignissimos dolores eos exercitationem ipsam iure mollitia nesciunt nostrum pariatur porro, quas quasi quibusdam repudiandae sapiente sint ut voluptatem! Beatae debitis eligendi fugit incidunt?', date: '12/27/2004' }, {type: 'Dermatology exam', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur culpa delectus dolor eligendi error et, expedita illo impedit molestias nam numquam odit officia pariatur perspiciatis rem? Dolore ipsa molestias mollitia neque non qui quibusdam, rem repellendus reprehenderit rerum, unde velit, vero. eveniet ipsum necessitatibus officia recusandae rem, velit voluptatum?', date: '12/27/2004' }, {type: 'Rabies vaccine', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae commodi consequuntur cumque deserunt, ea eaque enim est fuga id iure laudantium libero minima neque odit porro quaerat quas quibusdam quod repellat unde vel veniam? Ipsa quidem quod similique? Asperiores atque dignissimos ea est iste magnam quo sapiente ullam.', date: '12/27/2004' }]}
+        { name: 'Momo', animalType: 'Dog', breed: 'fluffy dog', dob: 'Jan 11, 2008', avatar: '../images/dog_momo.jpg', medicalRecords: [{ type: 'Rabies vaccine', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam cum distinctio, eius et fuga, illo libero minus nam non odit officia porro possimus qui quia, quibusdam quo quos repellat unde voluptatibus. Accusantium adipisci, asperiores autem deserunt eaque in laboriosam, nam neque nulla pariatur perspiciatis quisquam sapiente sint soluta, suscipit.', date: '12/27/2004' }, { type: 'Dental surgery', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad adipisci aperiam aspernatur, aut beatae commodi consectetur cum dignissimos dolore doloremque enim eos esse explicabo fugit impedit in laboriosam mollitia nam nemo neque, nobis pariatur quidem quod rem sed tempore ut. Distinctio ea, excepturi facilis fugiat in libero maxime voluptas voluptates.', date: '12/27/2004' }, { type: 'Ophthalmic surgery', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad at deserunt error facere maxime neque, nobis nulla perspiciatis praesentium provident quaerat quasi quo, reprehenderit sed tenetur. A accusamus aperiam consequatur, cumque deserunt dignissimos dolore doloribus hic ipsum iste nihil ratione rem sequi ut voluptatem! Facilis labore quisquam recusandae sit tenetur.', date: '12/27/2004' }] },
+        { name: 'Noodle', animalType: 'Cat', breed: 'poofy cat', dob: 'Feb 2 2011', avatar: '../images/cat_noodle.png', medicalRecords: [{ type: 'Pacemaker implantation', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, quasi, tempore. Accusamus adipisci animi beatae blanditiis consectetur cumque deserunt dolor ea, eius, excepturi explicabo id, ipsa necessitatibus nesciunt praesentium quam qui sapiente unde vitae voluptatum. Ab accusantium fuga hic in laudantium magni, minus nostrum possimus quibusdam voluptates? Cupiditate, odio, repellendus.', date: '12/27/2004' }, { type: 'Titanium crown', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam asperiores ea fuga id impedit, labore odio perferendis praesentium quas, qui sapiente, sed? At cum dignissimos dolores eos exercitationem ipsam iure mollitia nesciunt nostrum pariatur porro, quas quasi quibusdam repudiandae sapiente sint ut voluptatem! Beatae debitis eligendi fugit incidunt?', date: '12/27/2004' }, { type: 'Dermatology exam', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur culpa delectus dolor eligendi error et, expedita illo impedit molestias nam numquam odit officia pariatur perspiciatis rem? Dolore ipsa molestias mollitia neque non qui quibusdam, rem repellendus reprehenderit rerum, unde velit, vero. eveniet ipsum necessitatibus officia recusandae rem, velit voluptatum?', date: '12/27/2004' }, { type: 'Rabies vaccine', details: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae commodi consequuntur cumque deserunt, ea eaque enim est fuga id iure laudantium libero minima neque odit porro quaerat quas quibusdam quod repellat unde vel veniam? Ipsa quidem quod similique? Asperiores atque dignissimos ea est iste magnam quo sapiente ullam.', date: '12/27/2004' }] }
     ];
 
     function generatePetDetails(petNameOrId) {
@@ -32,14 +34,14 @@
             let index = petsObj.findIndex(x => x.name == petNameOrId);
 
             if (index !== -1) {
-                let imgContainer = $('<div>').addClass('petImg').css('background-image', 'url('+petsObj[index].avatar+')');
+                let imgContainer = $('<div>').addClass('petImg').css('background-image', 'url(' + petsObj[index].avatar + ')');
 
                 let petName = $('<h4>').text('Name: ' + petsObj[index].name);
                 let dob = $('<h4>').text('DOB: ' + petsObj[index].dob);
                 let breed = $('<h4>').text('Breed: ' + petsObj[index].breed);
 
                 let records = petsObj[index].medicalRecords;
-                for (let i=0; i<records.length; i++) {
+                for (let i = 0; i < records.length; i++) {
                     let newDiv = $('<div>').addClass('recordContainer');
                     let newRecord = $('<h3>').text(records[i].type).addClass('record');
                     newRecord[0].date = records[i].date;
@@ -62,44 +64,53 @@
 </script>
 
 <body>
-<header>
-    <h1 class='title'>Pet to Vet</h1>
-</header>
-<div class='petInfoContainer'>
-    <div class="petImgContainer">
-    </div>
-    <div class="petInfoDiv">
+    <header>
+        <h1 class='title'>Pet to Vet</h1>
+    </header>
+    <div class='petInfoContainer'>
+        <div class="petImgContainer">
+        </div>
+        <div class="petInfoDiv">
 
-        <div class="petInfo">
+            <div class="petInfo">
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="medicalRecord">
+
+        <div class="recordList text-center">
 
         </div>
 
     </div>
-</div>
 
-
-
-<div class="medicalRecord">
-
-    <div class="recordList text-center">
-
-    </div>
-
-</div>
-
-<footer>
-    <div class='iconNav'>
-        <a href="#"><span class="glyphicon glyphicon-home"></span></a>
-    </div>
-    <div class='iconNav'>
-        <a href="#"><span class="glyphicon glyphicon-calendar"></span></a>
-    </div>
-    <div class='iconNav'>
-        <a href="#"><span class="glyphicon glyphicon-folder-open"></span></a>
-    </div>
-    <div class='iconNav'>
-        <a href="#"><span class="glyphicon glyphicon-plus"></span></a>
-    </div>
-</footer>
+    <footer>
+        <div class='iconNav'>
+            <a href="#">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+        </div>
+        <div class='iconNav'>
+            <a href="#">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </a>
+        </div>
+        <div class='iconNav'>
+            <a href="#">
+                <span class="glyphicon glyphicon-folder-open"></span>
+            </a>
+        </div>
+        <div class='iconNav'>
+            <a href="#">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
+        </div>
+    </footer>
 </body>
+
 </html>
