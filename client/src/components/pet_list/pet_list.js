@@ -20,7 +20,7 @@ class PetList extends Component {
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
           <div className="usersPetContainer">
-            <Link to="/pet-profile"><div className="petAvatar" style={petAvatar} /></Link>
+            <Link to="/pet-profile/1"><div className="petAvatar" style={petAvatar} /></Link>
           </div>
         </div>
         <footer>

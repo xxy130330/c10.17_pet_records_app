@@ -15,7 +15,7 @@ const App = () => (
             <Route exact path = '/' component={LandingPage}/>
             {/*<LoginPage/>*/}
             <Route  path = '/pet-list' component={PetList}/>
-            <Route path = '/pet-profile' component={PetProfile}/>
+            <Route path = '/pet-profile/1' component={PetProfile}/>
             <Route path = '/record-item' component={RecordItem}/>
             {/*<PetList/>*/}
             {/*<PetProfile/>*/}
