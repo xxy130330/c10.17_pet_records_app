@@ -20,7 +20,12 @@ const App = () => (
                     <PetList data={PetData}{...props}/>
                 )
             }}/>
-            <Route path = '/pet-profile/' component={PetProfile}/>
+            <Route path = '/pet-profile/:id' component={(props)=> {
+                return(
+                    <PetProfile data={PetData}{...props}/>
+                )
+                }
+            }/>
             <Route path = '/record-item' component={RecordItem}/>
             {/*<PetList/>*/}
             {/*<PetProfile/>*/}
