@@ -7,6 +7,7 @@ import PetProfile from "./pet_profile/pet_profile";
 
 import RecordItem from "./record_item/record_item";
 import PetData from "./pet_data";
+import Footer from '../components/footer_menu/footer_menu';
 
 const App = () => (
     <Router>
@@ -24,13 +25,13 @@ const App = () => (
                 )
                 }
             }/>
-            <Route path = '/pet-profile/:id/record-item/:id' component={(props)=>{
-                return <PetProfile data={PetData}{...props}/>
+            <Route  path = '/pet-profile/:id/record-item/:id'  component={(props)=>{
+                return <RecordItem data={PetData}{...props}/>
             }}/>
             {/*<PetList/>*/}
             {/*<PetProfile/>*/}
             {/*<RecordItem/>*/}
-
+            <Footer/>
         </div>
     </Router>
 )
