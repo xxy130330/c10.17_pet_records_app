@@ -14,18 +14,20 @@ class PetProfile extends Component{
             petObject: PetData
         }
     }
+    
     listMedicalRecords(){
+       
         return(
             // this.state.petObject[0]
             <div className='recordContainer'>
                 <h3 className=''><Link to ='/record-item'>{this.state.petObject[0].medicalRecords[0].type}</Link></h3>
             </div>
             )
-
     }
     render(){
+       
         const {petObject}= this.state;
-        const dogImage= {
+        const petImage= {
             backgroundImage: `url(${petObject[0].avatar})`
         };
         return(

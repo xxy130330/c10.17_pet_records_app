@@ -18,7 +18,7 @@ class PetList extends Component {
         console.log('this is the index: ',index);
         return(
           <div>
-            <Link to={"pet-profile/:"+index} ><div className="petAvatar" style={petAvatar} id={index} /></Link>
+            <Link to={"pet-profile/"+index} ><div className="petAvatar" style={petAvatar} id={index} /></Link>
           </div>
       )
     });
