@@ -28,7 +28,7 @@ class PetProfile extends Component{
                         </div>
                         <div className='iconNav'>
                             <a href="#"><span className="glyphicon glyphicon-calendar"></span></a>
-                        </div>
+                        </div>``
                         <div className='iconNav'>
                             <a href="#"><span className="glyphicon glyphicon-folder-open"></span></a>
                         </div>
