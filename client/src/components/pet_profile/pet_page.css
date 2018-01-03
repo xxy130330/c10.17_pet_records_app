@@ -2,9 +2,10 @@
     margin: 0;
     padding: 0;
 }
-body {
+.pet_page_body {
     height: 120vh;
     width: 100vw;
+    background-color: white;
 }
 header {
     text-align: center;
