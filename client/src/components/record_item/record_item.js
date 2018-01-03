@@ -3,7 +3,18 @@ import PetData from '../pet_data';
 import './record_item.css';
 
 class RecordItem extends Component{
+    constructor(props){
+        super(props);
+
+        this.state={
+            petObject: PetData,
+            petId: this.props.match.params.id
+        };
+
+    }
     render(){
+        // const {petId}= this.state;
+        // const petRecordsList= this.props.data[petId].
         return(
             <div className='record_item_body'>
                 <header>
@@ -18,7 +29,6 @@ class RecordItem extends Component{
                     <hr/>
                     <p>{PetData[0].medicalRecords[0].details}</p>
                 </div>
-
             </div>
         )
     }

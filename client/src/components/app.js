@@ -19,13 +19,13 @@ const App = () => (
                     <PetList data={PetData}{...props}/>
                 )
             }}/>
-            <Route path = '/pet-profile/:id' component={(props)=> {
+            <Route exact path = '/pet-profile/:id' component={(props)=> {
                 return(
                     <PetProfile data={PetData}{...props}/>
                 )
                 }
             }/>
-            <Route  path = '/pet-profile/:id/record-item/:id'  component={(props)=>{
+            <Route exact path = '/pet-profile/:id/record-item/:id'  component={(props)=>{
                 return <RecordItem data={PetData}{...props}/>
             }}/>
             {/*<PetList/>*/}
