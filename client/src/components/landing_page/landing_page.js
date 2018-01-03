@@ -19,9 +19,7 @@ export default props=>{
                     <Link to ='/pet-list'><button className='btn btn-primary btn-block'>Pet Login</button></Link>
                     <button className='btn btn-success btn-block'>Vet Login</button>
                 </div>
-
             </div>
-
         </div>
     )
 }
