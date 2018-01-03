@@ -9,7 +9,6 @@ import RecordItem from "./record_item/record_item";
 import PetData from "./pet_data";
 
 const App = () => (
-<<<<<<< HEAD
     <Router>
         <div>
             <Route exact path = '/' component={LandingPage}/>
@@ -34,31 +33,6 @@ const App = () => (
 
         </div>
     </Router>
-
-=======
-  <Router>
-    <div>
-      <Route exact path="/" component={LandingPage} />
-      {/*<LoginPage/>*/}
-      <Route
-        path="/pet-list/"
-        component={props => {
-          return <PetList data={PetData} {...props} />;
-        }}
-      />
-      <Route
-        path="/pet-profile/:id"
-        component={props => {
-          return <PetProfile data={PetData} {...props} />;
-        }}
-      />
-      <Route path="/record-item" component={RecordItem} />
-      {/*<PetList/>*/}
-      {/*<PetProfile/>*/}
-      {/*<RecordItem/>*/}
-    </div>
-  </Router>
->>>>>>> af5199926b4fb29600bd0f59c102f8d485a52ea0
-);
+)
 
 export default App;

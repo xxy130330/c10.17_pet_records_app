@@ -50,12 +50,7 @@ class PetProfile extends Component{
         return medicalRecordsList;
     }
     render(){
-
         console.log(this.props);
-<<<<<<< HEAD
-=======
-        const {petObject}= this.state;
->>>>>>> af5199926b4fb29600bd0f59c102f8d485a52ea0
         return(
             <div className='pet_page_body'>
                 <header>
@@ -68,7 +63,6 @@ class PetProfile extends Component{
                         {this.listMedicalRecords()}
                     </div>
                 </div>
-
             </div>
         )
     }
