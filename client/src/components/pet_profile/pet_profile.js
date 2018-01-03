@@ -9,23 +9,23 @@ class PetProfile extends Component{
         super(props);
 
         this.state={
-            petObject: PetData
+            petObject: PetData,
+            petId: this.props.match.params.id
         };
     }
     getPetInfo(){
-        const petId= this.props.match.params.id;
+        const {petId}= this.state;
         console.log('pet object', this.props);
         console.log('this is the pet\s id', petId);
-        debugger;
         console.log('this is us trying to log petId',this.props.data[parseInt(petId)]);
-        const dogImage= {
+        const petImage= {
             backgroundImage: `url(${this.props.data[petId].avatar})`
         };
-        console.log('this is dog image', dogImage);
+        console.log('this is dog image', petImage);
         return(
             <div className='petInfoContainer'>
                 <div className="petImgContainer">
-                    <div className='petImg' style={dogImage}></div>
+                    <div className='petImg' style={petImage}></div>
                 </div>
                 <div className="petInfoDiv">
                     <div className="petInfo">
@@ -37,9 +37,20 @@ class PetProfile extends Component{
             </div>
             )
     }
+    listMedicalRecords(){
+        const {petId}=this.state;
+        const medicalRecordsList= this.props.data[petId].medicalRecords.map((item,index)=>{
+            console.log('this is the item for medical record items', item.type);
+            return(
+                <div className='recordContainer'>
+                    <h3 key={index}><Link to={'/pet-profile/'+this.state.petId+'/record-item/'+index}>{item.type}</Link></h3>
+                </div>
+            )
+        });
+        return medicalRecordsList;
+    }
     render(){
         console.log(this.props);
-        const {petObject}= this.state;
         return(
             <div className='pet_page_body'>
                 <header>
@@ -49,9 +60,7 @@ class PetProfile extends Component{
                 <hr/>
                 <div className="medicalRecord">
                     <div className="recordList text-center">
-                        <div className='recordContainer'>
-                            <h3 className=''><Link to ='/record-item'>{this.props.data[0].medicalRecords[0].type}</Link></h3>
-                        </div>
+                        {this.listMedicalRecords()}
                     </div>
                 </div>
             </div>
