@@ -50,20 +50,6 @@ class PetProfile extends Component{
                             </div>
                         </div>
                     </div>
-                    <footer>
-                        <div className='iconNav'>
-                            <a href="#"><span className="glyphicon glyphicon-home"></span></a>
-                        </div>
-                        <div className='iconNav'>
-                            <a href="#"><span className="glyphicon glyphicon-calendar"></span></a>
-                        </div>``
-                        <div className='iconNav'>
-                            <a href="#"><span className="glyphicon glyphicon-folder-open"></span></a>
-                        </div>
-                        <div className='iconNav'>
-                            <a href="#"><span className="glyphicon glyphicon-plus"></span></a>
-                        </div>
-                    </footer>
             </div>
         )
     }
