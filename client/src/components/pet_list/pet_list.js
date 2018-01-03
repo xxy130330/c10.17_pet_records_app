@@ -19,6 +19,7 @@ class PetList extends Component {
         return(
           <div>
             <Link to={"pet-profile/"+index} ><div className="petAvatar" style={petAvatar} id={index} /></Link>
+            {/* This one would not need the `:` colon to be added to the link for the params*/}
           </div>
       )
     });
@@ -34,31 +35,6 @@ class PetList extends Component {
             {/*<Link to="/pet-profile/"><div className="petAvatar" style={petAvatar} /></Link>*/}
           </div>
         </div>
-
-
-
-        {/*<footer>*/}
-          {/*<div className="iconNav">*/}
-            {/*<a href="#">*/}
-              {/*<span className="glyphicon glyphicon-home" />*/}
-            {/*</a>*/}
-          {/*</div>*/}
-          {/*<div className="iconNav">*/}
-            {/*<a href="#">*/}
-              {/*<span className="glyphicon glyphicon-calendar" />*/}
-            {/*</a>*/}
-          {/*</div>*/}
-          {/*<div className="iconNav">*/}
-            {/*<a href="#">*/}
-              {/*<span className="glyphicon glyphicon-folder-open" />*/}
-            {/*</a>*/}
-          {/*</div>*/}
-          {/*<div className="iconNav">*/}
-            {/*<a href="#">*/}
-              {/*<span className="glyphicon glyphicon-plus" />*/}
-            {/*</a>*/}
-          {/*</div>*/}
-        {/*</footer>*/}
       </div>
     );
   }
