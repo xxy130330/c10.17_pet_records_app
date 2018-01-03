@@ -1,6 +1,7 @@
 
 import React from "react";
 import dogMomo from "../assets/images/dog_momo.jpg";
+import catNoodle from '../assets/images/cat_noodle.png';
 
 export default [
   {
@@ -35,7 +36,7 @@ export default [
     animalType: "Cat",
     breed: "poofy cat",
     dob: "Feb 2 2011",
-    avatar: "./images/cat_noodle.png",
+    avatar: catNoodle,
     medicalRecords: [
       {
         type: "Pacemaker implantation",

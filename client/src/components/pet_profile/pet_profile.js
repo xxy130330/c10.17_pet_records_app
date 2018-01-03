@@ -18,7 +18,7 @@ class PetProfile extends Component{
         return(
             // this.state.petObject[0]
             <div className='recordContainer'>
-                <h3 className=''><Link to ='/record-item'>{[0].medicalRecords[0].type}</Link></h3>
+                <h3 className=''><Link to ='/record-item'>{this.state.petObject[0].medicalRecords[0].type}</Link></h3>
             </div>
             )
 
