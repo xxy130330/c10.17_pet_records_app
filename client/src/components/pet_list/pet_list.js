@@ -35,31 +35,6 @@ class PetList extends Component {
             {/*<Link to="/pet-profile/"><div className="petAvatar" style={petAvatar} /></Link>*/}
           </div>
         </div>
-
-
-
-        {/*<footer>*/}
-          {/*<div className="iconNav">*/}
-            {/*<a href="#">*/}
-              {/*<span className="glyphicon glyphicon-home" />*/}
-            {/*</a>*/}
-          {/*</div>*/}
-          {/*<div className="iconNav">*/}
-            {/*<a href="#">*/}
-              {/*<span className="glyphicon glyphicon-calendar" />*/}
-            {/*</a>*/}
-          {/*</div>*/}
-          {/*<div className="iconNav">*/}
-            {/*<a href="#">*/}
-              {/*<span className="glyphicon glyphicon-folder-open" />*/}
-            {/*</a>*/}
-          {/*</div>*/}
-          {/*<div className="iconNav">*/}
-            {/*<a href="#">*/}
-              {/*<span className="glyphicon glyphicon-plus" />*/}
-            {/*</a>*/}
-          {/*</div>*/}
-        {/*</footer>*/}
       </div>
     );
   }
