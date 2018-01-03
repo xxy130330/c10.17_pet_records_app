@@ -7,37 +7,33 @@ import PetProfile from "./pet_profile/pet_profile";
 
 import RecordItem from "./record_item/record_item";
 import PetData from "./pet_data";
-import Footer from './footer_menu/footer_menu';
+import Footer from '../components/footer_menu/footer_menu';
 
 const App = () => (
-  <Router>
-    <div>
-      <Route exact path="/" component={LandingPage} />
-      {/*<LoginPage/>*/}
-      <Route
-        path="/pet-list/"
-        component={props => {
-          return <PetList data={PetData} {...props} />;
-        }}
-      />
-      <Route
-        exact path="/pet-profile/:id"
-        component={props => {
-          return <PetProfile data={PetData} {...props} />;
-        }}
-      />
-      <Route
-        exact path="/pet-profile/:id?/record-item/:id"
-        component={props => {
-          return <RecordItem data={PetData} {...props} />;
-        }}
-      />
-      {/*<PetList/>*/}
-      {/*<PetProfile/>*/}
-      {/*<RecordItem/>*/}
-      <Footer />
-    </div>
-  </Router>
-);
+    <Router>
+        <div>
+            <Route exact path = '/' component={LandingPage}/>
+            {/*<LoginPage/>*/}
+            <Route  path = '/pet-list/' component={(props)=> {
+                return(
+                    <PetList data={PetData}{...props}/>
+                )
+            }}/>
+            <Route exact path = '/pet-profile/:id' component={(props)=> {
+                return(
+                    <PetProfile data={PetData}{...props}/>
+                )
+                }
+            }/>
+            <Route exact path = '/pet-profile/:id/record-item/:id'  component={(props)=>{
+                return <RecordItem data={PetData}{...props}/>
+            }}/>
+            {/*<PetList/>*/}
+            {/*<PetProfile/>*/}
+            {/*<RecordItem/>*/}
+            <Footer/>
+        </div>
+    </Router>
+)
 
 export default App;
