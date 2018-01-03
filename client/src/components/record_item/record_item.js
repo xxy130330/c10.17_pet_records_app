@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PetData from '../pet_data';
-import './record_item.css';
+// import './record_item.css';
 
 class RecordItem extends Component{
     render(){
