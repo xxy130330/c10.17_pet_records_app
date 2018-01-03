@@ -43,7 +43,7 @@ class PetProfile extends Component{
             console.log('this is the item for medical record items', item.type);
             return(
                 <div className='recordContainer'>
-                    <h3 key={index}><Link to={'/pet-profile/'+this.state.petId+'/record-item/'+index}>{item.type}</Link></h3>
+                    <h3 key={index}><Link to={'/pet-profile/'+petId+'/record-item/'+index}>{item.type}</Link></h3>
                 </div>
             )
         });
