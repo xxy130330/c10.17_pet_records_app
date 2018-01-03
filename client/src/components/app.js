@@ -6,6 +6,7 @@ import PetList from "./pet_list/pet_list";
 import PetProfile from "./pet_profile/pet_profile";
 
 import RecordItem from "./record_item/record_item";
+import PetData from './pet_data';
 
 
 
@@ -14,8 +15,12 @@ const App = () => (
         <div>
             <Route exact path = '/' component={LandingPage}/>
             {/*<LoginPage/>*/}
-            <Route  path = '/pet-list' component={PetList}/>
-            <Route path = '/pet-profile' component={PetProfile}/>
+            <Route  path = '/pet-list/' component={(props)=> {
+                return(
+                    <PetList data={PetData}{...props}/>
+                )
+            }}/>
+            <Route path = '/pet-profile/' component={PetProfile}/>
             <Route path = '/record-item' component={RecordItem}/>
             {/*<PetList/>*/}
             {/*<PetProfile/>*/}
