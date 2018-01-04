@@ -17,7 +17,7 @@ class PetList extends Component {
         console.log(item.avatar);
         console.log('this is the index: ',index);
         return(
-          <div>
+          <div key={index}>
             <Link to={"pet-profile/"+index} ><div className="petAvatar" style={petAvatar} id={index} /></Link>
             {/* This one would not need the `:` colon to be added to the link for the params*/}
           </div>

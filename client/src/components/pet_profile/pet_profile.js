@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import './pet_page.css';
-import PetData from '../pet_data';
-import {Link} from 'react-router-dom';
-
+import React, { Component } from "react";
+import "./pet_page.css";
+import PetData from "../pet_data";
+import { Link } from "react-router-dom";
 
 class PetProfile extends Component{
     constructor(props){
@@ -42,6 +41,7 @@ class PetProfile extends Component{
         const medicalRecordsList= this.props.data[petId].medicalRecords.map((item,index)=>{
             console.log('this is the item for medical record items', item.type);
             return(
+
                 <div className='recordContainer'  key={index}>
                     <h3><Link to={'/pet-profile/'+petId+'/record-item/'+index}>{item.type}</Link></h3>
                 </div>
