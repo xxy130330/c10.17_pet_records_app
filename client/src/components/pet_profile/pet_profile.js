@@ -42,8 +42,8 @@ class PetProfile extends Component{
         const medicalRecordsList= this.props.data[petId].medicalRecords.map((item,index)=>{
             console.log('this is the item for medical record items', item.type);
             return(
-                <div className='recordContainer'>
-                    <h3 key={index}><Link to={'/pet-profile/'+petId+'/record-item/'+index}>{item.type}</Link></h3>
+                <div className='recordContainer'  key={index}>
+                    <h3><Link to={'/pet-profile/'+petId+'/record-item/'+index}>{item.type}</Link></h3>
                 </div>
             )
         });

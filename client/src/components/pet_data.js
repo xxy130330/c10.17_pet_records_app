@@ -48,19 +48,19 @@ export default [
         type: "Titanium crown",
         details:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam asperiores ea fuga id impedit, labore odio perferendis praesentium quas, qui sapiente, sed? At cum dignissimos dolores eos exercitationem ipsam iure mollitia nesciunt nostrum pariatur porro, quas quasi quibusdam repudiandae sapiente sint ut voluptatem! Beatae debitis eligendi fugit incidunt?",
-        date: "12/27/2004"
+        date: "5/27/2004"
       },
       {
         type: "Dermatology exam",
         details:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur culpa delectus dolor eligendi error et, expedita illo impedit molestias nam numquam odit officia pariatur perspiciatis rem? Dolore ipsa molestias mollitia neque non qui quibusdam, rem repellendus reprehenderit rerum, unde velit, vero. eveniet ipsum necessitatibus officia recusandae rem, velit voluptatum?",
-        date: "12/27/2004"
+        date: "4/27/2004"
       },
       {
         type: "Rabies vaccine",
         details:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores beatae commodi consequuntur cumque deserunt, ea eaque enim est fuga id iure laudantium libero minima neque odit porro quaerat quas quibusdam quod repellat unde vel veniam? Ipsa quidem quod similique? Asperiores atque dignissimos ea est iste magnam quo sapiente ullam.",
-        date: "12/27/2004"
+        date: "1/27/2004"
       }
     ]
   }
