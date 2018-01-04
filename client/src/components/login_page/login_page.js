@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './login_page.css';
+import {Link} from 'react-router-dom';
 
 export default class LoginPage extends Component{
     
@@ -57,11 +58,14 @@ export default class LoginPage extends Component{
                         <input className='password form-control input-lg' type='password' placeholder="Password" onChange={e=>this.handleInputChange(e)}  name='password' value={password}/>
                     </div>
                     <div className='buttonContainer'>
-                        <button className='btn btn-primary'>Login</button>
+                        <Link to="/pet-list/"><button className='btn btn-primary'>Login</button></Link>
                     </div>
                     <br/>
                         <div id="register">New User?
-                            <a href="http://##">Register.</a>
+                            <Link to='/parent-page/'>Register</Link>
+                        </div>
+                        <div id="register">New Vet?
+                            <Link to='/vet-page/'>Register</Link>
                         </div>
 
                 </form>
