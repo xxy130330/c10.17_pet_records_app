@@ -45,7 +45,7 @@ export default class ParentPage extends Component{
 		const {username, password, confirmpassword, email} = this.state.form;
 
 		return(
-			<div className="parent_page_body">
+			<div>
 				<header>
             	    <h1 className='title'>Pet to Vet</h1>
                 </header>

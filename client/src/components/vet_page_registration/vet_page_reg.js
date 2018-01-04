@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Logo from '../../assets/images/petvet_logo.png';
 
 class VetPage extends Component {
     constructor(props){
@@ -41,11 +42,10 @@ class VetPage extends Component {
         return(
             <div>
                 <header>
-                    <h1 className='title'>Pet to Vet</h1>
+                    <div className="title">
+                        <img src={Logo} />
+                    </div>
                 </header>
-                <div className='logoContainer'>
-                    <div className='logo'></div>
-                </div>
                 <form className='container' onSubmit={(e)=>this.handleSubmit(e)} >
                     <div className='form-group'>
                         <label>User Name</label>

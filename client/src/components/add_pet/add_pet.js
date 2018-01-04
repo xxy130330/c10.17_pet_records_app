@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Logo from '../../assets/images/petvet_logo.png';
 import './add_pet.css';
 
 
@@ -45,8 +46,10 @@ export default class AddPet extends Component{
 		return(
 			<div>
 				<header>
-				    <h1 className='title'>Pet to Vet</h1>
-				</header>
+         			<div className="title">
+	           			<img src={Logo} />
+	            	</div>
+      		   </header>
 				<div className='pictureContainer'>
 				    <h2 className='text-center'>Add Pet</h2>
 				</div>
