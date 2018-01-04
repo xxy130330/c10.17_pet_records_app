@@ -13,24 +13,9 @@ const App = () => (
     <Router>
         <div>
             <Route exact path = '/' component={LandingPage}/>
-            {/*<LoginPage/>*/}
-            <Route  path = '/pet-list/' component={(props)=> {
-                return(
-                    <PetList data={PetData}{...props}/>
-                )
-            }}/>
-            <Route exact path = '/pet-profile/:id' component={(props)=> {
-                return(
-                    <PetProfile data={PetData}{...props}/>
-                )
-                }
-            }/>
-            <Route exact path = '/pet-profile/:id/record-item/:id'  component={(props)=>{
-                return <RecordItem data={PetData}{...props}/>
-            }}/>
-            {/*<PetList/>*/}
-            {/*<PetProfile/>*/}
-            {/*<RecordItem/>*/}
+            <Route  path = '/pet-list/' component={(props)=> {return(<PetList data={PetData}{...props}/>)}}/>
+            <Route exact path = '/pet-profile/:id' component={(props)=> {return(<PetProfile data={PetData}{...props}/>)}}/>
+            <Route exact path = '/pet-profile/:petId/record-item/:recordId'  component={(props)=>{return <RecordItem data={PetData}{...props} />}}/>
             <Footer/>
         </div>
     </Router>

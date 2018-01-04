@@ -8,13 +8,18 @@ class RecordItem extends Component{
 
         this.state={
             petObject: PetData,
-            petId: this.props.match.params.id
+            recordId: this.props.match.params.recordId,
+            petId: this.props.match.params.petId
         };
 
     }
     render(){
+
+        console.log('props', this.props);
         // const {petId}= this.state;
         // const petRecordsList= this.props.data[petId].
+        const {recordId, petId} = this.state;
+
         return(
             <div className='record_item_body'>
                 <header>
@@ -24,8 +29,8 @@ class RecordItem extends Component{
                     <h1 className='title'>Pet to Vet</h1>
                 </header>
                 <div className=" record_item_container">
-                    <h2 className='record_item_header'>{PetData[0].medicalRecords[0].type}</h2>
-                    <h3 className='record_item_date'>{PetData[0].medicalRecords[0].date}</h3>
+                    <h2 className='record_item_header'>{PetData[petId].medicalRecords[recordId].type}</h2>
+                    <h3 className='record_item_date'>{PetData[petId].medicalRecords[recordId].date}</h3>
                     <hr/>
                     <p>{PetData[0].medicalRecords[0].details}</p>
                 </div>
