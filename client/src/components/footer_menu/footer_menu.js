@@ -1,12 +1,13 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer>
       <div className="iconNav">
-        <a href="#">
+        <Link to="/">
           <span className="glyphicon glyphicon-home" />
-        </a>
+        </Link>
       </div>
       <div className="iconNav">
         <a href="#">

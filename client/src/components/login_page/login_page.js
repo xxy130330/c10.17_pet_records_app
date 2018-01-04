@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './login_page.css';
+import {Link} from 'react-router-dom';
+import Logo from '../../assets/images/petvet_logo.png';
 
 export default class LoginPage extends Component{
     
@@ -42,7 +44,9 @@ export default class LoginPage extends Component{
         return(
             <div>
                 <header>
-                    <h1 className='title'>Pet to Vet</h1>
+                    <div className="title">
+                        <img src={Logo} />
+                    </div>
                 </header>
                 <div className='logoContainer'>
                     <div className='logo'></div>
@@ -57,11 +61,14 @@ export default class LoginPage extends Component{
                         <input className='password form-control input-lg' type='password' placeholder="Password" onChange={e=>this.handleInputChange(e)}  name='password' value={password}/>
                     </div>
                     <div className='buttonContainer'>
-                        <button className='btn btn-primary'>Login</button>
+                        <Link to="/pet-list/"><button className='btn btn-primary'>Login</button></Link>
                     </div>
                     <br/>
                         <div id="register">New User?
-                            <a href="http://##">Register.</a>
+                            <Link to='/parent-page/'>Register</Link>
+                        </div>
+                        <div id="register">New Vet?
+                            <Link to='/vet-page/'>Register</Link>
                         </div>
 
                 </form>

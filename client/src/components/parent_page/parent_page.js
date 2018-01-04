@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import './parent_page.css';
 
 
@@ -71,7 +72,7 @@ export default class ParentPage extends Component{
 	        		    <input className = 'form-control' type="text" placeholder="Email" onChange={e=>this.handleInputChange(e)}  name='email' value={email}/>
 	      		 	</div>
 	       			<div className="buttonContainer row">
-	       		     	<button className='btn btn-success'>Sign Up</button>
+	       		     	<Link to='/add-pet/'><button className='btn btn-success'>Sign Up</button></Link>
 	       		 	</div>
 	    		</form>
     		</div>
