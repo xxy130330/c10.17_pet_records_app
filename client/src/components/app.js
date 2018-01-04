@@ -9,6 +9,7 @@ import ParentPage from "./parent_page/parent_page";
 import RecordItem from "./record_item/record_item";
 import PetData from "./pet_data";
 import Footer from '../components/footer_menu/footer_menu';
+import VetPage from '../components/vet_page_registration/vet_page_reg';
 
 const App = () => (
     <Router>
@@ -18,6 +19,8 @@ const App = () => (
             <Route exact path = '/pet-profile/:id' component={(props)=> {return(<PetProfile data={PetData}{...props}/>)}}/>
             <Route exact path = '/pet-profile/:petId/record-item/:recordId'  component={(props)=>{return <RecordItem data={PetData}{...props} />}}/>
             <Route path = '/parent-page/' component={ParentPage}/>
+            <Route path='/vet-page' component={VetPage}/>
+
             <Footer/>
         </div>
     </Router>
