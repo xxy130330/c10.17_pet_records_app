@@ -1,15 +1,17 @@
 import React from 'react';
 import './landing_page.css';
 import {Link} from 'react-router-dom';
-// import Logo from '../../assets/images/logo.svg';
+import Logo from '../../assets/images/petvet_logo.png';
 
 export default props=>{
 
     return(
         <div>
-            <header>
-                <h1 className='title'>Pet to Vet</h1>
-            </header>
+        <header>
+        <div className="title">
+          <img src={Logo} />
+        </div>
+      </header>
             <div className='logoContainer'>
                 <div className='logo'></div>
             </div>
