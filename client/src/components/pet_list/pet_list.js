@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./new_pet_list_styles.css";
-import Logo from '../../assets/images/petvet_logo.png';
+import Logo from '../../../../server/images/petvet_logo.png';
 // import pet_data from "../../../../server/pet_data";
 import {Link} from 'react-router-dom';
 
