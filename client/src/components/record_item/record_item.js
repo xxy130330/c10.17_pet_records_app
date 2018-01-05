@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import PetData from "../../../../server/pet_data";
 import "./record_item.css";
-import Logo from '../../assets/images/petvet_logo.png';
+import Logo from '../../../../server/images/petvet_logo.png';
 
 
 class RecordItem extends Component {
