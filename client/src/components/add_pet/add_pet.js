@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Logo from '../../../../server/images/petvet_logo.png';
+import photo from '../../../../server/images/photo.png';
 import './add_pet.css';
 
 
@@ -40,8 +41,6 @@ export default class AddPet extends Component{
 		})
 	}
 	render(){
-		console.log('wtf');
-
 		const {name, dob, breed} = this.state.form;
 		return(
 			<div>
@@ -55,7 +54,7 @@ export default class AddPet extends Component{
 				</div>
 				<div>
 				    <div className='picture'>
-				        <img src="../../../../server/images/photo.png" alt=""/>
+				        <img src={photo} />
 				    </div>
 				</div>
 				<form className='container' onSubmit={(e)=>this.handleSubmit(e)}>
