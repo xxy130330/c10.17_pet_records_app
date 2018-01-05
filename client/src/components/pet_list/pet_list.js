@@ -15,7 +15,7 @@ class PetList extends Component {
     const userPetList = this.props.data.map((item, index) => {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
-      };
+      }
       console.log(item);
       return (
         <div key={index}>
