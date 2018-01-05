@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './parent_page.css';
-
+import Logo from '../../assets/images/petvet_logo.png';
 
 export default class ParentPage extends Component{
 	constructor(props){
@@ -47,8 +47,8 @@ export default class ParentPage extends Component{
 		return(
 			<div>
 				<header>
-            	    <h1 className='title'>Pet to Vet</h1>
-                </header>
+				<div className="title"><img src={Logo}/></div>
+			  </header>
                 <div className="logoContainer">
                 	<div className="logo"></div> 
                 </div>             

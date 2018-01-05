@@ -11,10 +11,6 @@ import AddPet from './add_pet/add_pet';
 
 import RecordItem from "./record_item/record_item";
 
-
-
-
-
 import Footer from '../components/footer_menu/footer_menu';
 import VetPage from '../components/vet_page_registration/vet_page_reg';
 import AddMedNote from '../components/manually_add_med_note_page/manually_add_med_note';
@@ -22,6 +18,7 @@ import AddMedNote from '../components/manually_add_med_note_page/manually_add_me
 
 
 
+<<<<<<< HEAD
 class App extends Component{
 
     constructor(props){
@@ -55,12 +52,13 @@ class App extends Component{
 
     }
 
-    
+
 
     render(){
 
         const {PetData} = this.state;
         console.log(PetData);
+
         return(
             <Router>
                 <div>
@@ -68,7 +66,9 @@ class App extends Component{
                     <Route path = '/login-page/' component={LoginPage}/>
                     <Route path = '/pet-list/' component={(props)=> {return(<PetList data={PetData}{...props}/>)}}/>
                     <Route exact path = '/pet-profile/:id' component={(props)=> {return(<PetProfile data={PetData}{...props}/>)}}/>
+
                     <Route exact path = '/pet-profile/:petId/record-item/:recordId'  component={(props)=>{return <RecordItem PetData={PetData}  data={PetData}{...props} />}}/>
+
                     <Route path = '/parent-page/' component={ParentPage}/>
                     <Route path='/add-pet/' component={AddPet}/>
                     <Route path='/vet-page' component={VetPage}/>
@@ -76,10 +76,10 @@ class App extends Component{
                     <Route path = '/*' render={Footer}/>
                 </div>
             </Router>
-            )
+
+        )
     }
-    
-    
+
 }
 
 export default App;
