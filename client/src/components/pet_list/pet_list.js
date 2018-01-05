@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./new_pet_list_styles.css";
-import pet_data from "../pet_data";
+import pet_data from "../../../../server/pet_data";
 import {Link} from 'react-router-dom';
 
 class PetList extends Component {
