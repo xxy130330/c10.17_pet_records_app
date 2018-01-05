@@ -11,6 +11,7 @@ import PetProfile from "./pet_profile/pet_profile";
 import ParentPage from "./parent_page/parent_page";
 import AddPet from "./add_pet/add_pet";
 import RecordItem from "./record_item/record_item";
+import Header from '../components/header_component/header';
 import Footer from "../components/footer_menu/footer_menu";
 import VetPage from "../components/vet_page_registration/vet_page_reg";
 import AddMedNote from "../components/manually_add_med_note_page/manually_add_med_note";
@@ -44,6 +45,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+            <Route path="/*" component={Header} />
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />
           <Route
