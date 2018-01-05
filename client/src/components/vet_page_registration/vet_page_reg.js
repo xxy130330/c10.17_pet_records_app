@@ -41,11 +41,6 @@ class VetPage extends Component {
         // console.log(this.state.form);
         return(
             <div>
-                <header>
-                    <div className="title">
-                        <img src={Logo} />
-                    </div>
-                </header>
                 <form className='container' onSubmit={(e)=>this.handleSubmit(e)} >
                     <div className='form-group'>
                         <label>User Name</label>
