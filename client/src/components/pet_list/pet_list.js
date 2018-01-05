@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./new_pet_list_styles.css";
+
+
+// import pet_data from "../pet_data";
+import { Link } from "react-router-dom";
 import Logo from '../../assets/images/petvet_logo.png';
-import pet_data from "../../../../server/pet_data";
-import {Link} from 'react-router-dom';
+
 
 class PetList extends Component {
   constructor(props) {
