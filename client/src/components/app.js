@@ -8,7 +8,7 @@ import PetList from "./pet_list/pet_list";
 import PetProfile from "./pet_profile/pet_profile";
 
 import RecordItem from "./record_item/record_item";
-// import PetData from "../../../server/pet_data";
+
 var PetData = null;
 axios({
     method: 'get',
