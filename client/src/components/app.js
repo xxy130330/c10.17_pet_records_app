@@ -10,7 +10,7 @@ import ParentPage from "./parent_page/parent_page";
 import AddPet from './add_pet/add_pet';
 
 import RecordItem from "./record_item/record_item";
-// import PetData from "../../../server/pet_data";
+
 var PetData = null;
 axios({
     method: 'get',
