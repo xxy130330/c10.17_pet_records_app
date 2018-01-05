@@ -18,7 +18,7 @@ import AddMedNote from '../components/manually_add_med_note_page/manually_add_me
 
 
 
-<<<<<<< HEAD
+
 class App extends Component{
 
     constructor(props){
