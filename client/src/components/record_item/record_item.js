@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PetData from "../pet_data";
+import PetData from "../../../../server/pet_data";
 import "./record_item.css";
 import Logo from '../../assets/images/petvet_logo.png';
 
