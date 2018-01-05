@@ -19,12 +19,12 @@ import AddMedNote from '../components/manually_add_med_note_page/manually_add_me
 
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        this.state= {
-
-        }
+        this.state = {
+            PetData: null
+        };
     }
     componentDidMount(){
         let PetData = null;
@@ -35,11 +35,15 @@ class App extends Component {
             let fetchedData = (response);
             PetData = JSON.parse(fetchedData.data.data);
             console.log(PetData);
-
+            
+        });
+        this.setState({
+            PetData: PetData
         });
 
     }
     render(){
+            const {PetData}= this.state;
         return(
             <Router>
                 <div>
