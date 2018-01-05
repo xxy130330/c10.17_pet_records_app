@@ -12,9 +12,10 @@ import AddPet from './add_pet/add_pet';
 import RecordItem from "./record_item/record_item";
 
 var PetData = null;
+
 axios({
     method: 'get',
-    url: 'http://localhost/endpoint.php',
+    url: 'http://localhost:8888/endPoint.php',
 }).then(function(response) {
     let fetchedData = (response);
     PetData = JSON.parse(fetchedData.data.data);

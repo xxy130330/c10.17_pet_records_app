@@ -17,6 +17,8 @@ class RecordItem extends Component {
   render() {
     console.log("props", this.props);
     const { recordId, petId } = this.state;
+    conss
+    
 
     return (
       <div className="record_item_body">
