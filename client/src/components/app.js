@@ -58,7 +58,7 @@ class App extends Component {
             exact
             path="/pet-profile/:petId/record-item/:recordId"
             component={props => {
-              return <RecordItem PetData={PetData} data={PetData} {...props} />;
+              return <RecordItem data={PetData} {...props} />;
             }}
           />
 

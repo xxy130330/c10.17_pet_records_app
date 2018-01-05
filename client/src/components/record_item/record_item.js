@@ -17,9 +17,9 @@ class RecordItem extends Component {
   render() {
     console.log("inside recordItem", this.props);
     const { recordId, petId } = this.state;
-    const PetData = this.props.PetData
+    const PetData = this.props.data
 
-    if(this.props.data.length === 0){
+    if(PetData.length === 0){
       return <h1>Loading</h1>
     }
 
