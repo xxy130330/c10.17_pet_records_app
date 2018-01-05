@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import axios from 'axios';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -11,16 +11,7 @@ import AddPet from './add_pet/add_pet';
 
 import RecordItem from "./record_item/record_item";
 
-var PetData = null;
-axios({
-    method: 'get',
-    url: 'http://localhost/endpoint.php',
-}).then(function(response) {
-    let fetchedData = (response);
-    PetData = JSON.parse(fetchedData.data.data);
-    console.log(PetData);
 
-});
 
 
 
@@ -31,24 +22,64 @@ import AddMedNote from '../components/manually_add_med_note_page/manually_add_me
 
 
 
-const App = () => (
+class App extends Component{
+
+    constructor(props){
+        super(props);
+
+        this.state={
+            PetData: []
+        }
+    }
+
+// let PetData = null;
+//         axios({
+//             method: 'get',
+//             url: 'http://localhost:8888/endPoint.php',
+//         }).then(function(response) {
+//             console.log('response',response);
+//             let fetchedData = (response);
+//             PetData = JSON.parse(fetchedData.data.data);
+//             console.log(PetData);
+
+//         });
+    componentWillMount(){
+        const url = 'http://localhost:8888/endPoint.php';
+
+        axios.get(url).then( (res) =>{
+            console.log('res:',JSON.parse(res.data.data));
+            this.setState({
+                PetData: JSON.parse(res.data.data)
+            })
+        });
+
+    }
 
     
-    <Router>
-        <div>
-            <Route exact path = '/' component={LandingPage}/>
-            <Route path = '/login-page/' component={LoginPage}/>
-            <Route path = '/pet-list/' component={(props)=> {return(<PetList data={PetData}{...props}/>)}}/>
-            <Route exact path = '/pet-profile/:id' component={(props)=> {return(<PetProfile data={PetData}{...props}/>)}}/>
-            <Route exact path = '/pet-profile/:petId/record-item/:recordId'  component={(props)=>{return <RecordItem data={PetData}{...props} />}}/>
-            <Route path = '/parent-page/' component={ParentPage}/>
-            <Route path='/add-pet/' component={AddPet}/>
-            <Route path='/vet-page' component={VetPage}/>
-            <Route path='/add-med-note' component={AddMedNote}/>
-            <Route path = '/*' render={Footer}/>
-        </div>
-    </Router>
+
+    render(){
+
+        const {PetData} = this.state;
+        console.log(PetData);
+        return(
+            <Router>
+                <div>
+                    <Route exact path = '/' component={LandingPage}/>
+                    <Route path = '/login-page/' component={LoginPage}/>
+                    <Route path = '/pet-list/' component={(props)=> {return(<PetList data={PetData}{...props}/>)}}/>
+                    <Route exact path = '/pet-profile/:id' component={(props)=> {return(<PetProfile data={PetData}{...props}/>)}}/>
+                    <Route exact path = '/pet-profile/:petId/record-item/:recordId'  component={(props)=>{return <RecordItem PetData={PetData}  data={PetData}{...props} />}}/>
+                    <Route path = '/parent-page/' component={ParentPage}/>
+                    <Route path='/add-pet/' component={AddPet}/>
+                    <Route path='/vet-page' component={VetPage}/>
+                    <Route path='/add-med-note' component={AddMedNote}/>
+                    <Route path = '/*' render={Footer}/>
+                </div>
+            </Router>
+            )
+    }
     
-)
+    
+}
 
 export default App;

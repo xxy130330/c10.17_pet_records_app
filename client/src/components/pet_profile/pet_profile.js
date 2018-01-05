@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./pet_page.css";
-import PetData from "../../../../server/pet_data";
+// import PetData from "../../../../server/pet_data";
 import { Link } from "react-router-dom";
 import Logo from '../../assets/images/petvet_logo.png';
 
@@ -9,7 +9,7 @@ class PetProfile extends Component {
     super(props);
 
     this.state = {
-      petObject: PetData,
+      // petObject: PetData,
       petId: this.props.match.params.id
     };
   }
@@ -37,7 +37,7 @@ class PetProfile extends Component {
     const { petId } = this.state;
     const medicalRecordsList = this.props.data[petId].medicalRecords.map(
       (item, index) => {
-        console.log("this is the item for medical record items", item.type);
+        // console.log("this is the item for medical record items", item.type);
         return (
           <div className="recordContainer" key={index}>
             <h3>
@@ -52,23 +52,32 @@ class PetProfile extends Component {
     return medicalRecordsList;
   }
   render() {
-    console.log(this.props);
-    return (
-      <div>
-        <header>
-          <div className="title">
-            <img src={Logo} />
+    console.log('in profile:', this.props.data);
+
+    if(this.props.data.length){
+      console.log('true');
+      return (
+          <div>
+            <header>
+              <div className="title">
+                <img src={Logo} />
+              </div>
+            </header>
+            {this.getPetInfo()}
+            <hr />
+            <div className="medicalRecord">
+              <div className="recordList text-center">
+                {this.listMedicalRecords()}
+              </div>
+            </div>
           </div>
-        </header>
-        {this.getPetInfo()}
-        <hr />
-        <div className="medicalRecord">
-          <div className="recordList text-center">
-            {this.listMedicalRecords()}
-          </div>
-        </div>
-      </div>
-    );
+      );
+    }else{
+      console.log('false');
+      return <h1>Loading</h1>
+    }
+
+    
   }
 }
 export default PetProfile;
