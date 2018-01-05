@@ -80,55 +80,7 @@ class App extends Component {
     );
   }
 
-<<<<<<< HEAD
 
-//         });
-    componentWillMount() {
-        const url = 'http://localhost:80/endPoint.php';
-
-        axios.get(url).then((res) => {
-            console.log('res:', JSON.parse(res.data.data));
-            this.setState({
-                PetData: JSON.parse(res.data.data)
-            })
-        });
-
-    }
-
-
-    render() {
-
-        const {PetData} = this.state;
-        console.log(PetData);
-
-        return (
-            <Router>
-                <div>
-                    <Route exact path='/' component={LandingPage}/>
-                    <Route path='/login-page/' component={LoginPage}/>
-                    <Route path='/pet-list/' component={(props) => {
-                        return (<PetList data={PetData}{...props}/>)
-                    }}/>
-                    <Route exact path='/pet-profile/:id' component={(props) => {
-                        return (<PetProfile data={PetData}{...props}/>)
-                    }}/>
-
-                    <Route exact path='/pet-profile/:petId/record-item/:recordId' component={(props) => {
-                        return <RecordItem PetData={PetData} data={PetData}{...props} />
-                    }}/>
-
-                    <Route path='/parent-page/' component={ParentPage}/>
-                    <Route path='/add-pet/' component={AddPet}/>
-                    <Route path='/vet-page' component={VetPage}/>
-                    <Route path='/add-med-note' component={AddMedNote}/>
-                    <Route path='/*' render={Footer}/>
-                </div>
-            </Router>
-
-        )
-    };
-=======
->>>>>>> dbd1500cfe0c1134fba0f634940db36527cd9556
 }
 
 export default App;
