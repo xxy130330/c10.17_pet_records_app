@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Logo from '../../assets/images/petvet_logo.png';
+import Logo from '../../../../server/images/petvet_logo.png';
 import './manually_add_med_note.css';
 
 class AddMedNote extends Component {
