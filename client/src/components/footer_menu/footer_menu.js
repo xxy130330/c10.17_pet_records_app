@@ -13,7 +13,7 @@ const Footer = () => {
         <a href="#">
           <span className="glyphicon glyphicon-calendar" />
         </a>
-      </div>``
+      </div>
       <div className="iconNav">
         <a href="#">
           <span className="glyphicon glyphicon-folder-open" />
