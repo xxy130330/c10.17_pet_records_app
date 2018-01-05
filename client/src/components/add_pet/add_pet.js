@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Logo from '../../assets/images/petvet_logo.png';
+import Logo from '../../../../server/images/petvet_logo.png';
 import './add_pet.css';
 
 
@@ -55,7 +55,7 @@ export default class AddPet extends Component{
 				</div>
 				<div>
 				    <div className='picture'>
-				        <img src="../../assets/images/photo.png" alt=""/>
+				        <img src="../../../../server/images/photo.png" alt=""/>
 				    </div>
 				</div>
 				<form className='container' onSubmit={(e)=>this.handleSubmit(e)}>

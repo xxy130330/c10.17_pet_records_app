@@ -6,7 +6,7 @@
     margin: 5% auto 0 auto;
 }
 .logo {
-    background-image: url(../../assets/images/kitten_temp_logo.jpg);
+    background-image: url(../../../../server/images/kitten_temp_logo.jpg);
     background-repeat: no-repeat;
     position: relative;
     height: 100%;

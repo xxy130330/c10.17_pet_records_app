@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./pet_page.css";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/images/petvet_logo.png";
+import Logo from "../../../../server/images/petvet_logo.png";
 
 class PetProfile extends Component {
   constructor(props) {
