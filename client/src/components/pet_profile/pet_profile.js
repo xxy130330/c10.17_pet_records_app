@@ -14,6 +14,7 @@ class PetProfile extends Component {
     };
   }
   getPetInfo() {
+      console.log('these are the props in pet_profile: ',this.props);
     const { petId } = this.state;
     const petImage = {
       backgroundImage: `url(${this.props.data[petId].avatar})`
