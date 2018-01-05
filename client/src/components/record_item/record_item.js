@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import PetData from "../../../../server/pet_data";
 import "./record_item.css";
 import Logo from '../../assets/images/petvet_logo.png';
 
@@ -9,7 +8,6 @@ class RecordItem extends Component {
     super(props);
 
     this.state = {
-      // petObject: PetData,
       recordId: this.props.match.params.recordId,
       petId: this.props.match.params.petId
     };
@@ -38,7 +36,7 @@ class RecordItem extends Component {
             {PetData[petId].medicalRecords[recordId].date}
           </h3>
           <hr />
-          <p>{PetData[0].medicalRecords[0].details}</p>
+          <p>{PetData[petId].medicalRecords[recordId].details}</p>
         </div>
       </div>
     );
