@@ -11,7 +11,7 @@
 
 <script>
     $(document).ready(function() {
-        generatePetDetails('Noodle');
+        generatePetDetails(localStorage.getItem('fetchPetDataFor'));
         $('body').on('click', '.record', function(event) {
             //pass props through components not using local storage most likely when we move to react
             localStorage.setItem('procedure', event.target.procedure);

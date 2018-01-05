@@ -1,0 +1,14 @@
+
+.record_item_body {
+    height: 100vh;
+    background-color: white;
+}
+.record_item_container{
+    margin: 0 2%;
+}
+.record_item_container p {
+    margin: 5%;
+}
+.record_item_header, .record_item_date{
+    text-align: center;
+}

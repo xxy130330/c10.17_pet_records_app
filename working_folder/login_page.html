@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../client/src/components/login_page/login_page.css">
+    <title>LogIn</title>
+
+    <script>
+        function verifyLogin() {
+            var correctLogin = true;
+
+            const dummyDatabase = [
+                {userName: 'simon', password: '123'},
+            ];
+            const userNameInput = $('.userName').val();
+            const passwordInput = $('.password').val();
+
+            const index = dummyDatabase.findIndex((x => x.userName == userNameInput));
+            if (index !== -1) {
+                if (passwordInput == dummyDatabase[index].password) {
+                    console.log('made it here!');
+                    window.open("./new_pet_list_sh.html", "_self");
+                }
+                else {
+                    correctLogin = false;
+                }
+            } else {
+                correctLogin = false;
+            }
+            if (!correctLogin) {
+                $('.userName, .password').css({border: '3px solid red'});
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1 class='title'>Pet to Vet</h1>
+    </header>
+    <div class='logoContainer'>
+        <div class='logo'></div>
+    </div>
+    <div class='container'>
+        <div class='form-group'>
+            <label>User Name</label>
+            <input class='userName form-control input-lg' type='text' placeholder="Username" />
+        </div>
+        <div class='form-group'>
+            <label>Password</label>
+            <input class='password form-control input-lg' type='password' placeholder="Password" />
+        </div>
+        <div class='buttonContainer'>
+            <button class='btn btn-primary' onclick="verifyLogin()">Login</button>
+             <button class='btn btn-success'>Sign Up</button>
+        </div>
+        <br>
+        <div id="register">New User?
+            <a href="http://##">Register.</a>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
