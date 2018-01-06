@@ -15,10 +15,13 @@ require_once ('mycredentials.php');
 
 $query = "SELECT
              o.name AS Owner_name,
-             p.name AS Pet_name
+             p.name AS Pet_name,
+             m.title AS Medical_record_title
           FROM pets AS p
           JOIN owner AS o
           ON o.ID = p.ownerID
+          JOIN medical_records AS m 
+          ON m.petID = p.ID
           
           ";
 
