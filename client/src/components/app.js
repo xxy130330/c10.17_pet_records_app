@@ -26,26 +26,14 @@ class App extends Component {
         }
     }
 
-// let PetData = null;
-//         axios({
-//             method: 'get',
-//             url: 'http://localhost:8888/endPoint.php',
-//         }).then(function(response) {
-//             console.log('response',response);
-//             let fetchedData = (response);
-//             PetData = JSON.parse(fetchedData.data.data);
-//             console.log(PetData);
-
-//         });
     componentWillMount() {
-        const url = 'http://localhost:80/endPoint.php?ID=1';
+        const url = 'http://localhost:80/database_connect/pull_pet_records.php?ID=1';
 
         axios.get(url).then((res) => {
-            console.log(res);
-            console.log('res:', JSON.parse(res.data.data));
-            this.setState({
-                PetData: JSON.parse(res.data.data)
-            })
+            console.log(res.data);
+            // this.setState({
+            //     PetData: JSON.parse(res.data.data),
+            // });
         });
     }
 
