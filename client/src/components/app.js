@@ -28,13 +28,14 @@ class App extends Component {
     }
 
     componentWillMount() {
-        const url = 'http://localhost:80/endPoint.php?ID=1';
+        const url = 'http://localhost:80/database_connect/pull_pet_records.php?ID=1';
 
-        axios.get(url).then(res => {
-            console.log("res:", JSON.parse(res.data.data));
-            this.setState({
-                PetData: JSON.parse(res.data.data)
-            });
+
+        axios.get(url).then((res) => {
+            console.log(res.data);
+            // this.setState({
+            //     PetData: JSON.parse(res.data.data),
+            // });
         });
     }
 
