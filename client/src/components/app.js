@@ -27,58 +27,58 @@ class App extends Component {
         }
     }
 
-  componentWillMount() {
-    const url = "http://localhost:80/endPoint.php";
+    componentWillMount() {
+        const url = 'http://localhost:80/endPoint.php?ID=1';
 
-    axios.get(url).then(res => {
-      console.log("res:", JSON.parse(res.data.data));
-      this.setState({
-        PetData: JSON.parse(res.data.data)
-      });
-    });
-  }
+        axios.get(url).then(res => {
+            console.log("res:", JSON.parse(res.data.data));
+            this.setState({
+                PetData: JSON.parse(res.data.data)
+            });
+        });
+    }
 
-  render() {
-    const { PetData } = this.state;
-    console.log(PetData);
+    render() {
+        const {PetData} = this.state;
+        console.log(PetData);
 
-    return (
-      <Router>
-        <div>
-            <Route path="/*" component={Header} />
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/login-page/" component={LoginPage} />
-          <Route
-            path="/pet-list/"
-            component={props => {
-              return <PetList data={PetData} {...props} />;
-            }}
-          />
-          <Route
-            exact
-            path="/pet-profile/:id"
-            component={props => {
-              return <PetProfile data={PetData} {...props} />;
-            }}
-          />
+        return (
+            <Router>
+                <div>
+                    <Route path="/*" component={Header}/>
+                    <Route exact path="/" component={LandingPage}/>
+                    <Route path="/login-page/" component={LoginPage}/>
+                    <Route
+                        path="/pet-list/"
+                        component={props => {
+                            return <PetList data={PetData} {...props} />;
+                        }}
+                    />
+                    <Route
+                        exact
+                        path="/pet-profile/:id"
+                        component={props => {
+                            return <PetProfile data={PetData} {...props} />;
+                        }}
+                    />
 
-          <Route
-            exact
-            path="/pet-profile/:petId/record-item/:recordId"
-            component={props => {
-              return <RecordItem data={PetData} {...props} />;
-            }}
-          />
+                    <Route
+                        exact
+                        path="/pet-profile/:petId/record-item/:recordId"
+                        component={props => {
+                            return <RecordItem data={PetData} {...props} />;
+                        }}
+                    />
 
-          <Route path="/parent-page/" component={ParentPage} />
-          <Route path="/add-pet/" component={AddPet} />
-          <Route path="/vet-page" component={VetPage} />
-          <Route path="/add-med-note" component={AddMedNote} />
-          <Route path="/*" render={Footer} />
-        </div>
-      </Router>
-    );
-  }
+                    <Route path="/parent-page/" component={ParentPage}/>
+                    <Route path="/add-pet/" component={AddPet}/>
+                    <Route path="/vet-page" component={VetPage}/>
+                    <Route path="/add-med-note" component={AddMedNote}/>
+                    <Route path="/*" render={Footer}/>
+                </div>
+            </Router>
+        );
+    }
 
 }
 
