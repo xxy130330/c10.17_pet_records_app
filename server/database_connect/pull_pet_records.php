@@ -8,8 +8,24 @@
 
 require_once('connect.php');
 
-if (empty($_GET['id'])) {
+$ID = $_GET['ID'];
+
+$output = [
+    'success' => false,
+    'data' => $petData,
+    'errors' => [$ID],
+];
+
+$query = "SELECT `petID` FROM  `pets` WHERE `ownerID` = $ID";
+
+if (!empty($ID)) {
+    $output['success'] = true;
+
+} else {
 
 }
+
+$json_output = json_encode($output);
+
 
 ?>

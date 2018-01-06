@@ -38,22 +38,21 @@ class App extends Component {
 
 //         });
     componentWillMount() {
-        const url = 'http://localhost:80/endPoint.php';
+        const url = 'http://localhost:80/endPoint.php?ID=1';
 
         axios.get(url).then((res) => {
+            console.log(res);
             console.log('res:', JSON.parse(res.data.data));
             this.setState({
                 PetData: JSON.parse(res.data.data)
             })
         });
-
     }
 
 
     render() {
 
         const {PetData} = this.state;
-        console.log(PetData);
 
         return (
             <Router>
