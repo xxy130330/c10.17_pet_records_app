@@ -5,22 +5,9 @@
 
 require_once ('mycredentials.php');
 
-//if(empty($_GET['id'])){
-//    $field = 'id, name, email, password';
-//    $whereClause = '';
-//}else{
-//    $field = '*';
-//    $whereClause = "WHERE id = {$_GET['id']}";
-//}
+$id = $_GET['ID'];
 
-$query = "SELECT
-             o.name AS Owner_name,
-             p.name AS Pet_name
-          FROM pets AS p
-          JOIN owner AS o
-          ON o.ID = p.ownerID
-          
-          ";
+$query = "SELECT `ID`, `name`, `avatar` FROM pets WHERE `ownerID` = $id";
 
 
 
