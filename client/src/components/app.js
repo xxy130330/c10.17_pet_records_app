@@ -11,6 +11,7 @@ import PetProfile from "./pet_profile/pet_profile";
 import ParentPage from "./parent_page/parent_page";
 import AddPet from "./add_pet/add_pet";
 import RecordItem from "./record_item/record_item";
+import Header from '../components/header_component/header';
 import Footer from "../components/footer_menu/footer_menu";
 import VetPage from "../components/vet_page_registration/vet_page_reg";
 import AddMedNote from "../components/manually_add_med_note_page/manually_add_med_note";
@@ -26,13 +27,14 @@ class App extends Component {
         }
     }
 
+
     componentWillMount() {
         const url = 'http://localhost:80/database_connect/pull_pet_records.php?ID=1';
 
         axios.get(url).then((res) => {
             console.log(res.data);
             this.setState({
-                PetData: JSON.parse(res.data.data),
+                PetData: (res.data.data),
             });
         });
     }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./pet_page.css";
-// import PetData from "../../../../server/pet_data";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 
@@ -37,7 +36,6 @@ class PetProfile extends Component {
     const { petId } = this.state;
     const medicalRecordsList = this.props.data[petId].medicalRecords.map(
       (item, index) => {
-        // console.log("this is the item for medical record items", item.type);
         return (
           <div className="recordContainer" key={index}>
             <h3>
@@ -57,11 +55,6 @@ class PetProfile extends Component {
       console.log("true");
       return (
         <div>
-          <header>
-            <div className="title">
-              <img src={Logo} />
-            </div>
-          </header>
           {this.getPetInfo()}
           <hr />
           <div className="medicalRecord">

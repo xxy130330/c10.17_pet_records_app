@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./new_pet_list_styles.css";
+
 import Logo from '../../../../server/images/petvet_logo.png';
-// import pet_data from "../../../../server/pet_data";
+
 import {Link} from 'react-router-dom';
 
 
@@ -29,9 +30,6 @@ class PetList extends Component {
         });
         return (
             <div>
-                <header>
-                    <div className="title"><img src={Logo}/></div>
-                </header>
                 <div className="petListContainer">
                     <h1 className="petListTitle">Pet List</h1>
                     <div className="usersPetContainer">{userPetList}</div>
