@@ -31,9 +31,9 @@ class App extends Component {
 
         axios.get(url).then((res) => {
             console.log(res.data);
-            // this.setState({
-            //     PetData: JSON.parse(res.data.data),
-            // });
+            this.setState({
+                PetData: JSON.parse(res.data.data),
+            });
         });
     }
 
