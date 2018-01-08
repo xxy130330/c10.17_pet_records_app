@@ -21,7 +21,7 @@ $output = [
 
 $pet_objects = [];
 
-$query = "SELECT `ID`, `name`, `avatar` FROM  `pets` WHERE `ownerID` = $ID";
+$query = "SELECT `ID`, `name`, `avatar`, `DOB`, `animal_type` FROM  `pets` WHERE `ownerID` = $ID";
 
 $result = mysqli_query($conn, $query);
 
@@ -29,7 +29,7 @@ if ($result) {
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
 
-            $obj = (object)array("name" => $row['name'], "ID" => $row['ID'], "avatar" => $row['avatar'], "medicalRecords" => []);
+            $obj = (object)array("name" => $row['name'], "ID" => $row['ID'], "avatar" => $row['avatar'], "dob" => $row['DOB'], "breed" => $row['animal_type'],"medicalRecords" => []);
 
             array_push($pet_objects, $obj);
 

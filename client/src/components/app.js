@@ -29,7 +29,7 @@ class App extends Component {
 
 
     componentWillMount() {
-        const url = 'http://localhost:80/database_connect/pull_pet_records.php?ID=1';
+        const url = 'http://localhost:80/database_connect/actions/server.php';
 
         axios.get(url).then((res) => {
             console.log(res.data);
