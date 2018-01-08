@@ -7,11 +7,6 @@ export default props=>{
 
     return(
         <div>
-        <header>
-        <div className="title">
-          <img src={Logo} />
-        </div>
-      </header>
             <div className='logoContainer'>
                 <div className='logo'></div>
             </div>

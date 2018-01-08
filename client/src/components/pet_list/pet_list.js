@@ -28,9 +28,6 @@ class PetList extends Component {
         });
         return (
             <div>
-                <header>
-                    <div className="title"><img src={Logo}/></div>
-                </header>
                 <div className="petListContainer">
                     <h1 className="petListTitle">Pet List</h1>
                     <div className="usersPetContainer">{userPetList}</div>

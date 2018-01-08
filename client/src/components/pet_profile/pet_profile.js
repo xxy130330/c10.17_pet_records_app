@@ -55,11 +55,6 @@ class PetProfile extends Component {
       console.log("true");
       return (
         <div>
-          <header>
-            <div className="title">
-              <img src={Logo} />
-            </div>
-          </header>
           {this.getPetInfo()}
           <hr />
           <div className="medicalRecord">

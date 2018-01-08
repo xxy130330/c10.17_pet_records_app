@@ -22,23 +22,16 @@ class RecordItem extends Component {
     }
 
     return (
-      <div className="record_item_body">
-        <header>
-          <div className="title">
-            <img src={Logo} />
-          </div>
-        </header>
-        <div className=" record_item_container">
-          <h2 className="record_item_header">
-            {PetData[petId].medicalRecords[recordId].type}
-          </h2>
-          <h3 className="record_item_date">
-            {PetData[petId].medicalRecords[recordId].date}
-          </h3>
-          <hr />
-          <p>{PetData[petId].medicalRecords[recordId].details}</p>
-        </div>
-      </div>
+            <div className=" record_item_container">
+              <h2 className="record_item_header">
+                {PetData[petId].medicalRecords[recordId].type}
+              </h2>
+              <h3 className="record_item_date">
+                {PetData[petId].medicalRecords[recordId].date}
+              </h3>
+              <hr />
+              <p>{PetData[petId].medicalRecords[recordId].details}</p>
+            </div>
     );
   }
 }
