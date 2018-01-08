@@ -7,9 +7,9 @@ require_once ('mycredentials.php');
 
 $id = $_GET['ID'];
 
+$petArr = [];
+
 $query = "SELECT `ID`, `name`, `avatar` FROM pets WHERE `ownerID` = $id";
-
-
 
 $result = mysqli_query($conn, $query);
 
@@ -22,7 +22,9 @@ $output = [
 if($result){
     if(mysqli_num_rows($result)>0){
         while($row = mysqli_fetch_assoc($result)){
-            $output['data'][] = $row;
+            $pet_obj = (object)array("name" => $row['name'], "ID" => $row['ID'], "avatar" => $row['avatar'], "medicalRecords" => []);
+            array_push($petArr, $pet_obj);
+//            $output['data'][] = $row;
         }
         $output['success'] = true;
     }else{
@@ -30,6 +32,10 @@ if($result){
     }
 }else{
     $output['errors'][] = 'error in SQL query';
+}
+
+for($i=0; $i<count($petArr); $i++){
+    
 }
 
 
