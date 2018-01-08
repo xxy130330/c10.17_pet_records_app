@@ -47,6 +47,7 @@ class App extends Component {
         return (
             <Router>
                 <div>
+                    <Route to='/*' component={Header}/>
                     <Route exact path='/' component={LandingPage}/>
                     <Route path='/login-page/' component={LoginPage}/>
                     <Route path='/pet-list/' component={(props) => {
