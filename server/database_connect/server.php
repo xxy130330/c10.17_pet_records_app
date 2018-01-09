@@ -31,7 +31,7 @@ switch($_GET['action']){
         switch($_GET['resource']){
             case 'pets':{
                 if(empty($_GET['petID'])){
-                    require('./actions/pull_pet_records.php');
+                    require('./actions/pull_users_pets.php');
                 }
                 else {
                     //pull all pet records

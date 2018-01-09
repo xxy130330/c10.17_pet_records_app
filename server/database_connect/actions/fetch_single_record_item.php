@@ -12,7 +12,7 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 
 $ID = $_GET['recordID'];
 
-$query = "SELECT `title` AS `type`, `record_data` AS `details`, `treatment_date` AS `date` FROM medical_records WHERE ID = $ID";
+$query = "SELECT `record_data` AS `details`, `treatment_date` AS `date` FROM medical_records WHERE ID = $ID";
 
 $result = mysqli_query($conn, $query);
 
