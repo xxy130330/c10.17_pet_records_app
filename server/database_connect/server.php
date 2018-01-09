@@ -7,8 +7,11 @@
  */
 header("Access-Control-Allow-Origin: *");
 
+
+
 $PAGEACCESS = true;
 require_once('connect.php');
+
 
 $output = [
     'success' => false,
@@ -23,19 +26,28 @@ if(empty($_GET['resource'])){
     $_GET['action'] = 'pets';
 }
 
-
 switch($_GET['action']){
     case 'get':
         switch($_GET['resource']){
             case 'pets':{
                 if(empty($_GET['petID'])){
-                    require('actions/pull_pet_records.php?ID=1');
+                    //require('actions/pull_pet_records.php?ID=1');
 
 
+                    require('./actions/pull_users_pets.php');
                 }
                 else {
                     //pull all pet records
-//                    require('actions/pull_1_pet_records.php')
+                }
+                break;
+            }
+            case 'record-item': {
+                if (!empty($_GET['recordID'])) {
+                    require('./actions/fetch_single_record_item.php');
+                }
+                else {
+                    //pulls all record items
+                     require('./actions/fetch_record_items.php');
                 }
                 break;
             }
