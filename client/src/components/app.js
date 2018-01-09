@@ -28,16 +28,16 @@ class App extends Component {
     }
 
 
-    componentWillMount() {
-        const url = 'http://localhost:80/database_connect/pull_pet_records.php?ID=1';
+    // componentWillMount() {
+    //     const url = 'http://localhost:80/database_connect/pull_pet_records.php?ID=1';
 
-        axios.get(url).then((res) => {
-            console.log(res.data);
-            this.setState({
-                PetData: (res.data.data),
-            });
-        });
-    }
+    //     axios.get(url).then((res) => {
+    //         // console.log(res.data);
+    //         this.setState({
+    //             PetData: (res.data.data),
+    //         });
+    //     });
+    // }
 
 
     render() {
@@ -50,9 +50,10 @@ class App extends Component {
                     <Route to='/*' component={Header}/>
                     <Route exact path='/' component={LandingPage}/>
                     <Route path='/login-page/' component={LoginPage}/>
-                    <Route path='/pet-list/' component={(props) => {
+                    {/*<Route path='/pet-list/' component={(props) => {
                         return (<PetList data={PetData}{...props}/>)
-                    }}/>
+                    }}/>*/}
+                    <Route path='/pet-list/' component={PetList}/>
                     <Route exact path='/pet-profile/:id' component={(props) => {
                         return (<PetProfile data={PetData}{...props}/>)
                     }}/>

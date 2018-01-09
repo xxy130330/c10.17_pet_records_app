@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import "./new_pet_list_styles.css";
 
 import Logo from '../../../../server/images/petvet_logo.png';
-
 import {Link} from 'react-router-dom';
+
+
+import {connect} from 'react-redux';
+import { bindActionCreators} from 'redux';
+import { fetchPetData } from '../../actions/';
 
 
 class PetList extends Component {
@@ -11,8 +15,15 @@ class PetList extends Component {
         super(props);
     }
 
+    componentWillMount(){
+        this.props.fetchPetData();
+        const petObj = this.props.fetchPetData();
+        console.log('willMount', petObj);
+    }
+
     render() {
-        const userPetList = this.props.data.map((item, index) => {
+        console.log('props in pet list', this.props);
+        const userPetList = this.props.petdata.map((item, index) => {
             const petAvatar = {
                 backgroundImage: `url(${item.avatar})`
             };
@@ -38,4 +49,16 @@ class PetList extends Component {
 
 }
 
-export default PetList;
+
+function mapStateToProps(state){
+    console.log(state)
+    return{
+        petdata: state.petdata
+    }
+}
+
+// function mapDispatchToProps(dispatch){
+//   return bindActionCreators( { fetchPetData }, dispatch);
+// }
+
+export default connect(mapStateToProps, {fetchPetData: fetchPetData})(PetList)
