@@ -27,9 +27,11 @@ class App extends Component {
         }
     }
 
-
+//THIS AXIOS CALL IS A PLACEHOLDER IT NEEDS TO BE REMOVED
+    //it currently imitates our first axios call in the login page
     componentWillMount() {
-        const url = 'http://localhost:80/database_connect/actions/server.php';
+        //pulls up all pets for that user FOUND by ID
+        const url = 'http://localhost:80/database_connect/server.php?ID=1&action=get&resource=pets';
 
         axios.get(url).then((res) => {
             console.log(res.data);
