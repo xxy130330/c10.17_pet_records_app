@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './login_page.css';
 import {Link} from 'react-router-dom';
 import Logo from '../../../../server/images/petvet_logo.png';
+import axios from 'axios';
 
 export default class LoginPage extends Component{
     
@@ -13,10 +14,26 @@ export default class LoginPage extends Component{
                 username: '',
                 password: ''
             }
-        }
+        };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    //FIRST AXIOS CALL, finds all the user's pets based on the ID in the url, this will change based on ID of the logged in user but it is currently hardcoded for user ID 1
+
+    //it works but doesn't store the data in state
+
+    // componentWillMount() {
+        //pulls up all pets for that user FOUND by ID
+    //     const url = 'http://localhost:80/database_connect/server.php?action=get&resource=pets&ID=1';
+
+    //     axios.get(url).then((res) => {
+    //         console.log(res.data);
+    //         this.setState({
+    //             PetData: (res.data.data),
+    //         });
+    //     });
+    // }
 
 
     handleInputChange(e){
@@ -33,7 +50,8 @@ export default class LoginPage extends Component{
             form:{
                 username:'',
                 password:''
-            }
+            },
+            PetData : this.state.PetData,
         })
     }
 
