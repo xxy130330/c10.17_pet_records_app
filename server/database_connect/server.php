@@ -30,6 +30,8 @@ switch($_GET['action']){
             case 'pets':{
                 if(empty($_GET['petID'])){
                     require('actions/pull_pet_records.php?ID=1');
+
+
                 }
                 else {
                     //pull all pet records
