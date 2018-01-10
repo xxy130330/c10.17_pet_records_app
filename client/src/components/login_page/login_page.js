@@ -19,9 +19,6 @@ export default class LoginPage extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    //FIRST AXIOS CALL, finds all the user's pets based on the ID in the url, this will change based on ID of the logged in user but it is currently hardcoded for user ID 1
-
-    //it works but doesn't store the data in state
 
 
     handleInputChange(e){
