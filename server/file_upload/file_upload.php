@@ -22,8 +22,13 @@ function moveImage(){
         ?>
         <img src="../file_upload/owner_id_{$_POST['ownerID']}/pet_id_{$_POST['petID']}/upload_image/<?= $_FILES['avatar']['name']; ?>">
         <?php
+    } else {
+        print('something went wrong!');
     }
 }
+
+
+?>
 
 
 
