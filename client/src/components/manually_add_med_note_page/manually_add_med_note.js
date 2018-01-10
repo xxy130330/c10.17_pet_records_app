@@ -3,7 +3,6 @@ import Logo from '../../../../server/images/petvet_logo.png';
 import './manually_add_med_note.css';
 import axios from 'axios';
 
-
 class AddMedNote extends Component {
     constructor(props){
         super(props);
@@ -25,7 +24,7 @@ class AddMedNote extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
-
+        debugger;
         const url = 'http://localhost:80/database_connect/server.php?action=post&resource=record-item';
 
         axios({
@@ -58,7 +57,7 @@ class AddMedNote extends Component {
                 <div className='logoContainer'>
                     <div className='logo'></div>
                 </div>
-                <form className='container' onSubmit={e=>this.handleSubmit(e)}>
+                <form className='container'>
                     <div className='form-group'>
                         <input onChange={e=> this.handleChange(e)} name='title' value={title} className='form-control input-lg' type='text' placeholder="Title"/>
                     </div>
@@ -69,7 +68,7 @@ class AddMedNote extends Component {
                         <textarea  onChange={e=> this.handleChange(e)} name='comment' value={comment} className="form-control" rows="10" placeholder="Comment"></textarea>
                     </div>
                     <div className="buttonContainer row">
-                        <button className='btn btn-success'>Submit</button>
+                        <button type='button' className='btn btn-success' onClick={e=>this.handleSubmit(e)}>Submit</button>
                     </div>
                 </form>
             </div>
