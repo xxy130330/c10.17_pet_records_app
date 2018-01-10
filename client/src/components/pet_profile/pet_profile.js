@@ -2,15 +2,23 @@ import React, { Component } from "react";
 import "./pet_page.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
-import axios from 'axios';
+import {connect} from 'react-redux';
+import { fetchPetData, fetchProfileData } from '../../actions/';
 
 class PetProfile extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      petId: this.props.match.params.id
-    };
+    // this.state = {
+    //   petId: this.props.match.params.id
+    // };
+  }
+
+  componentWillMount(){
+    console.log('PET PROFILE:',this.props);
+    this.props.fetchProfileData(this.props.match.params.id);
+    this.props.fetchPetData();
+
   }
 
   //AXIOS CALL 3
@@ -29,10 +37,19 @@ class PetProfile extends Component {
     // }
 
   getPetInfo() {
-    console.log("props in pet_profile: ", this.props);
-    const { petId } = this.state;
+
+    let petObj = null;
+    for(var i = 0; i < this.props.petdata.length; i++){
+      if(this.props.petdata[i]['ID'] === this.props.match.params.id){
+        petObj = this.props.petdata[i];
+      }
+    }
+
+
+
+
     const petImage = {
-      backgroundImage: `url(${this.props.data[petId].avatar})`
+      backgroundImage: `url(${petObj.avatar})`
     };
     return (
       <div className="petInfoContainer">
@@ -41,22 +58,23 @@ class PetProfile extends Component {
         </div>
         <div className="petInfoDiv">
           <div className="petInfo">
-            <h4>Name: {this.props.data[petId].name}</h4>
-            <h4>DOB: {this.props.data[petId].dob}</h4>
-            <h4>Breed: {this.props.data[petId].breed}</h4>
+            <h4>Name: {petObj.name}</h4>
+            <h4>DOB: {petObj.dob}</h4>
+            <h4>Breed: {petObj.breed}</h4>
           </div>
         </div>
       </div>
     );
   }
   listMedicalRecords() {
-    const { petId } = this.state;
-    const medicalRecordsList = this.props.data[petId].medicalRecords.map(
+    const  petId  = this.props.match.params.id;
+
+    const medicalRecordsList = this.props.petProfile.map(
       (item, index) => {
         return (
           <div className="recordContainer" key={index}>
             <h3>
-              <Link to={"/pet-profile/" + petId + "/record-item/" + index}>
+              <Link to={"/pet-profile/" + petId + "/record-item/" + this.props.petProfile[index]['recordID']}>
                 {item.type}
               </Link>
             </h3>
@@ -67,9 +85,8 @@ class PetProfile extends Component {
     return medicalRecordsList;
   }
   render() {
-    console.log("in PetProfile:", this.props.data);
-    if (this.props.data.length) {
-      console.log("true");
+    console.log('PETPROFILE::::::::::',this.props.petdata);
+    if (this.props.petProfile.length) {
       return (
         <div>
           {this.getPetInfo()}
@@ -82,9 +99,27 @@ class PetProfile extends Component {
         </div>
       );
     } else {
-      console.log("false");
       return <h1>Loading</h1>;
     }
   }
 }
-export default PetProfile;
+
+function mapStateToProps(state){
+    return{
+        petdata: state.petdata,
+        petProfile: state.petProfile
+
+    }
+}
+
+
+
+export default connect(mapStateToProps, {fetchPetData: fetchPetData, fetchProfileData: fetchProfileData})(PetProfile)
+
+
+
+
+
+
+
+
