@@ -32,7 +32,7 @@ class AddMedNote extends Component {
             url    : url,
             dataType: 'json',
             data   : {
-                'ownerID': '5',
+                'petID': '5',
                 'title': this.state.form.title,
                 'type': 'hardcoded for now',
                 'record_data': this.state.form.comment,

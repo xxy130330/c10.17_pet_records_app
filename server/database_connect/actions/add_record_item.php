@@ -11,7 +11,7 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 }
 
 
-$ID = $post['ownerID'];
+$ID = $post['petID'];
 $title = $post['title'];
 $type = $post['type'];
 $recordData = $post['record_data'];
