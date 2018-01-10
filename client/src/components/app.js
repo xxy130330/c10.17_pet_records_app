@@ -56,9 +56,7 @@ class App extends Component {
                         return (<PetList data={PetData}{...props}/>)
                     }}/>*/}
                     <Route path='/pet-list/' component={PetList}/>
-                    <Route exact path='/pet-profile/:id' component={(props) => {
-                        return (<PetProfile data={PetData}{...props}/>)
-                    }}/>
+                    <Route exact path='/pet-profile/:id' component={PetProfile}/>
 
                     <Route exact path='/pet-profile/:petId/record-item/:recordId' component={(props) => {
                         return <RecordItem PetData={PetData} data={PetData}{...props} />
