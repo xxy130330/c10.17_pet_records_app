@@ -19,7 +19,6 @@ export const PET_PROFILE = "PET_PROFILE";
 
 export function fetchProfileData(petId) {
   const request = axios.get(pet_profile_url+petId);
-
   return {
     type: PET_PROFILE,
     payload: request

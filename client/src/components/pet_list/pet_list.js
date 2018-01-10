@@ -12,11 +12,9 @@ class PetList extends Component {
 
   componentWillMount() {
     this.props.fetchPetData();
-    const petObj = this.props.fetchPetData();
   }
 
   render() {
-    console.log("PETLIST:", this.props);
     const userPetList = this.props.petdata.map((item, index) => {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
