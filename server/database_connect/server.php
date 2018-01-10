@@ -54,8 +54,16 @@ switch($_GET['action']){
     case 'post':
         switch($_GET['resource']) {
             case 'record-item':
-                if (!empty($post))
-                require('./actions/add_record_item.php');
+                if (!empty($post)) {
+                    require('./actions/add_record_item.php');
+                }
+                break;
+            case 'pet': {
+                if (!empty($post)) {
+                    require('./actions/add_pet.php');
+                }
+                break;
+            }
         }
 }
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import photo from "../../../../server/images/photo.png";
 import "./add_pet.css";
+import axios from 'axios';
 
 export default class AddPet extends Component {
   constructor(props) {
@@ -27,8 +28,25 @@ export default class AddPet extends Component {
   }
 
   handleSubmit(e) {
-
     e.preventDefault();
+
+    const url = 'http://localhost:80/database_connect/server.php?action=post&resource=pet';
+
+    axios({
+        method : 'post',
+        url: url,
+        dataType: 'json',
+        data: {
+            name: this.state.form.name,
+            dob: this.state.form.dob,
+            breed: this.state.form.breed,
+            ownerID: 1,
+            avatar: 'http://localhost/images/rat.jpg',
+        }
+    }).then(function(res) {
+        console.log(res);
+    });
+
     this.setState({
       form: {
         name: "",
@@ -81,9 +99,9 @@ export default class AddPet extends Component {
             />
           </div>
 
-          <Link to="/pet-list/">
+          {/*<Link to="/pet-list/">*/}
             <button className="btn btn-primary">Add Another Pet</button>
-          </Link>
+          {/*</Link>*/}
         </form>
       </div>
     );
