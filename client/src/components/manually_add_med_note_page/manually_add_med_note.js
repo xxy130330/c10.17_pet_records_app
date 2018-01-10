@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Logo from '../../../../server/images/petvet_logo.png';
 import './manually_add_med_note.css';
+import axios from 'axios';
+
 
 class AddMedNote extends Component {
     constructor(props){
@@ -23,7 +25,24 @@ class AddMedNote extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        console.log(this.state.form);
+
+        const url = 'http://localhost:80/database_connect/server.php?action=post&resource=record-item';
+
+        axios({
+            method : 'post',
+            url    : url,
+            dataType: 'json',
+            data   : {
+                'ownerID': '5',
+                'title': 'Targeting clean cars 101',
+                'type': 'Aviary College Courses',
+                'record_data': 'Polly needed to work on his aim',
+                'treatment_date': '2018-01-02'
+            }
+        }).then((res) => {
+            console.log(res.data);
+        });
+
         this.setState({
             form: {
                 title: '',
