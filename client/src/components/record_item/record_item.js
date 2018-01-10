@@ -1,38 +1,36 @@
 import React, { Component } from "react";
 import "./record_item.css";
-import Logo from '../../../../server/images/petvet_logo.png';
-
+import Logo from "../../../../server/images/petvet_logo.png";
+import { connect } from "react-redux";
+import { fetchMedicalData } from "../../actions/";
 
 class RecordItem extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      recordId: this.props.match.params.recordId,
-      petId: this.props.match.params.petId
-    };
+  componentWillMount() {
+    this.props.fetchMedicalData(this.props.match.params.recordId);
   }
-  render() {
-    console.log("inside recordItem", this.props);
-    const { recordId, petId } = this.state;
-    const PetData = this.props.data
 
-    if(PetData.length === 0){
-      return <h1>Loading</h1>
+  render() {
+    if (!this.props.petMedical.length) {
+      return <h1>Loading</h1>;
     }
 
     return (
-            <div className=" record_item_container">
-              <h2 className="record_item_header">
-                {PetData[petId].medicalRecords[recordId].type}
-              </h2>
-              <h3 className="record_item_date">
-                {PetData[petId].medicalRecords[recordId].date}
-              </h3>
-              <hr />
-              <p>{PetData[petId].medicalRecords[recordId].details}</p>
-            </div>
+      <div className=" record_item_container">
+        <h2 className="record_item_header">{this.props.petMedical[0].type}</h2>
+        <h3 className="record_item_date">{this.props.petMedical[0].date}</h3>
+        <hr />
+        <p>{this.props.petMedical[0].details}</p>
+      </div>
     );
   }
 }
-export default RecordItem;
+
+function mapStateToProps(state) {
+  return {
+    petMedical: state.petMedical
+  };
+}
+
+export default connect(mapStateToProps, {
+  fetchMedicalData: fetchMedicalData
+})(RecordItem);
