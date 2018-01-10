@@ -27,9 +27,7 @@ export default class ParentPage extends Component{
 	}
 
 	handleSubmit(e){
-		console.log(e);
 		e.preventDefault();
-		console.log(this.state.form);
 		this.setState({
 			form:{
 				username: '',

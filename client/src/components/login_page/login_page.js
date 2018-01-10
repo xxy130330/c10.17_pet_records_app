@@ -24,19 +24,6 @@ export default class LoginPage extends Component{
     //it works but doesn't store the data in state
 
 
-    componentWillMount() {
-        //pulls up all pets for that user FOUND by ID
-        const url = 'http://localhost:80/database_connect/server.php?action=get&resource=pets&ID=1';
-
-        axios.get(url).then((res) => {
-            console.log(res.data);
-            this.setState({
-                PetData: (res.data.data),
-            });
-        });
-    }
-
-
     handleInputChange(e){
         const {name, value} = e.target;
         const {form} = this.state;
@@ -45,7 +32,6 @@ export default class LoginPage extends Component{
     }
 
     handleSubmit(e){
-        console.log('inside handleSubmit');
         e.preventDefault();
         this.setState({
             form:{
