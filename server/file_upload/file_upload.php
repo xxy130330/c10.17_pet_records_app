@@ -1,10 +1,11 @@
 <?php
 
 if(!empty($_POST) && !empty($_FILES)){
-    if(move_uploaded_file($_FILES['avatar']['tmp_name'], "../uploads/{$_FILES['avatar']['name']}")){
+    if(!folder_exists())
+    if(move_uploaded_file($_FILES['avatar']['tmp_name'], "../file_upload/owner_id_1/upload_image/{$_FILES['avatar']['name']}")){
         print('Your file was uploaded.');
         ?>
-        <img src="../uploads/<?=$_FILES['avatar']['name'];?>">
+        <img src="../file_upload/owner_id_1/upload_image/<?=$_FILES['avatar']['name'];?>">
         <?php
     }else{
         print('something went wrong!');
