@@ -33,10 +33,10 @@ class AddMedNote extends Component {
             dataType: 'json',
             data   : {
                 'ownerID': '5',
-                'title': 'Targeting clean cars 101',
-                'type': 'Aviary College Courses',
-                'record_data': 'Polly needed to work on his aim',
-                'treatment_date': '2018-01-02'
+                'title': this.state.form.title,
+                'type': 'hardcoded for now',
+                'record_data': this.state.form.comment,
+                'treatment_date': this.state.form.date,
             }
         }).then((res) => {
             console.log(res.data);
