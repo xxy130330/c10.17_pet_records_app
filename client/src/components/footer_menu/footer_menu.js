@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 
 const Footer = (props) => {
-  console.log('inFooter', props);
+
 
 
   if(props.match.url === '/' || props.match.url === '/login-page') return null;
@@ -28,7 +28,7 @@ const Footer = (props) => {
       <div className="iconNav">
         <Link to="/pet-list/">
           <span className="glyphicon glyphicon-home" />
-        </Link> 
+        </Link>
       </div>
     </footer>
   );

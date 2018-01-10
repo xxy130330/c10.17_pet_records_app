@@ -6,8 +6,10 @@
  * Time: 2:29 PM
  */
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
 
-
+$postJSON = file_get_contents('php://input');
+$post = json_decode($postJSON, TRUE);
 
 $PAGEACCESS = true;
 require_once('connect.php');
@@ -48,6 +50,20 @@ switch($_GET['action']){
                 else {
                     //pulls all record items
                      require('./actions/fetch_record_items.php');
+                }
+                break;
+            }
+        }
+    case 'post':
+        switch($_GET['resource']) {
+            case 'record-item':
+                if (!empty($post)) {
+                    require('./actions/add_record_item.php');
+                }
+                break;
+            case 'pet': {
+                if (!empty($post)) {
+                    require('./actions/add_pet.php');
                 }
                 break;
             }
