@@ -12,7 +12,11 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 
 $ID = $_GET['petID'];
 
+
+
 $query = "SELECT `title` AS `type`, `ID` AS `recordID` FROM medical_records WHERE petID = $ID";
+
+//Grab DOB and breed
 
 $result = mysqli_query($conn, $query);
 
@@ -24,9 +28,10 @@ if ($result) {
         $output['success'] = true;
     } else {
         $output['errors'][] = 'no data available';
+        $output['errors'][] = $ID;
     }
 }
 else {
-    $output['errors'][] = 'error in SQL query';
+    $output['errors'][] = 'error in SQL query 22';
 }
 
