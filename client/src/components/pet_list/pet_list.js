@@ -12,6 +12,7 @@ class PetList extends Component {
 
   componentWillMount() {
     this.props.fetchPetData();
+    
   }
 
   render() {
