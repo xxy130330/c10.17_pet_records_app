@@ -11,19 +11,19 @@ if (!defined('awsSecretKey')) define('awsSecretKey', $secretKey);
 
 //instantiate the class
 $s3 = new S3(awsAccessKey, awsSecretKey);
-echo("s3 is loaded");
+//echo("s3 is loaded");
 
 //check whether a form was submitted
-if(isset($_POST['Submit'])){
-    echo ("hello");
+if(isset($_POST['upload'])){
+    //echo ("hello");
 
     $fileName = time() . $_FILES['file']['name']; //rename the file name by adding current timestamp
     $fileTempName = $_FILES['file']['tmp_name'];
 //create a new
+    $bucketName = 'petvetlfz';
     $s3->putBucket($bucketName, S3::ACL_PUBLIC_READ);
 
 //move the file
-    $bucketName = 'petvetlfz';
     if ($s3->putObjectFile($fileTempName, $bucketName, $fileName, S3::ACL_PUBLIC_READ)) {
         echo "We successfully uploaded your file.";
     }else{
@@ -39,10 +39,3 @@ $urlObj = (object)array(
 
 
 ?>
-
-/**
- * Created by PhpStorm.
- * User: christin
- * Date: 1/10/18
- * Time: 18:01
- */
