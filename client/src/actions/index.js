@@ -38,7 +38,28 @@ export function fetchMedicalData(recordId) {
   };
 }
 
-const add_pet_url = 'http://localhost:80/database_connect/server.php?action=post&resource=pet';
+const add_medical_item_url = '/server/database_connect/server.php?action=post&resource=record-item';
+export const ADD_MEDICAL_ITEM = 'ADD_MEDICAL_ITEM';
+export function addMedicalItem(petId, form){
+    const request= axios({
+        method : 'post',
+        url    : add_medical_item_url,
+        dataType: 'json',
+        data   : {
+            'petID': ''+petId,
+            'title': form.title,
+            'type': 'hardcoded for now',
+            'record_data': form.comment,
+            'treatment_date': form.date,
+        }
+    });
+    return{
+      type: ADD_MEDICAL_ITEM,
+      payload: request
+    }
+}
+
+const add_pet_url = '/server/database_connect/server.php?action=post&resource=pet';
 export const ADD_PET = "ADD_PET";
 
 export function addPet(name, dob, breed, ownerID, avatar) {
@@ -59,6 +80,7 @@ export function addPet(name, dob, breed, ownerID, avatar) {
     payload: request
   };
 }
+
 
 
 
