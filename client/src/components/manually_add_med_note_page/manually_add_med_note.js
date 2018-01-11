@@ -41,7 +41,7 @@ class AddMedNote extends Component {
         this.props.history.push('/pet-profile/' +petId);
     }
     render(){
-        // console.log('MANUAL', this.props.match.params.id)
+        console.log('MANUAL', this.props.match.params.id);
         console.log('these are the props in MANUAL', this.props);
         const {title,date,comment}= this.state.form;
         return(

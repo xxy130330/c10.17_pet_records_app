@@ -38,8 +38,15 @@ export default class LoginPage extends Component{
                 username: this.state.form.username,
                 password: this.state.form.password,
             }
-        }).then(function(res) {
+        }).then((res) => {
             console.log(res);
+            if (res.data.loginSuccess) {
+
+                this.props.history.push({
+                    pathname: '/pet-list/',
+                    search: res.data.ownerID,
+                });
+            }
         });
         this.setState({
             form:{
@@ -69,7 +76,7 @@ export default class LoginPage extends Component{
                         <input className='password form-control input-lg' type='password' placeholder="Password" onChange={e=>this.handleInputChange(e)}  name='password' value={password}/>
                     </div>
                     <div className='buttonContainer'>
-                        {/*<Link to="/pet-list/">*/}
+                        {/*<Link to="/pet-list/" >*/}
                             <button className='btn btn-primary'>Login</button>
                         {/*</Link>*/}
                     </div>
