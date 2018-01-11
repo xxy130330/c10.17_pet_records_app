@@ -60,16 +60,22 @@ class PetProfile extends Component {
     return medicalRecordsList;
   }
   render() {
+    // console.log('props', this.props);
     if (!this.props.petProfile.length) {
       return <h1>Loading</h1>;
     }
-
     return (
+
       <div>
         {this.getPetInfo()}
         <hr />
         <div className="medicalRecord">
           <div className="recordList text-center">
+            <div className="iconNav">
+              <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
+                <span className="glyphicon glyphicon-plus" />
+              </Link>
+            </div>
             {this.listMedicalRecords()}
           </div>
         </div>
