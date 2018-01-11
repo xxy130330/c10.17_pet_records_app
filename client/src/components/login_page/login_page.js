@@ -19,11 +19,6 @@ export default class LoginPage extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    //FIRST AXIOS CALL, finds all the user's pets based on the ID in the url, this will change based on ID of the logged in user but it is currently hardcoded for user ID 1
-
-    //it works but doesn't store the data in state
-
-
     handleInputChange(e){
         const {name, value} = e.target;
         const {form} = this.state;
@@ -33,6 +28,19 @@ export default class LoginPage extends Component{
 
     handleSubmit(e){
         e.preventDefault();
+
+        const url = 'http://localhost/database_connect/server.php?action=post&resource=login';
+        axios({
+            method: 'post',
+            dataType: 'json',
+            url: url,
+            data: {
+                username: this.state.form.username,
+                password: this.state.form.password,
+            }
+        }).then(function(res) {
+            console.log(res);
+        });
         this.setState({
             form:{
                 username:'',
@@ -61,7 +69,9 @@ export default class LoginPage extends Component{
                         <input className='password form-control input-lg' type='password' placeholder="Password" onChange={e=>this.handleInputChange(e)}  name='password' value={password}/>
                     </div>
                     <div className='buttonContainer'>
-                        <Link to="/pet-list/"><button className='btn btn-primary'>Login</button></Link>
+                        {/*<Link to="/pet-list/">*/}
+                            <button className='btn btn-primary'>Login</button>
+                        {/*</Link>*/}
                     </div>
                     <br/>
                         <div id="register">New User?
