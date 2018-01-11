@@ -37,3 +37,26 @@ export function fetchMedicalData(recordId) {
     payload: request
   };
 }
+
+const add_medical_item_url = 'http://localhost:80/database_connect/server.php?action=post&resource=record-item';
+export const ADD_MEDICAL_ITEM = 'ADD_MEDICAL_ITEM';
+export function addMedicalItem(petId, form){
+    const request= axios({
+        method : 'post',
+        url    : add_medical_item_url,
+        dataType: 'json',
+        data   : {
+            'petID': ''+petId,
+            'title': form.title,
+            'type': 'hardcoded for now',
+            'record_data': form.comment,
+            'treatment_date': form.date,
+        }
+    });
+    return{
+      type: ADD_MEDICAL_ITEM,
+      payload: request
+    }
+}
+
+
