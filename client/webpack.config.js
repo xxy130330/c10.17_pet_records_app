@@ -10,8 +10,8 @@ module.exports = {
     ],
     output: {
         filename: 'bundle.js',
-        path: resolve(__dirname, 'dist'),
-        publicPath: '/'
+        path: resolve(__dirname, '..'),
+        publicPath: '/client/dist'
     },
     context: resolve(__dirname, 'src'),
     devtool: 'inline-source-map',
