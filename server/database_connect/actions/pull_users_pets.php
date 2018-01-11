@@ -10,6 +10,7 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
 $ID = $_GET['ID'];
+$output['errors'][] = $ID;
 
 $pet_objects = [];
 
