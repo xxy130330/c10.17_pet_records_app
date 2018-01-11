@@ -17,7 +17,7 @@ $type = $post['type'];
 $recordData = $post['record_data'];
 $date = $post['treatment_date'];
 
-$query = "INSERT INTO `medical_records` SET `title` = ' $title ', `type` = ' $type ', `record_data` = ' $recordData ', `treatment_date` = ' $date ', `petID` = ' $ID '";
+$query = "INSERT INTO `medical_records` SET `title` = ' $title ', `type` = ' $type ', `record_data` = ' $recordData ', `treatment_date` = ' $date ', `petID` = ' $ID ', `status` = 'active', `updated` = CURRENT_DATE";
 
 $result = mysqli_query($conn, $query);
 

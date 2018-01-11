@@ -58,9 +58,20 @@ switch($_GET['action']){
                     require('./actions/add_record_item.php');
                 }
                 break;
+            case 'login':
+                if (!empty($post)) {
+                    require('./actions/login.php');
+                }
+
             case 'pet': {
                 if (!empty($post)) {
                     require('./actions/add_pet.php');
+                }
+                break;
+            }
+            case 'status': {
+                if (!empty($post)) {
+                    require('./actions/soft_delete_pet.php');
                 }
                 break;
             }
@@ -70,6 +81,7 @@ switch($_GET['action']){
 if (isset($pet_objects)) {
     $output['data'] = $pet_objects;
 }
+
 $json_output = json_encode($output);
 
 print($json_output);
