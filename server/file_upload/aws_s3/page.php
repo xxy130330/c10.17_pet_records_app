@@ -14,7 +14,7 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 //check whether a form was submitted
 if(isset($_POST['Submit'])){
 
-    $fileName = time() . $_FILES['theFile']['name']; //rename the file name by adding current timestamp
+    $fileName = $_FILES['theFile']['name']; //rename the file name by adding current timestamp
     $fileTempName = $_FILES['theFile']['tmp_name'];
 
 //create a new bucket
@@ -28,7 +28,18 @@ if ($s3->putObjectFile($fileTempName, "image_folder", $fileName, S3::ACL_PUBLIC_
 }}
 
 
-?>/**
+//$contents = $s3->getBucket("image_folder");
+//foreach ($contents as $file){
+//
+//    $fname = $file['name'];
+//    $furl = "http://image_folder.s3.amazonaws.com/{$fname}";
+//
+//    //output a link to the file
+//    echo "<a href=\"$furl\">$fname</a><br />";
+//}
+
+?>
+/**
  * Created by PhpStorm.
  * User: christin
  * Date: 1/10/18
