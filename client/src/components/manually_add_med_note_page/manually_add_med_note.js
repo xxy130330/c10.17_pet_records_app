@@ -28,22 +28,6 @@ class AddMedNote extends Component {
         e.preventDefault();
         const petId= this.props.match.params.id;
         this.props.addMedicalItem(petId, this.state.form);
-        // const url = 'http://localhost:80/database_connect/server.php?action=post&resource=record-item';
-        //
-        // axios({
-        //     method : 'post',
-        //     url    : url,
-        //     dataType: 'json',
-        //     data   : {
-        //         'petID': '5',
-        //         'title': this.state.form.title,
-        //         'type': 'hardcoded for now',
-        //         'record_data': this.state.form.comment,
-        //         'treatment_date': this.state.form.date,
-        //     }
-        // }).then((res) => {
-        //     console.log(res.data);
-        // });
 
         this.setState({
             form: {
@@ -52,6 +36,7 @@ class AddMedNote extends Component {
                 comment: ''
             }
         });
+        this.props.history.push('/pet-profile/' +petId);
     }
     render(){
         // console.log('MANUAL', this.props.match.params.id)
