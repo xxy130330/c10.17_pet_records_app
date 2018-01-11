@@ -10,11 +10,13 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
 $ID = $_GET['ID'];
-$output['errors'][] = $ID;
+
 
 $pet_objects = [];
 
 $query = "SELECT `ID`, `name`, `avatar`, `DOB` AS `dob`, `animal_type` AS `breed` FROM  `pets` WHERE `ownerID` = $ID AND `status` = 'active'";
+
+$output['errors'][] = $query;
 
 $result = mysqli_query($conn, $query);
 
