@@ -72,7 +72,10 @@ switch($_GET['action']){
         }
 }
 
-$output['data'] = $pet_objects;
+if (isset($pet_objects)) {
+    $output['data'] = $pet_objects;
+}
+
 $json_output = json_encode($output);
 
 print($json_output);
