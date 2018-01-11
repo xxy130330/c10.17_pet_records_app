@@ -1,7 +1,7 @@
 <?php
 
 if(!empty($_POST) && !empty($_FILES)){
-    if(!is_dir('owner_id_' . $_POST['ownerID'])) {
+    if(!is_dir("owner_id_ {$_POST['ownerID']}")) {
         mkdir("./owner_id_{$_POST['ownerID']}");
     }
     if(!is_dir("./owner_id_{$_POST['ownerID']}/pet_id_{$_POST['petID']}")) {
