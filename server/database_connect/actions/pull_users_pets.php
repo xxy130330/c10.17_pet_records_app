@@ -13,7 +13,7 @@ $ID = $_GET['ID'];
 
 $pet_objects = [];
 
-$query = "SELECT `ID`, `name`, `avatar`, `DOB` AS `dob`, `animal_type` AS `breed` FROM  `pets` WHERE `ownerID` = $ID";
+$query = "SELECT `ID`, `name`, `avatar`, `DOB` AS `dob`, `animal_type` AS `breed` FROM  `pets` WHERE `ownerID` = $ID AND `status` = 'active'";
 
 $result = mysqli_query($conn, $query);
 

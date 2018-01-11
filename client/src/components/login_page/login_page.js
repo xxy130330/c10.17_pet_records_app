@@ -29,7 +29,7 @@ export default class LoginPage extends Component{
     handleSubmit(e){
         e.preventDefault();
 
-        const url = 'http://localhost/database_connect/server.php?action=post&resource=login';
+        const url = '/server/database_connect/server.php?action=post&resource=login';
         axios({
             method: 'post',
             dataType: 'json',

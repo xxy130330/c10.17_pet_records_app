@@ -62,6 +62,7 @@ switch($_GET['action']){
                 if (!empty($post)) {
                     require('./actions/login.php');
                 }
+                break;
 
             case 'pet': {
                 if (!empty($post)) {
@@ -69,10 +70,19 @@ switch($_GET['action']){
                 }
                 break;
             }
+            case 'status': {
+                if (!empty($post)) {
+                    require('./actions/soft_delete_pet.php');
+                }
+                break;
+            }
         }
 }
 
-$output['data'] = $pet_objects;
+if (isset($pet_objects)) {
+    $output['data'] = $pet_objects;
+}
+
 $json_output = json_encode($output);
 
 print($json_output);

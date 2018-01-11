@@ -5,7 +5,11 @@ import photo from "../../../../server/images/photo.png";
 import "./add_pet.css";
 import axios from 'axios';
 
-export default class AddPet extends Component {
+import { connect } from "react-redux";
+import { addPet } from "../../actions/";
+
+
+class AddPet extends Component {
   constructor(props) {
     super(props);
 
@@ -30,22 +34,14 @@ export default class AddPet extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const url = 'http://localhost:80/database_connect/server.php?action=post&resource=pet';
+    console.log(this.props);
+    console.log('It works in add pet')
 
-    axios({
-        method : 'post',
-        url: url,
-        dataType: 'json',
-        data: {
-            name: this.state.form.name,
-            dob: this.state.form.dob,
-            breed: this.state.form.breed,
-            ownerID: 1,
-            avatar: 'http://localhost/images/rat.jpg',
-        }
-    }).then(function(res) {
-        console.log(res);
-    });
+    const {name, dob, breed} = this.state.form;
+
+
+
+    this.props.addPet(name, dob, breed, 1, 'http://localhost/images/rat.jpg')
 
     this.setState({
       form: {
@@ -54,6 +50,8 @@ export default class AddPet extends Component {
         breed: ""
       }
     });
+
+    this.props.history.push('/pet-list');
   }
   render() {
     const { name, dob, breed } = this.state.form;
@@ -99,11 +97,20 @@ export default class AddPet extends Component {
             />
           </div>
 
-          {/*<Link to="/pet-list/">*/}
-            <button className="btn btn-primary">Add Another Pet</button>
-          {/*</Link>*/}
+          <button className="btn btn-primary">Add Another Pet</button>
+
         </form>
       </div>
     );
   }
 }
+
+
+export default connect(null, {
+  addPet: addPet
+})(AddPet);
+
+
+
+
+
