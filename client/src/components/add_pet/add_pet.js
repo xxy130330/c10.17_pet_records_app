@@ -4,6 +4,7 @@ import Logo from "../../../../server/images/petvet_logo.png";
 import photo from "../../../../server/images/photo.png";
 import "./add_pet.css";
 import axios from 'axios';
+import PetImgUpload from '../pet_img_upload/pet_img_upload';
 
 export default class AddPet extends Component {
   constructor(props) {
@@ -63,9 +64,7 @@ export default class AddPet extends Component {
           <h2 className="text-center">Add Pet</h2>
         </div>
         <div>
-          <div className="picture">
-            <img src={photo} />
-          </div>
+          <PetImgUpload/>
         </div>
         <form className="container" onSubmit={e => this.handleSubmit(e)}>
           <div className="form-group">
