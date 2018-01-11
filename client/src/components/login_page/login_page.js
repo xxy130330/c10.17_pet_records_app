@@ -41,7 +41,11 @@ export default class LoginPage extends Component{
         }).then((res) => {
             console.log(res);
             if (res.data.loginSuccess) {
-                this.props.history.push('/pet-list');
+
+                this.props.history.push({
+                    pathname: '/pet-list/',
+                    search: res.data.ownerID,
+                });
             }
         });
         this.setState({
