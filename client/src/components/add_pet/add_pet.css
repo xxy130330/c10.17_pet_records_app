@@ -14,10 +14,11 @@ input:focus {
 }
 
 .picture{
-    margin: 0 auto;
+    
+    margin: auto;
     padding: 0;
-    width: 40%;
-    height: 30vmin;
+    width: 200px;
+    height: 150px;
 
     border: 1px dashed black;
     border-radius: 15%;
