@@ -14,11 +14,18 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 //check whether a form was submitted
 if(isset($_POST['Submit'])){
 
-    $fileName = $_FILES['theFile']['name'];
+    $fileName = time() . $_FILES['theFile']['name']; //rename the file name by adding current timestamp
     $fileTempName = $_FILES['theFile']['tmp_name'];
 
-    //we'll continue our script from here in the next step!
-}
+//create a new bucket
+    $s3->putBucket("image_folder", S3::ACL_PUBLIC_READ);
+
+//move the file
+if ($s3->putObjectFile($fileTempName, "image_folder", $fileName, S3::ACL_PUBLIC_READ)) {
+    echo "We successfully uploaded your file.";
+}else{
+    echo "Something went wrong while uploading your file... sorry.";
+}}
 
 
 ?>/**
