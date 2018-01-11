@@ -7,7 +7,6 @@ if(!empty($_POST) && !empty($_FILES)){
             mkdir("./owner_id_{$_POST['ownerID']}/pet_id_{$_POST['petID']}");
         }
     }
-
     moveImage();
 }
 
