@@ -38,11 +38,11 @@ export default class LoginPage extends Component{
                 username: this.state.form.username,
                 password: this.state.form.password,
             }
-        }).then(function(res) {
+        }).then((res) => {
+            console.log(res);
             if (res.data.loginSuccess) {
-
+                this.props.history.push('/pet-list');
             }
-
         });
         this.setState({
             form:{
