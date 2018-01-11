@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Logo from '../../../../server/images/petvet_logo.png';
 import './manually_add_med_note.css';
 import axios from 'axios';
+import { connect } from "react-redux";
+import { addMedicalItem } from "../../actions/";
 
 class AddMedNote extends Component {
     constructor(props){
@@ -24,6 +26,7 @@ class AddMedNote extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
+
         const url = '/server/database_connect/server.php?action=post&resource=record-item';
 
         axios({
@@ -41,6 +44,10 @@ class AddMedNote extends Component {
             console.log(res.data);
         });
 
+        const petId= this.props.match.params.id;
+        this.props.addMedicalItem(petId, this.state.form);
+
+
         this.setState({
             form: {
                 title: '',
@@ -48,8 +55,11 @@ class AddMedNote extends Component {
                 comment: ''
             }
         });
+        this.props.history.push('/pet-profile/' +petId);
     }
     render(){
+        // console.log('MANUAL', this.props.match.params.id)
+        console.log('these are the props in MANUAL', this.props);
         const {title,date,comment}= this.state.form;
         return(
             <div>
@@ -61,7 +71,7 @@ class AddMedNote extends Component {
                         <input onChange={e=> this.handleChange(e)} name='title' value={title} className='form-control input-lg' type='text' placeholder="Title"/>
                     </div>
                     <div className='form-group'>
-                        <input  onChange={e=> this.handleChange(e)} name='date' value={date} className='form-control input-lg' type='text' placeholder="Date"/>
+                        <input  onChange={e=> this.handleChange(e)} name='date' value={date} className='form-control input-lg' type='date' placeholder="Date"/>
                     </div>
                     <div className='form-group'>
                         <textarea  onChange={e=> this.handleChange(e)} name='comment' value={comment} className="form-control" rows="10" placeholder="Comment"></textarea>
@@ -74,5 +84,11 @@ class AddMedNote extends Component {
         )
     }
 }
+//
+// function mapStateToProps(state){
+//     return{
+//         addMedicalItem: state.addMedicalItem
+//     }
+// }
 
-export default AddMedNote;
+export default connect(null, {addMedicalItem: addMedicalItem})(AddMedNote);
