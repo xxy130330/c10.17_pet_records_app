@@ -62,6 +62,13 @@ switch($_GET['action']){
                 if (!empty($post)) {
                     require('./actions/login.php');
                 }
+
+            case 'pet': {
+                if (!empty($post)) {
+                    require('./actions/add_pet.php');
+                }
+                break;
+            }
         }
 }
 

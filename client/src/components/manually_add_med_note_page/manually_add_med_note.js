@@ -24,7 +24,6 @@ class AddMedNote extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        debugger;
         const url = 'http://localhost:80/database_connect/server.php?action=post&resource=record-item';
 
         axios({
