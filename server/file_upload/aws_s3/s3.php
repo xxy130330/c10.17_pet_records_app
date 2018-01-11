@@ -2387,9 +2387,3 @@ class S3Exception extends Exception {
         $this->line = $line;
     }
 }
-/**
- * Created by PhpStorm.
- * User: christin
- * Date: 1/10/18
- * Time: 18:00
- */
