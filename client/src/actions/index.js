@@ -37,3 +37,28 @@ export function fetchMedicalData(recordId) {
     payload: request
   };
 }
+
+const add_pet_url = 'http://localhost:80/database_connect/server.php?action=post&resource=pet';
+export const ADD_PET = "ADD_PET";
+
+export function addPet(name, dob, breed, ownerID, avatar) {
+  const request = axios.post(
+    add_pet_url,
+    {
+      name: name,
+      dob: dob,
+      breed: breed,
+      ownerID: ownerID,
+      avatar: avatar
+    }
+  );
+
+
+  return {
+    type: ADD_PET,
+    payload: request
+  };
+}
+
+
+
