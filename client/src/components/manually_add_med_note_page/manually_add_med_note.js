@@ -26,8 +26,27 @@ class AddMedNote extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
+
+        const url = '/server/database_connect/server.php?action=post&resource=record-item';
+
+        axios({
+            method : 'post',
+            url    : url,
+            dataType: 'json',
+            data   : {
+                'petID': '5',
+                'title': this.state.form.title,
+                'type': 'hardcoded for now',
+                'record_data': this.state.form.comment,
+                'treatment_date': this.state.form.date,
+            }
+        }).then((res) => {
+            console.log(res.data);
+        });
+
         const petId= this.props.match.params.id;
         this.props.addMedicalItem(petId, this.state.form);
+
 
         this.setState({
             form: {

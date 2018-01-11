@@ -40,6 +40,7 @@ if ($result) {
         }
     } else {
         $output['errors'][] = 'Incorrect username or password';
+
     }
 } else {
     $output['errors'][] = 'Error in SQL query';
