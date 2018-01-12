@@ -9,6 +9,7 @@ class PetProfile extends Component {
   componentWillMount() {
     this.props.fetchProfileData(this.props.match.params.id);
     // this.props.fetchPetData();
+      console.log('PET DATA: ', this.props.petdata);
   }
 
   getPetInfo() {
