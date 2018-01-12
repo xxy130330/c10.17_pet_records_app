@@ -10,6 +10,8 @@ require_once ('aws_s3/page.php');
 
 $url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
 
+
+
 $query = "UPDATE pets SET `avatar` ='{$url}' WHERE `ID` = 1";
 
 echo $query;
@@ -27,4 +29,6 @@ if ($result) {
 else {
     echo $output['errors'][] = 'error in SQL query';
 }
+
+
 ?>

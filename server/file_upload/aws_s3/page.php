@@ -30,8 +30,7 @@ if(isset($_POST['upload'])){
 }
 
 require_once ('./credential.php');
-
-require_once ('../../file_upload/connectDB.php');
+require_once ('../../file_upload/update_avatar_link_db.php');
 
 
 
