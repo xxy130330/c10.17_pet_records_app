@@ -12,13 +12,16 @@ input:focus {
     border: 2px solid orange !important;
     color: #0c5460;
 }
+.pictureContainer {
+    margin-top: 20vh;
+}
 
 .picture{
     
     margin: auto;
     padding: 0;
-    width: 200px;
-    height: 150px;
+    width: 100px;
+    height: 75px;
 
     border: 1px dashed black;
     border-radius: 15%;

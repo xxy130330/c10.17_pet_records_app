@@ -1,11 +1,14 @@
 body {
-  height: 100vh;
+  /* height: 100vh; */
   background-color: rgb(255, 244, 230);
 }
 header {
+  top: 0;
   text-align: center;
   height: 12vh;
+  position: fixed;
   background-color: #fdd08b;
+  width: 100vw;
 }
 footer {
   overflow: hidden;
@@ -42,7 +45,7 @@ span {
 .logoContainer {
   text-align: center;
   height: 100px;
-  margin: 5% auto 0 auto;
+  margin: 20vh auto 0 auto;
 }
 .container {
   width: 85%;
