@@ -1,11 +1,11 @@
 import axios from "axios";
 
 //****** GET pet list records ********/
-const pet_list_url = '/server/database_connect/server.php?action=get&resource=pets&ID=1';
+const pet_list_url = '/server/database_connect/server.php?action=get&resource=pets&ID=';
 export const PET_DATA = "PET_DATA";
 
-export function fetchPetData() {
-  const request = axios.get(pet_list_url);
+export function fetchPetData(ownerID) {
+  const request = axios.get(pet_list_url + ownerID);
 
   return {
     type: PET_DATA,

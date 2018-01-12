@@ -16,6 +16,7 @@ $ID = $_GET['petID'];
 
 $query = "SELECT `title` AS `type`, `ID` AS `recordID` FROM medical_records WHERE petID = $ID";
 
+
 //Grab DOB and breed
 
 $result = mysqli_query($conn, $query);
