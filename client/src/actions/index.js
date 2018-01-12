@@ -81,6 +81,38 @@ export function addPet(name, dob, breed, ownerID, avatar) {
   };
 }
 
+const login_url = '/server/database_connect/server.php?action=post&resource=login';
+
+export const LOGIN = 'LOGIN';
+
+export function login(username, password){
+  const request = axios.post(
+    login_url,
+    {
+      username: username,
+      password: password
+    }
+  )
+
+  return {
+    type: LOGIN,
+    payload: request
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
