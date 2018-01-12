@@ -11,8 +11,9 @@ class PetList extends Component {
   }
 
   componentWillMount() {
-
+    console.log('props upon ', this.props);
     this.props.fetchPetData(this.props.id);
+
   }
 
   render() {
