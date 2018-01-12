@@ -21,6 +21,8 @@ $query = "INSERT INTO `medical_records` SET `title` = ' $title ', `type` = ' $ty
 
 $result = mysqli_query($conn, $query);
 
+$output['errors'][] = $query;
+
 
 
 if ($result) {
