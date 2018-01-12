@@ -10,7 +10,7 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
 
-$query = "INSERT INTO `pets` SET `name` = '$post[name]', `ownerID` = '$post[ownerID]', `avatar` = '$post[avatar]', `created` = CURRENT_TIMESTAMP, `status` = 'active', `DOB` = '$post[dob]', `animal_type` = '$post[breed]'";
+$query = "INSERT INTO `pets` SET `name` = '$post[name]', `ownerID` = '$post[ownerID]', `avatar` = '$post[avatar]', `created` = CURRENT_TIMESTAMP, `status` = 'active', `DOB` = '$post[dob]', `animal_type` = '$post[breed]', `metadata` = 0";
 
 $result = mysqli_query($conn, $query);
 
