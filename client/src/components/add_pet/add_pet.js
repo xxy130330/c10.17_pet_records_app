@@ -41,7 +41,7 @@ class AddPet extends Component {
     const {name, dob, breed} = this.state.form;
 
 
-
+                                            //this will be the url variable
     this.props.addPet(name, dob, breed, 1, 'http://localhost/server/images/rat.jpg');
 
     this.setState({

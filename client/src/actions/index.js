@@ -1,7 +1,11 @@
 import axios from "axios";
 
 //****** GET pet list records ********/
+
+//const uploadPetImage = 'http://localhost:80/file_upload/aws_s3/page.php';
+
 const pet_list_url = '/server/database_connect/server.php?action=get&resource=pets&ID=';
+
 export const PET_DATA = "PET_DATA";
 
 export function fetchPetData(ownerID) {

@@ -32,28 +32,12 @@ class LoginPage extends Component{
         e.preventDefault();
 
         this.props.login(this.state.form.username, this.state.form.password).then( ()=>{
-            this.props.history.push('/pet-list/');
+                if(this.props.success){
+                    this.props.history.push('/pet-list/');
+                }
             }
         )
-        // const url = '/server/database_connect/server.php?action=post&resource=login';
-        // axios({
-        //     method: 'post',
-        //     dataType: 'json',
-        //     url: url,
-        //     data: {
-        //         username: this.state.form.username,
-        //         password: this.state.form.password,
-        //     }
-        // }).then((res) => {
-        //     console.log('LOGIN PAGE',res);
-        //     if (res.data.loginSuccess) {
 
-        //         this.props.history.push({
-        //             pathname: '/pet-list/',
-        //             search: res.data.ownerID,
-        //         });
-        //     }
-        // });
         this.setState({
             form:{
                 username:'',
@@ -80,6 +64,7 @@ class LoginPage extends Component{
                     <div className='form-group'>
                         <label>Password</label>
                         <input className='password form-control input-lg' type='password' placeholder="Password" onChange={e=>this.handleInputChange(e)}  name='password' value={password}/>
+                        <p className="text-danger">{this.props.errorMessage}</p>
                     </div>
                     <div className='buttonContainer'>
                         {/*<Link to="/pet-list/" >*/}
@@ -105,7 +90,9 @@ class LoginPage extends Component{
 
 function mapStateToProps(state) {
   return {
-    id: state.login.id
+    id: state.login.id,
+    success: state.login.success,
+    errorMessage: state.login.errorMessage
   };
 }
 
