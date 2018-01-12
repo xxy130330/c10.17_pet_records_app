@@ -52,7 +52,7 @@ class AddPet extends Component {
       }
     });
 
-    this.props.history.push('/pet-list');
+    this.props.history.push('/pet-list/?'+1);
   }
   render() {
     const { name, dob, breed } = this.state.form;
