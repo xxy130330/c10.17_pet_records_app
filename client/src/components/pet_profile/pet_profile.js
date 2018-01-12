@@ -10,6 +10,8 @@ class PetProfile extends Component {
     this.props.fetchProfileData(this.props.match.params.id);
     // this.props.fetchPetData();
       console.log('PET DATA: ', this.props.petdata);
+
+      //we need a condition, where if the pet has no record data, say no data available but still be able pull up their avatar, name, etc and allow them to add new record items, the user gets stuck on the loading screen
   }
 
   getPetInfo() {
