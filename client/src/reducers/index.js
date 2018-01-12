@@ -4,6 +4,7 @@ import PetProfileReducer from './petprofile_reducer';
 import PetMedicalReducer from './medical_reducer';
 import AddMedicalItemReducer from './add_medical_item_reducer';
 import AddPetReducer from './addPet_reducer';
+import LoginReducer from './login_reducer';
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   petProfile: PetProfileReducer,
   petMedical: PetMedicalReducer,
   addMedicalItem: AddMedicalItemReducer,
-  addPet: AddPetReducer
+  addPet: AddPetReducer,
+  login: LoginReducer
 });
 
 export default rootReducer;

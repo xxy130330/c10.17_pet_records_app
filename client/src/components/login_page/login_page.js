@@ -3,9 +3,11 @@ import './login_page.css';
 import {Link} from 'react-router-dom';
 import Logo from '../../../../server/images/petvet_logo.png';
 import axios from 'axios';
+import { connect } from "react-redux";
+import { login } from "../../actions/";
 
-export default class LoginPage extends Component{
-    
+class LoginPage extends Component{
+
     constructor(props){
         super(props);
 
@@ -29,25 +31,29 @@ export default class LoginPage extends Component{
     handleSubmit(e){
         e.preventDefault();
 
-        const url = '/server/database_connect/server.php?action=post&resource=login';
-        axios({
-            method: 'post',
-            dataType: 'json',
-            url: url,
-            data: {
-                username: this.state.form.username,
-                password: this.state.form.password,
+        this.props.login(this.state.form.username, this.state.form.password).then( ()=>{
+            this.props.history.push('/pet-list/');
             }
-        }).then((res) => {
-            console.log(res);
-            if (res.data.loginSuccess) {
+        )
+        // const url = '/server/database_connect/server.php?action=post&resource=login';
+        // axios({
+        //     method: 'post',
+        //     dataType: 'json',
+        //     url: url,
+        //     data: {
+        //         username: this.state.form.username,
+        //         password: this.state.form.password,
+        //     }
+        // }).then((res) => {
+        //     console.log('LOGIN PAGE',res);
+        //     if (res.data.loginSuccess) {
 
-                this.props.history.push({
-                    pathname: '/pet-list/',
-                    search: res.data.ownerID,
-                });
-            }
-        });
+        //         this.props.history.push({
+        //             pathname: '/pet-list/',
+        //             search: res.data.ownerID,
+        //         });
+        //     }
+        // });
         this.setState({
             form:{
                 username:'',
@@ -95,3 +101,18 @@ export default class LoginPage extends Component{
 }
 
 // onclick="verifyLogin()"
+
+
+function mapStateToProps(state) {
+  return {
+    id: state.login.id
+  };
+}
+
+export default connect(mapStateToProps, { login: login })(
+  LoginPage
+);
+
+
+
+

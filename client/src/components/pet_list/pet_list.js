@@ -11,8 +11,8 @@ class PetList extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props);
-    this.props.fetchPetData(this.props.location.search.substring(1));
+
+    this.props.fetchPetData(this.props.id);
   }
 
   render() {
@@ -42,7 +42,8 @@ class PetList extends Component {
 
 function mapStateToProps(state) {
   return {
-    petdata: state.petdata
+    petdata: state.petdata,
+    id: state.login.id
   };
 }
 
