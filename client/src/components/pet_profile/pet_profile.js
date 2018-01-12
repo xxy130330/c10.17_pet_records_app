@@ -8,7 +8,7 @@ import { fetchPetData, fetchProfileData } from "../../actions/";
 class PetProfile extends Component {
   componentWillMount() {
     this.props.fetchProfileData(this.props.match.params.id);
-    this.props.fetchPetData();
+    // this.props.fetchPetData();
   }
 
   getPetInfo() {
