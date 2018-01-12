@@ -32,6 +32,7 @@ if(isset($_POST['upload'])){
 require_once ('./credential.php');
 require_once ('../../file_upload/update_avatar_link_db.php');
 
+$url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
 
 
 ?>

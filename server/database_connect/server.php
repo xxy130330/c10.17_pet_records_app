@@ -53,6 +53,7 @@ switch($_GET['action']){
                 }
                 break;
             }
+            //case for add avatar image to add_pet.php
         }
     case 'post':
         switch($_GET['resource']) {
