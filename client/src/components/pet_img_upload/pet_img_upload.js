@@ -11,15 +11,20 @@ class PetImgUpload extends Component {
   }
   getFileName(e) {
     var fileName = e.target.files[0];
+
+    //axios call for page.php
+      //GET request user file name
+      //return URL to store in db
+
     console.log(fileName);
   }
   render() {
     return (
       <div className="img_container" id="hide">
         <label
-          action="upload_test.php"
-          encType="multipart/form-data"
-          method="post"
+          // action="upload_test.php"
+          // encType="multipart/form-data"
+          // method="post"
           className="img_label"
         >
           <div className="picture">
