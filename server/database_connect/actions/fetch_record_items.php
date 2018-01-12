@@ -16,7 +16,7 @@ $ID = $_GET['petID'];
 
 $query = "SELECT `title` AS `type`, `ID` AS `recordID` FROM medical_records WHERE petID = $ID";
 
-$output['error'][] = $query;
+$output['errors'][] = $query;
 
 //Grab DOB and breed
 
