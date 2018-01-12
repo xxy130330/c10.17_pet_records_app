@@ -2,7 +2,8 @@ import { LOGIN } from '../actions/index';
 
 const CURRENT_USER = {
   success: false,
-  id: null
+  id: null,
+  errorMessage: ''
 }
 
 
@@ -10,8 +11,7 @@ export default function(state=CURRENT_USER, action){
 
   switch(action.type){
     case LOGIN:
-    console.log('LOGIN ACTION', action);
-      return {success: true, id: action.payload.data.ownerID};
+      return {success: action.payload.data.loginSuccess, id: action.payload.data.ownerID, errorMessage: action.payload.data.errors[0]};
   }
   return state;
 }
