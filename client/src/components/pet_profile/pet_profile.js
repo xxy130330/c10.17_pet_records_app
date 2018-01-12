@@ -2,20 +2,28 @@ import React, { Component } from "react";
 import "./pet_page.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
+import { connect } from "react-redux";
+import { fetchPetData, fetchProfileData } from "../../actions/";
 
 class PetProfile extends Component {
-  constructor(props) {
-    super(props);
+  componentWillMount() {
+    this.props.fetchProfileData(this.props.match.params.id);
+    // this.props.fetchPetData();
+      console.log('PET DATA: ', this.props.petdata);
 
-    this.state = {
-      petId: this.props.match.params.id
-    };
+      //we need a condition, where if the pet has no record data, say no data available but still be able pull up their avatar, name, etc and allow them to add new record items, the user gets stuck on the loading screen
   }
+
   getPetInfo() {
-    console.log("props in pet_profile: ", this.props);
-    const { petId } = this.state;
+    let petObj = null;
+    for (var i = 0; i < this.props.petdata.length; i++) {
+      if (this.props.petdata[i]["ID"] === this.props.match.params.id) {
+        petObj = this.props.petdata[i];
+      }
+    }
+
     const petImage = {
-      backgroundImage: `url(${this.props.data[petId].avatar})`
+      backgroundImage: `url(${petObj.avatar})`
     };
     return (
       <div className="petInfoContainer">
@@ -24,50 +32,69 @@ class PetProfile extends Component {
         </div>
         <div className="petInfoDiv">
           <div className="petInfo">
-            <h4>Name: {this.props.data[petId].name}</h4>
-            <h4>DOB: {this.props.data[petId].dob}</h4>
-            <h4>Breed: {this.props.data[petId].breed}</h4>
+            <h4>Name: {petObj.name}</h4>
+            <h4>DOB: {petObj.dob}</h4>
+            <h4>Breed: {petObj.breed}</h4>
           </div>
         </div>
       </div>
     );
   }
   listMedicalRecords() {
-    const { petId } = this.state;
-    const medicalRecordsList = this.props.data[petId].medicalRecords.map(
-      (item, index) => {
-        return (
-          <div className="recordContainer" key={index}>
-            <h3>
-              <Link to={"/pet-profile/" + petId + "/record-item/" + index}>
-                {item.type}
-              </Link>
-            </h3>
-          </div>
-        );
-      }
-    );
+    const petId = this.props.match.params.id;
+    const medicalRecordsList = this.props.petProfile.map((item, index) => {
+      return (
+        <div className="recordContainer" key={index}>
+          <h3>
+            <Link
+              to={
+                "/pet-profile/" +
+                petId +
+                "/record-item/" +
+                this.props.petProfile[index]["recordID"]
+              }
+            >
+              {item.type}
+            </Link>
+          </h3>
+        </div>
+      );
+    });
     return medicalRecordsList;
   }
   render() {
-    console.log("in PetProfile:", this.props.data);
-    if (this.props.data.length) {
-      console.log("true");
-      return (
-        <div>
-          {this.getPetInfo()}
-          <hr />
-          <div className="medicalRecord">
-            <div className="recordList text-center">
-              {this.listMedicalRecords()}
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      console.log("false");
+    console.log('props', this.props);
+    if (!this.props.petProfile.length) {
       return <h1>Loading</h1>;
     }
+    return (
+
+      <div>
+        {this.getPetInfo()}
+        <hr />
+        <div className="medicalRecord">
+          <div className="recordList text-center">
+            <div className="iconNav">
+              <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
+                <span className="glyphicon glyphicon-plus" />
+              </Link>
+            </div>
+            {this.listMedicalRecords()}
+          </div>
+        </div>
+      </div>
+    );
   }
 }
-export default PetProfile;
+
+function mapStateToProps(state) {
+  return {
+    petdata: state.petdata,
+    petProfile: state.petProfile
+  };
+}
+
+export default connect(mapStateToProps, {
+  fetchPetData: fetchPetData,
+  fetchProfileData: fetchProfileData
+})(PetProfile);

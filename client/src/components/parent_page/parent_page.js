@@ -27,7 +27,6 @@ export default class ParentPage extends Component{
 	}
 
 	handleSubmit(e){
-		console.log(e);
 		e.preventDefault();
 		console.log(this.state.form);
 		this.setState({
@@ -69,7 +68,9 @@ export default class ParentPage extends Component{
 	        		    <input className = 'form-control' type="text" placeholder="Email" onChange={e=>this.handleInputChange(e)}  name='email' value={email}/>
 	      		 	</div>
 	       			<div className="buttonContainer row">
-	       		     	<Link to='/add-pet/'><button className='btn btn-success'>Sign Up</button></Link>
+	       		     	{/*<Link to='/add-pet/'>*/}
+							<button className='btn btn-success'>Sign Up</button>
+						{/*</Link>*/}
 	       		 	</div>
 	    		</form>
     		</div>

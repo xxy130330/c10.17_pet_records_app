@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Starting setup for react redux project",
   "main": "index.js",
+  "proxy": {
+    "/server/*": {
+      "target": "http://localhost"
+    }
+  },
   "scripts": {
     "start": "node dev_server.js",
     "bundle": "node_modules/.bin/webpack --config webpack.deploy.config.js --progress --colors",
@@ -22,7 +27,8 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-promise": "^0.5.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

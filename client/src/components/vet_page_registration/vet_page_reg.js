@@ -25,7 +25,6 @@ class VetPage extends Component {
     }
     handleSubmit(e){
         e.preventDefault();
-        console.log(this.state.form);
         this.setState({
             form: {
                 userName: '',
@@ -38,7 +37,6 @@ class VetPage extends Component {
     }
     render(){
         const {userName, password, confirmPassword, email, vetLicense} = this.state.form;
-        // console.log(this.state.form);
         return(
             <div>
                 <form className='container' onSubmit={(e)=>this.handleSubmit(e)} >
