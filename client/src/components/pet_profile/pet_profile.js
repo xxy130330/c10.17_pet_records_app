@@ -6,15 +6,17 @@ import { connect } from "react-redux";
 import { fetchPetData, fetchProfileData } from "../../actions/";
 
 class PetProfile extends Component {
-  componentWillMount() {
+  componentDidMount() {
+    console.log('The Owners ID using url string', this.props.match.params.id);
     this.props.fetchProfileData(this.props.match.params.id);
-    // this.props.fetchPetData();
+    this.props.fetchPetData(this.props.match.params.id);
       console.log('PET DATA: ', this.props.petdata);
 
       //we need a condition, where if the pet has no record data, say no data available but still be able pull up their avatar, name, etc and allow them to add new record items, the user gets stuck on the loading screen
   }
 
   getPetInfo() {
+    // console.log('petdata from petprofile', this.props.petdata);
     let petObj = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
       if (this.props.petdata[i]["ID"] === this.props.match.params.id) {
@@ -104,7 +106,8 @@ class PetProfile extends Component {
 function mapStateToProps(state) {
   return {
     petdata: state.petdata,
-    petProfile: state.petProfile
+    petProfile: state.petProfile,
+    id: state.login.id
   };
 }
 
