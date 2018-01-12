@@ -3,9 +3,11 @@ import './login_page.css';
 import {Link} from 'react-router-dom';
 import Logo from '../../../../server/images/petvet_logo.png';
 import axios from 'axios';
+import { connect } from "react-redux";
+import { login } from "../../actions/";
 
-export default class LoginPage extends Component{
-    
+class LoginPage extends Component{
+
     constructor(props){
         super(props);
 
@@ -19,8 +21,6 @@ export default class LoginPage extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-
-
     handleInputChange(e){
         const {name, value} = e.target;
         const {form} = this.state;
@@ -30,6 +30,14 @@ export default class LoginPage extends Component{
 
     handleSubmit(e){
         e.preventDefault();
+
+        this.props.login(this.state.form.username, this.state.form.password).then( ()=>{
+                if(this.props.success){
+                    this.props.history.push('/pet-list/');
+                }
+            }
+        )
+
         this.setState({
             form:{
                 username:'',
@@ -56,9 +64,12 @@ export default class LoginPage extends Component{
                     <div className='form-group'>
                         <label>Password</label>
                         <input className='password form-control input-lg' type='password' placeholder="Password" onChange={e=>this.handleInputChange(e)}  name='password' value={password}/>
+                        <p className="text-danger">{this.props.errorMessage}</p>
                     </div>
                     <div className='buttonContainer'>
-                        <Link to="/pet-list/"><button className='btn btn-primary'>Login</button></Link>
+                        {/*<Link to="/pet-list/" >*/}
+                            <button className='btn btn-primary'>Login</button>
+                        {/*</Link>*/}
                     </div>
                     <br/>
                         <div id="register">New User?
@@ -75,3 +86,20 @@ export default class LoginPage extends Component{
 }
 
 // onclick="verifyLogin()"
+
+
+function mapStateToProps(state) {
+  return {
+    id: state.login.id,
+    success: state.login.success,
+    errorMessage: state.login.errorMessage
+  };
+}
+
+export default connect(mapStateToProps, { login: login })(
+  LoginPage
+);
+
+
+
+

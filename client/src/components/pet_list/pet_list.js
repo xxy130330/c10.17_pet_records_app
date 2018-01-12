@@ -11,7 +11,8 @@ class PetList extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchPetData();
+
+    this.props.fetchPetData(this.props.id);
   }
 
   render() {
@@ -41,7 +42,10 @@ class PetList extends Component {
 
 function mapStateToProps(state) {
   return {
-    petdata: state.petdata
+    petdata: state.petdata,
+    id: state.login.id,
+    success: state.login.success,
+    errorMessage: state.login.errorMessage
   };
 }
 

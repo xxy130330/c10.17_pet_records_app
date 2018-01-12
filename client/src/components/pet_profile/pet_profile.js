@@ -8,7 +8,10 @@ import { fetchPetData, fetchProfileData } from "../../actions/";
 class PetProfile extends Component {
   componentWillMount() {
     this.props.fetchProfileData(this.props.match.params.id);
-    this.props.fetchPetData();
+    // this.props.fetchPetData();
+      console.log('PET DATA: ', this.props.petdata);
+
+      //we need a condition, where if the pet has no record data, say no data available but still be able pull up their avatar, name, etc and allow them to add new record items, the user gets stuck on the loading screen
   }
 
   getPetInfo() {
@@ -60,16 +63,22 @@ class PetProfile extends Component {
     return medicalRecordsList;
   }
   render() {
+    console.log('props', this.props);
     if (!this.props.petProfile.length) {
       return <h1>Loading</h1>;
     }
-
     return (
+
       <div>
         {this.getPetInfo()}
         <hr />
         <div className="medicalRecord">
           <div className="recordList text-center">
+            <div className="iconNav">
+              <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
+                <span className="glyphicon glyphicon-plus" />
+              </Link>
+            </div>
             {this.listMedicalRecords()}
           </div>
         </div>
