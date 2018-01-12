@@ -57,15 +57,27 @@ class PetProfile extends Component {
               {item.type}
             </Link>
           </h3>
+          <div className="justfify-content-end">
+              <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
+              <p>Remove Record</p>              
+                <div className="glyphicon glyphicon-plus addRecordIcon" />
+              </Link>
+            </div>
         </div>
       );
     });
     return medicalRecordsList;
   }
   render() {
-    console.log('props', this.props);
+    console.log('petprofile render props', this.props);
     if (!this.props.petProfile.length) {
       return <h1>Loading</h1>;
+    }
+    let petName = null;
+    for (var i = 0; i < this.props.petdata.length; i++) {
+      if (this.props.petdata[i]["ID"] === this.props.match.params.id) {
+        petName = this.props.petdata[i].name;
+      }
     }
     return (
 
@@ -73,10 +85,12 @@ class PetProfile extends Component {
         {this.getPetInfo()}
         <hr />
         <div className="medicalRecord">
-          <div className="recordList text-center">
-            <div className="iconNav">
+          <div className="text-center">
+            <h1>Record List for {petName}</h1>
+            <div>
               <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
-                <span className="glyphicon glyphicon-plus" />
+              <p>Add Record</p>              
+                <div className="glyphicon glyphicon-plus addRecordIcon" />
               </Link>
             </div>
             {this.listMedicalRecords()}
