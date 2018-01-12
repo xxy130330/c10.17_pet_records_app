@@ -11,9 +11,16 @@ class PetList extends Component {
   }
 
   componentWillMount() {
-    console.log('props upon ', this.props);
-    this.props.fetchPetData(this.props.id);
 
+    let currentID = null;
+    if(this.props.id){
+      currentID = this.props.id;
+      localStorage.id = currentID;
+    } else {
+      currentID = localStorage.id;
+    }
+    console.log('OWNER ID IN PET LIST',currentID);
+    this.props.fetchPetData(currentID);
   }
 
   render() {
