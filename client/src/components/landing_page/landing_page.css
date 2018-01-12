@@ -3,9 +3,12 @@ body {
   background-color: rgb(255, 244, 230);
 }
 header {
+  top: 0;
   text-align: center;
   height: 12vh;
+  position: fixed;
   background-color: #fdd08b;
+  width: 100vw;
 }
 footer {
   overflow: hidden;
