@@ -36,13 +36,13 @@ class AddPet extends Component {
     e.preventDefault();
 
     console.log(this.props);
-    console.log('It works in add pet')
+    console.log('It works in add pet');
 
     const {name, dob, breed} = this.state.form;
 
 
 
-    this.props.addPet(name, dob, breed, 1, 'http://localhost/images/rat.jpg')
+    this.props.addPet(name, dob, breed, 1, 'http://localhost/server/images/rat.jpg');
 
     this.setState({
       form: {

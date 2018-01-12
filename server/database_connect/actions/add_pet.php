@@ -14,11 +14,14 @@ $query = "INSERT INTO `pets` SET `name` = '$post[name]', `ownerID` = '$post[owne
 
 $result = mysqli_query($conn, $query);
 
+$output['errors'][] = $query;
+
 if ($result) {
     if (mysqli_affected_rows($conn) > 0) {
         $output['success'] = true;
     } else {
         $output['errors'][] = 'no data available';
+
     }
 }
 else {
