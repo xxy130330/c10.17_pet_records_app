@@ -28,7 +28,10 @@ class AddMedNote extends Component {
         e.preventDefault();
 
         const petId= this.props.match.params.id;
-        this.props.addMedicalItem(petId, this.state.form);
+        this.props.addMedicalItem(petId, this.state.form).then(()=>{
+            console.log('WE ADDED A MEDICAL RECORD ITEM');
+            this.props.history.push('/pet-profile/' +petId);
+        });
 
 
         this.setState({
@@ -38,11 +41,11 @@ class AddMedNote extends Component {
                 comment: ''
             }
         });
-        this.props.history.push('/pet-profile/' +petId);
+
     }
     render(){
-        console.log('MANUAL', this.props.match.params.id);
-        console.log('these are the props in MANUAL', this.props);
+        // console.log('MANUAL', this.props.match.params.id);
+        // console.log('these are the props in MANUAL', this.props);
         const {title,date,comment}= this.state.form;
         return(
             <div>
