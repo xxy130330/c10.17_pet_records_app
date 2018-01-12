@@ -61,7 +61,7 @@ class PetProfile extends Component {
     return medicalRecordsList;
   }
   render() {
-    // console.log('props', this.props);
+    console.log('props', this.props);
     if (!this.props.petProfile.length) {
       return <h1>Loading</h1>;
     }
