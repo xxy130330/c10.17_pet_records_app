@@ -24,14 +24,8 @@ class PetList extends Component {
   }
   softDeletePet(index) {
     const petDataProps= this.props.petdata;
-    console.log('this is the petdata props',petDataProps);
-    // console.log(localStorage.getItem('id'));
-
     this.props.delete_pet(petDataProps[index]["ID"]).then(this.props.fetchPetData(localStorage.getItem('id')));
-
-}
-
-
+  }
   render() {
 
     const userPetList = this.props.petdata.map((item, index) => {
@@ -46,10 +40,7 @@ class PetList extends Component {
             </Link>
 
             <div className="pull-right" onClick={()=>{this.softDeletePet(index)}}>
-              
-                       
                 <div className="glyphicon glyphicon-minus removeRecordIcon" />
-
             </div>
 
         </div>
