@@ -12,15 +12,15 @@ class PetList extends Component {
   }
 
   componentWillMount() {
-    let currentID = null;
+    let currentOwnerId = null;
     if(this.props.id){
-      currentID = this.props.id;
-      localStorage.id = currentID;
+      currentOwnerId = this.props.id;
+      localStorage.id = currentOwnerId;
     } else {
-      currentID = localStorage.id;
+      currentOwnerId = localStorage.id;
     }
-    console.log('OWNER ID IN PET LIST',currentID);
-    this.props.fetchPetData(currentID);
+
+    this.props.fetchPetData(currentOwnerId);
   }
   softDeletePet(index) {
     console.log(this.props.petdata[index]["ID"]);
@@ -46,13 +46,14 @@ class PetList extends Component {
             <div className="petAvatar" style={petAvatar} />
             <h3 className="petName">{item.name}</h3>
             </Link>
+
             <div className="pull-right" onClick={()=>{this.softDeletePet(index)}}>
               
-                          
+                       
                 <div className="glyphicon glyphicon-minus removeRecordIcon" />
-              
+
             </div>
-          
+
         </div>
       );
     });

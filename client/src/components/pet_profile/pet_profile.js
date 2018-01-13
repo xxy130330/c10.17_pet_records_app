@@ -8,10 +8,17 @@ import axios from 'axios';
 
 class PetProfile extends Component {
   componentDidMount() {
-    console.log("The Owners ID using url string", this.props.match.params.id);
+    let currentOwnerId = null;
+    if(this.props.id){
+      currentOwnerId = this.props.id;
+      localStorage.id = currentOwnerId;
+    } else {
+      currentOwnerId = localStorage.id;
+    }
+
     this.props.fetchProfileData(this.props.match.params.id);
-    this.props.fetchPetData(this.props.match.params.id);
-    console.log("PET DATA: ", this.props.petdata);
+    this.props.fetchPetData(currentOwnerId);
+    // console.log("PET DATA: ", this.props.petdata);
 
     //we need a condition, where if the pet has no record data, say no data available but still be able pull up their avatar, name, etc and allow them to add new record items, the user gets stuck on the loading screen
   }
@@ -29,6 +36,9 @@ class PetProfile extends Component {
     }
 
   getPetInfo() {
+
+    if(!this.props.petdata.length) return;
+    console.log('PETPROFILE :::PROPS', this.props);
     // console.log('petdata from petprofile', this.props.petdata);
     let petObj = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
@@ -77,7 +87,7 @@ class PetProfile extends Component {
             className="pull-right"
             onClick={() => {this.softDeleteRecord(index)}}
           >
-          
+
             <div className="glyphicon glyphicon-minus removeRecordIcon" />
           </div>
         </div>
