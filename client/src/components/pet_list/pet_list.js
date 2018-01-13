@@ -33,7 +33,14 @@ class PetList extends Component {
           <Link to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
             <div className="petAvatar" style={petAvatar} />
             <h3 className="petName">{item.name}</h3>
-          </Link>
+            </Link>
+            <div className="pull-right" onClick={()=>{console.log('pet removed!'+this.props.petdata[index]["ID"]);}}>
+              
+                          
+                <div className="glyphicon glyphicon-minus removeRecordIcon" />
+              
+            </div>
+          
         </div>
       );
     });
@@ -41,6 +48,12 @@ class PetList extends Component {
       <div>
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
+          <div className="iconNav">
+        <Link to="/add-pet/">
+          <p>Add Pet</p>
+                <div className="glyphicon glyphicon-plus addRecordIcon" />
+        </Link>
+      </div>
           <div className="usersPetContainer">{userPetList}</div>
         </div>
       </div>
