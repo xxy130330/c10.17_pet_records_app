@@ -15,7 +15,7 @@ $bucketName = 'petvetlfz';
 
 if(isset($_POST['upload'])){
 
-    $fileName = time() . $_FILES['file']['name']; //rename the file name by adding current timestamp
+    $fileName = time() . $_FILES['file']['name'];
     $fileTempName = $_FILES['file']['tmp_name'];
 
     if(!isset($bucketName)){
@@ -29,10 +29,10 @@ if(isset($_POST['upload'])){
     }
 }
 
-require_once ('./credential.php');
+//require_once ('./credential.php');
 require_once ('../../file_upload/update_avatar_link_db.php');
 
-$url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
+//$url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
 
 
 ?>

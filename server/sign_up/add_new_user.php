@@ -1,3 +1,5 @@
+<?php header('Access-Control-Allow-Origin: *'); ?>
+
 <?php
 
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
@@ -6,8 +8,12 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 
 require_once ('../file_upload/aws_s3/credential.php');
 
-if(sha1($_POST[password]) === sha1($_POST[confirmPwd])) {
-    $query = "INSERT INTO `owner` SET `name` = $_POST[username], `created` = CURRENT_TIMESTAMP, `email` = $_POST[email], `password` = $_POST[password]";
+$pwd = sha1($_POST['password']);
+$confirmPwd = sha1($_POST['confirmPwd']);
+
+if($pwd === $confirmPwd) {
+    $query = "INSERT INTO `owner` SET `name` = $_POST[username], `level` = 1, `created` = CURRENT_TIMESTAMP, `email` = $_POST[email], `password` = $pwd";
+    print($query);
 }else{
     print('Password doesn\'t match!  Please reenter your password!');
 }
