@@ -14,7 +14,7 @@ $ID = $_GET['petID'];
 
 
 
-$query = "SELECT `title` AS `type`, `ID` AS `recordID` FROM medical_records WHERE petID = $ID";
+$query = "SELECT `title` AS `type`, `ID` AS `recordID` FROM medical_records WHERE petID = $ID AND `status` = 'active'";
 
 
 //Grab DOB and breed
@@ -22,14 +22,14 @@ $query = "SELECT `title` AS `type`, `ID` AS `recordID` FROM medical_records WHER
 $result = mysqli_query($conn, $query);
 
 if ($result) {
+    $output['success'] = true;
+
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $pet_objects[] = $row;
         }
-        $output['success'] = true;
     } else {
         $output['errors'][] = 'no data available';
-        $output['errors'][] = $ID;
     }
 }
 else {
