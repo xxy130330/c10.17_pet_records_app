@@ -12,7 +12,8 @@ $postJSON = file_get_contents('php://input');
 $post = json_decode($postJSON, TRUE);
 
 $PAGEACCESS = true;
-require_once('../file_upload/aws_s3/credential.php');
+require_once ('./connect.php');
+//require_once('../file_upload/aws_s3/credential.php');
 
 
 $output = [
