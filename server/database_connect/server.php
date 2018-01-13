@@ -97,7 +97,9 @@ switch($_GET['action']) {
                 break;
             }
         }
+
     }
+
 if (isset($pet_objects)) {
     $output['data'] = $pet_objects;
 }
