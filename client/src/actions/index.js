@@ -104,6 +104,22 @@ export function login(username, password){
   }
 }
 
+const delete_pet_url = '/server/database_connect/server.php?action=post&resource=deletePet';
+
+export const DELETE_PET = 'DELETE_PET';
+
+export function delete_pet(petId){
+    const request = axios.post(delete_pet_url,
+        {
+            petID: petId
+        });
+    return {
+        type: DELETE_PET,
+        payload: request
+    }
+}
+
+
 
 
 
