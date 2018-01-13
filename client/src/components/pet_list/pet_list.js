@@ -11,13 +11,18 @@ class PetList extends Component {
   }
 
   componentWillMount() {
+    let currentOwnerId = null;
+    if(this.props.id){
+      currentOwnerId = this.props.id;
+      localStorage.id = currentOwnerId;
+    } else {
+      currentOwnerId = localStorage.id;
+    }
 
-    this.props.fetchPetData(this.props.id);
+    this.props.fetchPetData(currentOwnerId);
   }
 
   render() {
-
-    console.log('PETLIST props::;', this.props)
     const userPetList = this.props.petdata.map((item, index) => {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
@@ -27,7 +32,14 @@ class PetList extends Component {
           <Link to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
             <div className="petAvatar" style={petAvatar} />
             <h3 className="petName">{item.name}</h3>
-          </Link>
+            </Link>
+            <div className="pull-right" onClick={()=>{console.log('pet removed!'+this.props.petdata[index]["ID"]);}}>
+
+
+                <div className="glyphicon glyphicon-minus removeRecordIcon" />
+
+            </div>
+
         </div>
       );
     });
@@ -35,6 +47,12 @@ class PetList extends Component {
       <div>
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
+          <div className="iconNav">
+        <Link to="/add-pet/">
+          <p>Add Pet</p>
+                <div className="glyphicon glyphicon-plus addRecordIcon" />
+        </Link>
+      </div>
           <div className="usersPetContainer">{userPetList}</div>
         </div>
       </div>

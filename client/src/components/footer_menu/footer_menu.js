@@ -16,9 +16,9 @@ const Footer = (props) => {
         </a>
       </div>
       <div className="iconNav">
-        <Link to="/add-med-note/">
+        {/*<Link to="/add-med-note/">*/}
           <span className="glyphicon glyphicon-comment" />
-        </Link>
+        {/*</Link>*/}
       </div>
       <div className="iconNav">
         <Link to="/add-pet/">
