@@ -17,7 +17,7 @@ class PetProfile extends Component {
 
     this.props.fetchProfileData(this.props.match.params.id);
     this.props.fetchPetData(currentOwnerId);
-    // console.log("PET DATA: ", this.props.petdata);
+
 
     //we need a condition, where if the pet has no record data, say no data available but still be able pull up their avatar, name, etc and allow them to add new record items, the user gets stuck on the loading screen
   }
@@ -25,8 +25,8 @@ class PetProfile extends Component {
   getPetInfo() {
 
     if(!this.props.petdata.length) return;
-    console.log('PETPROFILE :::PROPS', this.props);
-    // console.log('petdata from petprofile', this.props.petdata);
+
+
     let petObj = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
       if (this.props.petdata[i]["ID"] === this.props.match.params.id) {
@@ -53,6 +53,7 @@ class PetProfile extends Component {
     );
   }
   listMedicalRecords() {
+    console.log('this.props.petdata',this.props.petProfile);
     const petId = this.props.match.params.id;
     const medicalRecordsList = this.props.petProfile.map((item, index) => {
       return (
@@ -86,7 +87,8 @@ class PetProfile extends Component {
     return medicalRecordsList;
   }
   render() {
-    console.log("petprofile render props", this.props);
+
+
     if (!this.props.petProfile.length) {
       return <h1>Loading</h1>;
     }
@@ -96,6 +98,8 @@ class PetProfile extends Component {
         petName = this.props.petdata[i].name;
       }
     }
+
+
     return (
       <div>
         {this.getPetInfo()}
@@ -111,7 +115,7 @@ class PetProfile extends Component {
                 <div className="glyphicon glyphicon-plus addRecordIcon" />
               </Link>
             </div>
-            {this.listMedicalRecords()}
+            { this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
           </div>
         </div>
       </div>
