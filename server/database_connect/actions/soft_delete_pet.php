@@ -26,4 +26,21 @@ if ($result) {
 } else {
     $output['errors'][] = 'Error in SQL Query';
 }
+
+$query = "UPDATE `medical_records` SET `status` = 'inactive', `updated` = CURRENT_DATE WHERE `petID` = $ID";
+
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    if (mysqli_affected_rows($conn) > 0) {
+        $output['success'] = true;
+        $output['data'][] = 'The records is set to inactive';
+    } else {
+        $output['errors'][] = 'no record items to inactivate';
+    }
+} else {
+    $output['errors'][] = 'Error in SQL Query';
+}
+
+
 ?>
