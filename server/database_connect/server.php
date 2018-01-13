@@ -80,6 +80,11 @@ switch($_GET['action']){
                 }
                 break;
             }
+            case 'register':{
+                if(!empty($post)){
+                    require('./actions/add_user.php');
+                }
+            }
         }
 }
 
