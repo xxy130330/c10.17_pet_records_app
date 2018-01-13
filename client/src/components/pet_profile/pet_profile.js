@@ -3,11 +3,10 @@ import "./pet_page.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
-import { fetchPetData, fetchProfileData } from "../../actions/";
-import axios from 'axios';
+import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../actions/";
 
 class PetProfile extends Component {
-  componentDidMount() {
+    componentDidMount() {
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
@@ -18,27 +17,19 @@ class PetProfile extends Component {
 
     this.props.fetchProfileData(this.props.match.params.id);
     this.props.fetchPetData(currentOwnerId);
-
-
-    //we need a condition, where if the pet has no record data, say no data available but still be able pull up their avatar, name, etc and allow them to add new record items, the user gets stuck on the loading screen
-  }
-
-    softDeleteRecord(index) {
-        console.log(this.props.petProfile[index]["recordID"]);
-
-        axios.post('/server/database_connect/server.php?action=post&resource=deleteRecord', {
-            recordID: this.props.petProfile[index]['recordID']
-
-        }).then(function(res) {
-            console.log(res);
-        });
-
     }
 
+
+    softDeleteRecord(index) {
+        const petProfileData= this.props.petProfile;
+        console.log('props after mapping state to it in petprofile:', this.props);
+        console.log('recordID of item trying to delete', petProfileData[index]["recordID"]);
+        this.props.deleteMedicalRecordItem(petProfileData[index]['recordID']).then(()=>{
+            this.props.fetchProfileData(this.props.match.params.id)
+        });
+    }
   getPetInfo() {
-
     if(!this.props.petdata.length) return;
-
 
     let petObj = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
@@ -46,7 +37,6 @@ class PetProfile extends Component {
         petObj = this.props.petdata[i];
       }
     }
-
     const petImage = {
       backgroundImage: `url(${petObj.avatar})`
     };
@@ -67,8 +57,9 @@ class PetProfile extends Component {
     );
   }
   listMedicalRecords() {
-    console.log('this.props.petdata',this.props.petProfile);
-    const petId = this.props.match.params.id;
+
+      const petId = this.props.match.params.id;
+
     const medicalRecordsList = this.props.petProfile.map((item, index) => {
       return (
         <div className="recordContainer" key={index}>
@@ -97,11 +88,11 @@ class PetProfile extends Component {
     return medicalRecordsList;
   }
   render() {
+      console.log('props after delete record item in render', this.props);
+    // if (!this.props.petProfile.length) {
+    //     return <h1>Loading</h1>;
+    // }
 
-
-    if (!this.props.petProfile.length) {
-      return <h1>Loading</h1>;
-    }
     let petName = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
       if (this.props.petdata[i]["ID"] === this.props.match.params.id) {
@@ -137,11 +128,12 @@ function mapStateToProps(state) {
   return {
     petdata: state.petdata,
     petProfile: state.petProfile,
-    id: state.login.id
+    deleteMedicalRecordItem: state.deleteMedicalRecordItem
   };
 }
 
 export default connect(mapStateToProps, {
-  fetchPetData: fetchPetData,
-  fetchProfileData: fetchProfileData
+    fetchPetData: fetchPetData,
+    fetchProfileData: fetchProfileData,
+    deleteMedicalRecordItem: deleteMedicalRecordItem
 })(PetProfile);

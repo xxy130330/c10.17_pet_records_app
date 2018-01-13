@@ -3,7 +3,7 @@ import "./new_pet_list_styles.css";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchPetData } from "../../actions/";
+import { fetchPetData, delete_pet } from "../../actions/";
 import axios from 'axios';
 
 class PetList extends Component {
@@ -26,19 +26,11 @@ class PetList extends Component {
 
   }
   softDeletePet(index) {
-    console.log(this.props.petdata[index]["ID"]);
-
-    axios.post('/server/database_connect/server.php?action=post&resource=deletePet', {
-        petID: this.props.petdata[index]['ID']
-
-   }).then(function(res) {
-     console.log(res);
-    });
-
-}
-
-
+    const petDataProps= this.props.petdata;
+    this.props.delete_pet(petDataProps[index]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')));
+  }
   render() {
+
     const userPetList = this.props.petdata.map((item, index) => {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
@@ -51,10 +43,7 @@ class PetList extends Component {
             </Link>
 
             <div className="pull-right" onClick={()=>{this.softDeletePet(index)}}>
-              
-                       
                 <div className="glyphicon glyphicon-minus removeRecordIcon" />
-
             </div>
 
         </div>
@@ -82,10 +71,11 @@ function mapStateToProps(state) {
     petdata: state.petdata,
     id: state.login.id,
     success: state.login.success,
-    errorMessage: state.login.errorMessage
+    errorMessage: state.login.errorMessage,
+    delete_pet: state.deletePet.delete_pet
   };
 }
 
-export default connect(mapStateToProps, { fetchPetData: fetchPetData })(
+export default connect(mapStateToProps, { fetchPetData: fetchPetData, delete_pet: delete_pet})(
   PetList
 );

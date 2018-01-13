@@ -11,7 +11,11 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 
 $ID = $post['recordID'];
 
+$output['errors'][] = $ID;
+
 $query = "UPDATE `medical_records` SET `status` = 'inactive', `updated` = CURRENT_DATE WHERE `ID` = $ID";
+
+$output['errors'][] = $query;
 
 $result = mysqli_query($conn, $query);
 

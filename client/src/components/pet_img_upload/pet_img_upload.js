@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../add_pet/add_pet.css";
 import "./pet_img_upload.css";
 import photo from "../../../../server/images/photo.png";
+import axios from "axios";
 
 class PetImgUpload extends Component {
   constructor(props) {
@@ -12,26 +13,50 @@ class PetImgUpload extends Component {
   getFileName(e) {
     var fileName = e.target.files[0];
 
-    //axios call for page.php
+      //axios call for page.php
       //GET request user file name
       //return URL to store in db
 
-    console.log(fileName);
+
+
+      axios.post('/server/database_connect/server.php?action=post&resource=upload-item',{
+        upload: fileName.name,
+      })
+          .then(function (response) {
+              console.log(response);
+          })
+          .catch(function (error) {
+              console.log(error);
+          });
+
+
+
+    console.log('FILENAME: ', fileName.name);
   }
   render() {
     return (
       <div className="img_container" id="hide">
-        <label
-          // action="upload_test.php"
-          // encType="multipart/form-data"
-          // method="post"
-          className="img_label"
-        >
-          <div className="picture">
-            <img src={photo} />
-          </div>
-          <input type="file" id="thefile" onChange={(e)=>this.getFileName(e)} />
-        </label>
+
+        {/*<label*/}
+          {/*action="../../../../server/file_upload/aws_s3/page.php"*/}
+          {/*encType="multipart/form-data"*/}
+          {/*method="post"*/}
+          {/*className="img_label"*/}
+        {/*>*/}
+          {/*<div className="picture">*/}
+            {/*<img src={photo} />*/}
+          {/*</div>*/}
+          {/*<form action="../../../../server/file_upload/aws_s3/page.php"*/}
+                {/*encType="multipart/form-data"*/}
+                {/*method="post">*/}
+          {/*<input type="file" name="file" id="thefile" onChange={(e)=>this.getFileName(e)} />*/}
+            {/*<button name="upload" value="true">upload</button>*/}
+          {/*</form>*/}
+        {/*</label>*/}
+        <form action="../../../../server/file_upload/aws_s3/page.php" encType="multipart/form-data" method="post">
+          <input type="file" name="file"/>
+            <button name="upload" value="true">upload</button>
+        </form>
       </div>
     );
   }

@@ -12,7 +12,8 @@ $postJSON = file_get_contents('php://input');
 $post = json_decode($postJSON, TRUE);
 
 $PAGEACCESS = true;
-require_once('connect.php');
+require_once ('./connect.php');
+//require_once('../file_upload/aws_s3/credential.php');
 
 
 $output = [
@@ -53,7 +54,7 @@ switch($_GET['action']){
                 }
                 break;
             }
-            //case for add avatar image to add_pet.php
+
         }
     case 'post':
         switch($_GET['resource']) {
@@ -78,12 +79,20 @@ switch($_GET['action']){
                     require('./actions/soft_delete_pet.php');
                 }
                 break;
+
             case 'register':
                 if(!empty($post)){
                     require('./actions/add_user.php');
                 }
                 break;
-            case 'deleteRecord':
+       
+            case 'upload-item': {
+                if (!empty($post)) {
+                    require('../file_upload/aws_s3/page.php');
+                }
+                break;
+            }
+            case 'deleteRecord': {
                 if (!empty($post)) {
                     require('./actions/soft_delete_record.php');
                 }
