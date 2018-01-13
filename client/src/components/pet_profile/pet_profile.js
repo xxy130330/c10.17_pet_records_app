@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
 import { fetchPetData, fetchProfileData } from "../../actions/";
+import axios from 'axios';
 
 class PetProfile extends Component {
   componentDidMount() {
@@ -14,6 +15,18 @@ class PetProfile extends Component {
 
     //we need a condition, where if the pet has no record data, say no data available but still be able pull up their avatar, name, etc and allow them to add new record items, the user gets stuck on the loading screen
   }
+
+    softDeleteRecord(index) {
+        console.log(this.props.petProfile[index]["recordID"]);
+
+        axios.post('/server/database_connect/server.php?action=post&resource=deleteRecord', {
+            recordID: this.props.petProfile[index]['recordID']
+
+        }).then(function(res) {
+            console.log(res);
+        });
+
+    }
 
   getPetInfo() {
     // console.log('petdata from petprofile', this.props.petdata);
@@ -27,6 +40,7 @@ class PetProfile extends Component {
     const petImage = {
       backgroundImage: `url(${petObj.avatar})`
     };
+
     return (
       <div className="petInfoContainer">
         <div className="petImgContainer">
@@ -61,11 +75,7 @@ class PetProfile extends Component {
           </h3>
           <div
             className="pull-right"
-            onClick={() => {
-              console.log(
-                "record removed! " + this.props.petProfile[index]["recordID"]
-              );
-            }}
+            onClick={() => {this.softDeleteRecord(index)}}
           >
           
             <div className="glyphicon glyphicon-minus removeRecordIcon" />

@@ -80,6 +80,11 @@ switch($_GET['action']){
                 }
                 break;
             }
+            case 'deleteRecord': {
+                if (!empty($post)) {
+                    require('./actions/soft_delete_record.php');
+                }
+            }
         }
 }
 
