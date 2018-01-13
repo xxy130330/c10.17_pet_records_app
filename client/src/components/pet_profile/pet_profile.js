@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
 import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../actions/";
-import axios from 'axios';
 
 class PetProfile extends Component {
     componentDidMount() {
@@ -18,28 +17,24 @@ class PetProfile extends Component {
 
     this.props.fetchProfileData(this.props.match.params.id);
     this.props.fetchPetData(currentOwnerId);
-    //we need a condition, where if the pet has no record data, say no data available but still be able pull up their avatar, name, etc and allow them to add new record items, the user gets stuck on the loading screen
     }
 
     softDeleteRecord(index) {
         const petProfileData= this.props.petProfile;
         console.log('props after mapping state to it in petprofile:', this.props);
         console.log('recordID of item trying to delete', petProfileData[index]["recordID"]);
-        this.props.deleteMedicalRecordItem(petProfileData[index]['recordID']).then(this.props.fetchProfileData(this.props.match.params.id));
+        this.props.deleteMedicalRecordItem(petProfileData[index]['recordID']).then(()=>{
+            this.props.fetchProfileData(this.props.match.params.id)
+        });
     }
-
   getPetInfo() {
-
     if(!this.props.petdata.length) return;
-    // console.log('PETPROFILE :::PROPS', this.props);
-    // console.log('petdata from petprofile', this.props.petdata);
     let petObj = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
       if (this.props.petdata[i]["ID"] === this.props.match.params.id) {
         petObj = this.props.petdata[i];
       }
     }
-
     const petImage = {
       backgroundImage: `url(${petObj.avatar})`
     };
@@ -60,7 +55,7 @@ class PetProfile extends Component {
     );
   }
   listMedicalRecords() {
-    const petId = this.props.match.params.id;
+      const petId = this.props.match.params.id;
     const medicalRecordsList = this.props.petProfile.map((item, index) => {
       return (
         <div className="recordContainer" key={index}>
@@ -89,10 +84,10 @@ class PetProfile extends Component {
     return medicalRecordsList;
   }
   render() {
-    // console.log("petprofile render props", this.props);
-    if (!this.props.petProfile.length) {
-      return <h1>Loading</h1>;
-    }
+      console.log('props after delete record item in render', this.props);
+    // if (!this.props.petProfile.length) {
+    //     return <h1>Loading</h1>;
+    // }
     let petName = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
       if (this.props.petdata[i]["ID"] === this.props.match.params.id) {

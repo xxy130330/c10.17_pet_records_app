@@ -24,7 +24,7 @@ class PetList extends Component {
   }
   softDeletePet(index) {
     const petDataProps= this.props.petdata;
-    this.props.delete_pet(petDataProps[index]["ID"]).then(this.props.fetchPetData(localStorage.getItem('id')));
+    this.props.delete_pet(petDataProps[index]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')));
   }
   render() {
 
