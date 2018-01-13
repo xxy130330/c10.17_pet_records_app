@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   addMedicalItem: AddMedicalItemReducer,
   addPet: AddPetReducer,
   login: LoginReducer,
-  form: formReducer
+  form: formReducer,
   deletePet: DeletePetReducer,
   deleteMedicalRecordItem: DeleteMedicalRecordItemReducer
 });

@@ -29,17 +29,16 @@ if(empty($_GET['resource'])){
     $_GET['action'] = 'pets';
 }
 
-switch($_GET['action']){
+switch($_GET['action']) {
     case 'get':
-        switch($_GET['resource']){
-            case 'pets':{
-                if(empty($_GET['petID'])){
+        switch ($_GET['resource']) {
+            case 'pets': {
+                if (empty($_GET['petID'])) {
                     //require('actions/pull_pet_records.php?ID=1');
 
 
                     require('./actions/pull_users_pets.php');
-                }
-                else {
+                } else {
                     //pull all pet records
                 }
                 break;
@@ -47,17 +46,16 @@ switch($_GET['action']){
             case 'record-item': {
                 if (!empty($_GET['recordID'])) {
                     require('./actions/fetch_single_record_item.php');
-                }
-                else {
+                } else {
                     //pulls all record items
-                     require('./actions/fetch_record_items.php');
+                    require('./actions/fetch_record_items.php');
                 }
                 break;
             }
 
         }
     case 'post':
-        switch($_GET['resource']) {
+        switch ($_GET['resource']) {
             case 'record-item':
                 if (!empty($post)) {
                     require('./actions/add_record_item.php');
@@ -81,11 +79,11 @@ switch($_GET['action']){
                 break;
 
             case 'register':
-                if(!empty($post)){
+                if (!empty($post)) {
                     require('./actions/add_user.php');
                 }
                 break;
-       
+
             case 'upload-item': {
                 if (!empty($post)) {
                     require('../file_upload/aws_s3/page.php');
@@ -97,9 +95,9 @@ switch($_GET['action']){
                     require('./actions/soft_delete_record.php');
                 }
                 break;
+            }
         }
 }
-
 if (isset($pet_objects)) {
     $output['data'] = $pet_objects;
 }
