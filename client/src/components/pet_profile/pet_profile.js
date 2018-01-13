@@ -113,7 +113,6 @@ function mapStateToProps(state) {
   return {
     petdata: state.petdata,
     petProfile: state.petProfile,
-    id: state.login.id
   };
 }
 
