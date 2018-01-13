@@ -37,9 +37,9 @@ class PetImgUpload extends Component {
     return (
       <div className="img_container" id="hide">
         <label
-          // action="upload_test.php"
-          // encType="multipart/form-data"
-          // method="post"
+          action="upload_test.php"
+          encType="multipart/form-data"
+          method="post"
           className="img_label"
         >
           <div className="picture">

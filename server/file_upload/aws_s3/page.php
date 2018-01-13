@@ -6,15 +6,18 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 
 if (!class_exists('S3'))require_once('S3.php');
 
-require_once('./credential.php');
+require_once('../file_upload/aws_s3/credential.php');
 
 if (!defined('awsAccessKey')) define('awsAccessKey', $accessKey);
 if (!defined('awsSecretKey')) define('awsSecretKey', $secretKey);
 
 
 $s3 = new S3(awsAccessKey, awsSecretKey);
+print_r($_POST);
 $bucketName = 'petvetlfz';
-
+$jsondata = file_get_contents("php://input");
+$_POST = json_decode($jsondata, true);
+print_r($_POST);
 
 if(isset($_POST['upload'])){
 
@@ -33,7 +36,6 @@ if(isset($_POST['upload'])){
     }
 }
 
-//require_once ('./credential.php');
 require_once ('../file_upload/update_avatar_link_db.php');
 //require_once('../update_avatar_link_db.php');
 
