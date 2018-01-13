@@ -36,17 +36,27 @@ class PetImgUpload extends Component {
   render() {
     return (
       <div className="img_container" id="hide">
-        <label
-          action="upload_test.php"
-          encType="multipart/form-data"
-          method="post"
-          className="img_label"
-        >
-          <div className="picture">
-            <img src={photo} />
-          </div>
-          <input type="file" id="thefile" name='upload' onChange={(e)=>this.getFileName(e)} />
-        </label>
+
+        {/*<label*/}
+          {/*action="../../../../server/file_upload/aws_s3/page.php"*/}
+          {/*encType="multipart/form-data"*/}
+          {/*method="post"*/}
+          {/*className="img_label"*/}
+        {/*>*/}
+          {/*<div className="picture">*/}
+            {/*<img src={photo} />*/}
+          {/*</div>*/}
+          {/*<form action="../../../../server/file_upload/aws_s3/page.php"*/}
+                {/*encType="multipart/form-data"*/}
+                {/*method="post">*/}
+          {/*<input type="file" name="file" id="thefile" onChange={(e)=>this.getFileName(e)} />*/}
+            {/*<button name="upload" value="true">upload</button>*/}
+          {/*</form>*/}
+        {/*</label>*/}
+        <form action="../../../../server/file_upload/aws_s3/page.php" encType="multipart/form-data" method="post">
+          <input type="file" name="file"/>
+            <button name="upload" value="true">upload</button>
+        </form>
       </div>
     );
   }

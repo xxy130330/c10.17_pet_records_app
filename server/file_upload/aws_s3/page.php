@@ -21,8 +21,9 @@ print_r($_POST);
 
 if(isset($_POST['upload'])){
 
-    $fileName = time() . $_FILES['file']['name']; //rename the file name by adding current timestamp
+
     $output['errors'][] = $fileName;
+    $fileName = time() . $_FILES['file']['name'];
     $fileTempName = $_FILES['file']['tmp_name'];
 
     if(!isset($bucketName)){
@@ -36,11 +37,14 @@ if(isset($_POST['upload'])){
     }
 }
 
-require_once ('../file_upload/update_avatar_link_db.php');
-//require_once('../update_avatar_link_db.php');
 
-$url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
+
 //$output['data'][] = $url;
 //$output['errors'][] = $url;
+//require_once ('./credential.php');
+require_once ('../../file_upload/update_avatar_link_db.php');
+
+//$url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
+
 
 ?>
