@@ -4,6 +4,7 @@ import Logo from "../../../../server/images/petvet_logo.png";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchPetData } from "../../actions/";
+import axios from 'axios';
 
 class PetList extends Component {
   constructor(props) {
@@ -24,6 +25,18 @@ class PetList extends Component {
     this.props.fetchPetData(currentOwnerId);
 
   }
+  softDeletePet(index) {
+    console.log(this.props.petdata[index]["ID"]);
+
+    axios.post('/server/database_connect/server.php?action=post&resource=deletePet', {
+        petID: this.props.petdata[index]['ID']
+
+   }).then(function(res) {
+     console.log(res);
+    });
+
+}
+
 
   render() {
     const userPetList = this.props.petdata.map((item, index) => {
@@ -36,9 +49,10 @@ class PetList extends Component {
             <div className="petAvatar" style={petAvatar} />
             <h3 className="petName">{item.name}</h3>
             </Link>
-            <div className="pull-right" onClick={()=>{console.log('pet removed!'+this.props.petdata[index]["ID"]);}}>
 
-
+            <div className="pull-right" onClick={()=>{this.softDeletePet(index)}}>
+              
+                       
                 <div className="glyphicon glyphicon-minus removeRecordIcon" />
 
             </div>
