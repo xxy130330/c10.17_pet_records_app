@@ -12,23 +12,23 @@ $url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
 
 
 
-$query = "UPDATE pets SET `avatar` ='{$url}' WHERE `ID` = 1";
-
+//$query = "UPDATE pets SET `avatar` ='{$url}' WHERE `ID` = 1";
+$output['data'][] = $url;
 echo $query;
-$result = mysqli_query($conn, $query);
-
-if ($result) {
-    if (mysqli_affected_rows($conn) > 0) {
-        $output['success'] = true;
-        echo 'success -> true';
-    } else {
-        $output['errors'][] = 'no data available';
-        echo 'no data available';
-    }
-}
-else {
-    echo $output['errors'][] = 'error in SQL query';
-}
+//$result = mysqli_query($conn, $query);
+//
+//if ($result) {
+//    if (mysqli_affected_rows($conn) > 0) {
+//        $output['success'] = true;
+//        echo 'success -> true';
+//    } else {
+//        $output['errors'][] = 'no data available';
+//        echo 'no data available';
+//    }
+//}
+//else {
+//    echo $output['errors'][] = 'error in SQL query';
+//}
 
 
 ?>

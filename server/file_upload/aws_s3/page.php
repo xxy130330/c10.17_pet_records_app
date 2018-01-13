@@ -6,24 +6,25 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 
 if (!class_exists('S3'))require_once('S3.php');
 
-require_once('../file_upload/aws_s3/credential.php');
+require_once('credential.php');
+//require_once('../../database_connect/connect.php');
+
 
 if (!defined('awsAccessKey')) define('awsAccessKey', $accessKey);
 if (!defined('awsSecretKey')) define('awsSecretKey', $secretKey);
 
 
 $s3 = new S3(awsAccessKey, awsSecretKey);
-print_r($_POST);
+//print_r($_POST);
 $bucketName = 'petvetlfz';
-$jsondata = file_get_contents("php://input");
-$_POST = json_decode($jsondata, true);
-print_r($_POST);
+//$jsondata = file_get_contents("php://input");
+//$_POST = json_decode($jsondata, true);
+//print_r($_POST);
 
-if(isset($_POST['upload'])){
+$fileName = time() . $_FILES['file']['name'];
 
+//if(isset($_POST['upload'])){
 
-    $output['errors'][] = $fileName;
-    $fileName = time() . $_FILES['file']['name'];
     $fileTempName = $_FILES['file']['tmp_name'];
 
     if(!isset($bucketName)){
@@ -32,19 +33,22 @@ if(isset($_POST['upload'])){
 
     if ($s3->putObjectFile($fileTempName, $bucketName, $fileName, S3::ACL_PUBLIC_READ)) {
 //        echo "We successfully uploaded your file.";
+        $output['success'] = true;
     }else{
 //        echo "Something went wrong while uploading your file... sorry.";
-    }
-}
+    };
+//}
 
 
 
 //$output['data'][] = $url;
 //$output['errors'][] = $url;
 //require_once ('./credential.php');
-require_once ('../../file_upload/update_avatar_link_db.php');
+//require_once ('../../file_upload/update_avatar_link_db.php');
 
-//$url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
+$url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
+
+$output['data'][] = $url;
 
 
 ?>
