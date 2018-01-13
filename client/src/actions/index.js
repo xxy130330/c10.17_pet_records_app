@@ -103,7 +103,6 @@ export function login(username, password){
     payload: request
   }
 }
-
 const delete_pet_url = '/server/database_connect/server.php?action=post&resource=deletePet';
 
 export const DELETE_PET = 'DELETE_PET';
@@ -118,6 +117,22 @@ export function delete_pet(petId){
         payload: request
     }
 }
+const delete_record_item_url = '/server/database_connect/server.php?action=post&resource=deleteRecord';
+
+export const DELETE_MEDICAL_RECORD_ITEM = 'DELETE_MEDICAL_RECORD_ITEM';
+
+export function deleteMedicalRecordItem(medicalRecordId){
+    const request = axios.post(delete_record_item_url,
+        {
+            recordID: medicalRecordId
+        });
+    return {
+        type: DELETE_MEDICAL_RECORD_ITEM,
+        payload: request
+    }
+}
+
+
 
 
 
