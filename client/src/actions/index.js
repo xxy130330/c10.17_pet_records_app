@@ -106,6 +106,25 @@ export function login(username, password){
 
 
 
+const register_url = '/server/database_connect/server.php?action=post&resource=register';
+
+export const REGISTER = 'REGISTER';
+
+export function register(username, password, email){
+  const request = axios.post(
+    register_url,
+    {
+      name: username,
+      password: password,
+      email: email
+    }
+  )
+
+  return{
+    type: REGISTER,
+    payload: request
+  }
+}
 
 
 

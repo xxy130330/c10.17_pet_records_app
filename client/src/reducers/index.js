@@ -5,6 +5,7 @@ import PetMedicalReducer from './medical_reducer';
 import AddMedicalItemReducer from './add_medical_item_reducer';
 import AddPetReducer from './addPet_reducer';
 import LoginReducer from './login_reducer';
+import { reducer as formReducer } from 'redux-form';
 
 
 const rootReducer = combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   petMedical: PetMedicalReducer,
   addMedicalItem: AddMedicalItemReducer,
   addPet: AddPetReducer,
-  login: LoginReducer
+  login: LoginReducer,
+  form: formReducer
 });
 
 export default rootReducer;
