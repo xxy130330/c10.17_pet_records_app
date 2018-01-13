@@ -12,15 +12,35 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 
 $ID = $post['petID'];
 
-$query = "UPDATE `pets` SET `status` = 'inactive' WHERE `ID` = $ID";
+$query = "UPDATE `pets` SET `status` = 'inactive', `updated` = CURRENT_DATE WHERE `ID` = $ID";
 
 $result = mysqli_query($conn, $query);
 
 if ($result) {
-    if (mysqli_affected_rows($result) > 0) {
+    if (mysqli_affected_rows($conn) > 0) {
         $output['success'] = true;
         $output['data'] = 'The pet is set to inactive';
-
+    } else {
+        $output['errors'][] = 'no data available';
     }
+} else {
+    $output['errors'][] = 'Error in SQL Query';
 }
+
+$query = "UPDATE `medical_records` SET `status` = 'inactive', `updated` = CURRENT_DATE WHERE `petID` = $ID";
+
+$result = mysqli_query($conn, $query);
+
+if ($result) {
+    if (mysqli_affected_rows($conn) > 0) {
+        $output['success'] = true;
+        $output['data'][] = 'The records is set to inactive';
+    } else {
+        $output['errors'][] = 'no record items to inactivate';
+    }
+} else {
+    $output['errors'][] = 'Error in SQL Query';
+}
+
+
 ?>

@@ -74,11 +74,16 @@ switch($_GET['action']){
                 }
                 break;
             }
-            case 'status': {
+            case 'deletePet': {
                 if (!empty($post)) {
                     require('./actions/soft_delete_pet.php');
                 }
                 break;
+            }
+            case 'deleteRecord': {
+                if (!empty($post)) {
+                    require('./actions/soft_delete_record.php');
+                }
             }
         }
 }
