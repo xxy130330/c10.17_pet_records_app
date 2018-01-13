@@ -1,4 +1,6 @@
 <?php
+
+print_r($_POST);
 /**
  * Created by PhpStorm.
  * User: christin
