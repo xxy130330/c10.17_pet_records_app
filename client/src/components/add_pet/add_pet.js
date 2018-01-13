@@ -23,6 +23,23 @@ class AddPet extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.currentOwnerId = null;
+  }
+
+
+
+  componentWillMount() {
+
+    console.log('PETLIST PAGE OWNERID::::', this.props.id)
+
+    if(this.props.id){
+      this.currentOwnerId = this.props.id;
+      localStorage.id = this.currentOwnerId;
+    } else {
+      this.currentOwnerId = localStorage.id;
+    }
+
   }
 
   handleInputChange(e) {
@@ -35,14 +52,14 @@ class AddPet extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log(this.props);
+    console.log('this.currentOwnerId', this.currentOwnerId);
     console.log('It works in add pet');
 
     const {name, dob, breed} = this.state.form;
 
 
                                             //this will be the url variable
-    this.props.addPet(name, dob, breed, 1, 'http://localhost/server/images/rat.jpg').then(()=>this.props.history.push('/pet-list/'));
+    this.props.addPet(name, dob, breed, this.currentOwnerId , 'http://localhost/server/images/rat.jpg').then(()=>this.props.history.push('/pet-list/'));
 
     this.setState({
       form: {
@@ -104,8 +121,15 @@ class AddPet extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    id: state.login.id,
+  };
+}
 
-export default connect(null, {
+
+
+export default connect(mapStateToProps, {
   addPet: addPet
 })(AddPet);
 
