@@ -2,79 +2,100 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import './parent_page.css';
 import Logo from '../../../../server/images/petvet_logo.png';
+import { connect } from "react-redux";
+import { register } from "../../actions/";
+import { Field, reduxForm } from 'redux-form';
 
-export default class ParentPage extends Component{
+class ParentPage extends Component{
 	constructor(props){
 		super(props);
 
 		this.state={
-			form:{
-				username: '',
-				password: '',
-				confirmpassword: '',
-				email: ''
-			}
+			errorMessage: ''
 		}
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleInputChange(e){
-		const {name, value} = e.target;
-		const {form} = this.state;
-		form[name] = value;
-		this.setState({form: {...form}});
+	renderInput({label, input, type, meta: {touched, error, active}}){
+		return(
+			<div className='form-group row'>
+  			<label className='col-form-label'>{label}</label>
+				<input className = 'form-control'type={type} {...input} />
+	 		</div>
+		)
 	}
 
-	handleSubmit(e){
-		e.preventDefault();
-		console.log(this.state.form);
-		this.setState({
-			form:{
-				username: '',
-				password: '',
-				confirmpassword: '',
-				email: ''
-			}
-		})
+
+	handleSubmits(values){
+		console.log('values', values);
+
+		if(values.password !== values.confirmpassword){
+			this.setState({
+				errorMessage: 'Please match the password'
+			})
+			return;
+		}else if(values.password === values.confirmpassword){
+			this.setState({
+				errorMessage: ''
+			})
+		}
+
+		this.props.register(values.username, values.password, values.email).then( ()=>{
+        this.props.history.push('/pet-list/');
+      }
+    )
 	}
 
 	render(){
 
-		const {username, password, confirmpassword, email} = this.state.form;
 
 		return(
 			<div>
-                <div className="logoContainer">
-                	<div className="logo"></div> 
-                </div>             
-                <hr/>
-			
-				<form id='form-container' className='col-xs-10 col-xs-offset-1' onSubmit={(e)=>this.handleSubmit(e)}>
-	        		<div className='form-group row'>
-	        			<label className='col-form-label'>Username</label>
-						<input className = 'form-control'type="text" placeholder="Username" onChange={e=>this.handleInputChange(e)}  name='username' value={username}/>
-	   			 	</div>
-	        		<div className='form-group row'>
-	          			<label className='col-form-label'>Password</label>
-	       				<input className = 'form-control' type="password" placeholder="Password" onChange={e=>this.handleInputChange(e)}  name='password' value={password}/>
-	       			</div>
-	        		<div className='form-group row'>
-	          			<label className='col-form-label'>Confirm Password</label>
-	           			<input className = 'form-control' type="password" placeholder="Confirm Password" onChange={e=>this.handleInputChange(e)}  name='confirmpassword' value={confirmpassword}/>
-	       		 	</div>
-	       			<div className='form-group row'>
-	       			    <label className='col-form-label'>Email</label>
-	        		    <input className = 'form-control' type="text" placeholder="Email" onChange={e=>this.handleInputChange(e)}  name='email' value={email}/>
-	      		 	</div>
-	       			<div className="buttonContainer row">
-	       		     	{/*<Link to='/add-pet/'>*/}
-							<button className='btn btn-success'>Sign Up</button>
-						{/*</Link>*/}
-	       		 	</div>
-	    		</form>
+        <div className="logoContainer">
+        	<div className="logo"></div>
+        </div>
+        <hr/>
+
+				<form id='form-container' className='col-xs-10 col-xs-offset-1' onSubmit={this.props.handleSubmit(this.handleSubmits.bind(this))}>
+					<Field name='username' label='Username' type='text' component={this.renderInput}/>
+					<Field name='password' label='Password' type='password' component={this.renderInput}/>
+					<Field name='confirmpassword' label='Confirm Password' type='password' component={this.renderInput}/>
+
+					<Field name='email' label='Email' type='email' component={this.renderInput}/>
+
+
+     			<div className="buttonContainer row">
+
+						<button className='btn btn-success'>Sign Up</button>
+
+     		 	</div>
+     		 	<p className="text-danger">{this.state.errorMessage}</p>
+    		</form>
     		</div>
 
 		)
 	}
 }
+
+function validate(values){
+  const errors = {};
+
+
+  return errors;
+}
+
+
+ParentPage = reduxForm({
+  form: 'parent-page',
+  validate: validate
+})(ParentPage)
+
+
+
+export default connect(null, {
+  register: register
+})(ParentPage);
+
+
+
+
+

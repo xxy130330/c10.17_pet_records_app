@@ -19,6 +19,7 @@ class PetProfile extends Component {
     this.props.fetchPetData(currentOwnerId);
     }
 
+
     softDeleteRecord(index) {
         const petProfileData= this.props.petProfile;
         console.log('props after mapping state to it in petprofile:', this.props);
@@ -29,6 +30,7 @@ class PetProfile extends Component {
     }
   getPetInfo() {
     if(!this.props.petdata.length) return;
+
     let petObj = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
       if (this.props.petdata[i]["ID"] === this.props.match.params.id) {
@@ -55,7 +57,9 @@ class PetProfile extends Component {
     );
   }
   listMedicalRecords() {
+
       const petId = this.props.match.params.id;
+
     const medicalRecordsList = this.props.petProfile.map((item, index) => {
       return (
         <div className="recordContainer" key={index}>
@@ -88,12 +92,15 @@ class PetProfile extends Component {
     // if (!this.props.petProfile.length) {
     //     return <h1>Loading</h1>;
     // }
+
     let petName = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
       if (this.props.petdata[i]["ID"] === this.props.match.params.id) {
         petName = this.props.petdata[i].name;
       }
     }
+
+
     return (
       <div>
         {this.getPetInfo()}
@@ -109,7 +116,7 @@ class PetProfile extends Component {
                 <div className="glyphicon glyphicon-plus addRecordIcon" />
               </Link>
             </div>
-            {this.listMedicalRecords()}
+            { this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
           </div>
         </div>
       </div>

@@ -69,18 +69,23 @@ switch($_GET['action']){
                 }
                 break;
 
-            case 'pet': {
+            case 'pet':
                 if (!empty($post)) {
                     require('./actions/add_pet.php');
                 }
                 break;
-            }
-            case 'deletePet': {
+            case 'deletePet':
                 if (!empty($post)) {
                     require('./actions/soft_delete_pet.php');
                 }
                 break;
-            }
+
+            case 'register':
+                if(!empty($post)){
+                    require('./actions/add_user.php');
+                }
+                break;
+       
             case 'upload-item': {
                 if (!empty($post)) {
                     require('../file_upload/aws_s3/page.php');
@@ -91,7 +96,7 @@ switch($_GET['action']){
                 if (!empty($post)) {
                     require('./actions/soft_delete_record.php');
                 }
-            }
+                break;
         }
 }
 
