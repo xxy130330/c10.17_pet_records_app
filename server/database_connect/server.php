@@ -85,7 +85,7 @@ switch($_GET['action']) {
                 break;
 
             case 'upload-item': {
-                if (!empty($post)) {
+                if (empty($post)) {
                     require('../file_upload/aws_s3/page.php');
                 }
                 break;
@@ -99,6 +99,7 @@ switch($_GET['action']) {
         }
 
     }
+
 
 if (isset($pet_objects)) {
     $output['data'] = $pet_objects;

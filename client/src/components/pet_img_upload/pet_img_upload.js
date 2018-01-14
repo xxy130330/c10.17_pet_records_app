@@ -11,27 +11,39 @@ class PetImgUpload extends Component {
     this.getFileName = this.getFileName.bind(this);
   }
   getFileName(e) {
-    var fileName = e.target.files[0];
+      e.preventDefault();
+    // var fileName = e.target.files[0];
+
 
       //axios call for page.php
       //GET request user file name
       //return URL to store in db
+      console.log(document.getElementById('file').files[0]);
+
+      let data = new FormData();
+      data.append('file', document.getElementById('file').files[0]);
+
+      axios({
+          method: 'post',
+          encType: 'multipart/form-data',
+          url: '../../../../server/database_connect/server.php?action=post&resource=upload-item',
+          data: data,
+      }).then(function(res) {
+          console.log(res);
+      });
+
+      // axios.post('/server/database_connect/server.php?action=post&resource=upload-item',{
+      //   upload: fileName.name,
+      // })
+      //     .then(function (response) {
+      //         console.log(response);
+      //     })
+      //     .catch(function (error) {
+      //         console.log(error);
+      //     });
 
 
 
-      axios.post('/server/database_connect/server.php?action=post&resource=upload-item',{
-        upload: fileName.name,
-      })
-          .then(function (response) {
-              console.log(response);
-          })
-          .catch(function (error) {
-              console.log(error);
-          });
-
-
-
-    console.log('FILENAME: ', fileName.name);
   }
   render() {
     return (
@@ -53,8 +65,14 @@ class PetImgUpload extends Component {
             {/*<button name="upload" value="true">upload</button>*/}
           {/*</form>*/}
         {/*</label>*/}
-        <form action="../../../../server/file_upload/aws_s3/page.php" encType="multipart/form-data" method="post">
-          <input type="file" name="file"/>
+
+          {/*action="../../../../server/file_upload/aws_s3/page.php"*/}
+
+          {/*<form action="../../../../server/database_connect/server.php?action=post&resource=upload-item" encType="multipart/form-data" method="post">*/}
+
+
+          <form onSubmit={(e)=>this.getFileName(e)}>
+          <input type="file" name="file" id='file'/>
             <button name="upload" value="true">upload</button>
         </form>
       </div>
