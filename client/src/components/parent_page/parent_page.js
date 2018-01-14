@@ -40,7 +40,7 @@ class ParentPage extends Component{
 		}
 
 		this.props.register(values.username, values.password, values.email).then( ()=>{
-        this.props.history.push('/pet-list/');
+        this.props.history.push('/login-page');
       }
     )
 	}
