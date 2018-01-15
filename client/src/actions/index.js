@@ -174,6 +174,8 @@ export function uploadImage(data){
     }
 }
 
+// const edit_records_url= '/server/database_connect/server.php?action=post&resource=editMedicalRecord';
+
 
 
 
