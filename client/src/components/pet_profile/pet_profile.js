@@ -14,11 +14,9 @@ class PetProfile extends Component {
     } else {
       currentOwnerId = localStorage.id;
     }
-
     this.props.fetchProfileData(this.props.match.params.id);
     this.props.fetchPetData(currentOwnerId);
     }
-
 
     softDeleteRecord(index) {
         const petProfileData= this.props.petProfile;
@@ -28,6 +26,7 @@ class PetProfile extends Component {
             this.props.fetchProfileData(this.props.match.params.id)
         });
     }
+
   getPetInfo() {
     if(!this.props.petdata.length) return;
 
@@ -87,6 +86,7 @@ class PetProfile extends Component {
     });
     return medicalRecordsList;
   }
+
   render() {
       console.log('props after delete record item in render', this.props);
     // if (!this.props.petProfile.length) {

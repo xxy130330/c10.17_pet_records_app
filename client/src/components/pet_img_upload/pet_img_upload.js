@@ -72,7 +72,7 @@ class PetImgUpload extends Component {
 
 
           <form onSubmit={(e)=>this.getFileName(e)}>
-          <input type="file" name="file" id='file'/>
+          <input type="file" name="upload" id='file'/>
             <button name="upload" value="true">upload</button>
         </form>
       </div>
