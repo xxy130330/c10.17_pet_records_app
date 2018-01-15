@@ -96,6 +96,12 @@ switch($_GET['action']) {
                 }
                 break;
             }
+            case 'editMedicalRecord': {
+                if (!empty($post)) {
+                    require('./actions/edit_medical_record.php');
+                }
+                break;
+            }
         }
 
     }
