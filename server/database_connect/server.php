@@ -99,7 +99,9 @@ switch($_GET['action']) {
             case 'registerVet': {
                 if (!empty($post)) {
                     require('./actions/add_vet.php');
-
+                }
+                break;
+            }
             case 'editMedicalRecord': {
                 if (!empty($post)) {
                     require('./actions/edit_medical_record.php');
