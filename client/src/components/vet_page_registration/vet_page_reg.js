@@ -36,7 +36,7 @@ class VetPage extends Component {
                 username: this.state.form.userName,
                 password: this.state.form.password,
                 email: this.state.form.email,
-                phone: this.state.form.email,
+                phone: this.state.form.phone,
             },
         }).then(function(res) {
             console.log(res);
