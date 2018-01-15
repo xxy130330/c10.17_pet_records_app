@@ -4,10 +4,10 @@ import Logo from "../../../../server/images/petvet_logo.png";
 import photo from "../../../../server/images/photo.png";
 import "./add_pet.css";
 import axios from 'axios';
-import PetImgUpload from '../pet_img_upload/pet_img_upload';
+// import PetImgUpload from '../pet_img_upload/pet_img_upload';
 
 import { connect } from "react-redux";
-import { addPet } from "../../actions/";
+import { addPet, uploadImage } from "../../actions/";
 
 
 class AddPet extends Component {
@@ -25,6 +25,7 @@ class AddPet extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.currentOwnerId = null;
+    this.url = null;
   }
 
 
@@ -59,7 +60,7 @@ class AddPet extends Component {
 
 
                                             //this will be the url variable
-    this.props.addPet(name, dob, breed, this.currentOwnerId , 'http://localhost/server/images/rat.jpg').then(()=>this.props.history.push('/pet-list/'));
+    this.props.addPet(name, dob, breed, this.currentOwnerId , this.url).then(()=>this.props.history.push('/pet-list/'));
 
     this.setState({
       form: {
@@ -71,7 +72,32 @@ class AddPet extends Component {
 
 
   }
+    getFileName(e) {
+        e.preventDefault();
+        // var fileName = e.target.files[0];
+
+
+        //axios call for page.php
+        //GET request user file name
+        //return URL to store in db
+        console.log(document.getElementById('file').files[0]);
+
+        let data = new FormData();
+        data.append('file', document.getElementById('file').files[0]);
+
+        this.props.uploadImage(data).then(()=> this.url = this.props.url.data[0])
+
+        // axios({
+        //     method: 'post',
+        //     encType: 'multipart/form-data',
+        //     url: '../../../../server/database_connect/server.php?action=post&resource=upload-item',
+        //     data: data,
+        // }).then(function(res) {
+        //     console.log(res);
+        // });
+    }
   render() {
+
     const { name, dob, breed } = this.state.form;
     return (
       <div>
@@ -79,7 +105,10 @@ class AddPet extends Component {
           <h2 className="text-center">Add Pet</h2>
         </div>
         <div>
-          <PetImgUpload/>
+          <form onSubmit={(e)=>this.getFileName(e)}>
+            <input type="file" name="file" id='file'/>
+            <button name="upload" value="true">upload</button>
+          </form>
         </div>
         <form className="container" onSubmit={e => this.handleSubmit(e)}>
           <div className="form-group">
@@ -124,13 +153,15 @@ class AddPet extends Component {
 function mapStateToProps(state) {
   return {
     id: state.login.id,
+    url: state.uploadImage
   };
 }
 
 
 
 export default connect(mapStateToProps, {
-  addPet: addPet
+  addPet: addPet,
+  uploadImage: uploadImage
 })(AddPet);
 
 
