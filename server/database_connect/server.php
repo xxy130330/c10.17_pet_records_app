@@ -96,16 +96,20 @@ switch($_GET['action']) {
                 }
                 break;
             }
+            case 'registerVet': {
+                if (!empty($post)) {
+                    require('./actions/add_vet.php');
+
             case 'editMedicalRecord': {
                 if (!empty($post)) {
                     require('./actions/edit_medical_record.php');
+
                 }
                 break;
             }
         }
 
     }
-
 
 if (isset($pet_objects)) {
     $output['data'] = $pet_objects;
