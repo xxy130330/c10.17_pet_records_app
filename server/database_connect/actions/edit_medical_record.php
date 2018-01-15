@@ -11,8 +11,13 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 }
 
 $ID = $post['ID'];
+$title = $post['title'];
+$type = $post['type'];
+$petID = $post['petID'];
+$recordData = $post['record_data'];
+$treatmentDate = $post['treatment_date'];
 
-$query = "UPDATE `medical_records` SET `title` = {$post['title']}, `type` = {$post['type']}, `petID` = {$post['petID']}, `record_data` = {$post['record_data']}, `treatment_date` = {$post['treatment_date']}, `updated` = CURRENT_TIMESTAMP WHERE `ID` = $ID";
+$query = "UPDATE `medical_records` SET `title` = $title, `type` = $type, `petID` = $petID, `record_data` = $recordData, `treatment_date` = $treatmentDate, `updated` = CURRENT_TIMESTAMP WHERE `ID` = $ID";
 
 $output['errors'][] = $query;
 
