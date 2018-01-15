@@ -29,7 +29,7 @@ class PetImgUpload extends Component {
           url: '../../../../server/database_connect/server.php?action=post&resource=upload-item',
           data: data,
       }).then(function(res) {
-          console.log(res);
+          console.log('url', res);
       });
 
       // axios.post('/server/database_connect/server.php?action=post&resource=upload-item',{
