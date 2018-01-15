@@ -8,6 +8,7 @@ import LoginReducer from './login_reducer';
 import { reducer as formReducer } from 'redux-form';
 import DeletePetReducer from './delete_pet_reducer';
 import DeleteMedicalRecordItemReducer from './delete_medical_record_reducer';
+import UploadImageReducer from './upload_image_reducer';
 
 
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   login: LoginReducer,
   form: formReducer,
   deletePet: DeletePetReducer,
-  deleteMedicalRecordItem: DeleteMedicalRecordItemReducer
+  deleteMedicalRecordItem: DeleteMedicalRecordItemReducer,
+  uploadImage: UploadImageReducer
 });
 
 export default rootReducer;

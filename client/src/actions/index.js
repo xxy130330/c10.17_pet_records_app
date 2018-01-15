@@ -156,6 +156,25 @@ export function register(username, password, email){
     payload: request
   }
 }
+const pet_image_url = '/server/database_connect/server.php?action=post&resource=upload-item';
+
+export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
+
+export function uploadImage(data){
+    const request= axios({
+        method: 'post',
+        encType: 'multipart/form-data',
+        url: pet_image_url,
+        data: data,
+    });
+
+    return{
+        type: UPLOAD_IMAGE,
+        payload: request
+    }
+}
+
+
 
 
 
