@@ -28,6 +28,20 @@ class VetPage extends Component {
         e.preventDefault();
         console.log('hello ', this.state);
 
+        axios({
+            method: 'post',
+            url: '/server/database_connect/server.php?action=post&resource=registerVet',
+            dataType: 'json',
+            data: {
+                username: this.state.form.userName,
+                password: this.state.form.password,
+                email: this.state.form.email,
+                phone: this.state.form.email,
+            },
+        }).then(function(res) {
+            console.log(res);
+        });
+
         // this.setState({
         //     form: {
         //         userName: '',
