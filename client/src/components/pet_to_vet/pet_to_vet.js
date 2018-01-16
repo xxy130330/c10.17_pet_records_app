@@ -60,17 +60,11 @@ export default class PetToVet extends Component {
               value={vetRefNum}
             />
           </div>
-
-
           <button className="btn btn-primary">Submit</button>
+          <Link to='/pet-list' className='pull-right my-5'> Skip </Link>
 
 
         </form>
-        <div>
-          <Link to='/pet-list'> Skip </Link>
-        </div>
-
-
       </div>
     );
   }
