@@ -7,7 +7,7 @@ export default function(state=[], action){
 
     switch(action.type){
         case UPLOAD_IMAGE:
-            console.log('IN UPLOAD IMAGE REDUCER:', action.payload);
+            console.log(action);
             return action.payload.data;
     }
     return state;

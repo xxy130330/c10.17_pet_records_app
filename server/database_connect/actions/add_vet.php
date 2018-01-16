@@ -36,7 +36,7 @@ if ($checkResult) {
             }
         }
         else {
-            $output['errors'][] = 'Error in SQL query, inserting user';
+            $output['errors'][] = 'Error in SQL query, inserting user22';
         }
     } else {
         $output['errors'][] = 'That email is already in use';
