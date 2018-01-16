@@ -81,6 +81,7 @@ class VetPage extends Component {
                         {/*<button className='btn btn-primary'>Login</button>*/}
                         <button className='btn btn-success'>Sign Up</button>
                     </div>
+                    <p>VET REGISTER</p>
                 </form>
             </div>
         )
