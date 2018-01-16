@@ -176,8 +176,7 @@ export function uploadImage(data){
 
 
 
-
-
+const ownerIDs = [1,576,88,46,21];
 
 
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default class PetToVet extends Component {
   constructor(props) {
@@ -27,7 +28,19 @@ export default class PetToVet extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    console.log(this.state.form);
+
+    const url = '/server/database_connect/server.php?action=post&resource=petVetConnect';
+    axios({
+        method: 'post',
+        url: url,
+        dataType: 'json',
+        data: {
+          vetEmail: this.state.form.vetEmail,
+          refNum: this.state.form.vetRefNum,
+        }
+    }).then(function(res) {
+      console.log(res);
+    });
 
   }
 
