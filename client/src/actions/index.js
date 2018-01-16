@@ -174,6 +174,7 @@ export function uploadImage(data){
     }
 }
 
+//axios post call, pass in recordId and all info
 // const edit_records_url= '/server/database_connect/server.php?action=post&resource=editMedicalRecord';
 
 
