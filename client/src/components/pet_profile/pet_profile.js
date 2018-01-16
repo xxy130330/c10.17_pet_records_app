@@ -45,13 +45,22 @@ class PetProfile extends Component {
         <div className="petImgContainer">
           <div className="petImg" style={petImage} />
         </div>
+
+
         <div className="petInfoDiv">
+          <div>
+            <Link to='/pet-to-vet/'><button>Connect this Pet to Vet</button></Link>
+          </div>
           <div className="petInfo">
             <h4>Name: {petObj.name}</h4>
             <h4>DOB: {petObj.dob}</h4>
             <h4>Breed: {petObj.breed}</h4>
+          {/*Will Display vet info here*/}
+            <h4>Vet:</h4>
+
           </div>
         </div>
+
       </div>
     );
   }

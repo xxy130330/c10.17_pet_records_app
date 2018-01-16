@@ -12,6 +12,7 @@ import Header from "../components/header_component/header";
 import Footer from "../components/footer_menu/footer_menu";
 import VetPage from "../components/vet_page_registration/vet_page_reg";
 import AddMedNote from "../components/manually_add_med_note_page/manually_add_med_note";
+import PetToVet from '../components/pet_to_vet/pet_to_vet';
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +47,8 @@ class App extends Component {
           <Route path="/vet-page" component={VetPage} />
           <Route path="/pet-profile/:id/add-med-note" component={AddMedNote} />
           <Route path="/*" render={Footer} />
+
+          <Route path='/pet-to-vet/' component={PetToVet}/>
 
 
         </div>
