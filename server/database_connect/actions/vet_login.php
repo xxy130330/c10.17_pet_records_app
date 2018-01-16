@@ -22,12 +22,10 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 
     $username = $post['username'];
 
-    //Sanitizing inputs
     $sanitizeUsername1 = stripslashes($username);
     $sanitizePassword1 = stripslashes($password);
     $sanitizedUsername = htmlentities($sanitizeUsername1);
     $sanitizedPassword = htmlentities($sanitizePassword1);
-    //////////////////////////////////////////////////////
 
 
 $query = "SELECT * FROM `vets` WHERE BINARY email = '$sanitizedUsername' AND password = '$sanitizedPassword'";
