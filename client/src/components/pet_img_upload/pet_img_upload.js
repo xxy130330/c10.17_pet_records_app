@@ -18,19 +18,19 @@ class PetImgUpload extends Component {
       //axios call for page.php
       //GET request user file name
       //return URL to store in db
-      console.log(document.getElementById('file').files[0]);
-
-      let data = new FormData();
-      data.append('file', document.getElementById('file').files[0]);
-
-      axios({
-          method: 'post',
-          encType: 'multipart/form-data',
-          url: '../../../../server/database_connect/server.php?action=post&resource=upload-item',
-          data: data,
-      }).then(function(res) {
-          console.log('url', res);
-      });
+      // console.log(document.getElementById('file').files[0]);
+      //
+      // let data = new FormData();
+      // data.append('file', document.getElementById('file').files[0]);
+      //
+      // axios({
+      //     method: 'post',
+      //     encType: 'multipart/form-data',
+      //     url: '../../../../server/database_connect/server.php?action=post&resource=upload-item',
+      //     data: data,
+      // }).then(function(res) {
+      //     console.log('url', res);
+      // });
 
       // axios.post('/server/database_connect/server.php?action=post&resource=upload-item',{
       //   upload: fileName.name,
