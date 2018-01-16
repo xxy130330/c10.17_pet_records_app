@@ -9,6 +9,7 @@ import { reducer as formReducer } from 'redux-form';
 import DeletePetReducer from './delete_pet_reducer';
 import DeleteMedicalRecordItemReducer from './delete_medical_record_reducer';
 import UploadImageReducer from './upload_image_reducer';
+import editMedicalRecordReducer from './edit_medical_record_reducer';
 
 
 const rootReducer = combineReducers({
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   form: formReducer,
   deletePet: DeletePetReducer,
   deleteMedicalRecordItem: DeleteMedicalRecordItemReducer,
-  uploadImage: UploadImageReducer
+  uploadImage: UploadImageReducer,
+  editMedicalRecord: editMedicalRecordReducer
 });
 
 export default rootReducer;

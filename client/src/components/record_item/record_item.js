@@ -2,28 +2,36 @@ import React, { Component } from "react";
 import "./record_item.css";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
-import { fetchMedicalData } from "../../actions/";
+import { fetchMedicalData, editMedicalRecord } from "../../actions/";
 
 class RecordItem extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            canEdit: false
+            canEdit: false,
+            type: null,
+            date: null,
+            details: null
         }
     }
 
   componentWillMount() {
-    this.props.fetchMedicalData(this.props.match.params.recordId);
-    console.log('record id using the url, ', this.props.match.params.recordId);
-    console.log('can we edit upon mounting? ', this.state.canEdit);
+    console.log('the props upon mount: ', this.props);
+    this.props.fetchMedicalData(this.props.match.params.recordId).then(()=>{
+        this.setState({
+            canEdit: false,
+            type: this.props.petMedical[0].type,
+            date: this.props.petMedical[0].date,
+            details: this.props.petMedical[0].details
+        })
+    });
   }
 
   handleEditClick(){
       this.setState({
             canEdit: true
         });
-      console.log('the handle edit button has been clicked', this.state.canEdit);
 
   }
   renderButton(){
@@ -32,28 +40,35 @@ class RecordItem extends Component {
       }
   }
   saveChanges(){
-      console.log('we want to save the changes!');
-      this.setState({
-          canEdit: false
-      });
+      const params= this.props.match.params;
+      this.setState({...this.state, canEdit: false,});
+      console.log('this is the current state after clicking save changes', this.state);
+      // this.props.editMedicalRecord(this.state, params);
+      // console.log('and these are the params', params);
 
+  }
+  handleChange(e){
+      console.log(e.target.value);
   }
   render() {
     if (!this.props.petMedical.length) {
       return <h1>Loading</h1>;
     }
-      // console.log('the handle edit button has been clicked', this.state.canEdit);
+      console.log('this props after calling fetch medical data', this.props);
+    console.log('re rendered state after clicking save changes', this.state);
+
+      const {type,date,details,canEdit}= this.state;
       return (
 
         <div className=" record_item_container">
             <div>
                 <button onClick={()=>this.handleEditClick()} className='btn btn-warning'>Edit</button>
             </div>
-            <h2 className="record_item_header" contentEditable={this.state.canEdit? 'true': 'false'}>{this.props.petMedical[0].type}</h2>
-            <h3 className="record_item_date" contentEditable={this.state.canEdit? 'true': 'false'}>{this.props.petMedical[0].date}</h3>
+            <h2 onChange={(e)=>this.handleChange(e)} className="record_item_header" contentEditable={canEdit? 'true': 'false'}>{type}</h2>
+            <h3 className="record_item_date" contentEditable={canEdit? 'true': 'false'}>{date}</h3>
             <hr />
-            <p contentEditable={this.state.canEdit? 'true': 'false'}>{this.props.petMedical[0].details}</p>
-            {this.state.canEdit? this.renderButton(): ''}
+            <p contentEditable={canEdit? 'true': 'false'}>{details}</p>
+            {canEdit? this.renderButton(): ''}
         </div>
     );
   }
@@ -66,5 +81,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  fetchMedicalData: fetchMedicalData
+  fetchMedicalData: fetchMedicalData,
+  editMedicalRecord: editMedicalRecord
 })(RecordItem);
