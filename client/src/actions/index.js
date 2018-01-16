@@ -185,9 +185,9 @@ export function editMedicalRecord(recordData, params){
         data: {
             ID: params.recordId,
             petID: params.petId,
-            type: recordData.type,
-            record_data: recordData.details,
-            treatment_date: recordData.date
+            type: recordData.editType,
+            record_data: recordData.editDetails,
+            treatment_date: recordData.editDate
         }
     });
     return{

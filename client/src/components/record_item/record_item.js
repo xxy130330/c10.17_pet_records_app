@@ -12,7 +12,12 @@ class RecordItem extends Component {
             canEdit: false,
             type: null,
             date: null,
-            details: null
+            details: null,
+            form: {
+                editType: '',
+                editDate: '',
+                editDetails: ''
+            }
         }
     }
 
@@ -23,7 +28,7 @@ class RecordItem extends Component {
             canEdit: false,
             type: this.props.petMedical[0].type,
             date: this.props.petMedical[0].date,
-            details: this.props.petMedical[0].details
+            details: this.props.petMedical[0].details,
         })
     });
   }
@@ -42,32 +47,58 @@ class RecordItem extends Component {
   saveChanges(){
       const params= this.props.match.params;
       this.setState({...this.state, canEdit: false,});
-      console.log('this is the current state after clicking save changes', this.state);
-      // this.props.editMedicalRecord(this.state, params);
-      // console.log('and these are the params', params);
+      console.log('this is the current state after clicking save changes', this.state.form);
+
+      this.props.editMedicalRecord(this.state.form, params).then(()=>{
+          this.props.fetchMedicalData(params.recordId).then(()=>{
+              if(!this.props.petMedical) return <h1>Loading</h1>;
+              this.setState({
+                  type: this.props.petMedical[0].type,
+                  date: this.props.petMedical[0].date,
+                  details: this.props.petMedical[0].details,
+              })
+          })
+      });
 
   }
   handleChange(e){
+      const {value, name}= e.target;
+      const {form} = this.state;
+      form[name]= value;
+      this.setState({form: {...form}});
       console.log(e.target.value);
   }
   render() {
     if (!this.props.petMedical.length) {
       return <h1>Loading</h1>;
     }
-      console.log('this props after calling fetch medical data', this.props);
-    console.log('re rendered state after clicking save changes', this.state);
-
       const {type,date,details,canEdit}= this.state;
+     const {editType, editDate, editDetails} =this.state.form;
+      const staticData = (
+          <div>
+              <div>
+                  <button onClick={()=>this.handleEditClick()} className='btn btn-warning'>Edit</button>
+              </div>
+              <h2 className="record_item_header">{type}</h2>
+              <h3 className="record_item_date" >{date}</h3>
+              <hr />
+              <p>{details}</p>
+          </div>
+
+      );
+      const editData =(
+          <div>
+              <input onChange={(e)=>this.handleChange(e)} type= 'text' name='editType' value ={editType} className="record_item_header" placeholder={type}></input>
+              <input onChange={(e)=>this.handleChange(e)}  type ='date' name='editDate' value ={editDate} className="record_item_date" placeholder={date}></input>
+              <hr />
+              <input onChange={(e)=>this.handleChange(e)} type='text' name='editDetails' value ={editDetails} placeholder={details}></input>
+          </div>
+      );
+      const viewData= canEdit? editData: staticData;
       return (
 
         <div className=" record_item_container">
-            <div>
-                <button onClick={()=>this.handleEditClick()} className='btn btn-warning'>Edit</button>
-            </div>
-            <h2 onChange={(e)=>this.handleChange(e)} className="record_item_header" contentEditable={canEdit? 'true': 'false'}>{type}</h2>
-            <h3 className="record_item_date" contentEditable={canEdit? 'true': 'false'}>{date}</h3>
-            <hr />
-            <p contentEditable={canEdit? 'true': 'false'}>{details}</p>
+            {viewData}
             {canEdit? this.renderButton(): ''}
         </div>
     );
