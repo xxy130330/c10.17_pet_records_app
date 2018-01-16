@@ -3,6 +3,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "./landing_page/landing_page";
 import LoginPage from "./login_page/login_page";
+import VetLoginPage from "./vet_login_page/vet_login_page";
 import PetList from "./pet_list/pet_list";
 import PetProfile from "./pet_profile/pet_profile";
 import ParentPage from "./parent_page/parent_page";
@@ -34,6 +35,7 @@ class App extends Component {
           <Route to="/*" component={Header} />
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />
+          <Route path="/vet-login-page/" component={VetLoginPage} />
           <Route path="/pet-list/" component={PetList} />
           <Route exact path="/pet-profile/:id" component={PetProfile} />
 
