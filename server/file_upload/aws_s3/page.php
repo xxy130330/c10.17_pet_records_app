@@ -4,7 +4,7 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
 
-if (!class_exists('S3'))require_once('s3.php');
+if (!class_exists('S3'))require_once('./s3.php');
 
 require_once('credential.php');
 //require_once('../../database_connect/connect.php');
