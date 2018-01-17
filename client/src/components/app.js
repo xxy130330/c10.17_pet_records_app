@@ -19,6 +19,7 @@ import VetPage from "../components/vet_page_registration/vet_page_reg";
 import AddMedNote from "../components/manually_add_med_note_page/manually_add_med_note";
 import PetToVet from '../components/pet_to_vet/pet_to_vet';
 import ClientList from '../components/client_list/client_list';
+import VetClientPets from '../components/vet_client_pets/vet_client_pets';
 
 class App extends Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class App extends Component {
           />
           <Route path="/pet-to-vet/:petId" component={auth(PetToVet)} />
           <Route path='/client-list/:vetId' component={auth(ClientList)}/>
+          <Route path='/vet-client-pets/:vetId/:ownerId' component={auth(VetClientPets)}/>
           <Route path="/*" component={Footer} />
 
 
