@@ -39,9 +39,9 @@ class VetPage extends Component {
     }
 
     this.props
-      .vet_register(values.username, values.password, values.email)
+      .vet_register(values.username, values.phone, values.password, values.email)
       .then(() => {
-        this.props.history.push("/vet-login-page");
+        this.props.history.push("/login-page");
       });
   }
   render() {
@@ -60,6 +60,12 @@ class VetPage extends Component {
           <Field
             name="username"
             label="Username"
+            type="text"
+            component={this.renderInput}
+          />
+          <Field
+            name="phone"
+            label="Phone"
             type="text"
             component={this.renderInput}
           />
