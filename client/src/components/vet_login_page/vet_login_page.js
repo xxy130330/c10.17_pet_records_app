@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "./login_page.css";
+import "./vet_login_page.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import axios from "axios";
 import { connect } from "react-redux";
-import { login } from "../../actions/";
+import { vet_login } from "../../actions/";
 
-class LoginPage extends Component {
+class VetLoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +30,7 @@ class LoginPage extends Component {
     e.preventDefault();
 
     this.props
-      .login(this.state.form.username, this.state.form.password)
+      .vet_login(this.state.form.username, this.state.form.password)
       .then(() => {
         if (this.props.success) {
           this.props.history.push("/pet-list/");
@@ -52,7 +52,7 @@ class LoginPage extends Component {
     return (
       <div>
         <div className="logoContainer">
-          <h1>PET LOG IN</h1>
+          <h1>VET LOG IN</h1>
           <div className="logo" />
         </div>
         <form
@@ -90,8 +90,8 @@ class LoginPage extends Component {
           </div>
           <br />
           <div id="register">
-            New User?
-            <Link to="/parent-page/">Register</Link>
+            New Vet?
+            <Link to="/vet-page/">Register</Link>
           </div>
         </form>
       </div>
@@ -103,10 +103,10 @@ class LoginPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    id: state.login.id,
-    success: state.login.success,
-    errorMessage: state.login.errorMessage
+    id: state.vetlogin.id,
+    success: state.vetlogin.success,
+    errorMessage: state.vetlogin.errorMessage
   };
 }
 
-export default connect(mapStateToProps, { login: login })(LoginPage);
+export default connect(mapStateToProps, { vet_login })(VetLoginPage);

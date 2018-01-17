@@ -14,7 +14,7 @@ export default props=>{
                 <div className="home-msg">Welcome to PetVet! The easiest way to care for your pet's health and happiness!</div>
                 <div className='buttonContainer'>
                     <Link to ='/login-page'><button className='btn btn-primary btn-block'>Pet Login</button></Link>
-                    <Link to ='/login-page'><button className='btn btn-success btn-block'>Vet Login</button></Link>
+                    <Link to ='/vet-login-page'><button className='btn btn-success btn-block'>Vet Login</button></Link>
                 </div>
             </div>
         </div>
@@ -23,4 +23,4 @@ export default props=>{
 
 
 
-//onClick='openLoginPage()'
+//onClick='openLoginPage()
