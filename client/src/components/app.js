@@ -45,9 +45,9 @@ class App extends Component {
             component={auth(RecordItem)}
           />
 
-          <Route path="/parent-page" component={auth(ParentPage)} />
+          <Route path="/parent-page" component={ParentPage} />
           <Route path="/add-pet/" component={auth(AddPet)} />
-          <Route path="/vet-page" component={auth(VetPage)} />
+          <Route path="/vet-page" component={VetPage} />
           <Route
             path="/pet-profile/:id/add-med-note"
             component={auth(AddMedNote)}
