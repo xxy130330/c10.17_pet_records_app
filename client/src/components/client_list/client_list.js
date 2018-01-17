@@ -101,22 +101,35 @@ class ClientList extends Component {
         this.props.fetchVetClientData(params.vetId).then(()=>console.log('ON CLIENT-LIST these are now the props after fetching data', this.props));
     }
 
-  render() {
-    if (!this.props.clientList.length) {
-        return <h1>Loading</h1>;
-    }
-    console.log('clienList: ', this.props.clientList);
-      console.log('name: ', this.props.name);
-      console.log('ref ID: ', this.props.ref_id);
+    fetchPetList(index) {
+        console.log(this.props.match.params);
 
-    let clientInformation= this.props.clientList.map((client, index)=>{
-        return (
-            <div className='recordContainer' key={index} onClick={()=>console.log('you clicked on clientID ', this.props.clientList[index].ownerID)}>
-                <h3>{client.name}</h3>
-                <h5>Email: {client.email}</h5>
-            </div>
-        )
-    });
+        const url = '/server/database_connect/server.php?action=get&resource=pets_for_vet&ownerID=' + this.props.clientList[index].ownerID + '&vetID=' + this.props.match.params.vetId;
+        axios({
+            method: 'get',
+            dataType: 'json',
+            url: url,
+        }).then(res => {
+            console.log(res);
+        })
+    }
+
+    render() {
+        if (!this.props.clientList.length) {
+            return <h1>Loading</h1>;
+        }
+        console.log('clienList: ', this.props.clientList);
+        console.log('name: ', this.props.name);
+        console.log('ref ID: ', this.props.ref_id);
+
+        let clientInformation= this.props.clientList.map((client, index)=>{
+            return (
+                <div className='recordContainer' key={index} onClick={()=> this.fetchPetList(index)}>
+                    <h3>{client.name}</h3>
+                    <h5>Email: {client.email}</h5>
+                </div>
+            )
+        });
 
 
 

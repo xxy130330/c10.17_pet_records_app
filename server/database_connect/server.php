@@ -57,6 +57,11 @@ switch($_GET['action']) {
                     require('./actions/read_vets_owners.php');
                 }
             }
+            case 'pets_for_vet': {
+                if (!empty($_GET['ownerID']) && !empty($_GET['vetID'])) {
+                    require('./actions/read_client_pets_for_vet.php');
+                }
+            }
 
         }
     case 'post':
