@@ -37,6 +37,8 @@ export default class PetToVet extends Component {
         data: {
           vetEmail: this.state.form.vetEmail,
           refNum: this.state.form.vetRefNum,
+          ownerID: 1,
+          petID: 2,
         }
     }).then(function(res) {
       console.log(res);
