@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./new_pet_list_styles.css";
+
 import Logo from "../../../../server/images/petvet_logo.png";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -50,7 +50,7 @@ class PetList extends Component {
       );
     });
     return (
-      <div>
+      <div className='bodyContainer'>
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
           <div className="iconNav">

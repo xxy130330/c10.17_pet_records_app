@@ -3,6 +3,8 @@ import axios from "axios";
 import auth from "../hoc/auth";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import '../css/style.css';
+
 import LandingPage from "./landing_page/landing_page";
 import LoginPage from "./login_page/login_page";
 import VetLoginPage from "./vet_login_page/vet_login_page";
@@ -32,7 +34,7 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
+        <div className='mainContainer'>
           <Route to="/*" component={Header} />
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />

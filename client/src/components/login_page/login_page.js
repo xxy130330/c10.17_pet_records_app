@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./login_page.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import axios from "axios";
@@ -51,7 +50,7 @@ class LoginPage extends Component {
     const { username, password } = this.state.form;
 
     return (
-      <div>
+      <div className='bodyContainer'>
         <div className="logoContainer">
           <h1>PET LOG IN</h1>
           <div className="logo" />
@@ -64,7 +63,7 @@ class LoginPage extends Component {
           <div className="form-group">
             <label>User Name</label>
             <input
-              className="userName form-control input-lg"
+              className="form-control input-lg"
               type="text"
               placeholder="Username"
               onChange={e => this.handleInputChange(e)}
@@ -75,7 +74,7 @@ class LoginPage extends Component {
           <div className="form-group">
             <label>Password</label>
             <input
-              className="password form-control input-lg"
+              className="form-control input-lg"
               type="password"
               placeholder="Password"
               onChange={e => this.handleInputChange(e)}

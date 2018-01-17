@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./client_list.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 // import { connect } from "react-redux";
@@ -104,7 +103,7 @@ export default class ClientList extends Component {
 
 
     return (
-      <div>
+      <div className='bodyContainer'>
         <div className="vetInfoContainer">
           <div className="vetInfoDiv text-center">
               <h4>Name: Some Vet's Nam</h4>
