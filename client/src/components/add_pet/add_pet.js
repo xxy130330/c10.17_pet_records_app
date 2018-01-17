@@ -55,11 +55,12 @@ class AddPet extends Component {
     console.log('this.currentOwnerId', this.currentOwnerId);
     console.log('It works in add pet');
 
+
     const {name, dob, breed} = this.state.form;
 
 
                                             //this will be the url variable
-    this.props.addPet(name, dob, breed, this.currentOwnerId , this.url).then(()=>this.props.history.push('/pet-to-vet/'));
+    this.props.addPet(name, dob, breed, this.currentOwnerId , this.url).then(()=>this.props.history.push('/pet-to-vet/' + this.props.petId));
 
     this.setState({
       form: {
@@ -96,7 +97,7 @@ class AddPet extends Component {
         // });
     }
   render() {
-
+      console.log(this.props);
     const { name, dob, breed } = this.state.form;
     return (
       <div>
@@ -152,7 +153,8 @@ class AddPet extends Component {
 function mapStateToProps(state) {
   return {
     id: state.login.id,
-    url: state.uploadImage
+    url: state.uploadImage,
+    petId: state.addPet.petId,
   };
 }
 

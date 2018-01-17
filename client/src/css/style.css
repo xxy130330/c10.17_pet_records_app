@@ -106,6 +106,7 @@ span {
 
 .buttonContainer{
   text-align: right;
+
 }
 
 input:focus{
@@ -118,6 +119,22 @@ input:focus{
   margin: 10%;
 }
 
+.homeBtn {
+  text-align: center;
+  width: 30vw;
+  /* height: 35vh; */
+}
+.homeBtn > img {
+  width: 100%;
+  height: 100%;
+}
+
+.loginBtnContainer{
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 79vw;
+}
 
 /************* parent_page *************/
 

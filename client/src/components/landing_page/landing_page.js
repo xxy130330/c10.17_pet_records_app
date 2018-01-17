@@ -11,9 +11,9 @@ export default props=>{
             </div>
             <div className='container'>
                 <div className="home-msg">Welcome to PetVet! The easiest way to care for your pet's health and happiness!</div>
-                <div className='buttonContainer'>
-                    <Link to ='/login-page'><button className='btn btn-primary btn-block'>Pet Login</button></Link>
-                    <Link to ='/vet-login-page'><button className='btn btn-success btn-block'>Vet Login</button></Link>
+                <div className='loginBtnContainer'>
+                    <Link to ='/login-page'><div className='homeBtn'><img src="../../../../server/images/pet_btn.png"/>Pet Login</div></Link>
+                    <Link to ='/vet-login-page'><div className='homeBtn'><img src="../../../../server/images/vet_btn.png"/>Vet Login</div></Link>
                 </div>
             </div>
         </div>
