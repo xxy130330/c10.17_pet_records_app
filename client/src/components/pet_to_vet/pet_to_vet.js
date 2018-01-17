@@ -41,7 +41,7 @@ export default class PetToVet extends Component {
           petID: 2,
         }
     }).then(function(res) {
-      console.log(res);
+      console.log(res.data);
     });
 
   }
