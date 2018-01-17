@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import axios from 'axios';
-// import { connect } from "react-redux";
-// import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../actions/";
+import { connect } from "react-redux";
+import { fetchVetClientData } from "../../actions/";
 
-export default class ClientList extends Component {
+class ClientList extends Component {
   // componentDidMount() {
   //   let currentOwnerId = null;
   //   if(this.props.id){
@@ -89,52 +89,50 @@ export default class ClientList extends Component {
   //   return medicalRecordsList;
   // }
     componentWillMount() {
-        //pull vets associated owners
-        const url = '/server/database_connect/server.php?action=get&resource=client_list&vetID=' + 12;
-        axios({
-            method: 'get',
-            dataType: 'json',
-            url: url,
-        }).then(res => {
-            console.log(res.data);
-        });
+        const params =this.props.match.params;
+        // const url = '/server/database_connect/server.php?action=get&resource=client_list&vetID=' + params.vetId;
+        // axios({
+        //     method: 'get',
+        //     dataType: 'json',
+        //     url: url,
+        // }).then(res => {
+        //     console.log(res.data);
+        // });
+        this.props.fetchVetClientData(params.vetId).then(()=>console.log('ON CLIENT-LIST these are now the props after fetching data', this.props));
     }
 
   render() {
-      // console.log('props after delete record item in render', this.props);
-    // if (!this.props.petProfile.length) {
-    //     return <h1>Loading</h1>;
-    // }
+    if (!this.props.clientList.length) {
+        return <h1>Loading</h1>;
+    }
+    console.log('clienList: ', this.props.clientList);
+      console.log('name: ', this.props.name);
+      console.log('ref ID: ', this.props.ref_id);
 
-    // let petName = null;
-    // for (var i = 0; i < this.props.petdata.length; i++) {
-    //   if (this.props.petdata[i]["ID"] === this.props.match.params.id) {
-    //     petName = this.props.petdata[i].name;
-    //   }
-    // }
+    let clientInformation= this.props.clientList.map((client, index)=>{
+        return (
+            <div className='recordContainer' key={index} onClick={()=>console.log('you clicked on clientID ', this.props.clientList[index].ownerID)}>
+                <h3>{client.name}</h3>
+                <h5>Email: {client.email}</h5>
+            </div>
+        )
+    });
+
 
 
     return (
       <div className='bodyContainer'>
         <div className="vetInfoContainer">
           <div className="vetInfoDiv text-center">
-              <h4>Name: Some Vet's Nam</h4>
-              <h4>Ref#: Some Vet's Ref#</h4>
+              <h4>Vet Name: {this.props.name}</h4>
+              <h4>Ref#: {this.props.ref_id}</h4>
           </div>
         </div>
         <hr />
         <div className="clientList">
           <div className="text-center">
-            <h1>Client List</h1>
-            <div className="recordContainer">
-              <h3> Client One Name </h3>
-            </div>
-            <div className="recordContainer">
-              <h3> Client Two Name </h3>
-            </div>
-            <div className="recordContainer">
-              <h3> Client Three Name </h3>
-            </div>
+            <h2>Client List</h2>
+              {clientInformation}
           </div>
         </div>
       </div>
@@ -142,19 +140,15 @@ export default class ClientList extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     petdata: state.petdata,
-//     petProfile: state.petProfile,
-//     deleteMedicalRecordItem: state.deleteMedicalRecordItem
-//   };
-// }
+function mapStateToProps(state) {
+  return {
+    clientList: state.vetClientData.clientList,
+    name: state.vetClientData.name,
+    ref_id: state.vetClientData.ref_id
+  };
+}
 
-// export default connect(mapStateToProps, {
-//     fetchPetData: fetchPetData,
-//     fetchProfileData: fetchProfileData,
-//     deleteMedicalRecordItem: deleteMedicalRecordItem
-// })(PetProfile);
+export default connect(mapStateToProps, {fetchVetClientData: fetchVetClientData})(ClientList);
 
 
 
