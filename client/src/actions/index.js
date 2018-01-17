@@ -54,6 +54,21 @@ export function fetchMedicalData(recordId) {
   };
 }
 
+//////********Get Vet Profile && Client List Data**********////////
+
+const vet_client_data_url = '/server/database_connect/server.php?action=get&resource=client_list&vetID=';
+export const VET_CLIENT_DATA= 'VET_CLIENT_DATA';
+
+export function fetchVetClientData(vetId) {
+    const request = axios.get(vet_client_data_url + vetId);
+    return {
+        type: VET_CLIENT_DATA,
+        payload: request
+    };
+}
+
+
+
 //****** POST medical records ********/
 const add_medical_item_url =
   "/server/database_connect/server.php?action=post&resource=record-item";
