@@ -34,7 +34,7 @@ class VetLoginPage extends Component {
       .then(() => {
         if (this.props.success) {
           this.props.switchAuthentication(true);          
-          this.props.history.push("/pet-list/");
+          this.props.history.push("/client-list/");
         }
       });
 
