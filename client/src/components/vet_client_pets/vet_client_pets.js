@@ -12,6 +12,18 @@ class VetClientPets extends Component {
         console.log('the props for vet client pets: ', this.props);
 
     }
+    fetchPetList(index) {
+        console.log(this.props.match.params);
+
+        const url = '/server/database_connect/server.php?action=get&resource=pets_for_vet&ownerID=' + this.props.clientList[index].ownerID + '&vetID=' + this.props.match.params.vetId;
+        axios({
+            method: 'get',
+            dataType: 'json',
+            url: url,
+        }).then(res => {
+            console.log(res);
+        })
+    }
     render() {
 
         // const userPetList = this.props.petdata.map((item, index) => {
