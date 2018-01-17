@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import './parent_page.css';
 import Logo from '../../../../server/images/petvet_logo.png';
 import { connect } from "react-redux";
 import { register } from "../../actions/";
@@ -49,29 +48,29 @@ class ParentPage extends Component{
 
 
 		return(
-			<div>
-        <div className="logoContainer">
-        	<div className="logo"></div>
+			<div className='bodyContainer'>
+        <div className='parentPage'>
+          <div className='text-center parentPageTitle'>
+            <h1>Pet Owner Register</h1>
+          </div>
+          <form id='form-container' className='col-xs-10 col-xs-offset-1' onSubmit={this.props.handleSubmit(this.handleSubmits.bind(this))}>
+            <Field name='username' label='Username' type='text' component={this.renderInput}/>
+            <Field name='password' label='Password' type='password' component={this.renderInput}/>
+            <Field name='confirmpassword' label='Confirm Password' type='password' component={this.renderInput}/>
+
+            <Field name='email' label='Email' type='email' component={this.renderInput}/>
+
+
+            <div className="buttonContainer row">
+
+              <button className='btn btn-success'>Sign Up</button>
+
+            </div>
+
+            <p className="text-danger">{this.state.errorMessage}</p>
+          </form>
         </div>
-        <hr/>
-
-				<form id='form-container' className='col-xs-10 col-xs-offset-1' onSubmit={this.props.handleSubmit(this.handleSubmits.bind(this))}>
-					<Field name='username' label='Username' type='text' component={this.renderInput}/>
-					<Field name='password' label='Password' type='password' component={this.renderInput}/>
-					<Field name='confirmpassword' label='Confirm Password' type='password' component={this.renderInput}/>
-
-					<Field name='email' label='Email' type='email' component={this.renderInput}/>
-
-
-     			<div className="buttonContainer row">
-
-						<button className='btn btn-success'>Sign Up</button>
-
-     		 	</div>
-				  <p>PET REGISTER</p>
-     		 	<p className="text-danger">{this.state.errorMessage}</p>
-    		</form>
-    		</div>
+  		</div>
 
 		)
 	}

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./vet_page_reg.css";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
 import { vet_register } from "../../actions/";
@@ -46,7 +45,7 @@ class VetPage extends Component {
   }
   render() {
     return (
-      <div>
+      <div className='bodyContainer'>
         <div className="logoContainer">
           <div className="logo" />
         </div>
@@ -92,7 +91,7 @@ class VetPage extends Component {
           <div className="buttonContainer row">
             <button className="btn btn-success">Sign Up</button>
           </div>
-          <p>VET REGISTER</p>
+
           <p className="text-danger">{this.state.errorMessage}</p>
         </form>
       </div>

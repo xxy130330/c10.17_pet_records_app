@@ -80,7 +80,7 @@ class PetToVet extends Component {
 
     const { vetEmail, vetRefNum } = this.state.form;
     return (
-      <div>
+      <div className='bodyContainer'>
         <div className="pictureContainer">
           <h2 className="text-center">Connect Pet To Vet</h2>
         </div>
