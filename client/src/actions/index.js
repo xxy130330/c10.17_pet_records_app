@@ -1,5 +1,14 @@
 import axios from "axios";
 
+//******** user Log in auth **********/
+export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
+export function switchAuthentication(auth) {
+  return {
+    type: SWITCH_AUTHENTICATION,
+    auth: auth
+  };
+}
+
 //****** GET pet list records ********/
 
 //const uploadPetImage = 'http://localhost:80/file_upload/aws_s3/page.php';
@@ -163,18 +172,18 @@ export function register(username, password, email) {
 
 //****** POST register vet ********/
 const vet_register_url =
-"/server/database_connect/server.php?action=post&resource=vetregister";
+  "/server/database_connect/server.php?action=post&resource=vetregister";
 export const VET_REGISTER = "VET_REGISTER";
 export function vet_register(username, password, email) {
-const request = axios.post(vet_register_url, {
-  name: username,
-  password: password,
-  email: email
-});
-return {
-  type: VET_REGISTER,
-  payload: request
-};
+  const request = axios.post(vet_register_url, {
+    name: username,
+    password: password,
+    email: email
+  });
+  return {
+    type: VET_REGISTER,
+    payload: request
+  };
 }
 ////// EDITING RECORDS
 const edit_records_url = '/server/database_connect/server.php?action=post&resource=editMedicalRecord';

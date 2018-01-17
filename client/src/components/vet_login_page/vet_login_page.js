@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import axios from "axios";
 import { connect } from "react-redux";
-import { vet_login } from "../../actions/";
+import { vet_login, switchAuthentication} from "../../actions/";
 
 class VetLoginPage extends Component {
   constructor(props) {
@@ -33,6 +33,7 @@ class VetLoginPage extends Component {
       .vet_login(this.state.form.username, this.state.form.password)
       .then(() => {
         if (this.props.success) {
+          this.props.switchAuthentication(true);          
           this.props.history.push("/pet-list/");
         }
       });
@@ -109,4 +110,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { vet_login })(VetLoginPage);
+export default connect(mapStateToProps, { vet_login, switchAuthentication })(VetLoginPage);
