@@ -51,7 +51,7 @@ class App extends Component {
           <Route path="/pet-profile/:id/add-med-note" component={AddMedNote} />
           <Route path="/*" render={Footer} />
 
-          <Route path='/pet-to-vet/' component={PetToVet}/>
+          <Route path='/pet-to-vet/:petId' component={PetToVet}/>
           <Route path='/client-list/' component={ClientList}/>
 
         </div>
