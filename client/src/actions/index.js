@@ -172,7 +172,7 @@ export function register(username, password, email) {
 
 //****** POST register vet ********/
 const vet_register_url =
-  "/server/database_connect/server.php?action=post&resource=vetregister";
+  "/server/database_connect/server.php?action=post&resource=registerVet";
 export const VET_REGISTER = "VET_REGISTER";
 export function vet_register(username, password, email) {
   const request = axios.post(vet_register_url, {
