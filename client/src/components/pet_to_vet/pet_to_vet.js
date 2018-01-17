@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { connect } from "react-redux";
+
 
 
 //ownerID who is currently logged in
@@ -52,7 +54,21 @@ class PetToVet extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    console.log(this.state.form);
+
+    const url = '/server/database_connect/server.php?action=post&resource=petVetConnect';
+    axios({
+        method: 'post',
+        url: url,
+        dataType: 'json',
+        data: {
+          vetEmail: this.state.form.vetEmail,
+          refNum: this.state.form.vetRefNum,
+          ownerID: 23,
+          petID: 22,
+        }
+    }).then(function(res) {
+      console.log(res.data);
+    });
 
   }
 
