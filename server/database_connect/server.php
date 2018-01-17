@@ -66,6 +66,11 @@ switch($_GET['action']) {
                     require('./actions/login.php');
                 }
                 break;
+            case 'vetlogin':
+                if (!empty($post)) {
+                    require('./actions/vet_login.php');
+                }
+                break;
 
             case 'pet':
                 if (!empty($post)) {

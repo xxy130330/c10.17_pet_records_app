@@ -68,6 +68,7 @@ class ParentPage extends Component{
 						<button className='btn btn-success'>Sign Up</button>
 
      		 	</div>
+				  <p>PET REGISTER</p>
      		 	<p className="text-danger">{this.state.errorMessage}</p>
     		</form>
     		</div>

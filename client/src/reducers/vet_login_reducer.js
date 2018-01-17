@@ -1,14 +1,14 @@
-import { LOGIN, REGISTER } from "../actions/index";
+import { VET_LOGIN, VET_REGISTER } from "../actions/index";
 
-const CURRENT_USER = {
+const CURRENT_VET = {
   success: false,
   id: null,
   errorMessage: ""
 };
 
-export default function(state = CURRENT_USER, action) {
+export default function(state = CURRENT_VET, action) {
   switch (action.type) {
-    case LOGIN:
+    case VET_LOGIN:
       console.log("ACTION ::::", action.payload);
       return {
         ...state,
@@ -16,7 +16,7 @@ export default function(state = CURRENT_USER, action) {
         id: action.payload.data.ownerID,
         errorMessage: action.payload.data.errors[0]
       };
-    case REGISTER:
+    case VET_REGISTER:
       console.log("RESTER WORKS", action);
       return {
         ...state,
