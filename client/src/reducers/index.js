@@ -25,9 +25,10 @@ const rootReducer = combineReducers({
   deletePet: DeletePetReducer,
   deleteMedicalRecordItem: DeleteMedicalRecordItemReducer,
   uploadImage: UploadImageReducer,
-  vetlogin: VetLoginReducer,
   user: userReducer,
   editMedicalRecord: editMedicalRecordReducer,
+  vetlogin: VetLoginReducer,
+
 });
 
 export default rootReducer;
