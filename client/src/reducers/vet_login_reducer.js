@@ -13,7 +13,7 @@ export default function(state = CURRENT_VET, action) {
       return {
         ...state,
         success: action.payload.data.loginSuccess,
-        id: action.payload.data.ownerID,
+        id: action.payload.data.vetID,
         errorMessage: action.payload.data.errors[0]
       };
     case VET_REGISTER:
