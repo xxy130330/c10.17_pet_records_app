@@ -7,6 +7,7 @@ import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../a
 
 class PetProfile extends Component {
     componentDidMount() {
+
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
@@ -49,7 +50,7 @@ class PetProfile extends Component {
 
         <div className="petInfoDiv">
           <div>
-            <Link to='/pet-to-vet/'><button>Connect this Pet to Vet</button></Link>
+            <Link to={`/pet-to-vet/${this.props.match.params.id}`}><button>Connect this Pet to Vet</button></Link>
           </div>
           <div className="petInfo">
             <h4>Name: {petObj.name}</h4>
