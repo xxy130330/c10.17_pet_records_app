@@ -211,6 +211,20 @@ export function editMedicalRecord(recordData, params){
 
 
 
+
+// const ownerIDs = [1,576,88,46,21];
+
+
+
+
+
+
+
+
+
+
+
+
 //axios post call, pass in recordId and all info
 // const edit_records_url= '/server/database_connect/server.php?action=post&resource=editMedicalRecord';
 
@@ -231,3 +245,4 @@ export function uploadImage(data) {
     payload: request
   };
 }
+

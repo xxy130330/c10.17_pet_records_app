@@ -1,11 +1,15 @@
 import { ADD_PET } from '../actions/index';
 
-export default function(state=[], action){
+const DEFAULT_STATE = {
+  petId: null
+};
+
+export default function(state=DEFAULT_STATE, action){
 
   switch(action.type){
-    case ADD_PET:
+      case ADD_PET:
     console.log('IN ADDPET REDUCE:', action.payload.data);
-      return action.payload;
+      return {petId: action.payload.data.data};
   }
   return state;
 }

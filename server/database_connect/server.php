@@ -114,6 +114,11 @@ switch($_GET['action']) {
                 }
                 break;
             }
+            case 'petVetConnect': {
+                if (!empty($post)) {
+                    require('./actions/connect_pet_to_vet.php');
+                }
+            }
         }
 
     }
