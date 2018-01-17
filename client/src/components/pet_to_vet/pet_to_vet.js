@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 //ownerID who is currently logged in
 //petID
 
-//for onwerID , you can use this.props.id
+//for ownerID , you can use this.props.id
 //for petID, you can use this.props.match.params.petId
 
 class PetToVet extends Component {
