@@ -27,7 +27,7 @@ const rootReducer = combineReducers({
   uploadImage: UploadImageReducer,
   user: userReducer,
   editMedicalRecord: editMedicalRecordReducer,
-  vetlogin: VetLoginReducer,
+  vetlogin: VetLoginReducer
 
 });
 

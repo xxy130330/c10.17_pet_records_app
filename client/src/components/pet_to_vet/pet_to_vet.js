@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 
-export default class PetToVet extends Component {
+
+//ownerID who is currently logged in
+//petID
+
+//for onwerID , you can use this.props.id
+//for petID, you can use this.props.match.params.petId
+
+class PetToVet extends Component {
   constructor(props) {
     super(props);
 
@@ -9,12 +17,29 @@ export default class PetToVet extends Component {
       form: {
         vetEmail: "",
         vetRefNum: ""
-      }
+      },
+      ownerID: localStorage.id,
+      petID: null
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-
-
   }
+
+  componentDidMount() {
+    console.log('PET TO VET PROPS:::', this.props);
+    console.log('PET TO VET ownerID:::', this.props.id);
+    console.log('PET TO VET PETID::::', this.props.match.params.petId);
+    let currentOwnerId = null;
+    if(this.props.id){
+      currentOwnerId = this.props.id;
+      localStorage.id = currentOwnerId;
+    } else {
+      currentOwnerId = localStorage.id;
+    }
+  }
+
+
+
+
   handleInputChange(e) {
 
     const { name, value } = e.target;
@@ -33,6 +58,7 @@ export default class PetToVet extends Component {
 
 
   render() {
+
     const { vetEmail, vetRefNum } = this.state.form;
     return (
       <div>
@@ -69,3 +95,17 @@ export default class PetToVet extends Component {
     );
   }
 }
+
+
+
+function mapStateToProps(state) {
+  return {
+    id: state.login.id,
+  };
+}
+
+
+export default connect(mapStateToProps)(PetToVet)
+
+
+
