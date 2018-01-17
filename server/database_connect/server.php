@@ -116,7 +116,7 @@ switch($_GET['action']) {
             }
             case 'vetLogIn': {
                 if (!empty($post)) {
-                    require('./actions/vet_login.php.php');
+                    require('./actions/vet_login.php');
 
                 }
                 break;
