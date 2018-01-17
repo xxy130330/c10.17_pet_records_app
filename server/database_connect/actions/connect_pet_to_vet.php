@@ -46,7 +46,7 @@ if ($result) {
 
                         $res = json_encode($res);
 
-                        $query = "UPDATE `vets` SET `active_pets` = '$res' WHERE `ref_ID` = $refNum";
+                        $query = "UPDATE `vets` SET `active_pets` = '$res' WHERE `ref_ID` = '$refNum'";
 
                         $result = mysqli_query($conn, $query);
 
