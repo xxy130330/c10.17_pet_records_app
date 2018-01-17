@@ -1,89 +1,115 @@
-import React, {Component} from 'react';
-import Logo from '../../../../server/images/petvet_logo.png';
-import axios from 'axios';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./vet_page_reg.css";
+import Logo from "../../../../server/images/petvet_logo.png";
+import { connect } from "react-redux";
+import { vet_register } from "../../actions/";
+import { Field, reduxForm } from "redux-form";
 
 class VetPage extends Component {
-    constructor(props){
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state= {
-           form: {
-               userName: '',
-               password: '',
-               confirmPassword: '',
-               email: '',
-               phone: ''
-           }
-        };
-        this.handleInputChange=this.handleInputChange.bind(this);
-        this.handleSubmit=this.handleSubmit.bind(this);
-    }
-    handleInputChange(e){
-        const {name, value}= e.target;
-        const {form}= this.state;
-        form[name]= value;
-        this.setState({form: {...form}});
-    }
-    handleSubmit(e){
-        e.preventDefault();
-        console.log('hello ', this.state);
+    this.state = {
+      errorMessage: ""
+    };
+  }
 
-        axios({
-            method: 'post',
-            url: '/server/database_connect/server.php?action=post&resource=registerVet',
-            dataType: 'json',
-            data: {
-                username: this.state.form.userName,
-                password: this.state.form.password,
-                email: this.state.form.email,
-                phone: this.state.form.phone,
-            },
-        }).then(function(res) {
-            console.log(res);
-        });
+  renderInput({ label, input, type, meta: { touched, error, active } }) {
+    return (
+      <div className="form-group row">
+        <label className="col-form-label">{label}</label>
+        <input className="form-control" type={type} {...input} />
+      </div>
+    );
+  }
 
-        // this.setState({
-        //     form: {
-        //         userName: '',
-        //         password: '',
-        //         confirmPassword: '',
-        //         email: '',
-        //         phone: ''
-        //     }
-        // })
+  handleSubmits(values) {
+    console.log("values", values);
+
+    if (values.password !== values.confirmpassword) {
+      this.setState({
+        errorMessage: "Please match the password"
+      });
+      return;
+    } else if (values.password === values.confirmpassword) {
+      this.setState({
+        errorMessage: ""
+      });
     }
-    render(){
-        const {userName, password, confirmPassword, email, phone} = this.state.form;
-        return(
-            <div>
-                <form className='container' onSubmit={(e)=>this.handleSubmit(e)} >
-                    <div className='form-group'>
-                        <label>User Name</label>
-                        <input onChange={(e)=> this.handleInputChange(e)} className='form-control input-lg' type='text' name='userName' value={userName} />
-                    </div>
-                    <div className='form-group'>
-                        <label>Password</label>
-                        <input  onChange={(e)=>this.handleInputChange(e)} className='form-control input-lg' type='password' name="password" value={password} />
-                    </div>
-                    <div className='form-group'>
-                        <label>Confirm Password</label>
-                        <input onChange={(e)=>this.handleInputChange(e)} className='form-control input-lg' type='password' name="confirmPassword" value={confirmPassword}/>
-                    </div>
-                    <div className='form-group'>
-                        <label>Email</label>
-                        <input onChange={(e)=>this.handleInputChange(e)} className='form-control input-lg' type='text' name='email' value={email}/>
-                    </div>
-                    <div className='form-group'>
-                        <label>Phone Number</label>
-                        <input onChange={(e)=>this.handleInputChange(e)} className='form-control input-lg' type='text' name='phone' value={phone}/>
-                    </div>
-                    <div className='buttonContainer'>
-                        {/*<button className='btn btn-primary'>Login</button>*/}
-                        <button className='btn btn-success'>Sign Up</button>
-                    </div>
-                </form>
-            </div>
-        )
-    }
+
+    this.props
+      .vet_register(values.username, values.phone, values.password, values.email)
+      .then(() => {
+        this.props.history.push("/login-page");
+      });
+  }
+  render() {
+    return (
+      <div>
+        <div className="logoContainer">
+          <div className="logo" />
+        </div>
+        <hr />
+
+        <form
+          id="form-container"
+          className="col-xs-10 col-xs-offset-1"
+          onSubmit={this.props.handleSubmit(this.handleSubmits.bind(this))}
+        >
+          <Field
+            name="username"
+            label="Username"
+            type="text"
+            component={this.renderInput}
+          />
+          <Field
+            name="phone"
+            label="Phone"
+            type="text"
+            component={this.renderInput}
+          />
+          <Field
+            name="password"
+            label="Password"
+            type="password"
+            component={this.renderInput}
+          />
+          <Field
+            name="confirmpassword"
+            label="Confirm Password"
+            type="password"
+            component={this.renderInput}
+          />
+
+          <Field
+            name="email"
+            label="Email"
+            type="email"
+            component={this.renderInput}
+          />
+
+          <div className="buttonContainer row">
+            <button className="btn btn-success">Sign Up</button>
+          </div>
+          <p>VET REGISTER</p>
+          <p className="text-danger">{this.state.errorMessage}</p>
+        </form>
+      </div>
+    );
+  }
 }
-export default VetPage;
+
+function validate(values) {
+  const errors = {};
+  return errors;
+}
+
+VetPage = reduxForm({
+  form: "vet-page",
+  validate: validate
+})(VetPage);
+
+export default connect(null, {
+  vet_register
+})(VetPage);

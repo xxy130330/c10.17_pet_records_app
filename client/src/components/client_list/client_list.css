@@ -1,0 +1,27 @@
+h3 {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.vetInfoContainer{
+    position: relative;
+    margin-top: 15vh;
+    height: 20vh;
+}
+
+.vetInfoDiv{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+
+.recordContainer {
+    height: 8vh;
+    position: relative;
+}
+.recordContainer:nth-child(odd) {
+    background-color: rgba(255,165,0, .2);
+}

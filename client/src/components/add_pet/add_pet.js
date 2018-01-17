@@ -59,7 +59,7 @@ class AddPet extends Component {
 
 
                                             //this will be the url variable
-    this.props.addPet(name, dob, breed, this.currentOwnerId , this.url).then(()=>this.props.history.push('/pet-list/'));
+    this.props.addPet(name, dob, breed, this.currentOwnerId , this.url).then(()=>this.props.history.push('/pet-to-vet/'));
 
     this.setState({
       form: {
