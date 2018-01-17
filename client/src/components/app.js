@@ -44,6 +44,7 @@ class App extends Component {
             path="/pet-profile/:petId/record-item/:recordId"
             component={auth(RecordItem)}
           />
+
           <Route path="/parent-page" component={auth(ParentPage)} />
           <Route path="/add-pet/" component={auth(AddPet)} />
           <Route path="/vet-page" component={auth(VetPage)} />
@@ -51,10 +52,11 @@ class App extends Component {
             path="/pet-profile/:id/add-med-note"
             component={auth(AddMedNote)}
           />
-          <Route path="/pet-to-vet/" component={auth(PetToVet)} />
+          <Route path="/pet-to-vet/:petId" component={auth(PetToVet)} />
           <Route path='/client-list/' component={auth(ClientList)}/>
           <Route path="/*" component={Footer} />
-          
+
+
         </div>
       </Router>
     );
