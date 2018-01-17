@@ -4,12 +4,11 @@ import {Link} from 'react-router-dom';
 
 export default props =>{
     return(
-        <div>
-            <header>
-                <Link to='/'>
-                    <div className="title"><img src={Logo}/></div>
-                </Link>
-            </header>
-        </div>
+      <div className='header'>
+          <Link to='/'>
+              <div className="title"><img src={Logo}/></div>
+          </Link>
+      </div>
+
     )
 }

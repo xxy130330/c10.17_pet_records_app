@@ -19,6 +19,9 @@ $output['errors'][] = $query;
 if ($result) {
     if (mysqli_affected_rows($conn) > 0) {
         $output['success'] = true;
+        $petID = mysqli_insert_id($conn);
+        $output['data'] = $petID;
+
     } else {
         $output['errors'][] = 'no data available';
 

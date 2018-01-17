@@ -54,6 +54,7 @@ class PetToVet extends Component {
 
   handleSubmit(e){
     e.preventDefault();
+    console.log('we submitted shit', this.props);
 
     const url = '/server/database_connect/server.php?action=post&resource=petVetConnect';
     axios({
@@ -63,11 +64,13 @@ class PetToVet extends Component {
         data: {
           vetEmail: this.state.form.vetEmail,
           refNum: this.state.form.vetRefNum,
-          ownerID: 23,
-          petID: 22,
+          ownerID: this.props.id,
+          petID: this.props.match.params.petId,
         }
-    }).then(function(res) {
+    }).then(res => {
       console.log(res.data);
+      this.props.history.push('/pet-list/');
+
     });
 
   }
@@ -77,7 +80,7 @@ class PetToVet extends Component {
 
     const { vetEmail, vetRefNum } = this.state.form;
     return (
-      <div>
+      <div className='bodyContainer'>
         <div className="pictureContainer">
           <h2 className="text-center">Connect Pet To Vet</h2>
         </div>
