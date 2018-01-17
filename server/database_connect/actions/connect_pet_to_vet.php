@@ -13,6 +13,8 @@ $email = $post['vetEmail'];
 $refNum = $post['refNum'];
 $ownerID = $post['ownerID'];
 $petID = $post['petID'];
+$hasID = false;
+$hasPetID = false;
 
 //Check to see if the email and reference number match
 $query = "SELECT * FROM `vets` WHERE `ref_ID` = '$refNum' AND `email` = '$email'";
@@ -64,29 +66,50 @@ if ($result) {
                     } else {
                         //decode the vets active pets
                         $petObj = json_decode($petStr);
-                        $count = count($petObj);
+                        $ownerCount = count($petObj);
 
-                        for ($i = 0; $i < $count; $i++) {
+                        for ($i = 0; $i < $ownerCount; $i++) {
                             if ($petObj[$i]->ownerID === $ownerID) {
                                 $ownerIndex = $i;
                                 $output['errors'][] = 'existing owner';
                                 $output['errors'][] = $ownerID;
+                                $hasID = true;
+
+                                //check to see if the pet has already been added
+                                $petCount = count($petObj[$ownerIndex]->petID);
+                                for ($k = 0; $k < $petCount; $k++) {
+                                    if ($petObj[$ownerIndex]->petID[$k] === $petID) {
+                                        $hasPetID = true;
+                                        break;
+                                    }
+                                }
                                 break;
                             }
-                            else {
-                                $output['errors'][] = 'new owner';
-                                //create the dataObj and append it to the existing array;
-                                $res = createNewDataObj($ownerID, $petID);
-                                $petObj[] = $res;
-                                $output['errors'][] = $petObj;
-                                $result = storeActivePets($petObj, $refNum, $conn);
-//                                if ($result) {
-//                                    $output['success'] = true;
-//                                } else {
-//                                    $output['success'] = false;
-//                                }
-                            }
                         }
+                    if (!$hasID) {
+                            $output['errors'][] = 'new owner';
+                            //create the dataObj and append it to the existing array;
+                            $res = createNewDataObj($ownerID, $petID);
+                            $petObj[] = $res;
+                            $output['errors'][] = $petObj;
+                            $result = storeActivePets($petObj, $refNum, $conn);
+                            if ($result) {
+                                $output['success'] = true;
+                            } else {
+                                $output['success'] = false;
+                            }
+                        } else if ($hasID && $hasPetID === false) {
+                            $output['data'][] = 'same owner new pet';
+                            $petObj[$ownerIndex]->petID[] = $petID;
+                            $result = storeActivePets($petObj, $refNum, $conn);
+                            if ($result) {
+                                $output['success'] = true;
+                            } else {
+                                $output['success'] = false;
+                            }
+                        } else {
+                            $output['errors'][] = 'the pet is already filed under the vets account';
+                    }
                     }
                 }
             } else {
