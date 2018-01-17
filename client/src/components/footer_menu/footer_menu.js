@@ -1,24 +1,28 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { switchAuthentication } from "../../actions";
 
-
-const Footer = (props) => {
-
-
-
-  if(props.match.url === '/' || props.match.url === '/login-page') return null;
+const Footer = props => {
+  if (props.match.url === "/" || props.match.url === "/login-page") return null;
 
   return (
     <footer>
       <div className="iconNav">
         <a href="#">
-          <span className="glyphicon glyphicon-chevron-left" onClick={()=>props.history.goBack()}/>
+          <span
+            className="glyphicon glyphicon-chevron-left"
+            onClick={() => props.history.goBack()}
+          />
         </a>
       </div>
       <div className="iconNav">
-        {/*<Link to="/add-med-note/">*/}
-          <span className="glyphicon glyphicon-comment" />
-        {/*</Link>*/}
+        <Link to="/">
+          <span
+            onClick={() => props.switchAuthentication(false)}
+            className="glyphicon glyphicon-comment"
+          />
+        </Link>
       </div>
       <div className="iconNav">
         <Link to="/add-pet/">
@@ -33,5 +37,10 @@ const Footer = (props) => {
     </footer>
   );
 };
+function mapStateToProps(state) {
+  return {
+    auth: state.user.auth
+  };
+}
 
-export default Footer;
+export default connect(mapStateToProps, { switchAuthentication })(Footer);

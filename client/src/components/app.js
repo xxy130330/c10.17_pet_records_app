@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import auth from "../hoc/auth";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import LandingPage from "./landing_page/landing_page";
 import LoginPage from "./login_page/login_page";
 import VetLoginPage from "./vet_login_page/vet_login_page";
@@ -22,7 +24,6 @@ class App extends Component {
 
     this.state = {
       PetData: []
-
     };
   }
 
@@ -36,24 +37,24 @@ class App extends Component {
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />
           <Route path="/vet-login-page/" component={VetLoginPage} />
-          <Route path="/pet-list/" component={PetList} />
-          <Route exact path="/pet-profile/:id" component={PetProfile} />
-
+          <Route path="/pet-list/" component={auth(PetList)} />
+          <Route exact path="/pet-profile/:id" component={auth(PetProfile)} />
           <Route
             exact
             path="/pet-profile/:petId/record-item/:recordId"
-            component={RecordItem}
+            component={auth(RecordItem)}
           />
-
-          <Route path="/parent-page" component={ParentPage} />
-          <Route path="/add-pet/" component={AddPet} />
-          <Route path="/vet-page" component={VetPage} />
-          <Route path="/pet-profile/:id/add-med-note" component={AddMedNote} />
-          <Route path="/*" render={Footer} />
-
-          <Route path='/pet-to-vet/' component={PetToVet}/>
-          <Route path='/client-list/' component={ClientList}/>
-
+          <Route path="/parent-page" component={auth(ParentPage)} />
+          <Route path="/add-pet/" component={auth(AddPet)} />
+          <Route path="/vet-page" component={auth(VetPage)} />
+          <Route
+            path="/pet-profile/:id/add-med-note"
+            component={auth(AddMedNote)}
+          />
+          <Route path="/pet-to-vet/" component={auth(PetToVet)} />
+          <Route path='/client-list/' component={auth(ClientList)}/>
+          <Route path="/*" component={Footer} />
+          
         </div>
       </Router>
     );
