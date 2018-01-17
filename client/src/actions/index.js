@@ -185,6 +185,33 @@ export function vet_register(username, password, email) {
     payload: request
   };
 }
+////// EDITING RECORDS
+const edit_records_url = '/server/database_connect/server.php?action=post&resource=editMedicalRecord';
+
+export const EDIT_MEDICAL_RECORD = 'EDIT_MEDICAL_RECORD';
+
+export function editMedicalRecord(recordData, params){
+    const request= axios({
+        method: 'post',
+        url: edit_records_url,
+        data: {
+            ID: params.recordId,
+            petID: params.petId,
+            type: recordData.editType,
+            record_data: recordData.editDetails,
+            treatment_date: recordData.editDate
+        }
+    });
+    return{
+        type: EDIT_MEDICAL_RECORD,
+        payload: request
+    }
+}
+
+
+
+//axios post call, pass in recordId and all info
+// const edit_records_url= '/server/database_connect/server.php?action=post&resource=editMedicalRecord';
 
 //****** POST pet avatar image ********/
 const pet_image_url =
