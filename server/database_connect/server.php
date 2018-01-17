@@ -52,6 +52,11 @@ switch($_GET['action']) {
                 }
                 break;
             }
+            case 'client_list': {
+                if (!empty($_GET['vetID'])) {
+                    require('./actions/read_vets_owners.php');
+                }
+            }
 
         }
     case 'post':

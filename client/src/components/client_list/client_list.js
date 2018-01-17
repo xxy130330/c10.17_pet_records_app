@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./client_list.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
+import axios from 'axios';
 // import { connect } from "react-redux";
 // import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../actions/";
 
@@ -88,6 +89,17 @@ export default class ClientList extends Component {
   //   });
   //   return medicalRecordsList;
   // }
+    componentWillMount() {
+        //pull vets associated owners
+        const url = '/server/database_connect/server.php?action=get&resource=client_list&vetID=' + 12;
+        axios({
+            method: 'get',
+            dataType: 'json',
+            url: url,
+        }).then(res => {
+            console.log(res.data);
+        });
+    }
 
   render() {
       // console.log('props after delete record item in render', this.props);
