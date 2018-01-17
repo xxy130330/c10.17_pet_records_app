@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Logo from '../../../../server/images/petvet_logo.png';
-import './manually_add_med_note.css';
 import axios from 'axios';
 import { connect } from "react-redux";
 import { addMedicalItem } from "../../actions/";
@@ -48,7 +47,7 @@ class AddMedNote extends Component {
         // console.log('these are the props in MANUAL', this.props);
         const {title,date,comment}= this.state.form;
         return(
-            <div>
+            <div className='bodyContainer'>
                 <div className='logoContainer'>
                     <div className='logo'></div>
                 </div>

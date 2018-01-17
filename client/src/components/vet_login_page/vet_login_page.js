@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./vet_login_page.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import axios from "axios";
@@ -33,7 +32,7 @@ class VetLoginPage extends Component {
       .vet_login(this.state.form.username, this.state.form.password)
       .then(() => {
         if (this.props.success) {
-          this.props.switchAuthentication(true);          
+          this.props.switchAuthentication(true);
           this.props.history.push("/client-list/");
         }
       });
@@ -51,7 +50,7 @@ class VetLoginPage extends Component {
     const { username, password } = this.state.form;
 
     return (
-      <div>
+      <div className='bodyContainer'>
         <div className="logoContainer">
           <h1>VET LOG IN</h1>
           <div className="logo" />

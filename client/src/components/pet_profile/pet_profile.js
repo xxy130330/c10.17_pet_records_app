@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./pet_page.css";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
@@ -112,7 +111,7 @@ class PetProfile extends Component {
 
 
     return (
-      <div>
+      <div className='bodyContainer'>
         {this.getPetInfo()}
         <hr />
         <div className="medicalRecord">

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./record_item.css";
+
 import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
 import { fetchMedicalData, editMedicalRecord } from "../../actions/";
@@ -97,7 +97,7 @@ class RecordItem extends Component {
       const viewData= canEdit? editData: staticData;
       return (
 
-        <div className=" record_item_container">
+        <div className="bodyContainer">
             {viewData}
             {canEdit? this.renderButton(): ''}
         </div>

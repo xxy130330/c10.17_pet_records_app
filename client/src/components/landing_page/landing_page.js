@@ -1,12 +1,11 @@
 import React from 'react';
-import './landing_page.css';
 import {Link} from 'react-router-dom';
 import Logo from '../../../../server/images/petvet_logo.png';
 
 export default props=>{
 
     return(
-        <div>
+        <div className='bodyContainer'>
             <div className='logoContainer'>
                 <div className='logo'></div>
             </div>
