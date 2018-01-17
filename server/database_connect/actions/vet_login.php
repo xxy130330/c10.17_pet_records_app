@@ -38,7 +38,7 @@ if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             $output['data'] = 'successful_login';
             $output['loginSuccess'] = true;
-            $output['ownerID'] = $row['ID'];
+            $output['vetID'] = $row['ID'];
         }
     } else {
         $output['errors'][] = 'Incorrect username or password';
