@@ -105,6 +105,10 @@ class ClientList extends Component {
     if (!this.props.clientList.length) {
         return <h1>Loading</h1>;
     }
+    console.log('clienList: ', this.props.clientList);
+      console.log('name: ', this.props.name);
+      console.log('ref ID: ', this.props.ref_id);
+
     let clientInformation= this.props.clientList.map((client, index)=>{
         return (
             <div className='recordContainer' key={index} onClick={()=>console.log('you clicked on clientID ', this.props.clientList[index].ownerID)}>
@@ -120,27 +124,15 @@ class ClientList extends Component {
       <div className='bodyContainer'>
         <div className="vetInfoContainer">
           <div className="vetInfoDiv text-center">
-              <h4>Name: Some Vet's Nam</h4>
-              <h4>Ref#: Some Vet's Ref#</h4>
+              <h4>Vet Name: {this.props.name}</h4>
+              <h4>Ref#: {this.props.ref_id}</h4>
           </div>
         </div>
         <hr />
         <div className="clientList">
           <div className="text-center">
-            <h1>Client List</h1>
+            <h2>Client List</h2>
               {clientInformation}
-            {/*<div className="recordContainer">*/}
-              {/*<h3>  </h3>*/}
-              {/*<h5> </h5>*/}
-            {/*</div>*/}
-            {/*<div className="recordContainer">*/}
-              {/*<h3> Client Two Name </h3>*/}
-                {/*<h5></h5>*/}
-            {/*</div>*/}
-            {/*<div className="recordContainer">*/}
-              {/*<h3> Client Three Name </h3>*/}
-                {/*<h5></h5>*/}
-            {/*</div>*/}
           </div>
         </div>
       </div>
@@ -150,7 +142,9 @@ class ClientList extends Component {
 
 function mapStateToProps(state) {
   return {
-    clientList: state.vetClientData
+    clientList: state.vetClientData.clientList,
+    name: state.vetClientData.name,
+    ref_id: state.vetClientData.ref_id
   };
 }
 
