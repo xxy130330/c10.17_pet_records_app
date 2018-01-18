@@ -35,6 +35,7 @@ if ($result) {
     if(mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $output['data'] = 'successful_login';
+            $output['accessLevel'] = $row['level'];
             $output['loginSuccess'] = true;
             $output['ownerID'] = $row['ID'];
         }
