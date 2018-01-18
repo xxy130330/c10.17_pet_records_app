@@ -12,8 +12,6 @@ class PetList extends Component {
   }
 
   componentWillMount() {
-
-  console.log('PETLIST PAGE OWNERID::::', this.props.id)
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
