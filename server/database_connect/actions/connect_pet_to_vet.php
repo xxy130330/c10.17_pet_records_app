@@ -15,6 +15,7 @@ $ownerID = $post['ownerID'];
 $petID = $post['petID'];
 $hasID = false;
 $hasPetID = false;
+$vetName = null;
 
 //Check to see if the email and reference number match
 $query = "SELECT * FROM `vets` WHERE `ref_ID` = '$refNum' AND `email` = '$email'";
@@ -43,15 +44,12 @@ function storeActivePets($res, $refNum, $conn) {
 if ($result) {
     if (mysqli_num_rows($result) > 0) {
         $output['success'] = true;
-
         //Insert the users ID into the vet db if there isn't anything in active_pets otherwise pull active_pets and append data to it.
-        $query = "SELECT `active_pets` FROM `vets` WHERE `ref_ID` = '$refNum'";
-        $result = mysqli_query($conn, $query);
 
         if ($result) {
-            if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     $petStr = $row['active_pets'];
+                    $vetName = $row['name'];
                     if ($petStr === "NULL") {
                         $output['errors'][] = 'No active pets';
                         //create the object to be inserted into the database
@@ -110,11 +108,9 @@ if ($result) {
                             }
                         } else {
                             $output['errors'][] = 'the pet is already filed under the vets account';
-                    }
+                        }
                     }
                 }
-            } else {
-                $output['errors'][] = 'No data found';
             }
         } else {
             $output['errors'][] = 'Error in SQL query fetching active_pets';
@@ -123,6 +119,18 @@ if ($result) {
     } else {
         $output['errors'][] = 'No data available';
     }
-} else {
-    $output['errors'][] = 'Error in SQL query';
-}
+    //add vet name to pet table
+    if ($vetName !== null) {
+        $query = "UPDATE `pets` SET `vet` = '$vetName' WHERE `ID` = $petID";
+        $output['errors'][] = $query;
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            if (mysqli_affected_rows($conn) > 0) {
+                $output['data'][] = 'inserted vet name in database';
+            }
+        } else {
+            $output['errors'][] = 'Error in SQL query';
+        }
+    }
+?>

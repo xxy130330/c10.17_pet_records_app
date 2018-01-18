@@ -66,7 +66,16 @@ export function fetchVetClientData(vetId) {
         payload: request
     };
 }
+// const vet_client_pets_url = '/server/database_connect/server.php?action=get&resource=pets_for_vet&ownerID=\' + this.props.clientList[index].ownerID + \'&vetID=\' + this.props.match.params.vetId';
+export const VET_CLIENT_PETS= 'VET_CLIENT_PETS';
 
+export function fetchVetClientPets(ownerId,vetId ) {
+    const request = axios.get('/server/database_connect/server.php?action=get&resource=pets_for_vet&ownerID=' + ownerId+ '&vetID=' +vetId);
+    return {
+        type: VET_CLIENT_PETS,
+        payload: request
+    };
+}
 
 
 //****** POST medical records ********/
