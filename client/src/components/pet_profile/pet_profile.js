@@ -56,7 +56,7 @@ class PetProfile extends Component {
             <h4>DOB: {petObj.dob}</h4>
             <h4>Breed: {petObj.breed}</h4>
           {/*Will Display vet info here*/}
-            <h4>Vet:</h4>
+            <h4>Vet: {petObj.vet}</h4>
 
           </div>
         </div>
