@@ -40,7 +40,7 @@ class VetPage extends Component {
     this.props
       .vet_register(values.username, values.phone, values.password, values.email)
       .then(() => {
-        this.props.history.push("/login-page");
+        this.props.history.push("/vet-login-page");
       });
   }
   render() {
