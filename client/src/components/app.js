@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <Router>
         <div className='mainContainer'>
-          <Route to="/*" component={Header} />
+          <Route path="/*" component={Header} />
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />
           <Route path="/vet-login-page/" component={VetLoginPage} />

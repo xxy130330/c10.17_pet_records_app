@@ -8,6 +8,7 @@ import { login, switchAuthentication } from "../../actions/";
 class LoginPage extends Component {
   constructor(props) {
     super(props);
+    console.log('login props url:', props.match.url);
     this.state = {
       form: {
         username: "",
@@ -53,7 +54,7 @@ class LoginPage extends Component {
       <div className='bodyContainer'>
         <div className="logoContainer">
           <h1>PET LOG IN</h1>
-          <div className="logo" />
+          {/* <div className="logo" /> */}
         </div>
         <form
           id="form-container"
