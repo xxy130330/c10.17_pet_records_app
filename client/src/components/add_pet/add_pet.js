@@ -73,6 +73,7 @@ class AddPet extends Component {
 
   }
     getFileName(e) {
+      console.log('again?');
         e.preventDefault();
         console.log(document.getElementById('file').files[0]);
 
@@ -97,13 +98,14 @@ class AddPet extends Component {
             showZoomer: true,
             enableResize:true
         })
+        console.log('why?', url);
         this.croppie.bind({
-            url: 'https://pbs.twimg.com/profile_images/378800000532546226/dbe5f0727b69487016ffd67a6689e75a.jpeg'
+            url: url
         })
     }
 
     upload(){
-      console.log('upload clicked');
+      console.log('upload clicked', this.url);
 
         this.croppie.result({
             type:'blob',
