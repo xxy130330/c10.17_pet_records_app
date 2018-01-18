@@ -1,6 +1,6 @@
 @font-face {
   font-family: text-font;
-  src: url(../components/assets/fonts/PatrickHand-Regular.ttf);
+  src: url(../components/assets/fonts/Forum-Regular.ttf);
 }
 
 body {
@@ -297,3 +297,8 @@ h3 {
   height: 100%;
   position: absolute;
 }
+/************* pet log_in *************/
+.formContainer {
+  top: 20%;
+}
+

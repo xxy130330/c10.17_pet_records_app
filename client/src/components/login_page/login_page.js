@@ -4,6 +4,7 @@ import Logo from "../../../../server/images/petvet_logo.png";
 import axios from "axios";
 import { connect } from "react-redux";
 import { login, switchAuthentication } from "../../actions/";
+import petBtn from "../../../dist/assets/images/pet_btn.png";
 
 class LoginPage extends Component {
   constructor(props) {
@@ -54,15 +55,14 @@ class LoginPage extends Component {
       <div className='bodyContainer'>
         <div className="logoContainer">
           <h1>PET LOG IN</h1>
-          {/* <div className="logo" /> */}
+          <img src={petBtn}/>
         </div>
         <form
-          id="form-container"
-          className="col-xs-10 col-xs-offset-1"
+          className="formContainer col-xs-10 col-xs-offset-1"
           onSubmit={e => this.handleSubmit(e)}
         >
           <div className="form-group">
-            <label>User Name</label>
+            <label>Email: </label>
             <input
               className="form-control input-lg"
               type="text"
@@ -73,7 +73,7 @@ class LoginPage extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Password</label>
+            <label>Password:</label>
             <input
               className="form-control input-lg"
               type="password"
@@ -92,7 +92,7 @@ class LoginPage extends Component {
           <br />
           <div id="register">
             New User?
-            <Link to="/parent-page/">Register</Link>
+            <Link to="/parent-page/"> Register</Link>
           </div>
         </form>
       </div>
