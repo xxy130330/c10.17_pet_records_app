@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 
 export default props =>{
     if (props.match.url === "/") return null;
-    console.log('header props url:', props.match.url);
-    
+    // console.log('header props url:', props.match.url);
+
     return(
       <div className='header'>
           <Link to='/'>
