@@ -78,8 +78,6 @@ export function fetchVetClientPets(ownerId,vetId ) {
 }
 
 
-
-
 //****** POST medical records ********/
 const add_medical_item_url =
   "/server/database_connect/server.php?action=post&resource=record-item";

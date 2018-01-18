@@ -9,17 +9,9 @@ class VetClientPets extends Component {
     constructor(props) {
         super(props);
     }
-
     componentWillMount() {
         const params= this.props.match.params;
-        console.log(params);
-
-        this.props.fetchVetClientPets(params.ownerId, params.vetId).then(()=>{
-            console.log('the props for vet client pets: ', this.props);
-
-        });
-
-
+        this.props.fetchVetClientPets(params.ownerId, params.vetId);
     }
     render() {
         const clientPetList = this.props.clientPetList.map((pet, index) => {

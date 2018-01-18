@@ -20,8 +20,6 @@ class PetProfile extends Component {
 
     softDeleteRecord(index) {
         const petProfileData= this.props.petProfile;
-        console.log('props after mapping state to it in petprofile:', this.props);
-        console.log('recordID of item trying to delete', petProfileData[index]["recordID"]);
         this.props.deleteMedicalRecordItem(petProfileData[index]['recordID']).then(()=>{
             this.props.fetchProfileData(this.props.match.params.id)
         });
@@ -97,7 +95,6 @@ class PetProfile extends Component {
   }
 
   render() {
-      console.log('props after delete record item in render', this.props);
     // if (!this.props.petProfile.length) {
     //     return <h1>Loading</h1>;
     // }
