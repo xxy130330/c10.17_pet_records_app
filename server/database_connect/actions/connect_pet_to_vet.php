@@ -32,6 +32,7 @@ function createNewDataObj($ownerID, $petID) {
 
     return $tmpObj;
 }
+
 function storeActivePets($res, $refNum, $conn) {
     $res = json_encode($res);
     $query = "UPDATE `vets` SET `active_pets` = '$res' WHERE `ref_ID` = '$refNum'";
