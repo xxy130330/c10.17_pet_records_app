@@ -9,7 +9,7 @@ const CURRENT_USER = {
 export default function(state = CURRENT_USER, action) {
   switch (action.type) {
     case LOGIN:
-      console.log("ACTION ::::", action.payload);
+      // console.log("ACTION ::::", action.payload);
       return {
         ...state,
         success: action.payload.data.loginSuccess,
@@ -17,7 +17,7 @@ export default function(state = CURRENT_USER, action) {
         errorMessage: action.payload.data.errors[0]
       };
     case REGISTER:
-      console.log("RESTER WORKS", action);
+      // console.log("RESTER WORKS", action);
       return {
         ...state,
         success: action.payload.data.success,

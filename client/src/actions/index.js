@@ -54,6 +54,30 @@ export function fetchMedicalData(recordId) {
   };
 }
 
+//////********Get Vet Profile && Client List Data**********////////
+
+const vet_client_data_url = '/server/database_connect/server.php?action=get&resource=client_list&vetID=';
+export const VET_CLIENT_DATA= 'VET_CLIENT_DATA';
+
+export function fetchVetClientData(vetId) {
+    const request = axios.get(vet_client_data_url + vetId);
+    return {
+        type: VET_CLIENT_DATA,
+        payload: request
+    };
+}
+// const vet_client_pets_url = '/server/database_connect/server.php?action=get&resource=pets_for_vet&ownerID=\' + this.props.clientList[index].ownerID + \'&vetID=\' + this.props.match.params.vetId';
+export const VET_CLIENT_PETS= 'VET_CLIENT_PETS';
+
+export function fetchVetClientPets(ownerId,vetId ) {
+    const request = axios.get('/server/database_connect/server.php?action=get&resource=pets_for_vet&ownerID=' + ownerId+ '&vetID=' +vetId);
+    return {
+        type: VET_CLIENT_PETS,
+        payload: request
+    };
+}
+
+
 //****** POST medical records ********/
 const add_medical_item_url =
   "/server/database_connect/server.php?action=post&resource=record-item";

@@ -12,7 +12,8 @@ import UploadImageReducer from './upload_image_reducer';
 import editMedicalRecordReducer from './edit_medical_record_reducer';
 import VetLoginReducer from './vet_login_reducer';
 import userReducer from './user_reducer';
-
+import VetClientDataReducer from './fetch_vet_client_data_reducer';
+import VetClientPetsReducer from './vet_client_pets_reducer';
 
 const rootReducer = combineReducers({
   petdata: PetDataReducer,
@@ -27,7 +28,9 @@ const rootReducer = combineReducers({
   uploadImage: UploadImageReducer,
   user: userReducer,
   editMedicalRecord: editMedicalRecordReducer,
-  vetlogin: VetLoginReducer  
+  vetlogin: VetLoginReducer,
+  vetClientData: VetClientDataReducer,
+  vetClientPetsData: VetClientPetsReducer
 });
 
 export default rootReducer;
