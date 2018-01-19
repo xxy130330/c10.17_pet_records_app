@@ -49,7 +49,7 @@ class App extends Component {
           />
 
           <Route path="/parent-page" component={ParentPage} />
-          <Route path="/add-pet/" component={auth(AddPet)} />
+          <Route path="/add-pet/" component={AddPet} />
           <Route path="/vet-page" component={VetPage} />
           <Route
             path="/pet-profile/:id/add-med-note"

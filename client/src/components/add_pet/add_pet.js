@@ -9,6 +9,9 @@ import axios from 'axios';
 import { connect } from "react-redux";
 import { addPet, uploadImage } from "../../actions/";
 
+import '../../../node_modules/croppie/croppie.css';
+import  croppie  from 'croppie';
+
 
 class AddPet extends Component {
   constructor(props) {
@@ -23,9 +26,14 @@ class AddPet extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.upload = this.upload.bind(this);
+
 
     this.currentOwnerId = null;
     this.url = null;
+
+    this.croppie = null;
+
   }
 
 
@@ -52,14 +60,7 @@ class AddPet extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    console.log('this.currentOwnerId', this.currentOwnerId);
-    console.log('It works in add pet');
-
-
     const {name, dob, breed} = this.state.form;
-
-
-                                            //this will be the url variable
     this.props.addPet(name, dob, breed, this.currentOwnerId , this.url).then(()=>this.props.history.push('/pet-to-vet/' + this.props.petId));
 
     this.setState({
@@ -73,43 +74,93 @@ class AddPet extends Component {
 
   }
     getFileName(e) {
+      console.log('again?',e.target);
         e.preventDefault();
-        // var fileName = e.target.files[0];
-
-
-        //axios call for page.php
-        //GET request user file name
-        //return URL to store in db
-        console.log(document.getElementById('file').files[0]);
+        console.log(document.getElementById('file').value);
 
         let data = new FormData();
         data.append('file', document.getElementById('file').files[0]);
+        console.dir(document.getElementById('file').files[0])
 
-        this.props.uploadImage(data).then(()=> this.url = this.props.url.data[0])
 
-        // axios({
-        //     method: 'post',
-        //     encType: 'multipart/form-data',
-        //     url: '../../../../server/database_connect/server.php?action=post&resource=upload-item',
-        //     data: data,
-        // }).then(function(res) {
-        //     console.log(res);
-        // });
+
+        this.props.uploadImage(data).then(()=> this.url = this.props.url.data[0]).then(()=>{
+          this.setupCroppie(this.url);
+        })
+
     }
+
+
+    setupCroppie(url){
+
+        let el = document.getElementById('croppie');
+
+        this.croppie = new croppie(el, {
+            viewport: {width: '100%', height:'100%', type: 'circle'},
+            boundary: {width: '100%', height:'100%'},
+            showZoomer: true,
+            enableResize:true
+        })
+        console.log('why?', url);
+        this.croppie.bind({
+            url: url
+        })
+    }
+
+
+
+    upload(){
+      console.log('upload clicked', this.url);
+
+        this.croppie.result({
+            type:'blob',
+            size:'viewport',
+            circle: true,
+            format: 'png'
+        }).then(res=>{
+            let file = new File([res], 'hello.png', {type: "image/png"});
+            let data = new FormData();
+            data.append('file', file)
+
+
+            console.log('newFILE', file);
+             this.props.uploadImage(data).then(
+              ()=> this.url = this.props.url.data[0])
+        })
+    }
+
+
   render() {
-      console.log(this.props);
+
+
+
     const { name, dob, breed } = this.state.form;
     return (
-      <div>
-        <div className="pictureContainer">
-          <h2 className="text-center">Add Pet</h2>
-        </div>
-        <div>
-          <form onSubmit={(e)=>this.getFileName(e)}>
-            <input type="file" name="file" id='file'/>
-            <button name="upload" value="true">upload</button>
-          </form>
-        </div>
+      <div className='bodyContainer'>
+        <h2 className="text-center">Add Pet</h2>
+
+
+
+          <div className="pictureContainer">
+            <div className="pictureDiv">
+              <div type='file' name='croppie' id="croppie"></div>
+            </div>
+          </div>
+
+          <div className='fileContainer'>
+            <form className='text-center' onSubmit={(e)=>this.getFileName(e)}>
+              <input  type="file" name="file" id='file'/>
+              <button className='btn btn-warning pull-right' name="upload" value="true">SELECT</button>
+            </form>
+            <div>
+              <button className='btn btn-success pull-right' onClick={this.upload}>UPLOAD</button>
+            </div>
+          </div>
+
+
+
+
+
         <form className="container" onSubmit={e => this.handleSubmit(e)}>
           <div className="form-group">
             <label>Name</label>
