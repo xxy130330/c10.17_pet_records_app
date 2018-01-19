@@ -16,18 +16,19 @@ $checkResult = mysqli_query($conn, $queryCheckEmail);
 //Check to see if the email is already in the db
 if ($checkResult) {
     if (mysqli_num_rows($checkResult) === 0) {
-        $query = "INSERT INTO `vets` (`name`, `email`, `phone`, `ID`, `ref_ID`, `active_pets`, `password`, `status`, `updated`) VALUES ('$post[name]', '$post[email]', '$post[phone]', NULL, '0', 'NULL', SHA1('$post[password]'), 'active', CURRENT_DATE)";
+        $query = "INSERT INTO `vets` (`name`, `email`, `phone`, `ID`, `ref_ID`, `active_pets`, `password`, `status`, `updated`, `level`) VALUES ('$post[name]', '$post[email]', '$post[phone]', NULL, '0', 'NULL', SHA1('$post[password]'), 'active', CURRENT_DATE, '2')";
         $result = mysqli_query($conn, $query);
         if ($result) {
             if (mysqli_affected_rows($conn) > 0) {
                 $resultID = mysqli_insert_id($conn);
-
-                $ref_ID = substr(MD5($resultID),0,12);
+                $ref_ID = substr(MD5($resultID),0,6);
 
                 $output['data'][] = $ref_ID;
 
 
                 $refIDQuery = "UPDATE `vets` SET `ref_ID` = '$ref_ID' WHERE `ID` = $resultID";
+
+		$output['query'] = $refIDQuery;
                 $result = mysqli_query($conn, $refIDQuery);
                 $output['ref_ID'] = $ref_ID;
                 if ($result) {

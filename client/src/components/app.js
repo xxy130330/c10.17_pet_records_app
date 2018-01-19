@@ -49,14 +49,14 @@ class App extends Component {
           />
 
           <Route path="/parent-page" component={ParentPage} />
-          <Route path="/add-pet/" component={auth(AddPet)} />
+          <Route path="/add-pet/" component={AddPet} />
           <Route path="/vet-page" component={VetPage} />
           <Route
             path="/pet-profile/:id/add-med-note"
             component={auth(AddMedNote)}
           />
           <Route path="/pet-to-vet/:petId" component={auth(PetToVet)} />
-          <Route path='/client-list/:vetId' component={auth(ClientList)}/>
+          <Route path='/client-list/:vetId/' component={auth(ClientList)}/>
           <Route path='/vet-client-pets/:vetId/:ownerId' component={auth(VetClientPets)}/>
           <Route path="/*" component={Footer} />
 

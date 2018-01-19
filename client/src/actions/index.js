@@ -2,11 +2,21 @@ import axios from "axios";
 
 //******** user Log in auth **********/
 export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
+export const LOG_OUT ="LOG_OUT";
 export function switchAuthentication(auth) {
-  return {
-    type: SWITCH_AUTHENTICATION,
-    auth: auth
-  };
+  if(auth){
+      return {
+          type: SWITCH_AUTHENTICATION,
+          auth: auth
+      };
+  } else {
+      return {
+          type: LOG_OUT,
+          auth: auth
+      };
+  }
+
+
 }
 
 //****** GET pet list records ********/
@@ -261,7 +271,12 @@ export function uploadImage(data) {
     method: "post",
     encType: "multipart/form-data",
     url: pet_image_url,
-    data: data
+    data: data,
+    // headers: {
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Access-Control-Allow-Headers": "*",
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    // }
   });
 
   return {
