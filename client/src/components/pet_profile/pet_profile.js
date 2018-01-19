@@ -50,8 +50,7 @@ class PetProfile extends Component {
         <div className="petInfoDiv">
           <div>
             <Link to={`/pet-to-vet/${this.props.match.params.id}`}>
-                <button style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>Connect this Pet to Vet</button>
-                <button style={!this.props.vetAccessLevel && petObj.vet!=='No vet connected'? {'display':'inline-block'}: {'display':'none'} }>Change Current Vet</button>
+                <button style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>{petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}</button>
             </Link>
           </div>
           <div className="petInfo">
