@@ -16,6 +16,8 @@ class PetProfile extends Component {
     }
     this.props.fetchProfileData(this.props.match.params.id);
     this.props.fetchPetData(currentOwnerId);
+
+    console.log('these are the props in pet profile, ', this.props);
     }
 
     softDeleteRecord(index) {
@@ -47,7 +49,9 @@ class PetProfile extends Component {
 
         <div className="petInfoDiv">
           <div>
-            <Link to={`/pet-to-vet/${this.props.match.params.id}`}><button>Connect this Pet to Vet</button></Link>
+            <Link to={`/pet-to-vet/${this.props.match.params.id}`}>
+                <button style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>{petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}</button>
+            </Link>
           </div>
           <div className="petInfo">
             <h4>Name: {petObj.name}</h4>
@@ -86,7 +90,7 @@ class PetProfile extends Component {
             onClick={() => {this.softDeleteRecord(index)}}
           >
 
-            <div className="glyphicon glyphicon-minus removeRecordIcon" />
+            <div className={this.props.vetAccessLevel? "": "glyphicon glyphicon-minus removeRecordIcon"} />
           </div>
         </div>
       );
@@ -118,8 +122,8 @@ class PetProfile extends Component {
               <Link
                 to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}
               >
-                <p>Add Record</p>
-                <div className="glyphicon glyphicon-plus addRecordIcon" />
+                <p>{this.props.vetAccessLevel? '': 'Add Record'}</p>
+                <div className={this.props.vetAccessLevel?   '':"glyphicon glyphicon-plus addRecordIcon"} />
               </Link>
             </div>
             { this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
@@ -134,12 +138,15 @@ function mapStateToProps(state) {
   return {
     petdata: state.petdata,
     petProfile: state.petProfile,
-    deleteMedicalRecordItem: state.deleteMedicalRecordItem
+    deleteMedicalRecordItem: state.deleteMedicalRecordItem,
+    vetAccessLevel: state.vetlogin.accessLevel,
+
   };
 }
 
 export default connect(mapStateToProps, {
     fetchPetData: fetchPetData,
     fetchProfileData: fetchProfileData,
-    deleteMedicalRecordItem: deleteMedicalRecordItem
+    deleteMedicalRecordItem: deleteMedicalRecordItem,
+
 })(PetProfile);

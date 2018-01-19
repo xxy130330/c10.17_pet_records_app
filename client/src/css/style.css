@@ -5,8 +5,12 @@
 
 body {
   /* height: 100vh; */
-  background-color: rgb(255, 221, 183);
+  background-color: rgb(255, 232, 208);
   font-family: text-font;
+}
+
+a {
+  color: black;
 }
 
 .mainContainer {
@@ -28,21 +32,21 @@ body {
 .bodyContainer {
   position: absolute;
   top: 10%;
-  height: 80%;
+  height: 90%;
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
   padding-bottom: 5%;
 }
 
-footer {
+/* footer {
   overflow: hidden;
   background-color: #ffab3d;
   position: fixed;
   bottom: 0;
   width: 100%;
   height: 10vh;
-}
+} */
 
 /************* Everywhere *************/
 .picture {
@@ -74,21 +78,21 @@ footer {
   height: 100%;
 }
 
-span {
+/* span {
   color: white;
   top: 50% !important;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 3rem;
-}
+} */
 
 .logoContainer {
   text-align: center;
-  height: 100px;
-  /* margin: 13% 0; */
+  height: 35%;
+  margin: 10% 10% 0;
 }
 
-.logo {
+/* .logo {
   background-image: url(../../../server/images/kitten_temp_logo.jpg);
   background-repeat: no-repeat;
   position: relative;
@@ -98,11 +102,11 @@ span {
   background-size: contain;
   border: 5px solid orange;
   border-radius: 50%;
-}
-
-/* .container {
-  width: 85%;
 } */
+
+.container {
+  width: 85%;
+}
 
 .buttonContainer {
   text-align: right;
@@ -125,7 +129,19 @@ input:focus {
   height: 90%;
   width: 90%;
   flex-wrap: wrap;
-  background-color: rgba(255, 255, 255, 0.445);
+  /* background-color: rgba(255, 255, 255, 0.445); */
+}
+.contentContainer::after {
+  content: "";
+  background: url(../../dist/assets/images/landing_bg.png);  
+  background-size: cover;
+  opacity: 0.5;
+  top: 5%;
+  left: 5%;
+  bottom: 5%;
+  right: 5%;
+  position: absolute;
+  z-index: -1;   
 }
 .landingContainer{
   height: 100vh;
@@ -141,7 +157,7 @@ input:focus {
 }
 .home-msg {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.2rem;
   margin: 10%;
 }
 
@@ -299,6 +315,14 @@ h3 {
 }
 /************* pet log_in *************/
 .formContainer {
-  top: 20%;
+background-color: rgba(255, 255, 255, 0.8);  
+margin: 5% auto 0;
+width: 75%;
+height: 50%;
+border-radius: 25px;
+}
+
+#register > a >button {
+  margin-left: 5%;
 }
 

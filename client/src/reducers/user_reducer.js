@@ -1,7 +1,8 @@
 import {SWITCH_AUTHENTICATION} from "../actions"
 
 const DEFAULT_STATE = {
-  auth: false
+  auth: false,
+
 };
 export default function(state = DEFAULT_STATE, action) {
   switch (action.type) {
