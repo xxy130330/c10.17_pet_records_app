@@ -9,6 +9,7 @@ const CURRENT_VET = {
 export default function(state = CURRENT_VET, action) {
   switch (action.type) {
     case VET_LOGIN:
+      console.log('VET LOGIN', action.payload);
       return {
         ...state,
         success: action.payload.data.loginSuccess,
