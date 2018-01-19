@@ -28,7 +28,7 @@ class PetList extends Component {
     this.props.delete_pet(petDataProps[index]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')));
   }
   render() {
-
+console.log(this.props.petdata);
     const userPetList = this.props.petdata.map((item, index) => {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`

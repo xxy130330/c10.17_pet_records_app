@@ -9,7 +9,7 @@ import petBtn from "../../../dist/assets/images/pet_btn.png";
 class LoginPage extends Component {
   constructor(props) {
     super(props);
-    console.log('login props url:', props.match.url);
+    console.log("login props url:", props.match.url);
     this.state = {
       form: {
         username: "",
@@ -51,22 +51,30 @@ class LoginPage extends Component {
   render() {
     const { username, password } = this.state.form;
 
+    const noScroll = {
+      "overflow-y": "none"
+    };
+    const btnSize = {
+      width: '150px'
+    }
+
     return (
-      <div className='bodyContainer'>
+      <div className="bodyContainer" style={noScroll}>
         <div className="logoContainer">
           <h1>PET LOG IN</h1>
-          <img src={petBtn}/>
+          <img style={btnSize} src={petBtn} />
         </div>
+        <div className="row formContainer align-items-center">
         <form
-          className="formContainer col-xs-10 col-xs-offset-1"
+        className="col-10 offset-1"
           onSubmit={e => this.handleSubmit(e)}
         >
           <div className="form-group">
             <label>Email: </label>
             <input
-              className="form-control input-lg"
+              className="form-control "
               type="text"
-              placeholder="Username"
+              placeholder="Email"
               onChange={e => this.handleInputChange(e)}
               name="username"
               value={username}
@@ -75,7 +83,7 @@ class LoginPage extends Component {
           <div className="form-group">
             <label>Password:</label>
             <input
-              className="form-control input-lg"
+              className="form-control"
               type="password"
               placeholder="Password"
               onChange={e => this.handleInputChange(e)}
@@ -86,15 +94,16 @@ class LoginPage extends Component {
           </div>
           <div className="buttonContainer">
             {/*<Link to="/pet-list/" >*/}
-            <button className="btn btn-primary">Login</button>
+            <button className="btn btn-outline-primary">Login</button>
             {/*</Link>*/}
           </div>
           <br />
           <div id="register">
             New User?
-            <Link to="/parent-page/"> Register</Link>
+            <Link to="/parent-page/"><button className="btn btn-outline-success btn-sm">Register</button></Link>
           </div>
         </form>
+        </div>
       </div>
     );
   }
@@ -110,4 +119,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { login, switchAuthentication })(LoginPage);
+export default connect(mapStateToProps, { login, switchAuthentication })(
+  LoginPage
+);
