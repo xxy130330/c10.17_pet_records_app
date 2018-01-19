@@ -28,6 +28,7 @@ class AddPet extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.upload = this.upload.bind(this);
 
+
     this.currentOwnerId = null;
     this.url = null;
 
@@ -73,13 +74,15 @@ class AddPet extends Component {
 
   }
     getFileName(e) {
-      console.log('again?');
+      console.log('again?',e.target);
         e.preventDefault();
-        console.log(document.getElementById('file').files[0]);
+        console.log(document.getElementById('file').value);
 
         let data = new FormData();
         data.append('file', document.getElementById('file').files[0]);
-        console.log('data:::::',document.getElementById('file').files[0]);
+        console.dir(document.getElementById('file').files[0])
+
+
 
         this.props.uploadImage(data).then(()=> this.url = this.props.url.data[0]).then(()=>{
           this.setupCroppie(this.url);
@@ -104,6 +107,8 @@ class AddPet extends Component {
         })
     }
 
+
+
     upload(){
       console.log('upload clicked', this.url);
 
@@ -116,6 +121,7 @@ class AddPet extends Component {
             let file = new File([res], 'hello.png', {type: "image/png"});
             let data = new FormData();
             data.append('file', file)
+
 
             console.log('newFILE', file);
              this.props.uploadImage(data).then(
