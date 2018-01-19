@@ -17,7 +17,7 @@ $checkResult = mysqli_query($conn, $queryCheckEmail);
 //Check to see if the email is already in the db
 if ($checkResult) {
     if (mysqli_num_rows($checkResult) === 0) {
-        $query = "INSERT INTO `owner` (`ID`, `name`, `created`, `updated`, `level`, `email`, `password`) VALUES (NULL, '$post[name]', CURRENT_DATE(), CURRENT_TIMESTAMP, '1', '$post[email]', SHA1('$post[password]'))";
+        $query = "INSERT INTO `owner` (`ID`, `name`, `created`, `updated`, `level`, `email`, `password`, `status`) VALUES (NULL, '$post[name]', CURRENT_DATE(), CURRENT_TIMESTAMP, '1', '$post[email]', SHA1('$post[password]'), 'inactive')";
         $result = mysqli_query($conn, $query);
         if ($result) {
             if (mysqli_affected_rows($conn) > 0) {
