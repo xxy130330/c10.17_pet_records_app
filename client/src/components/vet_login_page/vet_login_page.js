@@ -113,7 +113,8 @@ function mapStateToProps(state) {
   return {
     id: state.vetlogin.id,
     success: state.vetlogin.success,
-    errorMessage: state.vetlogin.errorMessage
+    errorMessage: state.vetlogin.errorMessage,
+    accessLevel: state.vetlogin.accessLevel
   };
 }
 
