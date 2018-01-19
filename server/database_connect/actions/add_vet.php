@@ -21,12 +21,14 @@ if ($checkResult) {
         if ($result) {
             if (mysqli_affected_rows($conn) > 0) {
                 $resultID = mysqli_insert_id($conn);
-                $ref_ID = substr(MD5($resultID),0,12);
+                $ref_ID = substr(MD5($resultID),0,6);
 
                 $output['data'][] = $ref_ID;
 
 
                 $refIDQuery = "UPDATE `vets` SET `ref_ID` = '$ref_ID' WHERE `ID` = $resultID";
+
+		$output['query'] = $refIDQuery;
                 $result = mysqli_query($conn, $refIDQuery);
                 $output['ref_ID'] = $ref_ID;
                 if ($result) {
