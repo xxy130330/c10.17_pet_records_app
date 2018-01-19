@@ -59,19 +59,20 @@ class VetLoginPage extends Component {
     }
 
     return (
-      <div style={noScroll} className="bodyContainer">
+      <div className="bodyContainer" style={noScroll}>
         <div className="logoContainer">
           <h1>VET LOG IN</h1>
           <img style={btnSize} src={vetBtn} />
         </div>
+        <div className="row formContainer align-items-center">
         <form
-          className="formContainer col-8 offset-2"
+        className="col-10 offset-1"
           onSubmit={e => this.handleSubmit(e)}
         >
           <div className="form-group">
-            <label>Email:</label>
+            <label>Email: </label>
             <input
-              className="form-control"
+              className="form-control "
               type="text"
               placeholder="Email"
               onChange={e => this.handleInputChange(e)}
@@ -80,7 +81,7 @@ class VetLoginPage extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Password</label>
+            <label>Password:</label>
             <input
               className="form-control"
               type="password"
@@ -92,16 +93,15 @@ class VetLoginPage extends Component {
             <p className="text-danger">{this.props.errorMessage}</p>
           </div>
           <div className="buttonContainer">
-            {/*<Link to="/pet-list/" >*/}
             <button className="btn btn-outline-primary">Login</button>
-            {/*</Link>*/}
           </div>
           <br />
           <div id="register">
-            New Vet?
-            <Link to="/vet-page/"><button className="btn btn-outline-success btn-sm">Register</button></Link>
+            New User?
+            <Link to="/parent-page/"><button className="btn btn-outline-success btn-sm">Register</button></Link>
           </div>
         </form>
+        </div>
       </div>
     );
   }
