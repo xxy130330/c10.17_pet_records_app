@@ -42,11 +42,7 @@ class PetList extends Component {
             <div className="petAvatar" style={petAvatar} />
             <h3 className="petName">{item.name}</h3>
             </Link>
-
-            <div className="pull-right" onClick={()=>{this.softDeletePet(index)}}>
-                <div className={this.state.canDelete? "glyphicon glyphicon-minus removeRecordIcon": ''} />
-            </div>
-
+          <i onClick={()=>{this.softDeletePet(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true": ''}></i>
         </div>
       );
     });
@@ -55,15 +51,14 @@ class PetList extends Component {
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
           <div className="iconNav">
-        <Link to="/add-pet/">
-          <p>Add Pet</p>
-                <div className="glyphicon glyphicon-plus addRecordIcon" />
-        </Link>
       </div>
           <div className="usersPetContainer">{userPetList}</div>
         </div>
         <div>
-          <button className={!this.state.canDelete? 'btn btn-danger':'btn btn-warning'} onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete a Pet": 'Cancel'}</button>
+          <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
+              onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete a Pet": 'Cancel'}
+          </button>
+          <Link to="/add-pet/"><button className='btn btn-outline-success'>Add a Pet</button></Link>
         </div>
       </div>
     );
