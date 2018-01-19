@@ -46,6 +46,7 @@ if(!$mail->send()) {
     $output['success'] = false;
     $output['message'] = $mail->ErrorInfo;
 } else {
-    echo 'Message has been sent';
+//    echo 'Message has been sent';
+    $output['emailSent'] = true;
 }
 ?>

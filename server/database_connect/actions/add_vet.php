@@ -42,11 +42,15 @@ if ($checkResult) {
                 $authStr = $hashRef_ID . $ref_ID;
 
                 $query = "INSERT INTO `activation` (`ID`, `activation_code`) VALUES ('$ref_ID', '$authStr')";
-                $result = mysqli_connect($conn, $query);
+                $output['query'] = $query;
+                $results = mysqli_query($conn, $query);
+                $output['result'] = $results;
 
-                if ($result) {
+                if ($results) {
                     if (mysqli_affected_rows($conn) > 0) {
                         $output['success'] = true;
+                        $output['code'] = $authStr;
+                        require('../../php_mailer/mail_handler.php');
                     } else {
                         $output['success'] = false;
                     }
