@@ -9,6 +9,7 @@ class ClientList extends Component {
     componentWillMount() {
         const params =this.props.match.params;
         this.props.fetchVetClientData(params.vetId);
+        console.log('these are the props in client list, ', this.props);
     }
     handleClientClick(index){
         this.props.history.push('/vet-client-pets/'+this.props.match.params.vetId +'/' +this.props.clientList[index].ownerID);
@@ -50,7 +51,8 @@ function mapStateToProps(state) {
   return {
     clientList: state.vetClientData.clientList,
     name: state.vetClientData.name,
-    ref_id: state.vetClientData.ref_id
+    ref_id: state.vetClientData.ref_id,
+      vetAccessLevel: state.vetlogin.accessLevel
   };
 }
 

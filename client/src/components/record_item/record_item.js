@@ -107,7 +107,8 @@ class RecordItem extends Component {
 
 function mapStateToProps(state) {
   return {
-    petMedical: state.petMedical
+    petMedical: state.petMedical,
+      vetAccessLevel: state.vetlogin.accessLevel
   };
 }
 

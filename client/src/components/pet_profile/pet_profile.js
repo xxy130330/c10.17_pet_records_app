@@ -16,6 +16,8 @@ class PetProfile extends Component {
     }
     this.props.fetchProfileData(this.props.match.params.id);
     this.props.fetchPetData(currentOwnerId);
+
+    console.log('these are the props in pet profile, ', this.props);
     }
 
     softDeleteRecord(index) {
@@ -134,12 +136,14 @@ function mapStateToProps(state) {
   return {
     petdata: state.petdata,
     petProfile: state.petProfile,
-    deleteMedicalRecordItem: state.deleteMedicalRecordItem
+    deleteMedicalRecordItem: state.deleteMedicalRecordItem,
+    vetAccessLevel: state.vetlogin.accessLevel
   };
 }
 
 export default connect(mapStateToProps, {
     fetchPetData: fetchPetData,
     fetchProfileData: fetchProfileData,
-    deleteMedicalRecordItem: deleteMedicalRecordItem
+    deleteMedicalRecordItem: deleteMedicalRecordItem,
+
 })(PetProfile);

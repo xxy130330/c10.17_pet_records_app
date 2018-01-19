@@ -12,6 +12,8 @@ class VetClientPets extends Component {
     componentWillMount() {
         const params= this.props.match.params;
         this.props.fetchVetClientPets(params.ownerId, params.vetId);
+        console.log('these are the props in client pet list, ', this.props);
+
     }
     render() {
         const clientPetList = this.props.clientPetList.map((pet, index) => {
@@ -44,7 +46,8 @@ class VetClientPets extends Component {
 }
 function mapStateToProps(state) {
     return {
-        clientPetList: state.vetClientPetsData
+        clientPetList: state.vetClientPetsData,
+        vetAccessLevel: state.vetlogin.accessLevel
     };
 }
 

@@ -34,7 +34,7 @@ class VetLoginPage extends Component {
         if (this.props.success) {
           this.props.switchAuthentication(true);
           console.log('the props after doing vet login axios call', this.props);
-          this.props.history.push("/client-list/"+this.props.id+'/'+this.props.accessLevel);
+          this.props.history.push("/client-list/"+this.props.id);
         }
       });
 

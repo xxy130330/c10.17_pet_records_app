@@ -56,7 +56,7 @@ class App extends Component {
             component={auth(AddMedNote)}
           />
           <Route path="/pet-to-vet/:petId" component={auth(PetToVet)} />
-          <Route path='/client-list/:vetId/:accessLevel' component={auth(ClientList)}/>
+          <Route path='/client-list/:vetId/' component={auth(ClientList)}/>
           <Route path='/vet-client-pets/:vetId/:ownerId' component={auth(VetClientPets)}/>
           <Route path="/*" component={Footer} />
 
