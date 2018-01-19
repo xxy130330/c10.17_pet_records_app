@@ -50,7 +50,7 @@ if ($checkResult) {
                     if (mysqli_affected_rows($conn) > 0) {
                         $output['success'] = true;
                         $output['code'] = $authStr;
-                        require('../../php_mailer/mail_handler.php');
+                        require('../php_mailer/mail_handler.php');
                     } else {
                         $output['success'] = false;
                     }
@@ -58,9 +58,6 @@ if ($checkResult) {
                     $output['errors'][] = 'Error in SQL query inserting into activation';
                     $output['success'] = false;
                 }
-
-
-
             } else {
                 $output['errors'][] = 'no data available';
             }

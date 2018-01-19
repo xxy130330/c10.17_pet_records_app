@@ -26,7 +26,7 @@ $mail->FromName = 'Simon\'s Server';   // sender's name (shows in "From" field)
 $mail->addAddress('shoblik@yahoo.com', 'Simon Hoblik');  // Add a recipient
 
 //$mail->addAddress('ellen@example.com');                        // Name is optional
-$mail->addReplyTo($_POST['email']);                          // Add a reply-to address
+$mail->addReplyTo($post['email']);                          // Add a reply-to address
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 
@@ -35,8 +35,8 @@ $mail->addReplyTo($_POST['email']);                          // Add a reply-to a
 $mail->isHTML(true);                                  // Set email format to HTML
 
 $mail->Subject = 'Simon\'s Server ' . $_POST['email'];
-$mail->Body    = $_POST['body'];
-$mail->AltBody = htmlentities($_POST['body']);
+$mail->Body    = 'testes';
+$mail->AltBody = htmlentities('test');
 
 $output = [
 
