@@ -25,6 +25,21 @@ if ($checkResult) {
 
                 $output['data'][] = $ref_ID;
 
+                //check if the ID exists in the database before inserting it
+                $checkRefIdQuery = "SELECT * FROM `vets` WHERE `ref_ID` = '$ref_ID'";
+                $result = mysqli_query($conn, $query);
+
+                if ($result) {
+                    if (mysqli_num_rows($result) === 0) {
+                        $output['data'][] = 'Unique ID';
+                    } else {
+                        $output['errors'][] = 'Duplicate ID, generating new ID';
+
+                    }
+                } else {
+                    $output['errors'][] = 'Error in SQL Query';
+                }
+
 
                 $refIDQuery = "UPDATE `vets` SET `ref_ID` = '$ref_ID' WHERE `ID` = $resultID";
 
