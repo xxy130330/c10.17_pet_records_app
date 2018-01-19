@@ -261,7 +261,12 @@ export function uploadImage(data) {
     method: "post",
     encType: "multipart/form-data",
     url: pet_image_url,
-    data: data
+    data: data,
+    // headers: {
+    //     "Access-Control-Allow-Origin": "*",
+    //     "Access-Control-Allow-Headers": "*",
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    // }
   });
 
   return {

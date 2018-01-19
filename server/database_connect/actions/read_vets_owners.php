@@ -15,7 +15,7 @@ $ownerArray = array();
 
 //pull active_pets from vets table
 
-$query = "SELECT `active_pets`, `name`, `ref_ID` FROM `vets` WHERE `ID` = $vetID";
+$query = "SELECT `active_pets`, `email`, `ref_ID` FROM `vets` WHERE `ID` = $vetID";
 $result = mysqli_query($conn, $query);
 
 if ($result) {
@@ -23,7 +23,7 @@ if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             $ownerDataObj = json_decode($row['active_pets']);
             $output['success'] = true;
-            $output['name'] = $row['name'];
+            $output['vet_email'] = $row['email'];
             $output['ref_id'] = $row['ref_ID'];
             $count = count($ownerDataObj);
             for ($i = 0; $i < $count; $i++) {
