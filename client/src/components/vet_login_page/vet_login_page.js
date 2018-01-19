@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import axios from "axios";
 import { connect } from "react-redux";
-import { vet_login, switchAuthentication} from "../../actions/";
+import { vet_login, switchAuthentication } from "../../actions/";
+import vetBtn from "../../../dist/assets/images/vet_btn.png";
 
 class VetLoginPage extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class VetLoginPage extends Component {
       .then(() => {
         if (this.props.success) {
           this.props.switchAuthentication(true);
-          this.props.history.push("/client-list/"+this.props.id);
+          this.props.history.push("/client-list/" + this.props.id);
         }
       });
 
@@ -49,23 +50,30 @@ class VetLoginPage extends Component {
   render() {
     const { username, password } = this.state.form;
 
+    const noScroll = {
+      "overflow-y": "none"
+    };
+
+    const btnSize = {
+      width: '150px'
+    }
+
     return (
-      <div className='bodyContainer'>
+      <div style={noScroll} className="bodyContainer">
         <div className="logoContainer">
           <h1>VET LOG IN</h1>
-          <div className="logo" />
+          <img style={btnSize} src={vetBtn} />
         </div>
         <form
-          id="form-container"
-          className="col-xs-10 col-xs-offset-1"
+          className="formContainer col-8 offset-2"
           onSubmit={e => this.handleSubmit(e)}
         >
           <div className="form-group">
-            <label>User Name</label>
+            <label>Email:</label>
             <input
-              className="userName form-control input-lg"
+              className="form-control"
               type="text"
-              placeholder="Username"
+              placeholder="Email"
               onChange={e => this.handleInputChange(e)}
               name="username"
               value={username}
@@ -74,7 +82,7 @@ class VetLoginPage extends Component {
           <div className="form-group">
             <label>Password</label>
             <input
-              className="password form-control input-lg"
+              className="form-control"
               type="password"
               placeholder="Password"
               onChange={e => this.handleInputChange(e)}
@@ -85,13 +93,13 @@ class VetLoginPage extends Component {
           </div>
           <div className="buttonContainer">
             {/*<Link to="/pet-list/" >*/}
-            <button className="btn btn-primary">Login</button>
+            <button className="btn btn-outline-primary">Login</button>
             {/*</Link>*/}
           </div>
           <br />
           <div id="register">
             New Vet?
-            <Link to="/vet-page/">Register</Link>
+            <Link to="/vet-page/"><button className="btn btn-outline-success btn-sm">Register</button></Link>
           </div>
         </form>
       </div>
@@ -109,4 +117,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { vet_login, switchAuthentication })(VetLoginPage);
+export default connect(mapStateToProps, { vet_login, switchAuthentication })(
+  VetLoginPage
+);

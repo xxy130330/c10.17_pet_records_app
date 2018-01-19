@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../../dist/assets/images/petvet_logo.png";
 import petBtn from "../../../dist/assets/images/pet_btn.png";
 import vetBtn from "../../../dist/assets/images/vet_btn.png";
+import backgroundImg from "../../../dist/assets/images/landing_bg.png";
 
 export default props => {
   return (
@@ -13,8 +14,10 @@ export default props => {
         </div>
         <div className="msgBtnContainer">
           <div className="home-msg">
+          
             Welcome to PetVet!
             <br />The easiest way to care for your pet's health and happiness!
+           
           </div>
           <div className="loginBtnContainer">
             <Link to="/login-page">
