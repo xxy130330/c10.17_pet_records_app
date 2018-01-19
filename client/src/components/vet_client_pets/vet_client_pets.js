@@ -8,6 +8,7 @@ import {fetchVetClientPets} from "../../actions/";
 class VetClientPets extends Component {
     constructor(props) {
         super(props);
+
     }
     componentWillMount() {
         const params= this.props.match.params;
@@ -28,7 +29,7 @@ class VetClientPets extends Component {
                     </Link>
 
                     <div className="pull-right">
-                        <div className="glyphicon glyphicon-minus removeRecordIcon" />
+                        <div className={this.props.vetAccessLevel? "": "glyphicon glyphicon-minus removeRecordIcon"} />
                     </div>
                 </div>
             );

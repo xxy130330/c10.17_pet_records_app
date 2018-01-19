@@ -49,7 +49,7 @@ class PetProfile extends Component {
 
         <div className="petInfoDiv">
           <div>
-            <Link to={`/pet-to-vet/${this.props.match.params.id}`}><button>Connect this Pet to Vet</button></Link>
+            <Link to={`/pet-to-vet/${this.props.match.params.id}`}><button style={this.props.vetAccessLevel==='2'? {'display':'none'}: {'display':'inline-block'}}>Connect this Pet to Vet</button></Link>
           </div>
           <div className="petInfo">
             <h4>Name: {petObj.name}</h4>
@@ -88,7 +88,7 @@ class PetProfile extends Component {
             onClick={() => {this.softDeleteRecord(index)}}
           >
 
-            <div className="glyphicon glyphicon-minus removeRecordIcon" />
+            <div className={this.props.vetAccessLevel? "": "glyphicon glyphicon-minus removeRecordIcon"} />
           </div>
         </div>
       );
@@ -137,7 +137,8 @@ function mapStateToProps(state) {
     petdata: state.petdata,
     petProfile: state.petProfile,
     deleteMedicalRecordItem: state.deleteMedicalRecordItem,
-    vetAccessLevel: state.vetlogin.accessLevel
+    vetAccessLevel: state.vetlogin.accessLevel,
+
   };
 }
 

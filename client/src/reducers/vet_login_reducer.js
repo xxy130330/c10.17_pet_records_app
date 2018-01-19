@@ -18,12 +18,15 @@ export default function(state = CURRENT_VET, action) {
         errorMessage: action.payload.data.errors[0],
         accessLevel: action.payload.data.accessLevel
       };
-    case VET_REGISTER:
+      case VET_REGISTER:
       return {
         ...state,
         success: action.payload.data.success,
         id: action.payload.data.data.ID,
       };
+      /// make a Log out case that returns
+          /// ...state
+          /// accessLevel: null
   }
   return state;
 }

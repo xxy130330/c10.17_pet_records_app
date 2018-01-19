@@ -3,10 +3,19 @@ import axios from "axios";
 //******** user Log in auth **********/
 export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
 export function switchAuthentication(auth) {
-  return {
-    type: SWITCH_AUTHENTICATION,
-    auth: auth
-  };
+  if(auth){
+      return {
+          type: SWITCH_AUTHENTICATION,
+          auth: auth
+      };
+  } else {
+      return {
+          type: LOG_OUT,
+          auth: auth
+      };
+  }
+
+
 }
 
 //****** GET pet list records ********/
