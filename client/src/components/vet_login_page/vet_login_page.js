@@ -33,6 +33,7 @@ class VetLoginPage extends Component {
       .then(() => {
         if (this.props.success) {
           this.props.switchAuthentication(true);
+          console.log('the props after doing vet login axios call', this.props);
           this.props.history.push("/client-list/"+this.props.id);
         }
       });
@@ -105,7 +106,8 @@ function mapStateToProps(state) {
   return {
     id: state.vetlogin.id,
     success: state.vetlogin.success,
-    errorMessage: state.vetlogin.errorMessage
+    errorMessage: state.vetlogin.errorMessage,
+    accessLevel: state.vetlogin.accessLevel
   };
 }
 

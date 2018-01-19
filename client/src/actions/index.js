@@ -2,11 +2,21 @@ import axios from "axios";
 
 //******** user Log in auth **********/
 export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
+export const LOG_OUT ="LOG_OUT";
 export function switchAuthentication(auth) {
-  return {
-    type: SWITCH_AUTHENTICATION,
-    auth: auth
-  };
+  if(auth){
+      return {
+          type: SWITCH_AUTHENTICATION,
+          auth: auth
+      };
+  } else {
+      return {
+          type: LOG_OUT,
+          auth: auth
+      };
+  }
+
+
 }
 
 //****** GET pet list records ********/
