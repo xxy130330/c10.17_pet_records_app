@@ -30,7 +30,7 @@ class ClientList extends Component {
           <div className='bodyContainer'>
             <div className="vetInfoContainer">
               <div className="vetInfoDiv text-center">
-                  <h4>Vet Name: {this.props.name}</h4>
+                  <h4>Vet Email: {this.props.email}</h4>
                   <h4>Ref#: {this.props.ref_id}</h4>
               </div>
             </div>
@@ -49,7 +49,7 @@ class ClientList extends Component {
 function mapStateToProps(state) {
   return {
     clientList: state.vetClientData.clientList,
-    name: state.vetClientData.name,
+    email: state.vetClientData.email,
     ref_id: state.vetClientData.ref_id
   };
 }
