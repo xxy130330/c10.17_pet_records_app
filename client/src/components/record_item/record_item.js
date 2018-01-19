@@ -77,7 +77,10 @@ class RecordItem extends Component {
       const staticData = (
           <div>
               <div>
-                  <button onClick={()=>this.handleEditClick()} className='btn btn-warning'>Edit</button>
+                  <button onClick={()=>this.handleEditClick()}
+                          className='btn btn-warning'
+                          style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}
+                  >Edit</button>
               </div>
               <h2 className="record_item_header">{type}</h2>
               <h3 className="record_item_date" >{date}</h3>

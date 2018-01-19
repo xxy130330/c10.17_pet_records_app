@@ -2,6 +2,7 @@ import axios from "axios";
 
 //******** user Log in auth **********/
 export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
+export const LOG_OUT ="LOG_OUT";
 export function switchAuthentication(auth) {
   if(auth){
       return {

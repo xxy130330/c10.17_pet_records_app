@@ -49,7 +49,10 @@ class PetProfile extends Component {
 
         <div className="petInfoDiv">
           <div>
-            <Link to={`/pet-to-vet/${this.props.match.params.id}`}><button style={this.props.vetAccessLevel==='2'? {'display':'none'}: {'display':'inline-block'}}>Connect this Pet to Vet</button></Link>
+            <Link to={`/pet-to-vet/${this.props.match.params.id}`}>
+                <button style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>Connect this Pet to Vet</button>
+                <button style={!this.props.vetAccessLevel && petObj.vet!=='No vet connected'? {'display':'inline-block'}: {'display':'none'} }>Change Current Vet</button>
+            </Link>
           </div>
           <div className="petInfo">
             <h4>Name: {petObj.name}</h4>
@@ -120,8 +123,8 @@ class PetProfile extends Component {
               <Link
                 to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}
               >
-                <p>Add Record</p>
-                <div className="glyphicon glyphicon-plus addRecordIcon" />
+                <p>{this.props.vetAccessLevel? '': 'Add Record'}</p>
+                <div className={this.props.vetAccessLevel?   '':"glyphicon glyphicon-plus addRecordIcon"} />
               </Link>
             </div>
             { this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
