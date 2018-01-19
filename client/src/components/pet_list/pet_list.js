@@ -31,11 +31,7 @@ class PetList extends Component {
     this.props.delete_pet(petDataProps[index]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')));
   }
   render() {
-<<<<<<< HEAD
     const toggleCanDelete= !this.state.canDelete;
-=======
-console.log(this.props.petdata);
->>>>>>> eded15ad71fad9f17b2ed9b734f4a5535f02726e
     const userPetList = this.props.petdata.map((item, index) => {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
