@@ -9,6 +9,9 @@ import axios from 'axios';
 class PetList extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      canDelete: false
+    }
   }
 
   componentWillMount() {
@@ -28,7 +31,7 @@ class PetList extends Component {
     this.props.delete_pet(petDataProps[index]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')));
   }
   render() {
-
+    const toggleCanDelete= !this.state.canDelete;
     const userPetList = this.props.petdata.map((item, index) => {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
@@ -41,7 +44,7 @@ class PetList extends Component {
             </Link>
 
             <div className="pull-right" onClick={()=>{this.softDeletePet(index)}}>
-                <div className="glyphicon glyphicon-minus removeRecordIcon" />
+                <div className={this.state.canDelete? "glyphicon glyphicon-minus removeRecordIcon": ''} />
             </div>
 
         </div>
@@ -58,6 +61,9 @@ class PetList extends Component {
         </Link>
       </div>
           <div className="usersPetContainer">{userPetList}</div>
+        </div>
+        <div>
+          <button className={!this.state.canDelete? 'btn btn-danger':'btn btn-warning'} onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete a Pet": 'Cancel'}</button>
         </div>
       </div>
     );
