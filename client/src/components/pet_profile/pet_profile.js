@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
 import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../actions/";
+import '../assets/css/modal.css';
+
 
 class PetProfile extends Component {
     constructor(props){
         super(props);
 
         this.state={
-            canDelete: false
+            canDelete: false,
+            showModal: false,
+            recordIndex: null,
+
         }
     }
     componentDidMount() {
@@ -27,11 +32,15 @@ class PetProfile extends Component {
     console.log('these are the props in pet profile, ', this.props);
     }
 
-    softDeleteRecord(index) {
-        console.log('you have clicked on the x to soft delete a record');
+    softDeleteRecord() {
+        const {recordIndex} =this.state;
+        console.log('this is record item according to state ', recordIndex);
         const petProfileData= this.props.petProfile;
-        this.props.deleteMedicalRecordItem(petProfileData[index]['recordID']).then(()=>{
-            this.props.fetchProfileData(this.props.match.params.id)
+        console.log(' and this is petProfile Data on props ', petProfileData);
+        this.props.deleteMedicalRecordItem(petProfileData[recordIndex]['recordID']).then(()=>{
+            this.props.fetchProfileData(this.props.match.params.id).then(
+                ()=>this.setState({...this.state, showModal: false, canDelete: false,})
+            )
         });
     }
 
@@ -80,16 +89,41 @@ class PetProfile extends Component {
               {item.type}
             </Link>
           </h3>
-          <div className="pull-right" >
-              <i onClick={ ()=>this.softDeleteRecord(index)}
-                 className={this.state.canDelete? "fa fa-times-circle fa-2x aria-hidden=true": ''}>
-              </i>
+          <div className="pull-right" onClick={()=>this.triggerModal(index)} >
+              <i className={this.state.canDelete? "fa fa-times-circle fa-3x aria-hidden=true": ''}></i>
           </div>
         </div>
       );
     });
     return medicalRecordsList;
   }
+    //////////TRIGGER MODAL HERE//////////
+    triggerModal(index) {
+        console.log('attempting to trigger the modal');
+        this.setState({...this.state, showModal:true, recordIndex: index});
+    }
+    //////////SHOW MODAL HERE//////////
+    showModal(){
+        console.log('you have returned the modal elements');
+        // return PetListModal(this.state, self );
+        return(
+            <span>
+          <div className='confirm-modal '>
+              <div className="content-modal">
+                  <div className="card">
+                      <div className="card-content">
+                          "Hello"
+                      </div>
+                      <div className="card-action">
+                          <button onClick={()=> this.softDeleteRecord()} className='btn btn-outline-success'>Confirm</button>
+                          <button onClick={()=> this.setState({...this.state, showModal: false, canDelete: false})} className='btn btn-outline-danger'>Cancel</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </span>
+        )
+    }
 
   render() {
     // if (!this.props.petProfile.length) {
@@ -103,6 +137,7 @@ class PetProfile extends Component {
       }
     }
     const toggleCanDelete= !this.state.canDelete;
+    const {showModal}= this.state;
     return (
 
       <div className='bodyContainer'>
@@ -121,6 +156,7 @@ class PetProfile extends Component {
                           Add Medical Record
                       </button>
                   </Link>
+                  {showModal? this.showModal(): ''}
               </div>
           </div>
         </div>

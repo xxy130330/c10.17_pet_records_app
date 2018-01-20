@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './modal.css';
+import '../assets/css/modal.css';
 class PetListModal extends Component{
     constructor(props){
         super(props);
