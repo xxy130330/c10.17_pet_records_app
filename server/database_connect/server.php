@@ -147,4 +147,10 @@ if (isset($pet_objects)) {
 
 $json_output = json_encode($output);
 
-print($json_output);
+if ($_GET['resource'] === 'activate_account') {
+    print('Your account has been activated! Thanks for using PetVet, the easiest way to care for your pets health and happiness');
+
+} else {
+    print($json_output);
+}
+

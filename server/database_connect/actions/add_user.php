@@ -25,6 +25,36 @@ if ($checkResult) {
                 $resultID = mysqli_insert_id($conn);
                 $output['ID'] = $resultID;
 
+                //Generate authentication number then insert it into the activation database with this user's ID, then send the email;
+                $hashRef_ID = MD5($resultID);
+                $authStr = $hashRef_ID . $resultID;
+
+                $query = "INSERT INTO `activation` (`ID`, `activation_code`) VALUES ('$resultID', '$authStr')";
+                $output['query'] = $query;
+                $results = mysqli_query($conn, $query);
+                $output['result'] = $results;
+
+                if ($results) {
+                    if (mysqli_affected_rows($conn) > 0) {
+                        $output['success'] = true;
+                        $output['code'] = $authStr;
+                        if ($_SERVER['HTTP_HOST'] === 'localhost') {
+                            $activationLink = 'http://localhost/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
+                        } else {
+                            $activationLink = 'http://petvet.tech/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
+                        }
+                        require('../php_mailer/mail_handler.php');
+                    } else {
+                        $output['success'] = false;
+                    }
+                } else {
+                    $output['errors'][] = 'Error in SQL query inserting into activation';
+                    $output['success'] = false;
+                }
+
+
+
+
             } else {
                 $output['errors'][] = 'no data available';
             }
