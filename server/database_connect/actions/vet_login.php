@@ -29,7 +29,7 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     $sanitizedUsername = htmlentities($sanitizeUsername1);
     $sanitizedPassword = htmlentities($sanitizePassword1);
 
-$query = "SELECT * FROM `vets` WHERE BINARY email = '$sanitizedUsername' AND password = '$sanitizedPassword'";
+$query = "SELECT * FROM `vets` WHERE BINARY email = '$sanitizedUsername' AND password = '$sanitizedPassword' AND `status` = 'active'";
 
 $result = mysqli_query($conn, $query);
 
