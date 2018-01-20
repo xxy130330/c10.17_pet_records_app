@@ -22,7 +22,8 @@ class AddPet extends Component {
         name: "",
         dob: "",
         breed: ""
-      }
+      },
+      buttonClick : false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,8 +62,30 @@ class AddPet extends Component {
     e.preventDefault();
 
     const {name, dob, breed} = this.state.form;
-    this.props.addPet(name, dob, breed, this.currentOwnerId , this.url).then(()=>this.props.history.push('/pet-to-vet/' + this.props.petId));
 
+
+    this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'png'})
+      .then(res=>{
+            let file = new File([res], 'hello.png', {type: "image/png"});
+            let data = new FormData();
+            data.append('file', file)
+            console.log('newFILE', file);
+            this.upload(data);
+           })
+
+
+  }
+
+  upload(data){
+    const {name, dob, breed} = this.state.form;
+    this.props.uploadImage(data)
+        .then( ()=> {
+          this.url = this.props.url.data[0]
+          console.log('THIS PROPS SECONDTIME', this.props);
+        })
+          .then( ()=> this.props.addPet(name, dob, breed, this.currentOwnerId , this.url) )
+            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId)})
+              .then(()=> console.log('secondurl::', this.url))
     this.setState({
       form: {
         name: "",
@@ -70,23 +93,34 @@ class AddPet extends Component {
         breed: ""
       }
     });
-
-
   }
+
     getFileName(e) {
       console.log('again?',e.target);
         e.preventDefault();
-        console.log(document.getElementById('file').value);
+
+
 
         let data = new FormData();
         data.append('file', document.getElementById('file').files[0]);
-        console.dir(document.getElementById('file').files[0])
+        console.dir('.....',document.getElementById('file').files[0])
 
 
 
-        this.props.uploadImage(data).then(()=> this.url = this.props.url.data[0]).then(()=>{
-          this.setupCroppie(this.url);
+        this.props.uploadImage(data)
+          .then(()=> {
+            this.url = this.props.url.data[0]
+            console.log('THIS PROPS ', this.props)
+          })
+            .then(()=>{this.setupCroppie(this.url)})
+              .then(()=> console.log('FISRT URL', this.url))
+
+        this.setState({
+          form: {...this.state.form},
+          buttonClick: true
         })
+
+
 
     }
 
@@ -109,32 +143,14 @@ class AddPet extends Component {
 
 
 
-    upload(){
-      console.log('upload clicked', this.url);
-
-        this.croppie.result({
-            type:'blob',
-            size:'viewport',
-            circle: true,
-            format: 'png'
-        }).then(res=>{
-            let file = new File([res], 'hello.png', {type: "image/png"});
-            let data = new FormData();
-            data.append('file', file)
-
-
-            console.log('newFILE', file);
-             this.props.uploadImage(data).then(
-              ()=> this.url = this.props.url.data[0])
-        })
-    }
 
 
   render() {
-
-
-
     const { name, dob, breed } = this.state.form;
+
+    const input = this.state.buttonClick ? '' :<input  className='text-center' type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/>
+
+
     return (
       <div className='bodyContainer'>
         <h2 className="text-center">Add Pet</h2>
@@ -143,19 +159,16 @@ class AddPet extends Component {
 
           <div className="pictureContainer">
             <div className="pictureDiv">
+              {input}
               <div type='file' name='croppie' id="croppie"></div>
             </div>
           </div>
 
-          <div className='fileContainer'>
-            <form className='text-center' onSubmit={(e)=>this.getFileName(e)}>
-              <input  type="file" name="file" id='file'/>
-              <button className='btn btn-warning pull-right' name="upload" value="true">SELECT</button>
-            </form>
-            <div>
-              <button className='btn btn-success pull-right' onClick={this.upload}>UPLOAD</button>
-            </div>
-          </div>
+          {/*<div className='fileContainer'>*/}
+
+              {/*<input  type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/>*/}
+
+        {/*  </div>*/}
 
 
 

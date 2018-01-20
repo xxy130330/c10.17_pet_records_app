@@ -4,7 +4,7 @@ export default function(state=[], action){
 
     switch(action.type){
         case UPLOAD_IMAGE:
-            console.log(action);
+            console.log('ACTION',action);
             return action.payload.data;
     }
     return state;
