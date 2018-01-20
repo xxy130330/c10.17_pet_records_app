@@ -27,7 +27,7 @@ class AddPet extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
+    this.upload = this.upload.bind(this);
 
 
     this.currentOwnerId = null;
@@ -70,11 +70,22 @@ class AddPet extends Component {
             let data = new FormData();
             data.append('file', file)
             console.log('newFILE', file);
-             this.props.uploadImage(data)})
-        .then( ()=> this.url = this.props.url.data[0])
-          .then( ()=> this.props.addPet(name, dob, breed, this.currentOwnerId , this.url) )
-            .then(()=>this.props.history.push('/pet-to-vet/' + this.props.petId));
+            this.upload(data);
+           })
 
+
+  }
+
+  upload(data){
+    const {name, dob, breed} = this.state.form;
+    this.props.uploadImage(data)
+        .then( ()=> {
+          this.url = this.props.url.data[0]
+          console.log('THIS PROPS SECONDTIME', this.props);
+        })
+          .then( ()=> this.props.addPet(name, dob, breed, this.currentOwnerId , this.url) )
+            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId)})
+              .then(()=> console.log('secondurl::', this.url))
     this.setState({
       form: {
         name: "",
@@ -82,24 +93,27 @@ class AddPet extends Component {
         breed: ""
       }
     });
-
-
   }
+
     getFileName(e) {
       console.log('again?',e.target);
         e.preventDefault();
 
-        console.log(document.getElementById('file').value);
+
 
         let data = new FormData();
         data.append('file', document.getElementById('file').files[0]);
-        console.dir(document.getElementById('file').files[0])
+        console.dir('.....',document.getElementById('file').files[0])
 
 
 
         this.props.uploadImage(data)
-          .then(()=> this.url = this.props.url.data[0])
+          .then(()=> {
+            this.url = this.props.url.data[0]
+            console.log('THIS PROPS ', this.props)
+          })
             .then(()=>{this.setupCroppie(this.url)})
+              .then(()=> console.log('FISRT URL', this.url))
 
         this.setState({
           form: {...this.state.form},
