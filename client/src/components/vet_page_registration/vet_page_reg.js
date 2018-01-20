@@ -50,7 +50,7 @@ class VetPage extends Component {
           {/*<div className="logo" />*/}
         {/*</div>*/}
         {/*<hr />*/}
-        <h1 class="vetTitle">Vet Registration</h1>
+        <h1 className="vetTitle">Vet Registration</h1>
         <form
           id="form-container"
           className="col-xs-10 col-xs-offset-1"

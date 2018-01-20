@@ -89,6 +89,10 @@ img {
   height: 100%;
 }
 
+form {
+  width: 80%;
+  margin: auto;
+}
 /* span {
   color: white;
   top: 50% !important;
@@ -200,7 +204,7 @@ form {
 }
 
 .parentPageTitle {
-  margin: 5% 0;
+  margin: 10% 0 5%;
 }
 
 /************* pet_list *************/
@@ -345,3 +349,7 @@ border-radius: 25px;
   margin-left: 5%;
 }
 
+/************* vet_page **********************/
+.vetTitle {
+  margin-top: 5%;
+}
