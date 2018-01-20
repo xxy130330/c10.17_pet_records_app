@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import '../assets/css/modal.css';
-class Modal extends Component{
+import './modal.css';
+class PetListModal extends Component{
     constructor(props){
         super(props);
         this.state= {
@@ -9,6 +9,7 @@ class Modal extends Component{
         this.handleConfirm=this.handleConfirm.bind(this);
     }
     handleConfirm(){
+        console.log('handling confirm in modal ');
         this.props.callback();
         this.setState({
             visible: false
@@ -44,4 +45,4 @@ class Modal extends Component{
         )
     }
 }
-export default Modal;
+export default PetListModal;

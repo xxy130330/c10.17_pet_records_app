@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchPetData, delete_pet } from "../../actions/";
 import axios from 'axios';
+import PetListModal from './pet_list';
 
 class PetList extends Component {
   constructor(props) {
     super(props);
     this.state={
-      canDelete: false
+      canDelete: false,
     }
   }
-
   componentWillMount() {
     let currentOwnerId = null;
     if(this.props.id){
@@ -22,14 +22,17 @@ class PetList extends Component {
     } else {
       currentOwnerId = localStorage.id;
     }
-
     this.props.fetchPetData(currentOwnerId);
-
   }
   softDeletePet(index) {
     alert("Are you sure you want to delete this pet???");
-    const petDataProps= this.props.petdata;
-    this.props.delete_pet(petDataProps[index]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')));
+    return (
+        <PetListModal callback={()=> this.deleteFromServer(index)} text='Hello' className='btn btn-floating red'/>
+    );
+  }
+  deleteFromServer(index){
+      const petDataProps= this.props.petdata;
+      this.props.delete_pet(petDataProps[index]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')));
   }
   render() {
     const toggleCanDelete= !this.state.canDelete;
@@ -42,7 +45,7 @@ class PetList extends Component {
           <Link to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
             <div className="petAvatar" style={petAvatar} />
             <h3 className="petName">{item.name}</h3>
-            </Link>
+          </Link>
           <i onClick={()=>{this.softDeletePet(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true": ''}></i>
         </div>
       );
@@ -51,9 +54,8 @@ class PetList extends Component {
       <div className='bodyContainer'>
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
-          <div className="iconNav">
-      </div>
-          <div className="usersPetContainer">{userPetList}</div>
+          <div className="iconNav"></div>
+            <div className="usersPetContainer">{userPetList}</div>
         </div>
         <div>
           <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
@@ -65,7 +67,6 @@ class PetList extends Component {
     );
   }
 }
-
 function mapStateToProps(state) {
   return {
     petdata: state.petdata,
