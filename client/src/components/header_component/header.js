@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { Link } from "react-router-dom";
-import {NavBar, navbar} from "../hamburger_menu/hamburger_menu";
+import NavBar from "../hamburger_menu/hamburger_menu";
 
 export default props => {
   if (props.match.url === "/") return null;
@@ -14,7 +14,7 @@ export default props => {
           <img src={Logo} />
         </div>
       </Link>
-      <NavBar {...navbar} />
+      <NavBar />
     </div>
   );
 };
