@@ -10,5 +10,9 @@
 }
 .content-modal{
     margin: auto;
-    width: 40%
+    width: 75%;
+    height: 35%
+}
+div.card{
+    height: 100%;
 }
