@@ -38,6 +38,17 @@ a {
   overflow-y: scroll;
   padding-bottom: 5%;
 }
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid black;
+}
+img {
+  border-style: none;
+  margin: auto;
+  display: block;
+}
 
 /* footer {
   overflow: hidden;
@@ -78,6 +89,10 @@ a {
   height: 100%;
 }
 
+form {
+  width: 80%;
+  margin: auto;
+}
 /* span {
   color: white;
   top: 50% !important;
@@ -88,8 +103,8 @@ a {
 
 .logoContainer {
   text-align: center;
-  height: 35%;
-  margin: 10% 10% 0;
+  height: 38%;
+  margin: 5% 10% 0;
 }
 
 /* .logo {
@@ -115,6 +130,11 @@ a {
 input:focus {
   border: 2px solid orange !important;
   color: #0c5460;
+}
+
+form {
+  width: 80%;
+  margin: auto;
 }
 /************* landing_page *************/
 .loginLogo {
@@ -180,11 +200,11 @@ input:focus {
 /************* parent_page *************/
 
 .parentPage {
-  margin: 15% 0;
+  margin: 5% 0;
 }
 
 .parentPageTitle {
-  margin: 5% 0;
+  margin: 10% 0 5%;
 }
 
 /************* pet_list *************/
@@ -218,13 +238,16 @@ input:focus {
 .petListTitle {
   text-align: center;
   display: block;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .usersPetContainer div {
   margin-bottom: 2%;
 }
 
+.deleteNAddContainer {
+  text-align: center;
+}
 /************* pet_profile *************/
 h3 {
   margin: 0;
@@ -252,7 +275,7 @@ h3 {
   height: 70%;
   width: 70%;
   background-position: center;
-  background-size: 150%;
+  background-size: 100%;
 }
 .petImg > img {
   width: 100%;
@@ -326,3 +349,7 @@ border-radius: 25px;
   margin-left: 5%;
 }
 
+/************* vet_page **********************/
+.vetTitle {
+  margin-top: 5%;
+}

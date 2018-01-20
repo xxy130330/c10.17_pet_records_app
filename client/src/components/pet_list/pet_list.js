@@ -83,7 +83,7 @@ class PetList extends Component {
           <div className="iconNav"></div>
             <div className="usersPetContainer">{userPetList}</div>
         </div>
-        <div>
+        <div className="deleteNAddContainer">
           <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
               onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete a Pet": 'Cancel'}
           </button>

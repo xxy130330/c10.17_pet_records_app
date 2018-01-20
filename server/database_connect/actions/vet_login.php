@@ -29,17 +29,23 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     $sanitizedUsername = htmlentities($sanitizeUsername1);
     $sanitizedPassword = htmlentities($sanitizePassword1);
 
-$query = "SELECT * FROM `vets` WHERE BINARY email = '$sanitizedUsername' AND password = '$sanitizedPassword' AND `status` = 'active'";
+$query = "SELECT * FROM `vets` WHERE BINARY email = '$sanitizedUsername' AND password = '$sanitizedPassword'";
 
 $result = mysqli_query($conn, $query);
 
 if ($result) {
     if(mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $output['data'] = 'successful_login';
-            $output['accessLevel'] = $row['level'];
-            $output['loginSuccess'] = true;
-            $output['vetID'] = $row['ID'];
+            //check if vet is active
+            if ($row['status'] === 'active') {
+                $output['data'] = 'successful_login';
+                $output['accessLevel'] = $row['level'];
+                $output['loginSuccess'] = true;
+                $output['vetID'] = $row['ID'];
+                $output['active'] = true;
+            } else {
+                $output['active'] = false;
+            }
         }
     } else {
         $output['errors'][] = 'Incorrect username or password';

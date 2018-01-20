@@ -15,9 +15,9 @@ class ClientList extends Component {
         this.props.history.push('/vet-client-pets/'+this.props.match.params.vetId +'/' +this.props.clientList[index].ownerID);
     }
   render() {
-    if (!this.props.clientList.length) {
-        return <h1>Loading</h1>;
-    }
+    // if (!this.props.clientList.length) {
+    //     return <h1>Loading</h1>;
+    // }
 
     let clientInformation= this.props.clientList.map((client, index)=>{
         return (
@@ -27,6 +27,11 @@ class ClientList extends Component {
             </div>
         )
     });
+
+
+
+
+    console.log('IN RENDER ', this.props);
         return (
           <div className='bodyContainer'>
             <div className="vetInfoContainer">
@@ -39,7 +44,8 @@ class ClientList extends Component {
             <div className="clientList">
               <div className="text-center">
                 <h2>Client List</h2>
-                  {clientInformation}
+                  {this.props.clientList.length ?  clientInformation : <h1>No Client Data</h1>}
+
               </div>
             </div>
           </div>
