@@ -2,7 +2,7 @@
 require_once('email_config.php');
 require('phpmailer/PHPMailer/PHPMailerAutoload.php');
 $mail = new PHPMailer;
-$mail->SMTPDebug = 3;           // Enable verbose debug output. Change to 0 to disable debugging output.
+$mail->SMTPDebug = 0;           // Enable verbose debug output. Change to 0 to disable debugging output.
 
 $mail->isSMTP();                // Set mailer to use SMTP.
 $mail->Host = 'smtp.gmail.com'; // Specify main and backup SMTP servers.
@@ -34,13 +34,9 @@ $mail->addReplyTo($post['email']);                          // Add a reply-to ad
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'Simon\'s Server ' . $_POST['email'];
-$mail->Body    = 'testes';
-$mail->AltBody = htmlentities('test');
-
-$output = [
-
-];
+$mail->Subject = 'Simon\'s Server';
+$mail->Body    = 'Thank you for signing up for PetVet, the easiest way to care for your pets health and happiness. Follow the link to activate your account: ' . $activationLink;
+$mail->AltBody = htmlentities('something went wrong');
 
 if(!$mail->send()) {
     $output['success'] = false;

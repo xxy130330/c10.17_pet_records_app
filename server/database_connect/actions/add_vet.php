@@ -50,6 +50,7 @@ if ($checkResult) {
                     if (mysqli_affected_rows($conn) > 0) {
                         $output['success'] = true;
                         $output['code'] = $authStr;
+                        $activationLink = 'http://localhost/server/database_connect/server.php?action=get&resource=activate_account?actNum=' . $authStr;
                         require('../php_mailer/mail_handler.php');
                     } else {
                         $output['success'] = false;

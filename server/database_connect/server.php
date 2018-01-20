@@ -56,11 +56,19 @@ switch($_GET['action']) {
                 if (!empty($_GET['vetID'])) {
                     require('./actions/read_vets_owners.php');
                 }
+                break;
             }
             case 'pets_for_vet': {
                 if (!empty($_GET['ownerID']) && !empty($_GET['vetID'])) {
                     require('./actions/read_client_pets_for_vet.php');
                 }
+                break;
+            }
+            case 'activate_account': {
+                if (!empty($_GET['actNum'])) {
+                    require('./actions/update_activate_account.php');
+                }
+                break;
             }
 
         }
