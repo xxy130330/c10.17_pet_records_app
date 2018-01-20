@@ -46,11 +46,11 @@ class VetPage extends Component {
   render() {
     return (
       <div className='bodyContainer'>
-        <div className="logoContainer">
-          <div className="logo" />
-        </div>
-        <hr />
-
+        {/*<div className="logoContainer">*/}
+          {/*<div className="logo" />*/}
+        {/*</div>*/}
+        {/*<hr />*/}
+        <h1 class="vetTitle">Vet Registration</h1>
         <form
           id="form-container"
           className="col-xs-10 col-xs-offset-1"
