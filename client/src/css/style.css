@@ -133,7 +133,7 @@ input:focus {
 }
 .contentContainer::after {
   content: "";
-  background: url(../../dist/assets/images/landing_bg.png);  
+  background: url(../../dist/assets/images/landing_bg.png);
   background-size: cover;
   opacity: 0.5;
   top: 5%;
@@ -141,7 +141,7 @@ input:focus {
   bottom: 5%;
   right: 5%;
   position: absolute;
-  z-index: -1;   
+  z-index: -1;
 }
 .landingContainer{
   height: 100vh;
@@ -201,7 +201,7 @@ input:focus {
   background-position: center;
   border: 2px solid orange;
   border-radius: 50%;
-  /* background-size: 211%; */
+   background-size: 100%;
   display: inline-block;
   /* position: relative; */
   margin-left: 10%;
@@ -315,7 +315,7 @@ h3 {
 }
 /************* pet log_in *************/
 .formContainer {
-background-color: rgba(255, 255, 255, 0.8);  
+background-color: rgba(255, 255, 255, 0.8);
 margin: 5% auto 0;
 width: 75%;
 height: 50%;

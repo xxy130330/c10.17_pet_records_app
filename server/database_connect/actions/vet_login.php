@@ -1,10 +1,14 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: shobl
- * Date: 1/10/2018
- * Time: 3:46 PM
+ * User: christin
+ * Date: 1/16/18
+ * Time: 12:12
  */
+
+
+
+
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
@@ -24,8 +28,6 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     $sanitizePassword1 = stripslashes($password);
     $sanitizedUsername = htmlentities($sanitizeUsername1);
     $sanitizedPassword = htmlentities($sanitizePassword1);
-    //////////////////////////////////////////////////////
-
 
 $query = "SELECT * FROM `vets` WHERE BINARY email = '$sanitizedUsername' AND password = '$sanitizedPassword' AND `status` = 'active'";
 
