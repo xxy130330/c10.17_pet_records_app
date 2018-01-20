@@ -5,6 +5,13 @@ import { connect } from "react-redux";
 import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../actions/";
 
 class PetProfile extends Component {
+    constructor(props){
+        super(props);
+
+        this.state={
+            canDelete: false
+        }
+    }
     componentDidMount() {
 
     let currentOwnerId = null;
@@ -21,6 +28,7 @@ class PetProfile extends Component {
     }
 
     softDeleteRecord(index) {
+        console.log('you have clicked on the x to soft delete a record');
         const petProfileData= this.props.petProfile;
         this.props.deleteMedicalRecordItem(petProfileData[index]['recordID']).then(()=>{
             this.props.fetchProfileData(this.props.match.params.id)
@@ -45,8 +53,6 @@ class PetProfile extends Component {
         <div className="petImgContainer">
           <div className="petImg" style={petImage} />
         </div>
-
-
         <div className="petInfoDiv">
           <div>
             <Link to={`/pet-to-vet/${this.props.match.params.id}`}>
@@ -59,38 +65,25 @@ class PetProfile extends Component {
             <h4>Breed: {petObj.breed}</h4>
           {/*Will Display vet info here*/}
             <h4>Vet: {petObj.vet}</h4>
-
           </div>
         </div>
-
       </div>
     );
   }
   listMedicalRecords() {
-
       const petId = this.props.match.params.id;
-
     const medicalRecordsList = this.props.petProfile.map((item, index) => {
       return (
         <div className="recordContainer" key={index}>
           <h3>
-            <Link
-              to={
-                "/pet-profile/" +
-                petId +
-                "/record-item/" +
-                this.props.petProfile[index]["recordID"]
-              }
-            >
+            <Link to={"/pet-profile/" + petId + "/record-item/" + this.props.petProfile[index]["recordID"]}>
               {item.type}
             </Link>
           </h3>
-          <div
-            className="pull-right"
-            onClick={() => {this.softDeleteRecord(index)}}
-          >
-
-            <div className={this.props.vetAccessLevel? "": "glyphicon glyphicon-minus removeRecordIcon"} />
+          <div className="pull-right" >
+              <i onClick={ ()=>this.softDeleteRecord(index)}
+                 className={this.state.canDelete? "fa fa-times-circle fa-2x aria-hidden=true": ''}>
+              </i>
           </div>
         </div>
       );
@@ -109,31 +102,32 @@ class PetProfile extends Component {
         petName = this.props.petdata[i].name;
       }
     }
-
-
+    const toggleCanDelete= !this.state.canDelete;
     return (
+
       <div className='bodyContainer'>
         {this.getPetInfo()}
         <hr />
         <div className="medicalRecord">
           <div className="text-center">
             <h1>Record List for {petName}</h1>
-            <div>
-              <Link
-                to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}
-              >
-                <p>{this.props.vetAccessLevel? '': 'Add Record'}</p>
-                <div className={this.props.vetAccessLevel?   '':"glyphicon glyphicon-plus addRecordIcon"} />
-              </Link>
-            </div>
-            { this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
+              {this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
+              <div style={this.props.vetAccessLevel? {'display': 'none'}: {'display': 'inline'} }>
+                  <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
+                          onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete A Record": 'Cancel'}
+                  </button>
+                  <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
+                      <button className= "btn btn-outline-success">
+                          Add Medical Record
+                      </button>
+                  </Link>
+              </div>
           </div>
         </div>
       </div>
     );
   }
 }
-
 function mapStateToProps(state) {
   return {
     petdata: state.petdata,
@@ -143,10 +137,8 @@ function mapStateToProps(state) {
 
   };
 }
-
 export default connect(mapStateToProps, {
     fetchPetData: fetchPetData,
     fetchProfileData: fetchProfileData,
     deleteMedicalRecordItem: deleteMedicalRecordItem,
-
 })(PetProfile);

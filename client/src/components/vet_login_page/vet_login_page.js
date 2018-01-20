@@ -98,7 +98,7 @@ class VetLoginPage extends Component {
           <br />
           <div id="register">
             New User?
-            <Link to="/parent-page/"><button className="btn btn-outline-success btn-sm">Register</button></Link>
+            <Link to="/vet-page/"><button className="btn btn-outline-success btn-sm">Register</button></Link>
           </div>
         </form>
         </div>
