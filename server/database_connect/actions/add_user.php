@@ -38,13 +38,13 @@ if ($checkResult) {
                     if (mysqli_affected_rows($conn) > 0) {
                         $output['success'] = true;
                         $output['code'] = $authStr;
-                        if ($_SERVER['HTTP_HOST'] === 'localhost') {
+                        if ($_SERVER['HTTP_HOST'] === 'localhost:3000') {
                             $activationLink = 'http://localhost/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
                         } else {
                             $activationLink = 'http://petvet.tech/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
                         }
                         require('../php_mailer/mail_handler.php');
-                    } else {
+                    }  else {
                         $output['success'] = false;
                     }
                 } else {
