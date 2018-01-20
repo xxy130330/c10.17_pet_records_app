@@ -24,7 +24,7 @@ if($result){
                 print_r($row);
                 echo "<br>";
                 $currentTime = time();
-                $past = $currentTime - 43200;
+                $past = $currentTime - 86400;
                 $past = date("Y-m-d h:m:s",$past);
                 echo $past;
                 if($row['updated'] <= $past){
