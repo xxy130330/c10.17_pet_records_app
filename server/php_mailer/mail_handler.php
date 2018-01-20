@@ -21,12 +21,12 @@ $options = array(
     )
 );
 $mail->smtpConnect($options);
-$mail->From = 'simonhoblikserver@gmail.com';  // sender's email address (shows in "From" field)
-$mail->FromName = 'Simon\'s Server';   // sender's name (shows in "From" field)
-$mail->addAddress('shoblik@yahoo.com', 'Simon Hoblik');  // Add a recipient
+$mail->From = 'petvetteam@gmail.com';  // sender's email address (shows in "From" field)
+$mail->FromName = 'The PetVet Team';   // sender's name (shows in "From" field)
+$mail->addAddress($post['email']);  // Add a recipient
 
 //$mail->addAddress('ellen@example.com');                        // Name is optional
-$mail->addReplyTo($post['email']);                          // Add a reply-to address
+$mail->addReplyTo('petvetteam@gmail.com');                          // Add a reply-to address
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 
@@ -34,7 +34,7 @@ $mail->addReplyTo($post['email']);                          // Add a reply-to ad
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'Simon\'s Server';
+$mail->Subject = 'The PetVet Team';
 $mail->Body    = 'Thank you for signing up for PetVet, the easiest way to care for your pets health and happiness. Follow the link to activate your account: ' . $activationLink;
 $mail->AltBody = htmlentities('something went wrong');
 
