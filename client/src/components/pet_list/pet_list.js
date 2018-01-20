@@ -5,12 +5,15 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchPetData, delete_pet } from "../../actions/";
 import axios from 'axios';
+import PetListModal from './pet_list';
 
 class PetList extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      canDelete: false,
+    }
   }
-
   componentWillMount() {
     let currentOwnerId = null;
     if(this.props.id){
@@ -19,16 +22,20 @@ class PetList extends Component {
     } else {
       currentOwnerId = localStorage.id;
     }
-
     this.props.fetchPetData(currentOwnerId);
-
   }
   softDeletePet(index) {
-    const petDataProps= this.props.petdata;
-    this.props.delete_pet(petDataProps[index]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')));
+    alert("Are you sure you want to delete this pet???");
+    return (
+        <PetListModal callback={()=> this.deleteFromServer(index)} text='Hello' className='btn btn-floating red'/>
+    );
+  }
+  deleteFromServer(index){
+      const petDataProps= this.props.petdata;
+      this.props.delete_pet(petDataProps[index]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')));
   }
   render() {
-console.log(this.props.petdata);
+    const toggleCanDelete= !this.state.canDelete;
     const userPetList = this.props.petdata.map((item, index) => {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
@@ -38,12 +45,8 @@ console.log(this.props.petdata);
           <Link to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
             <div className="petAvatar" style={petAvatar} />
             <h3 className="petName">{item.name}</h3>
-            </Link>
-
-            <div className="pull-right" onClick={()=>{this.softDeletePet(index)}}>
-                <div className="glyphicon glyphicon-minus removeRecordIcon" />
-            </div>
-
+          </Link>
+          <i onClick={()=>{this.softDeletePet(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true": ''}></i>
         </div>
       );
     });
@@ -51,19 +54,19 @@ console.log(this.props.petdata);
       <div className='bodyContainer'>
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
-          <div className="iconNav">
-        <Link to="/add-pet/">
-          <p>Add Pet</p>
-                <div className="glyphicon glyphicon-plus addRecordIcon" />
-        </Link>
-      </div>
-          <div className="usersPetContainer">{userPetList}</div>
+          <div className="iconNav"></div>
+            <div className="usersPetContainer">{userPetList}</div>
+        </div>
+        <div>
+          <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
+              onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete a Pet": 'Cancel'}
+          </button>
+          <Link to="/add-pet/"><button className='btn btn-outline-success'>Add a Pet</button></Link>
         </div>
       </div>
     );
   }
 }
-
 function mapStateToProps(state) {
   return {
     petdata: state.petdata,
