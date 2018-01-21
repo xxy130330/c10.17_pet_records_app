@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import loading from '../../../dist/assets/images/loading.gif';
 
 
 export default class ParentPageModal extends Component{
@@ -9,9 +10,7 @@ export default class ParentPageModal extends Component{
     }
 
     handleLoginBtn(){
-        console.log('IN HANDLE LOG IN BTN:', this.props);
         this.props.history.push('/login-page')
-
     }
 
     message(){
@@ -24,6 +23,7 @@ export default class ParentPageModal extends Component{
                 <div className="card-block">
                     <h4 className='card-title'>You must verify your email</h4>
                     <p className="card-text">Check your inbox and click a link to verify</p>
+                    <img src={loading}/>
                 </div>
                 <div className="card-footer text-muted">Thank you</div>
             </div>
@@ -52,10 +52,6 @@ export default class ParentPageModal extends Component{
 
 
     render(){
-
-            console.log('IN MODAL', this.props.confirm);
-
-            console.log('IN MODAL PROPS BABY~', this.props)
             return (
                 <span>
 

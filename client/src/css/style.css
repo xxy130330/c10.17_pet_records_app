@@ -372,10 +372,15 @@ border-radius: 25px;
 .modal-content{
     margin: auto;
     width: 100%;
-
-
 }
 
+.card-block{
+  padding-top: 5%;
+}
+
+.card-block img{
+  width:20%;
+}
 
 
 
