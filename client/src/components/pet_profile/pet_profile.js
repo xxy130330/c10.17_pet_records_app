@@ -60,12 +60,12 @@ class PetProfile extends Component {
     return (
       <div className="petInfoContainer">
         <div className="petImgContainer">
-          <div className="petImg" style={petImage} />
+          <div className="petAvatar petAvatarProfile" style={petImage} />
         </div>
         <div className="petInfoDiv">
-          <div>
+          <div className='connectPetBtn'>
             <Link to={`/pet-to-vet/${this.props.match.params.id}`}>
-                <button style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>{petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}</button>
+                <button className='btn btn-outline-warning' style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>{petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}</button>
             </Link>
           </div>
           <div className="petInfo">
@@ -89,7 +89,7 @@ class PetProfile extends Component {
                   {item.type}
                 </Link>
             </h3>
-            <span onClick={()=>this.triggerModal(index)} className='petProfileSpan pull-right'>
+            <span> onClick={()=>this.triggerModal(index)} className='petProfileSpan pull-right'>
                 <i  className={this.state.canDelete? "fa fa-times-circle fa-2x aria-hidden=true": ''} ></i>
             </span>
         </div>
@@ -150,10 +150,10 @@ class PetProfile extends Component {
 
       <div className='bodyContainer'>
         {this.getPetInfo()}
-        <hr />
+
         <div className="medicalRecord">
           <div className="text-center">
-            <h1>Record List for {petName}</h1>
+            <h1 className='listTitle'>Record List for {petName}</h1>
               {this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
               <div style={this.props.vetAccessLevel? {'display': 'none'}: {'display': 'inline'} }>
                   <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}

@@ -17,7 +17,7 @@ export default function(state = CURRENT_USER, action) {
         errorMessage: action.payload.data.errors[0]
       };
     case REGISTER:
-      // console.log("RESTER WORKS", action);
+      console.log("REGISTER REDUCER", action);
       return {
         ...state,
         success: action.payload.data.success,
