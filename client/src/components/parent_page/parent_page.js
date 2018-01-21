@@ -2,23 +2,27 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Logo from '../../../../server/images/petvet_logo.png';
 import { connect } from "react-redux";
-import { register } from "../../actions/";
+import { register, login } from "../../actions/";
 import { Field, reduxForm } from 'redux-form';
+import ParentPageModal from '../parent_page_modal/parent_page_modal';
+
 
 class ParentPage extends Component{
 	constructor(props){
 		super(props);
 
-		this.state={
-			errorMessage: ''
-		}
+    this.state ={
+      toggleModal: false
+    }
 	}
 
-	renderInput({label, input, type, meta: {touched, error, active}}){
+	renderInput({label, input, type, meta: {touched, error, active, visited}}){
+
 		return(
 			<div className='form-group row'>
   			<label className='col-form-label'>{label}</label>
 				<input className = 'form-control'type={type} {...input} />
+                <p className="text-danger">{ input.name==='confirmpassword' ? touched && visited && error : touched && !active && error }</p>
 	 		</div>
 		)
 	}
@@ -27,22 +31,25 @@ class ParentPage extends Component{
 	handleSubmits(values){
 		console.log('values', values);
 
-		if(values.password !== values.confirmpassword){
-			this.setState({
-				errorMessage: 'Please match the password'
-			})
-			return;
-		}else if(values.password === values.confirmpassword){
-			this.setState({
-				errorMessage: ''
-			})
-		}
+    this.setState({
+      toggleModal: true
+    })
 
-		this.props.register(values.username, values.password, values.email).then( ()=>{
-        this.props.history.push('/login-page');
-      }
-    )
-	}
+    console.log('toggleModal?', this.state.toggleModal);
+
+
+		this.props.register(values.username, values.password, values.email)
+      .then( ()=> {
+          var time = setInterval(()=>{
+          this.props.login(values.email, values.password)
+          if(this.props.id){
+            console.log('in if statement::', this.props.login);
+            console.log('your account is activated now. now you will go to login page!');
+            clearInterval(time);
+            // this.props.history.push('/login-page')
+          }
+        }, 4000)})
+    }
 
 	render(){
 
@@ -67,7 +74,8 @@ class ParentPage extends Component{
 
             </div>
 
-            <p className="text-danger">{this.state.errorMessage}</p>
+            {this.state.toggleModal ? <ParentPageModal {...this.props} confirm={this.props.id}/> : ''}
+
           </form>
         </div>
   		</div>
@@ -77,10 +85,22 @@ class ParentPage extends Component{
 }
 
 function validate(values){
-  const errors = {};
+  const error = {};
 
+    if(!values.username){
+        error.username = 'Please enter your username';
+    }
+    if(!values.password){
+        error.password = 'Please enter a password';
+    }
+    if(!(values.password === values.confirmpassword)){
+        error.confirmpassword = 'Passwords do not match';
+    }
+    if(!values.email){
+        error.email = 'Please enter your email'
+    }
 
-  return errors;
+    return error;
 }
 
 
@@ -89,10 +109,16 @@ ParentPage = reduxForm({
   validate: validate
 })(ParentPage)
 
+function mapStateToProps(state){
+    return{
+        id: state.login.id
+    }
+}
 
 
-export default connect(null, {
-  register: register
+export default connect(mapStateToProps, {
+  register: register,
+  login: login
 })(ParentPage);
 
 
