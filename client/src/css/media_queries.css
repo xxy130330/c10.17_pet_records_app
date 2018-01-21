@@ -1,0 +1,124 @@
+/*@media (min-width:320px)  { !* smartphones, iPhone, portrait 480x320 phones *! }*/
+/*@media (min-width:481px)  { !* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. *! }*/
+/*@media (min-width:641px)  { !* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones *! }*/
+/*@media (min-width:961px)  { !* tablet, landscape iPad, lo-res laptops ands desktops *! }*/
+/*@media (min-width:1025px) { !* big landscape tablets, laptops, and desktops *! }*/
+/*@media (min-width:1281px) { !* hi-res laptops and desktops *! }*/
+
+
+@media (min-width: 1025px) {
+    /*Everything*/
+    body {
+
+    }
+    /********* landing_page ********/
+    .loginLogo {
+        width: 20%;
+    }
+    .loginBtnContainer {
+        margin: auto;
+        width: 40vw;
+
+    }
+    .homeBtn {
+        text-align: center;
+        width: 11vw;
+    }
+    .msgBtnContainer {
+        padding: 0 5%;
+    }
+    .landinglogoContainer {
+        margin-top: 4%;
+    }
+    .home-msg {
+        margin: 2% 10%;
+    }
+    /********* login_page ************/
+
+    .logoContainer {
+        margin: 2% 10% 0;
+    }
+    .formContainer {
+        background-color: initial;
+        width: 35%;
+        height: auto;
+        border-radius: 25px;
+    }
+    form {
+        padding: 10px;
+        width: 45%;
+        margin: auto;
+        background-color: rgba(0,0,0, 0.7);
+        border-radius: 6%;
+        color: white;
+    }
+
+    /*********** vet_page ***************/
+    .vetTitle {
+        width: 60%;
+        margin: 2% auto 2%;
+    }
+
+    .buttonContainer {
+        position : relative;
+        width: 80%;
+        margin: inherit;
+        top: 2vh;
+
+    }
+    .form-group {
+        width: 80%;
+        margin: auto;
+    }
+    /************* pet_title ****************/
+    .parentPageTitle {
+        margin: 0% auto 2%;
+        width: 60%;
+    }
+    .parentPage {
+        margin: 2% 0;
+    }
+    /********** pet_list **************/
+    .petListTitle {
+        width: 60%;
+        margin: auto;
+    }
+    .usersPetContainer {
+        width: 40%;
+        margin: auto;
+        padding: 20px;
+        /*background-color: rgba(0,0,0, .7);*/
+        /*border-radius: 8%;*/
+    }
+    .deleteNAddContainer button {
+       margin: 0 10px;
+    }
+    .petList {
+
+    }
+/************** pet_profile *****************/
+
+    .petAvatarProfile {
+        height: 30vh;
+        width: 30vh;
+        margin-left: 55%;
+        top: 50%;
+    }
+    .listTitle {
+        margin-top: 30px;
+    }
+    .record-item {
+        margin: 0;
+        position: relative;
+        top: 50%;
+        height: 100%;
+        transform: translateY(-50%);
+        width: 100%;
+    }
+    .recordContainer {
+        height: 8vh;
+        position: relative;
+        width: 60%;
+        margin: auto;
+    }
+}

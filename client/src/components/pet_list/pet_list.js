@@ -67,12 +67,14 @@ class PetList extends Component {
         backgroundImage: `url(${item.avatar})`
       };
       return (
-        <div key={index}>
+        <div key={index} className='petList'>
           <Link to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
             <div className="petAvatar" style={petAvatar} />
             <h3 className="petName">{item.name}</h3>
           </Link>
+            <div className='deletePetBtn'>
           <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true": ''}></i>
+            </div>
         </div>
       );
     });

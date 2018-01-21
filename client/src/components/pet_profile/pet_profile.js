@@ -60,7 +60,7 @@ class PetProfile extends Component {
     return (
       <div className="petInfoContainer">
         <div className="petImgContainer">
-          <div className="petImg" style={petImage} />
+          <div className="petAvatar petAvatarProfile" style={petImage} />
         </div>
         <div className="petInfoDiv">
           <div>
@@ -84,7 +84,7 @@ class PetProfile extends Component {
     const medicalRecordsList = this.props.petProfile.map((item, index) => {
       return (
         <div className="recordContainer" key={index}>
-          <h3>
+          <h3 className='record-item'>
             <Link to={"/pet-profile/" + petId + "/record-item/" + this.props.petProfile[index]["recordID"]}>
               {item.type}
             </Link>
@@ -142,10 +142,10 @@ class PetProfile extends Component {
 
       <div className='bodyContainer'>
         {this.getPetInfo()}
-        <hr />
+
         <div className="medicalRecord">
           <div className="text-center">
-            <h1>Record List for {petName}</h1>
+            <h1 className='listTitle'>Record List for {petName}</h1>
               {this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
               <div style={this.props.vetAccessLevel? {'display': 'none'}: {'display': 'inline'} }>
                   <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
