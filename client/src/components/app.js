@@ -41,8 +41,8 @@ class App extends Component {
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />
           <Route path="/vet-login-page/" component={VetLoginPage} />
-          <Route path="/pet-list/" component={auth(PetList)} />
-          <Route exact path="/pet-profile/:id" component={auth(PetProfile)} />
+          <Route path="/pet-list/" component={(PetList)} />
+          <Route exact path="/pet-profile/:id" component={(PetProfile)} />
           <Route
             exact
             path="/pet-profile/:petId/record-item/:recordId"

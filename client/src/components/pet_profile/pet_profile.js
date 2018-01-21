@@ -84,16 +84,14 @@ class PetProfile extends Component {
     const medicalRecordsList = this.props.petProfile.map((item, index) => {
       return (
         <div className="recordContainer" key={index}>
-          <h3 className='record-item'>
-            {/*<span className='recordTitle'>*/}
+            <h3>
                 <Link to={"/pet-profile/" + petId + "/record-item/" + this.props.petProfile[index]["recordID"]}>
-                    {item.type}
+                  {item.type}
                 </Link>
-            {/*</span>*/}
-          </h3>
-          <div className="pull-right" onClick={()=>this.triggerModal(index)} >
-              <i className={this.state.canDelete? "fa fa-times-circle fa-3x aria-hidden=true": ''}></i>
-          </div>
+            </h3>
+            <span> onClick={()=>this.triggerModal(index)} className='petProfileSpan pull-right'>
+                <i  className={this.state.canDelete? "fa fa-times-circle fa-2x aria-hidden=true": ''} ></i>
+            </span>
         </div>
       );
     });
@@ -108,22 +106,30 @@ class PetProfile extends Component {
     showModal(){
         console.log('you have returned the modal elements');
         // return PetListModal(this.state, self );
+        // const {recordIndex}= this.state;
+        const {recordIndex}= this.state;
         return(
             <span>
-          <div className='confirm-modal '>
-              <div className="content-modal">
-                  <div className="card">
-                      <div className="card-content">
-                          "Hello"
-                      </div>
-                      <div className="card-action">
-                          <button onClick={()=> this.softDeleteRecord()} className='btn btn-outline-success'>Confirm</button>
-                          <button onClick={()=> this.setState({...this.state, showModal: false, canDelete: false})} className='btn btn-outline-danger'>Cancel</button>
+              <div className='confirm-modal '>
+                  <div className="content-modal">
+                      <div className="card">
+                          <div className="card-header">Are you sure you want to delete:</div>
+                          <div className="card-block">
+                              <div className="card-title">
+                                  <h5>Medical Record:</h5>
+                              </div>
+                          </div>
+                          <div className='card-block'>
+                              <h2 className='font-weight-bold'>{this.props.petProfile[recordIndex].type}</h2>
+                          </div>
+                          <div className="card-footer">
+                                <button onClick={()=> this.deleteFromServer()} className='btn btn-outline-success'>Confirm</button>
+                                <button onClick={()=> this.setState({...this.state, showModal: false, canDelete: false})} className='btn btn-outline-danger'>Cancel</button>
+                          </div>
                       </div>
                   </div>
               </div>
-          </div>
-        </span>
+            </span>
         )
     }
 

@@ -232,7 +232,7 @@ form {
   display: inline-block;
   left: 10%;
   bottom: 4vh;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .petListTitle {
@@ -370,6 +370,9 @@ border-radius: 25px;
   margin-top: 5%;
 }
 
+.petProfileSpan{
+    width: 15%;
+}
 
 /************* parent_page_modal*************/
 
@@ -397,12 +400,3 @@ border-radius: 25px;
 .card-block img{
   width:20%;
 }
-
-
-
-
-
-
-
-
-

@@ -34,15 +34,24 @@ class PetList extends Component {
     //////////SHOW MODAL HERE//////////
   showModal(){
     // return PetListModal(this.state, self );
+      const {petIndex}= this.state;
+      const style={
+          backgroundImage: `url(${this.props.petdata[petIndex].avatar})`
+      }
+      const item= this.props.petdata[petIndex];
       return(
-          <span>
+        <span>
           <div className='confirm-modal '>
               <div className="content-modal">
                   <div className="card">
-                      <div className="card-content">"Are you sure you want to delete this item?"</div>
-                      <div className="card-action">
-                          <button onClick={()=> this.deleteFromServer()} className='btn btn-outline-success'>Confirm</button>
-                          <button onClick={()=> this.setState({...this.state, showModal: false, canDelete: false})} className='btn btn-outline-danger'>Cancel</button>
+                      <div className="card-header">Are you sure you want to delete:</div>
+                      <div className="card-block">
+                          <div className='card-title'>{item.name}</div>
+                          <div className="petAvatar" style={style} />
+                      </div>
+                      <div className="card-footer">
+                            <button onClick={()=> this.deleteFromServer()} className='btn btn-outline-success'>Confirm</button>
+                            <button onClick={()=> this.setState({...this.state, showModal: false, canDelete: false})} className='btn btn-outline-danger'>Cancel</button>
                       </div>
                   </div>
               </div>
