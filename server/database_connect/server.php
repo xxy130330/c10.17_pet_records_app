@@ -136,6 +136,7 @@ switch($_GET['action']) {
                 if (!empty($post)) {
                     require('./actions/connect_pet_to_vet.php');
                 }
+                break;
             }
         }
 
