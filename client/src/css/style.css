@@ -17,7 +17,6 @@ a {
   height: 100vh;
   width: 100vw;
   position: relative;
-
 }
 
 .header {
@@ -87,7 +86,7 @@ img {
   height: 100%;
   margin: auto;
 }
-.title > img {
+.title img {
   height: 100%;
 }
 
@@ -147,7 +146,7 @@ form {
   height: 100px;
   margin-top: 15%;
 }
-.contentContainer{
+.contentContainer {
   height: 90%;
   width: 90%;
   flex-wrap: wrap;
@@ -165,7 +164,7 @@ form {
   position: absolute;
   z-index: -1;
 }
-.landingContainer{
+.landingContainer {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -173,7 +172,7 @@ form {
   align-items: center;
   justify-content: center;
 }
-.msgBtnContainer{
+.msgBtnContainer {
   padding: 5%;
   bottom: 20%;
 }
@@ -223,7 +222,7 @@ form {
   background-position: center;
   border: 2px solid orange;
   border-radius: 50%;
-   background-size: 100%;
+  background-size: 100%;
   display: inline-block;
   /* position: relative; */
   margin-left: 10%;
@@ -272,7 +271,7 @@ h3 {
 .petInfoContainer {
   position: relative;
   height: 25vh;
-  background-color: rgba(0,0,0, .8);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
 
@@ -356,24 +355,26 @@ h3 {
 }
 /************* pet log_in *************/
 .formContainer {
-background-color: rgba(255, 255, 255, 0.8);
-margin: 3% auto 0;
-width: 75%;
-height: 50%;
-border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 3% auto 0;
+  width: 75%;
+  height: 50%;
+  border-radius: 25px;
 }
 
-#register > a >button {
+#register > a > button {
   margin-left: 5%;
 }
 
 /************* hamburger log in ******/
-
+/* .hamContainer{
+  height: 100%;
+} */
 .hamburger {
   position: fixed;
-  top: 2vmin;
-  right: 2vw;
-  width: 6vmin;
+  top: 3%;
+  right: 5%;
+  width: 6%;
   height: 5vmin;
   transition-duration: 1s;
   z-index: 5;
@@ -393,105 +394,106 @@ border-radius: 25px;
   margin: 10% 0;
   background-color: rgba(214, 117, 5, 0.89);
   border-radius: 1vmin;
-  transition-duration: 0.5s
+  transition-duration: 0.5s;
 }
 
 .menuContainer {
-  width: 40%;
+  width: 30%;
   background-color: rgba(168, 102, 25, 0.705);
   float: right;
 }
 .menuContainer div {
-  margin: 5%;
-  border-bottom: solid 1px rgb(255, 218, 175);
+  margin: 8%;
+  background-color: rgba(223, 173, 117, 0.856);
+  border-bottom: solid 1px rgb(0, 0, 0);
+  border-right: solid 1px rgb(0, 0, 0);
 }
 
-.slideDown{
-	animation-name: slideDown;
-	-webkit-animation-name: slideDown;	
+.slideDown {
+  animation-name: slideDown;
+  -webkit-animation-name: slideDown;
 
-	animation-duration: 1s;	
-	-webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
 
-	animation-timing-function: ease;	
-	-webkit-animation-timing-function: ease;	
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
 
-	visibility: visible !important;						
+  visibility: visible !important;
 }
 
 @keyframes slideDown {
-	0% {
-		transform: translateY(-100%);
-	}
-	50%{
-		transform: translateY(8%);
-	}
-	65%{
-		transform: translateY(-4%);
-	}
-	80%{
-		transform: translateY(4%);
-	}
-	95%{
-		transform: translateY(-2%);
-	}			
-	100% {
-		transform: translateY(0%);
-	}		
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(8%);
+  }
+  65% {
+    transform: translateY(-4%);
+  }
+  80% {
+    transform: translateY(4%);
+  }
+  95% {
+    transform: translateY(-2%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
 
 @-webkit-keyframes slideDown {
-	0% {
-		-webkit-transform: translateY(-100%);
-	}
-	50%{
-		-webkit-transform: translateY(8%);
-	}
-	65%{
-		-webkit-transform: translateY(-4%);
-	}
-	80%{
-		-webkit-transform: translateY(4%);
-	}
-	95%{
-		-webkit-transform: translateY(-2%);
-	}			
-	100% {
-		-webkit-transform: translateY(0%);
-	}	
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+  50% {
+    -webkit-transform: translateY(8%);
+  }
+  65% {
+    -webkit-transform: translateY(-4%);
+  }
+  80% {
+    -webkit-transform: translateY(4%);
+  }
+  95% {
+    -webkit-transform: translateY(-2%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+  }
 }
 /************* vet_page **********************/
 .vetTitle {
   margin-top: 5%;
 }
 
-.petProfileSpan{
-    width: 15%;
+.petProfileSpan {
+  width: 15%;
 }
 
 /************* parent_page_modal*************/
 
-
-.confirm-modal{
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    background-color: rgba(0, 0, 0, .75);
-    top: 0;
-    left: 0;
-    z-index: 1000;
+.confirm-modal {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-.modal-content{
-    margin: auto;
-    width: 100%;
+.modal-content {
+  margin: auto;
+  width: 100%;
 }
 
-.card-block{
+.card-block {
   padding-top: 5%;
 }
 
-.card-block img{
-  width:20%;
+.card-block img {
+  width: 20%;
 }
