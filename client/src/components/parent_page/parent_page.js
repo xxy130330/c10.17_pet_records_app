@@ -4,14 +4,16 @@ import Logo from '../../../../server/images/petvet_logo.png';
 import { connect } from "react-redux";
 import { register, login } from "../../actions/";
 import { Field, reduxForm } from 'redux-form';
+import ParentPageModal from '../parent_page_modal/parent_page_modal';
+
 
 class ParentPage extends Component{
 	constructor(props){
 		super(props);
 
-		this.state={
-			errorMessage: ''
-		}
+    this.state ={
+      toggleModal: false
+    }
 	}
 
 	renderInput({label, input, type, meta: {touched, error, active, visited}}){
@@ -29,12 +31,24 @@ class ParentPage extends Component{
 	handleSubmits(values){
 		console.log('values', values);
 
+    this.setState({
+      toggleModal: true
+    })
+
+    console.log('toggleModal?', this.state.toggleModal);
+
 
 		this.props.register(values.username, values.password, values.email)
-            .then(()=> this.props.login(values.username, values.password))
-                .then( ()=> console.log(this.props.login));
- //            .then( ()=>{ this.props.history.push('/login-page')})
-	// }
+      .then( ()=> {
+          var time = setInterval(()=>{
+          this.props.login(values.email, values.password)
+          if(this.props.id){
+            console.log('in if statement::', this.props.login);
+            console.log('your account is activated now. now you will go to login page!');
+            clearInterval(time);
+            // this.props.history.push('/login-page')
+          }
+        }, 4000)})
     }
 
 	render(){
@@ -59,6 +73,8 @@ class ParentPage extends Component{
               <button className='btn btn-success'>Sign Up</button>
 
             </div>
+
+            {this.state.toggleModal ? <ParentPageModal {...this.props} confirm={this.props.id}/> : ''}
 
           </form>
         </div>
