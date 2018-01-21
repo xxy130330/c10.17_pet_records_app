@@ -89,7 +89,7 @@ class PetProfile extends Component {
                   {item.type}
                 </Link>
             </h3>
-            <span> onClick={()=>this.triggerModal(index)} className='petProfileSpan pull-right'>
+            <span onClick={()=>this.triggerModal(index)} className="petProfileSpan pull-right">
                 <i  className={this.state.canDelete? "fa fa-times-circle fa-2x aria-hidden=true": ''} ></i>
             </span>
         </div>
