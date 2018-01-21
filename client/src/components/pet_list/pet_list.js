@@ -69,7 +69,7 @@ class PetList extends Component {
       return (
         <div key={index} className='petList'>
           <Link to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
-            <div className="petAvatar" style={petAvatar} />
+            <div className="petAvatar petAvatarPetList" style={petAvatar} />
             <h3 className="petName">{item.name}</h3>
           </Link>
             <div className='deletePetBtn'>

@@ -63,9 +63,9 @@ class PetProfile extends Component {
           <div className="petAvatar petAvatarProfile" style={petImage} />
         </div>
         <div className="petInfoDiv">
-          <div>
+          <div className='connectPetBtn'>
             <Link to={`/pet-to-vet/${this.props.match.params.id}`}>
-                <button style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>{petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}</button>
+                <button className='btn btn-outline-warning' style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>{petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}</button>
             </Link>
           </div>
           <div className="petInfo">
@@ -85,9 +85,11 @@ class PetProfile extends Component {
       return (
         <div className="recordContainer" key={index}>
           <h3 className='record-item'>
-            <Link to={"/pet-profile/" + petId + "/record-item/" + this.props.petProfile[index]["recordID"]}>
-              {item.type}
-            </Link>
+            {/*<span className='recordTitle'>*/}
+                <Link to={"/pet-profile/" + petId + "/record-item/" + this.props.petProfile[index]["recordID"]}>
+                    {item.type}
+                </Link>
+            {/*</span>*/}
           </h3>
           <div className="pull-right" onClick={()=>this.triggerModal(index)} >
               <i className={this.state.canDelete? "fa fa-times-circle fa-3x aria-hidden=true": ''}></i>

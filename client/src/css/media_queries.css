@@ -93,8 +93,9 @@
     .deleteNAddContainer button {
        margin: 0 10px;
     }
-    .petList {
-
+    .petAvatarPetList {
+        height: 19vh;
+        width: 19vh;
     }
 /************** pet_profile *****************/
 
@@ -105,20 +106,42 @@
         top: 50%;
     }
     .listTitle {
-        margin-top: 30px;
+        width: 60%;
+        margin: auto;
     }
     .record-item {
         margin: 0;
         position: relative;
         top: 50%;
-        height: 100%;
+        /*height: 100%;*/
         transform: translateY(-50%);
-        width: 100%;
+        /*width: 100%;*/
     }
     .recordContainer {
         height: 8vh;
         position: relative;
         width: 60%;
         margin: auto;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+    .petInfoContainer {
+        height: 30vh;
+        background-color: rgba(0,0,0, .8);
+        color: white;
+    }
+    .connectPetBtn {
+        position: absolute;
+        display: inline-block;
+        top: 50%;
+        left: 35%;
+        z-index: 200;
+    }
+    .petImgContainer .petAvatar {
+        top: 0vh;
+        left: 37%;
+    }
+    .petInfo {
+        top: 20%;
     }
 }
