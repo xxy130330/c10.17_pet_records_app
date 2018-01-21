@@ -7,6 +7,20 @@ export default props => {
   if (props.match.url === "/") return null;
   // console.log('header props url:', props.match.url);
 
+  function showNavBar() {
+    switch (props.match.url) {
+      case "/":
+      case "/login-page":
+      case "/vet-login-page":
+      case "/parent-page/":
+      case "/vet-page/":
+        return "";
+
+      default:
+        return <NavBar />;
+    }
+  }
+
   return (
     <div className="header">
       <Link to="/">
@@ -14,7 +28,7 @@ export default props => {
           <img src={Logo} />
         </div>
       </Link>
-      <NavBar />
+      {showNavBar()}
     </div>
   );
 };
