@@ -234,7 +234,7 @@ form {
   display: inline-block;
   left: 10%;
   bottom: 4vh;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .petListTitle {
@@ -258,9 +258,22 @@ h3 {
   transform: translateY(-50%);
 }
 
+.connectPetBtn {
+  position: relative;
+  top: 75%;
+}
+
+.petImgContainer .petAvatar {
+  position: absolute;
+  margin-left: 15%;
+  top: 5vh;
+}
+
 .petInfoContainer {
   position: relative;
   height: 25vh;
+  background-color: rgba(0,0,0, .8);
+  color: white;
 }
 
 .petImgContainer {
@@ -282,6 +295,9 @@ h3 {
 .petImg > img {
   width: 100%;
 }
+.petInfo h4 {
+  font-size: 1.2rem;
+}
 
 .petInfoDiv {
   width: 55%;
@@ -290,7 +306,7 @@ h3 {
   position: absolute;
 }
 .petInfo {
-  top: 20%;
+  top: 2%;
   width: 100%;
   position: absolute;
 }
@@ -449,6 +465,9 @@ border-radius: 25px;
   margin-top: 5%;
 }
 
+.petProfileSpan{
+    width: 15%;
+}
 
 /************* parent_page_modal*************/
 
@@ -476,12 +495,3 @@ border-radius: 25px;
 .card-block img{
   width:20%;
 }
-
-
-
-
-
-
-
-
-
