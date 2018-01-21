@@ -34,10 +34,16 @@ $result = mysqli_query($conn, $query);
 if ($result) {
     if(mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            $output['data'] = 'successful_login';
-            $output['accessLevel'] = $row['level'];
-            $output['loginSuccess'] = true;
-            $output['ownerID'] = $row['ID'];
+            //check if the account is active
+            if ($row['status'] === 'active') {
+                $output['data'] = 'successful_login';
+                $output['accessLevel'] = $row['level'];
+                $output['loginSuccess'] = true;
+                $output['ownerID'] = $row['ID'];
+                $output['active'] = true;
+            } else {
+                $output['active'] = false;
+            }
         }
     } else {
         $output['errors'][] = 'Incorrect username or password';

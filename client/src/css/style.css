@@ -17,7 +17,7 @@ a {
   height: 100vh;
   width: 100vw;
   position: relative;
-  
+
 }
 
 .header {
@@ -38,6 +38,17 @@ a {
   overflow-x: hidden;
   overflow-y: auto;
   padding-bottom: 5%;
+}
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid black;
+}
+img {
+  border-style: none;
+  margin: auto;
+  display: block;
 }
 
 /* footer {
@@ -80,6 +91,10 @@ a {
   height: 100%;
 }
 
+form {
+  width: 80%;
+  margin: auto;
+}
 /* span {
   color: white;
   top: 50% !important;
@@ -90,8 +105,8 @@ a {
 
 .logoContainer {
   text-align: center;
-  height: 35%;
-  margin: 10% 10% 0;
+  height: 38%;
+  margin: 5% 10% 0;
 }
 
 /* .logo {
@@ -118,6 +133,11 @@ input:focus {
   border: 2px solid orange !important;
   color: #0c5460;
 }
+
+form {
+  width: 80%;
+  margin: auto;
+}
 /************* landing_page *************/
 .loginLogo {
   width: 80%;
@@ -135,7 +155,7 @@ input:focus {
 }
 .contentContainer::after {
   content: "";
-  background: url(../../dist/assets/images/landing_bg.png);  
+  background: url(../../dist/assets/images/landing_bg.png);
   background-size: cover;
   opacity: 0.5;
   top: 5%;
@@ -143,7 +163,7 @@ input:focus {
   bottom: 5%;
   right: 5%;
   position: absolute;
-  z-index: -1;   
+  z-index: -1;
 }
 .landingContainer{
   height: 100vh;
@@ -182,11 +202,11 @@ input:focus {
 /************* parent_page *************/
 
 .parentPage {
-  margin: 15% 0;
+  margin: 5% 0;
 }
 
 .parentPageTitle {
-  margin: 5% 0;
+  margin: 10% 0 5%;
 }
 
 /************* pet_list *************/
@@ -203,7 +223,7 @@ input:focus {
   background-position: center;
   border: 2px solid orange;
   border-radius: 50%;
-  /* background-size: 211%; */
+   background-size: 100%;
   display: inline-block;
   /* position: relative; */
   margin-left: 10%;
@@ -220,13 +240,16 @@ input:focus {
 .petListTitle {
   text-align: center;
   display: block;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .usersPetContainer div {
   margin-bottom: 2%;
 }
 
+.deleteNAddContainer {
+  text-align: center;
+}
 /************* pet_profile *************/
 h3 {
   margin: 0;
@@ -254,7 +277,7 @@ h3 {
   height: 70%;
   width: 70%;
   background-position: center;
-  background-size: 150%;
+  background-size: 100%;
 }
 .petImg > img {
   width: 100%;
@@ -317,7 +340,7 @@ h3 {
 }
 /************* pet log_in *************/
 .formContainer {
-background-color: rgba(255, 255, 255, 0.8);  
+background-color: rgba(255, 255, 255, 0.8);
 margin: 3% auto 0;
 width: 75%;
 height: 50%;
@@ -421,3 +444,44 @@ border-radius: 25px;
 		-webkit-transform: translateY(0%);
 	}	
 }
+/************* vet_page **********************/
+.vetTitle {
+  margin-top: 5%;
+}
+
+
+/************* parent_page_modal*************/
+
+
+.confirm-modal{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .75);
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.modal-content{
+    margin: auto;
+    width: 100%;
+}
+
+.card-block{
+  padding-top: 5%;
+}
+
+.card-block img{
+  width:20%;
+}
+
+
+
+
+
+
+
+
+

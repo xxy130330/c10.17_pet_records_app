@@ -19,6 +19,7 @@ export default function(state = CURRENT_VET, action) {
         accessLevel: action.payload.data.accessLevel
       };
       case VET_REGISTER:
+        console.log('IN VET LOGIN REDUCER', action.payload);
       return {
         ...state,
         success: action.payload.data.success,
