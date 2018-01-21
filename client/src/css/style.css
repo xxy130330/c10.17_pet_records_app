@@ -232,7 +232,7 @@ form {
   display: inline-block;
   left: 10%;
   bottom: 4vh;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .petListTitle {
@@ -352,4 +352,8 @@ border-radius: 25px;
 /************* vet_page **********************/
 .vetTitle {
   margin-top: 5%;
+}
+
+.petProfileSpan{
+    width: 15%;
 }
