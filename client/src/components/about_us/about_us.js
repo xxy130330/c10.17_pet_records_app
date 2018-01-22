@@ -13,6 +13,7 @@ const AboutUs = () => {
           </div>
           <div className="col-7">
             <h3>this is simon</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quod enim perspiciatis mollitia pariatur id cumque voluptatibus dolor, veniam ad fugiat repellat dolorum alias ipsam quibusdam soluta maxime magni animi?</p>  
           </div>
         </div>
 
@@ -25,6 +26,7 @@ const AboutUs = () => {
           </div>
           <div className="col-7">
             <h3>this is christian</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quod enim perspiciatis mollitia pariatur id cumque voluptatibus dolor, veniam ad fugiat repellat dolorum alias ipsam quibusdam soluta maxime magni animi?</p>              
           </div>
         </div>
 
@@ -37,6 +39,8 @@ const AboutUs = () => {
           </div>
           <div className="col-7">
             <h3>this is jay</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quod enim perspiciatis mollitia pariatur id cumque voluptatibus dolor, veniam ad fugiat repellat dolorum alias ipsam quibusdam soluta maxime magni animi?</p>  
+            
           </div>
         </div>
 
@@ -49,6 +53,8 @@ const AboutUs = () => {
           </div>
           <div className="col-7">
             <h3>this is christin</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quod enim perspiciatis mollitia pariatur id cumque voluptatibus dolor, veniam ad fugiat repellat dolorum alias ipsam quibusdam soluta maxime magni animi?</p>  
+            
           </div>
         </div>
 
@@ -61,6 +67,8 @@ const AboutUs = () => {
           </div>
           <div className="col-7">
             <h3>this is sangwoo</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quod enim perspiciatis mollitia pariatur id cumque voluptatibus dolor, veniam ad fugiat repellat dolorum alias ipsam quibusdam soluta maxime magni animi?</p>  
+            
           </div>
         </div>
       </div>
