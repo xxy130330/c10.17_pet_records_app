@@ -17,8 +17,7 @@ class PetProfile extends Component {
 
         }
     }
-    componentDidMount() {
-
+    componentWillMount() {
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
@@ -26,8 +25,9 @@ class PetProfile extends Component {
     } else {
       currentOwnerId = localStorage.id;
     }
-    this.props.fetchProfileData(this.props.match.params.id);
-    this.props.fetchPetData(currentOwnerId);
+    this.props.fetchProfileData(this.props.match.params.id)
+    .then(()=>this.props.fetchPetData(currentOwnerId))
+
 
     console.log('these are the props in pet profile, ', this.props);
     }
@@ -45,7 +45,21 @@ class PetProfile extends Component {
             )
         });
     }
+    //////****THIS IS WHERE YOU DISCONNECT VET FUNCTION. THROW AXIOS CALL IN HERE.****/////////
+    disconnectVet(){
+        const petDataArray= this.props.petdata;
+        const ownerId = this.props.ownerId;
+        const petId= this.props.match.params.id;
+        for (var i =0; i< petDataArray.length; i++){
+            if(petDataArray[i]['ID']===petId){
+                var vetName= petDataArray[i].vet;
+            }
+        }
+        console.log('ownerID: ', ownerId );
+        console.log('petID: ', petId);
+        console.log('vetName: ', vetName);
 
+    }
   getPetInfo() {
     if(!this.props.petdata.length) return;
 
@@ -58,7 +72,6 @@ class PetProfile extends Component {
     const petImage = {
       backgroundImage: `url(${petObj.avatar})`
     };
-
     return (
       <div className="petInfoContainer">
         <div className="petImgContainer">
@@ -66,13 +79,19 @@ class PetProfile extends Component {
         </div>
         <div className="petInfoDiv">
           <div className='connectPetBtn'>
-            <Link to=
-                      {petObj.vet==='No vet connected'? `/pet-to-vet/${this.props.match.params.id}/null`:
-                          `/pet-to-vet/${this.props.match.params.id}/${petObj.vet}`
-                      }
-            >
-                <button className='btn btn-warning' style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>{petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}</button>
+            <Link to={petObj.vet==='No vet connected'? `/pet-to-vet/${this.props.match.params.id}/null`:
+                `/pet-to-vet/${this.props.match.params.id}/${petObj.vet}`}>
+                <button className='btn btn-warning'
+                    style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>
+                    {petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}
+                </button>
             </Link>
+              <button className='btn btn-outline-danger'
+                  onClick={()=>this.disconnectVet()}
+                  style={this.props.vetAccessLevel || petObj.vet=== 'No vet connected'? {'display':'none'}: {'display':'inline-block'}}>
+
+                  {petObj.vet!=='No vet connected' ? 'Diconnect Pet' :''}
+              </button>
           </div>
           <div className="petInfo">
             <h4>Name: {petObj.name}</h4>
@@ -141,9 +160,15 @@ class PetProfile extends Component {
     }
 
   render() {
-    // if (!this.props.petProfile.length) {
-    //     return <h1>Loading</h1>;
-    // }
+    var found = false;
+    for(var i = 0; i <this.props.petdata.length; i++){
+
+      if(this.props.petdata[i]['ID'] === this.props.match.params.id){
+        found = true
+      }
+    }
+    if(!found) return <h1>Loading</h1>;
+
 
     let petName = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
@@ -185,6 +210,7 @@ function mapStateToProps(state) {
     petProfile: state.petProfile,
     deleteMedicalRecordItem: state.deleteMedicalRecordItem,
     vetAccessLevel: state.vetlogin.accessLevel,
+    ownerId: state.login.id
 
   };
 }

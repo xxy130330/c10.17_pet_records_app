@@ -13,7 +13,9 @@ class VetClientPets extends Component {
     componentWillMount() {
         const params= this.props.match.params;
         this.props.fetchVetClientPets(params.ownerId, params.vetId);
-        console.log('these are the props in client pet list, ', this.props);
+        localStorage.id = params.ownerId;
+
+
 
     }
     render() {
@@ -27,10 +29,6 @@ class VetClientPets extends Component {
                         <div className="petAvatar" style={petAvatar} />
                         <h3 className="petName">{pet.name}</h3>
                     </Link>
-
-                    <div className="pull-right">
-                        <div className={this.props.vetAccessLevel? "": "glyphicon glyphicon-minus removeRecordIcon"} />
-                    </div>
                 </div>
             );
         });

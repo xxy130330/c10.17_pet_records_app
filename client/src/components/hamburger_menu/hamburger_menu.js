@@ -80,7 +80,8 @@ class NavBar extends Component {
 function mapStateToProps(state) {
   return {
     auth: state.user.auth,
-    vetAccessLevel: state.vetlogin.accessLevel
+    vetAccessLevel: state.vetlogin.accessLevel,
+
   };
 }
 
