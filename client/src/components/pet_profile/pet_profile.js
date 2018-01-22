@@ -17,8 +17,7 @@ class PetProfile extends Component {
 
         }
     }
-    componentDidMount() {
-
+    componentWillMount() {
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
@@ -26,8 +25,9 @@ class PetProfile extends Component {
     } else {
       currentOwnerId = localStorage.id;
     }
-    this.props.fetchProfileData(this.props.match.params.id);
-    this.props.fetchPetData(currentOwnerId);
+    this.props.fetchProfileData(this.props.match.params.id)
+    .then(()=>this.props.fetchPetData(currentOwnerId))
+
 
     console.log('these are the props in pet profile, ', this.props);
     }
@@ -160,9 +160,15 @@ class PetProfile extends Component {
     }
 
   render() {
-    // if (!this.props.petProfile.length) {
-    //     return <h1>Loading</h1>;
-    // }
+    var found = false;
+    for(var i = 0; i <this.props.petdata.length; i++){
+
+      if(this.props.petdata[i]['ID'] === this.props.match.params.id){
+        found = true
+      }
+    }
+    if(!found) return <h1>Loading</h1>;
+
 
     let petName = null;
     for (var i = 0; i < this.props.petdata.length; i++) {
