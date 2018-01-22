@@ -209,12 +209,7 @@ form {
 }
 
 /************* pet_list *************/
-.iconNav {
-  width: 24%;
-  height: 100%;
-  display: inline-block;
-  box-sizing: border-box;
-}
+
 .petAvatar {
   height: 15vh;
   width: 15vh;
@@ -497,3 +492,23 @@ h3 {
 .card-block img {
   width: 20%;
 }
+
+/************* manually_add_med_notes *************/
+
+
+.addMedRecContainer{
+  margin-top: 10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
