@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import loading from '../../../dist/assets/images/loading.gif';
 
 
@@ -10,7 +9,8 @@ export default class ParentPageModal extends Component{
     }
 
     handleLoginBtn(){
-        this.props.history.push('/login-page')
+        console.log('handleLoginBtn', this.props.routeUrl);
+        this.props.history.push(this.props.routeUrl)
     }
 
     message(){

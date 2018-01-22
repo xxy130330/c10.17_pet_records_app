@@ -2,23 +2,25 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
-import { vet_register } from "../../actions/";
+import { vet_register, vet_login } from "../../actions/";
 import { Field, reduxForm } from "redux-form";
+import RegisterModal from '../register_modal/register_modal';
 
 class VetPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      errorMessage: ""
-    };
+    this.state ={
+      toggleModal: false
+    }
   }
 
-  renderInput({ label, input, type, meta: { touched, error, active } }) {
+  renderInput({ label, input, type, meta: { touched, error, active, visited } }) {
     return (
       <div className="form-group row">
         <label className="col-form-label">{label}</label>
         <input className="form-control" type={type} {...input} />
+        <p className="text-danger">{ input.name==='confirmpassword' ? touched && visited && error : touched && !active && error }</p>
       </div>
     );
   }
@@ -26,30 +28,27 @@ class VetPage extends Component {
   handleSubmits(values) {
     console.log("values", values);
 
-    if (values.password !== values.confirmpassword) {
-      this.setState({
-        errorMessage: "Please match the password"
-      });
-      return;
-    } else if (values.password === values.confirmpassword) {
-      this.setState({
-        errorMessage: ""
-      });
-    }
+  this.setState({
+    toggleModal: true
+  })
 
-    this.props
-      .vet_register(values.username, values.phone, values.password, values.email)
-      .then(() => {
-        this.props.history.push("/vet-login-page");
-      });
+
+
+    this.props.vet_register(values.username, values.phone, values.password, values.email)
+      .then( ()=> {
+          var time = setInterval(()=>{
+          this.props.vet_login(values.email, values.password)
+          if(this.props.id){
+            console.log('in if statement::', this.props.login);
+            console.log('your account is activated now. now you will go to login page!');
+            clearInterval(time);
+            // this.props.history.push('/login-page')
+          }
+        }, 4000)})
   }
   render() {
     return (
       <div className='bodyContainer'>
-        {/*<div className="logoContainer">*/}
-          {/*<div className="logo" />*/}
-        {/*</div>*/}
-        {/*<hr />*/}
         <h1 className="vetTitle">Vet Registration</h1>
         <form
           id="form-container"
@@ -92,7 +91,8 @@ class VetPage extends Component {
             <button className="btn btn-success">Sign Up</button>
           </div>
 
-          <p className="text-danger">{this.state.errorMessage}</p>
+          {this.state.toggleModal ? <RegisterModal routeUrl='/vet-login-page' {...this.props} confirm={this.props.id}/> : ''}
+
         </form>
       </div>
     );
@@ -100,8 +100,23 @@ class VetPage extends Component {
 }
 
 function validate(values) {
-  const errors = {};
-  return errors;
+  const error = {};
+  if(!values.username){
+    error.username = 'Please enter your username';
+  }
+  if(!values.phone){
+    error.phone = 'Please enter your phone number';
+  }
+  if(!values.password){
+    error.password = 'Please enter a password';
+  }
+  if(!(values.password === values.confirmpassword)){
+    error.confirmpassword = 'Passwords do not match';
+  }
+  if(!values.email){
+    error.email = 'Please enter your email'
+  }
+  return error;
 }
 
 VetPage = reduxForm({
@@ -109,6 +124,14 @@ VetPage = reduxForm({
   validate: validate
 })(VetPage);
 
-export default connect(null, {
-  vet_register
+function mapStateToProps(state){
+    console.log('mapStateToProps:', state);
+    return{
+        id: state.vetlogin.id
+    }
+}
+
+export default connect(mapStateToProps, {
+  vet_register,
+  vet_login
 })(VetPage);

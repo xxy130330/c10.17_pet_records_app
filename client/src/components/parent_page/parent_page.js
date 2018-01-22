@@ -4,7 +4,7 @@ import Logo from '../../../../server/images/petvet_logo.png';
 import { connect } from "react-redux";
 import { register, login } from "../../actions/";
 import { Field, reduxForm } from 'redux-form';
-import ParentPageModal from '../parent_page_modal/parent_page_modal';
+import RegisterModal from '../register_modal/register_modal';
 
 
 class ParentPage extends Component{
@@ -29,13 +29,11 @@ class ParentPage extends Component{
 
 
 	handleSubmits(values){
-		console.log('values', values);
+
 
     this.setState({
       toggleModal: true
     })
-
-    console.log('toggleModal?', this.state.toggleModal);
 
 
 		this.props.register(values.username, values.password, values.email)
@@ -43,8 +41,7 @@ class ParentPage extends Component{
           var time = setInterval(()=>{
           this.props.login(values.email, values.password)
           if(this.props.id){
-            console.log('in if statement::', this.props.login);
-            console.log('your account is activated now. now you will go to login page!');
+
             clearInterval(time);
             // this.props.history.push('/login-page')
           }
@@ -74,7 +71,7 @@ class ParentPage extends Component{
 
             </div>
 
-            {this.state.toggleModal ? <ParentPageModal {...this.props} confirm={this.props.id}/> : ''}
+            {this.state.toggleModal ? <RegisterModal routeUrl='/login-page' {...this.props} confirm={this.props.id}/> : ''}
 
           </form>
         </div>
