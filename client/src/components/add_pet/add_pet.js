@@ -41,7 +41,7 @@ class AddPet extends Component {
 
   componentWillMount() {
 
-
+    console.log('these are the props in add_pet ', this.props);
     if(this.props.id){
       this.currentOwnerId = this.props.id;
       localStorage.id = this.currentOwnerId;
@@ -84,7 +84,7 @@ class AddPet extends Component {
           console.log('THIS PROPS SECONDTIME', this.props);
         })
           .then( ()=> this.props.addPet(name, dob, breed, this.currentOwnerId , this.url) )
-            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId)})
+            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
               .then(()=> console.log('secondurl::', this.url))
     this.setState({
       form: {
