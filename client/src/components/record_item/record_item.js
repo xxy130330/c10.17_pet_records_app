@@ -78,14 +78,14 @@ class RecordItem extends Component {
           <div>
               <div>
                   <button onClick={()=>this.handleEditClick()}
-                          className='btn btn-warning'
+                          className='btn btn-warning editBtn'
                           style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}
                   >Edit</button>
               </div>
               <h2 className="record_item_header">{type}</h2>
               <h3 className="record_item_date" >{date}</h3>
               <hr />
-              <p>{details}</p>
+              <p className="record_item_detail">{details}</p>
           </div>
 
       );
