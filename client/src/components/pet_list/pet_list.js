@@ -91,7 +91,6 @@ class PetList extends Component {
       <div className='bodyContainer'>
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
-          <div className="iconNav"></div>
             <div className="usersPetContainer">{userPetList}</div>
         </div>
         <div className="deleteNAddContainer">
