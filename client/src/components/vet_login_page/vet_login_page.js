@@ -51,7 +51,7 @@ class VetLoginPage extends Component {
     const { username, password } = this.state.form;
 
     const noScroll = {
-      "overflow-y": "none"
+      "overflowY": "none"
     };
 
     const btnSize = {

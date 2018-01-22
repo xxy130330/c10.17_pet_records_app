@@ -4,6 +4,7 @@ import auth from "../hoc/auth";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import '../css/style.css';
+import '../css/media_queries.css';
 
 import LandingPage from "./landing_page/landing_page";
 import LoginPage from "./login_page/login_page";
@@ -49,7 +50,7 @@ class App extends Component {
           />
 
           <Route path="/parent-page" component={ParentPage} />
-          <Route path="/add-pet/" component={AddPet} />
+          <Route path="/add-pet/" component={auth(AddPet)} />
           <Route path="/vet-page" component={VetPage} />
           <Route
             path="/pet-profile/:id/add-med-note"

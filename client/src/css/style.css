@@ -17,7 +17,6 @@ a {
   height: 100vh;
   width: 100vw;
   position: relative;
-
 }
 
 .header {
@@ -26,7 +25,8 @@ a {
   text-align: center;
   background-color: #fdd08b;
   top: 0;
-  position: fixed;
+  position: relative;
+  z-index: 200;
 }
 
 .bodyContainer {
@@ -35,8 +35,19 @@ a {
   height: 90%;
   width: 100%;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-bottom: 5%;
+}
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid black;
+}
+img {
+  border-style: none;
+  margin: auto;
+  display: block;
 }
 
 /* footer {
@@ -71,13 +82,18 @@ a {
 }
 
 .title {
-  width: 100%;
+  width: 50%;
   height: 100%;
+  margin: auto;
 }
-.title > img {
+.title img {
   height: 100%;
 }
 
+form {
+  width: 80%;
+  margin: auto;
+}
 /* span {
   color: white;
   top: 50% !important;
@@ -88,8 +104,8 @@ a {
 
 .logoContainer {
   text-align: center;
-  height: 35%;
-  margin: 10% 10% 0;
+  height: 38%;
+  margin: 5% 10% 0;
 }
 
 /* .logo {
@@ -116,6 +132,11 @@ input:focus {
   border: 2px solid orange !important;
   color: #0c5460;
 }
+
+form {
+  width: 80%;
+  margin: auto;
+}
 /************* landing_page *************/
 .loginLogo {
   width: 80%;
@@ -125,7 +146,7 @@ input:focus {
   height: 100px;
   margin-top: 15%;
 }
-.contentContainer{
+.contentContainer {
   height: 90%;
   width: 90%;
   flex-wrap: wrap;
@@ -143,7 +164,7 @@ input:focus {
   position: absolute;
   z-index: -1;
 }
-.landingContainer{
+.landingContainer {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -151,7 +172,7 @@ input:focus {
   align-items: center;
   justify-content: center;
 }
-.msgBtnContainer{
+.msgBtnContainer {
   padding: 5%;
   bottom: 20%;
 }
@@ -180,11 +201,11 @@ input:focus {
 /************* parent_page *************/
 
 .parentPage {
-  margin: 15% 0;
+  margin: 5% 0;
 }
 
 .parentPageTitle {
-  margin: 5% 0;
+  margin: 10% 0 5%;
 }
 
 /************* pet_list *************/
@@ -201,7 +222,7 @@ input:focus {
   background-position: center;
   border: 2px solid orange;
   border-radius: 50%;
-   background-size: 100%;
+  background-size: 100%;
   display: inline-block;
   /* position: relative; */
   margin-left: 10%;
@@ -212,19 +233,22 @@ input:focus {
   display: inline-block;
   left: 10%;
   bottom: 4vh;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .petListTitle {
   text-align: center;
   display: block;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .usersPetContainer div {
   margin-bottom: 2%;
 }
 
+.deleteNAddContainer {
+  text-align: center;
+}
 /************* pet_profile *************/
 h3 {
   margin: 0;
@@ -233,9 +257,22 @@ h3 {
   transform: translateY(-50%);
 }
 
+.connectPetBtn {
+  position: relative;
+  top: 75%;
+}
+
+.petImgContainer .petAvatar {
+  position: absolute;
+  margin-left: 15%;
+  top: 5vh;
+}
+
 .petInfoContainer {
   position: relative;
   height: 25vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 
 .petImgContainer {
@@ -252,10 +289,13 @@ h3 {
   height: 70%;
   width: 70%;
   background-position: center;
-  background-size: 150%;
+  background-size: 100%;
 }
 .petImg > img {
   width: 100%;
+}
+.petInfo h4 {
+  font-size: 1.2rem;
 }
 
 .petInfoDiv {
@@ -265,7 +305,7 @@ h3 {
   position: absolute;
 }
 .petInfo {
-  top: 20%;
+  top: 2%;
   width: 100%;
   position: absolute;
 }
@@ -315,14 +355,145 @@ h3 {
 }
 /************* pet log_in *************/
 .formContainer {
-background-color: rgba(255, 255, 255, 0.8);
-margin: 5% auto 0;
-width: 75%;
-height: 50%;
-border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 3% auto 0;
+  width: 75%;
+  height: 50%;
+  border-radius: 25px;
 }
 
-#register > a >button {
+#register > a > button {
   margin-left: 5%;
 }
 
+/************* hamburger log in ******/
+/* .hamContainer{
+  height: 100%;
+} */
+.hamburger {
+  position: fixed;
+  top: 3%;
+  right: 5%;
+  width: 6%;
+  height: 5vmin;
+  transition-duration: 1s;
+  z-index: 5;
+}
+
+.hamburger:hover {
+  cursor: pointer;
+}
+
+.hamburger:hover .burger-line {
+  background-color: rgb(167, 167, 167);
+}
+
+.burger-line {
+  width: 100%;
+  height: 20%;
+  margin: 10% 0;
+  background-color: rgba(214, 117, 5, 0.89);
+  border-radius: 1vmin;
+  transition-duration: 0.5s;
+}
+
+.menuContainer {
+  width: 30%;
+  background-color: rgba(168, 102, 25, 0.705);
+  float: right;
+}
+.menuContainer div {
+  margin: 8%;
+  background-color: rgba(223, 173, 117, 0.856);
+  border-bottom: solid 1px rgb(0, 0, 0);
+  border-right: solid 1px rgb(0, 0, 0);
+}
+
+.slideDown {
+  animation-name: slideDown;
+  -webkit-animation-name: slideDown;
+
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+
+  visibility: visible !important;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(8%);
+  }
+  65% {
+    transform: translateY(-4%);
+  }
+  80% {
+    transform: translateY(4%);
+  }
+  95% {
+    transform: translateY(-2%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+  50% {
+    -webkit-transform: translateY(8%);
+  }
+  65% {
+    -webkit-transform: translateY(-4%);
+  }
+  80% {
+    -webkit-transform: translateY(4%);
+  }
+  95% {
+    -webkit-transform: translateY(-2%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+/************* vet_page **********************/
+.vetTitle {
+  margin-top: 5%;
+}
+
+.petProfileSpan {
+  width: 15%;
+}
+
+/************* parent_page_modal*************/
+
+.confirm-modal {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.75);
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.modal-content {
+  margin: auto;
+  width: 100%;
+}
+
+.card-block {
+  padding-top: 5%;
+}
+
+.card-block img {
+  width: 20%;
+}
