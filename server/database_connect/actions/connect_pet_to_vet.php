@@ -169,7 +169,7 @@ if ($result) {
                                         }
                                         //check if the activePetsObj has any pets in it
                                         if (count($activePetsObj) === 0) {
-                                            $activePetsObj = 'NULL';
+                                            $activePetsObj = NULL;
                                         }
                                         $activePetsObj = json_encode($activePetsObj);
 
@@ -184,6 +184,19 @@ if ($result) {
                                         } else {
                                             $output['errors'][] = 'Error in SQL Query';
                                             $output['success'] = false;
+                                        }
+                                        //if the user is only pulling their pet from a vet but not assigning them a new one
+                                        if (!$vetName) {
+                                            $query = "UPDATE `pets` SET `vet` = 'No vet connected' WHERE `ID` = $petID";
+                                            $result = mysqli_query($conn, $query);
+                                            if ($result) {
+                                                if (mysqli_affected_rows($conn)) {
+                                                    $output['success'] = true;
+                                                }
+                                            } else {
+                                                $output['errors'][] = 'Error in SQL Query';
+                                                $output['success'] = false;
+                                            }
                                         }
 
                                     }
