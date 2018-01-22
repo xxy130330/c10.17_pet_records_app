@@ -57,7 +57,7 @@ class App extends Component {
             path="/pet-profile/:id/add-med-note"
             component={auth(AddMedNote)}
           />
-          <Route path="/pet-to-vet/:petId" component={auth(PetToVet)} />
+          <Route path="/pet-to-vet/:petId/:vetName" component={auth(PetToVet)} />
           <Route path="/client-list/:vetId/" component={auth(ClientList)} />
           <Route
             path="/vet-client-pets/:vetId/:ownerId"
