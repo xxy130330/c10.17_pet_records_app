@@ -18,7 +18,6 @@ class PetProfile extends Component {
         }
     }
     componentWillMount() {
-          console.log('PET LIST PROPS::::::', this.props);
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
@@ -138,8 +137,6 @@ class PetProfile extends Component {
     }
 
   render() {
-    console.log('IN REDNER FUNCTION:::::::::::',this.props.petdata);
-    console.log('IN RENDER FUNCTION PARAMS ID::::::', this.props.match.params.id);
     var found = false;
     for(var i = 0; i <this.props.petdata.length; i++){
 
