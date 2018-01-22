@@ -36,7 +36,7 @@ if ($result) {
                 //grab the pet info to generate a pet list
                $count = count($petIDArr);
                for ($k = 0; $k < $count; $k++) {
-                   $query = "SELECT `ID` AS `petID`, `avatar`, `name` FROM `pets` WHERE `ID` = $petIDArr[$k]";
+                   $query = "SELECT `ID` AS `petID`, `avatar`, `name` FROM `pets` WHERE `ID` = $petIDArr[$k] AND `status` = 'active'";
                    $result = mysqli_query($conn, $query);
 
                    if ($result) {
