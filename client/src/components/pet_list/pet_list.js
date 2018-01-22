@@ -17,6 +17,7 @@ class PetList extends Component {
     // this.showModal=this.showModal.bind(this);
   }
   componentWillMount() {
+    console.log('PET LIST PROPS::::::', this.props);
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
