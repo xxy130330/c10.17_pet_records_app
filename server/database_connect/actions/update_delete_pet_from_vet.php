@@ -5,6 +5,7 @@
  * Date: 1/22/2018
  * Time: 3:28 PM
  */
+
 if ($oldVetName !== 'null') {
 //Remove the this pet from the old vets account
     $query = "SELECT `active_pets`, `ref_ID` FROM `vets` WHERE `name` = '$oldVetName'";
