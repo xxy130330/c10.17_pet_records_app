@@ -408,6 +408,13 @@ h3 {
   border-bottom: solid 1px rgb(0, 0, 0);
   border-right: solid 1px rgb(0, 0, 0);
 }
+.backBtn {
+  position: fixed;
+  top: 3%;
+  left: 5%;
+  z-index: 5;
+  float: left;
+}
 
 .slideDown {
   animation-name: slideDown;
@@ -496,4 +503,21 @@ h3 {
 
 .card-block img {
   width: 20%;
+}
+
+/************* about_us page *************/
+
+/* .aboutUsContainer {
+
+} */
+/* .teamContainer .imgContainer{
+  width: 100%;
+} */
+
+/* .teamContainer img {
+  width: 100%;
+} */
+
+.teamContainer {
+  margin: 5% 0;
 }
