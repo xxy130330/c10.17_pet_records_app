@@ -1,4 +1,6 @@
 <?php
+
+echo phpinfo();
 require_once("config.php");
 set_time_limit(0);
 header("Content-type:text/html;charset=utf-8");
@@ -35,7 +37,7 @@ function readlog($file, $linefromlast, $starttime){
     }
     $endtime = time();
     $havetime = $endtime - $starttime;
-    echo "In" . $line . "find out the latest record" . $linefromlast . "timing" . $havetime . "second";
+    echo "In " . $line . " find out the latest  " . $linefromlast . " timing " . $havetime . " second.";
 }
 ?>
 
