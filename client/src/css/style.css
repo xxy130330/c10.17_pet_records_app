@@ -284,12 +284,15 @@ form {
 /************* record_item *************/
 
 .record_item_header,
-.record_item_date {
+.record_item_date,
+.record_item_detail{
   margin-bottom: 5%;
   text-align: center;
 }
-
-
+.editBtn{
+  margin-top: 5%;
+  margin-left: 5%;
+}
 /************* client_list *************/
 
 .petList h3 {
