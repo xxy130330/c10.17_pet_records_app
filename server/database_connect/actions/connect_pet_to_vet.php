@@ -72,8 +72,6 @@ if ($result) {
                         for ($i = 0; $i < $ownerCount; $i++) {
                             if ($petObj[$i]->ownerID === $ownerID) {
                                 $ownerIndex = $i;
-                                $output['errors'][] = 'existing owner';
-                                $output['errors'][] = $ownerID;
                                 $hasID = true;
 
                                 //check to see if the pet has already been added
@@ -88,11 +86,10 @@ if ($result) {
                             }
                         }
                     if (!$hasID) {
-                            $output['errors'][] = 'new owner';
+                            $output['data'][] = 'new owner';
                             //create the dataObj and append it to the existing array;
                             $res = createNewDataObj($ownerID, $petID);
                             $petObj[] = $res;
-                            $output['errors'][] = $petObj;
                             $result = storeActivePets($petObj, $refNum, $conn);
                             if ($result) {
                                 $output['success'] = true;
@@ -109,7 +106,7 @@ if ($result) {
                                 $output['success'] = false;
                             }
                         } else {
-                            $output['errors'][] = 'the pet is already filed under the vets account';
+                            $output['data'][] = 'the pet is already filed under the vets account';
                         }
                     }
                 }
@@ -124,15 +121,16 @@ if ($result) {
     //add vet name to pet table
     if ($vetName !== null) {
         $query = "UPDATE `pets` SET `vet` = '$vetName' WHERE `ID` = $petID";
-        $output['errors'][] = $query;
         $result = mysqli_query($conn, $query);
 
         if ($result) {
             if (mysqli_affected_rows($conn) > 0) {
-                $output['data'][] = 'inserted vet name in database';
+                $output['success'] = true;
             }
         } else {
             $output['errors'][] = 'Error in SQL query';
+            $output['success'] = false;
+
         }
     }
  //********removing old vet***********************
@@ -146,22 +144,52 @@ if ($result) {
             $output['success'] = true;
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $activePetsObj = $row['active_pets'];
+                    $activePetsObj = json_decode($row['active_pets']);
+                    $oldVetRefNum = $row['ref_ID'];
 
                     //iterate over the array of objects
                     $count = count($activePetsObj);
                     for ($i = 0; $i < $count; $i++) {
-                        if ($activePetsObj[$i]->ownerID == $ownerID) {
 
-                            $innerCount = count($activePetsObj[$i]->petID);
-                            for ($k = 0; $k < $innerCount; $k++) {
-                                //iterate over the petArray
-                                if ($activePetsObj[$i]->petID[$k] == $petID) {
-                                    if ($row['ref_ID'] !== $refNum) {
-                                        unset($activePetsObj[$i]->petID[$k]);
-                                        $output['data'][] = 'removed the pet from the vets petObj';
+
+                        if ($activePetsObj[$i]->ownerID == $ownerID) {
+                            //check in case the new vet and old vet share the same name
+                            if ($oldVetRefNum !== $refNum) {
+                                $innerCount = count($activePetsObj[$i]->petID);
+                                for ($k = 0; $k < $innerCount; $k++) {
+                                    //iterate over the petArray
+                                    if ($activePetsObj[$i]->petID[$k] == $petID) {
+
+                                        if ($innerCount === 1) {
+                                            array_splice($activePetsObj, $i, 1);
+                                            $output['data'][] = 'removed owner from the vets petObj';
+                                        } else {
+                                            array_splice($activePetsObj[$i]->petID, $k, 1);
+                                            $output['data'][] = 'removed the pet from the vets petObj';
+                                        }
+                                        //check if the activePetsObj has any pets in it
+                                        if (count($activePetsObj) === 0) {
+                                            $activePetsObj = 'NULL';
+                                        }
+                                        $activePetsObj = json_encode($activePetsObj);
+
+                                        $output['errors'][] = $activePetsObj;
+//                                        update old vets active_pets;
+                                        $query = "UPDATE `vets` SET `active_pets` = '$activePetsObj' WHERE `ref_ID` = '$oldVetRefNum'";
+                                        $result = mysqli_query($conn, $query);
+                                        if ($result) {
+                                            if (mysqli_affected_rows($conn)) {
+                                                $output['success'] = true;
+                                            }
+                                        } else {
+                                            $output['errors'][] = 'Error in SQL Query';
+                                            $output['success'] = false;
+                                        }
+
                                     }
                                 }
+                            } else {
+                                break;
                             }
                         }
                     }
