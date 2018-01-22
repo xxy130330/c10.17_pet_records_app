@@ -62,10 +62,11 @@ class PetToVet extends Component {
         url: url,
         dataType: 'json',
         data: {
-          vetEmail: this.state.form.vetEmail,
-          refNum: this.state.form.vetRefNum,
-          ownerID: this.props.id,
-          petID: this.props.match.params.petId,
+            vetEmail: this.state.form.vetEmail,
+            refNum: this.state.form.vetRefNum,
+            ownerID: this.props.id,
+            petID: this.props.match.params.petId,
+            oldVetName: 'Simon Hoblik',
         }
     }).then(res => {
       console.log(res.data);

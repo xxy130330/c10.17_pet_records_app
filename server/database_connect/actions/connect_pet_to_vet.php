@@ -13,6 +13,7 @@ $email = $post['vetEmail'];
 $refNum = $post['refNum'];
 $ownerID = $post['ownerID'];
 $petID = $post['petID'];
+$oldVetName = $post['oldVetName'];
 $hasID = false;
 $hasPetID = false;
 $vetName = null;
@@ -44,6 +45,7 @@ function storeActivePets($res, $refNum, $conn) {
 if ($result) {
     if (mysqli_num_rows($result) > 0) {
         $output['success'] = true;
+
         //Insert the users ID into the vet db if there isn't anything in active_pets otherwise pull active_pets and append data to it.
 
         if ($result) {
@@ -133,4 +135,48 @@ if ($result) {
             $output['errors'][] = 'Error in SQL query';
         }
     }
+ //********removing old vet***********************
+
+    if ($oldVetName !== 'null') {
+//Remove the this pet from the old vets account
+        $query = "SELECT `active_pets`, `ref_ID` FROM `vets` WHERE `name` = '$oldVetName'";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            $output['success'] = true;
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $activePetsObj = $row['active_pets'];
+
+                    //iterate over the array of objects
+                    $count = count($activePetsObj);
+                    for ($i = 0; $i < $count; $i++) {
+                        if ($activePetsObj[$i]->ownerID == $ownerID) {
+
+                            $innerCount = count($activePetsObj[$i]->petID);
+                            for ($k = 0; $k < $innerCount; $k++) {
+                                //iterate over the petArray
+                                if ($activePetsObj[$i]->petID[$k] == $petID) {
+                                    if ($row['ref_ID'] !== $refNum) {
+                                        unset($activePetsObj[$i]->petID[$k]);
+                                        $output['data'][] = 'removed the pet from the vets petObj';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                $output['errors'][] = 'No vet found with that name';
+                $output['success'][] = false;
+            }
+        } else {
+            $output['errors'][] = 'Error in SQL Query';
+            $output['success'] = false;
+        }
+    }
+
+    //*********removing old vet*************
+
 ?>
