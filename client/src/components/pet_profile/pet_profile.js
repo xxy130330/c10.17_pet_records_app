@@ -37,9 +37,11 @@ class PetProfile extends Component {
         console.log('this is record item according to state ', recordIndex);
         const petProfileData= this.props.petProfile;
         console.log(' and this is petProfile Data on props ', petProfileData);
+
         this.props.deleteMedicalRecordItem(petProfileData[recordIndex]['recordID']).then(()=>{
+            console.log('the current state of showModal after deleting : ' , this.state.showModal);
             this.props.fetchProfileData(this.props.match.params.id).then(
-                ()=>this.setState({...this.state, showModal: false, canDelete: false,})
+                this.setState({...this.state, showModal: false, canDelete: false,})
             )
         });
     }
@@ -108,6 +110,7 @@ class PetProfile extends Component {
         // return PetListModal(this.state, self );
         // const {recordIndex}= this.state;
         const {recordIndex}= this.state;
+        console.log('record index after showing modal ', recordIndex);
         return(
             <span>
               <div className='confirm-modal '>
@@ -123,7 +126,7 @@ class PetProfile extends Component {
                               <h2 className='font-weight-bold'>{this.props.petProfile[recordIndex].type}</h2>
                           </div>
                           <div className="card-footer">
-                                <button onClick={()=> this.deleteFromServer()} className='btn btn-outline-success'>Confirm</button>
+                                <button onClick={()=> this.softDeleteRecord()} className='btn btn-outline-success'>Confirm</button>
                                 <button onClick={()=> this.setState({...this.state, showModal: false, canDelete: false})} className='btn btn-outline-danger'>Cancel</button>
                           </div>
                       </div>
