@@ -23,11 +23,11 @@ export default props => {
 
   return (
     <div className="header">
-      <Link to="/">
-        <div className="title align-self-center">
+      <div className="title align-self-center">
+        <Link to="/">
           <img src={Logo} />
-        </div>
-      </Link>
+        </Link>
+      </div>
       {showNavBar()}
     </div>
   );
