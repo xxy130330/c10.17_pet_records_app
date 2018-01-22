@@ -30,6 +30,7 @@ class PetToVet extends Component {
     console.log('PET TO VET PROPS:::', this.props);
     console.log('PET TO VET ownerID:::', this.props.id);
     console.log('PET TO VET PETID::::', this.props.match.params.petId);
+    console.log('this is the current state in pet2vet ', this.state);
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
@@ -62,11 +63,11 @@ class PetToVet extends Component {
         url: url,
         dataType: 'json',
         data: {
-            vetEmail: this.state.form.vetEmail,
-            refNum: this.state.form.vetRefNum,
-            ownerID: this.props.id,
-            petID: this.props.match.params.petId,
-            oldVetName: 'Simon Hoblik',
+          vetEmail: this.state.form.vetEmail,
+          refNum: this.state.form.vetRefNum,
+          ownerID: this.props.id,
+          petID: this.props.match.params.petId,
+          oldVetName: this.props.match.params.vetName,
         }
     }).then(res => {
       console.log(res.data);

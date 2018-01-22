@@ -44,8 +44,8 @@ class NavBar extends Component {
         )}
         {!this.props.vetAccessLevel ? (
           <Link to="/add-pet/" onClick={this.handleOnClick}>
-          <div> add pet </div>
-        </Link>
+            <div> add pet </div>
+          </Link>
         ) : (
           ""
         )}
@@ -57,8 +57,14 @@ class NavBar extends Component {
   }
 
   render() {
+    console.log('hamburger render::', this.props);
     return (
       <div>
+        <a href="#">
+          <div className="backBtn" onClick={() => this.props.history.goBack()}>
+            BACK
+          </div>
+        </a>
         <div>
           <div className="hamburger" onClick={this.handleOnClick}>
             <div className="burger-line" />
