@@ -245,12 +245,12 @@ form {
   text-align: center;
 }
 /************* pet_profile *************/
-h3 {
+/* h3 {
   margin: 0;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 
 .connectPetBtn {
   position: relative;
@@ -266,7 +266,7 @@ h3 {
 .petInfoContainer {
   position: relative;
   height: 25vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgb(237, 131, 49);
   color: white;
 }
 
@@ -330,12 +330,12 @@ h3 {
 
 /************* client_list *************/
 
-h3 {
+/* h3 {
   margin: 0;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 
 .vetInfoContainer {
   position: relative;
@@ -395,10 +395,12 @@ h3 {
 .menuContainer {
   width: 30%;
   background-color: rgba(168, 102, 25, 0.705);
-  float: right;
+  position: absolute;
+  right: 2%;
 }
 .menuContainer div {
   margin: 8%;
+  color: white;  
   background-color: rgba(223, 173, 117, 0.856);
   border-bottom: solid 1px rgb(0, 0, 0);
   border-right: solid 1px rgb(0, 0, 0);
@@ -515,6 +517,7 @@ h3 {
 
 .teamContainer {
   margin: 5% 0;
+  position: absolute;
 }
 /************* manually_add_med_notes *************/
 

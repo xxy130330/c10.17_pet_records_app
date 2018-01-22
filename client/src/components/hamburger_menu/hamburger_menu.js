@@ -8,7 +8,6 @@ import { switchAuthentication } from "../../actions";
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    console.log("hamburger props:::", props);
     this.handleOnClick = this.handleOnClick.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.state = {
@@ -17,8 +16,6 @@ class NavBar extends Component {
   }
 
   handleOnClick() {
-    console.log("hamburger menu is clicked!", this.state);
-
     let menuState = !this.state.menu;
     this.setState({
       menu: menuState
@@ -26,38 +23,41 @@ class NavBar extends Component {
   }
 
   showMenu() {
-    console.log("menu will show");
-
     return (
       <div className={!this.state.menu ? "" : "menuContainer slideDown"}>
         <Link to="/" onClick={this.handleOnClick}>
-          <div> home</div>
+          <div> Home</div>
         </Link>
         {!this.props.vetAccessLevel ? (
           <Link to="/pet-list/" onClick={this.handleOnClick}>
-            <div> pet list </div>
+            <div> Pet List </div>
           </Link>
         ) : (
-          <Link to="/client-list/" onClick={this.handleOnClick}>
-            <div> client list </div>
+          <Link to="/client-list/:vetId" onClick={this.handleOnClick}>
+            <div> Client List </div>
           </Link>
         )}
         {!this.props.vetAccessLevel ? (
           <Link to="/add-pet/" onClick={this.handleOnClick}>
-            <div> add pet </div>
+            <div> Add Pet </div>
           </Link>
         ) : (
           ""
         )}
+        <Link to="/about-us" onClick={this.handleOnClick}>
+          <div> About Us </div>
+        </Link>
+        <Link to="/about-us" onClick={this.handleOnClick}>
+          <div> Contact Us </div>
+        </Link>
         <Link to="/" onClick={() => props.switchAuthentication(false)}>
-          <div> log out </div>
+          <div> Log Out </div>
         </Link>
       </div>
     );
   }
 
   render() {
-    console.log('hamburger render::', this.props);
     return (
       <div>
         <a href="#">
