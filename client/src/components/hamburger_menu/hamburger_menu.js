@@ -50,7 +50,7 @@ class NavBar extends Component {
         <Link to="/about-us" onClick={this.handleOnClick}>
           <div> Contact Us </div>
         </Link>
-        <Link to="/" onClick={() => props.switchAuthentication(false)}>
+        <Link to="/" onClick={() => this.props.switchAuthentication(false)}>
           <div> Log Out </div>
         </Link>
       </div>
