@@ -6,6 +6,22 @@
  * Time: 3:28 PM
  */
 
+
+
+//$oldVetName
+//$ownerID
+//$petID
+//$refNum = null
+//
+$oldVetName = $post['oldVetName'];
+$ownerID = $post['ownerID'];
+$petID = $post['petID'];
+if (!isset($refNum)) {
+    $refNum = null;
+}
+
+
+
 if ($oldVetName !== 'null') {
 //Remove the this pet from the old vets account
     $query = "SELECT `active_pets`, `ref_ID` FROM `vets` WHERE `name` = '$oldVetName'";

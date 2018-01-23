@@ -4,6 +4,7 @@ import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
 import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../actions/";
 import '../assets/css/modal.css';
+import axios from 'axios';
 
 
 class PetProfile extends Component {
@@ -58,6 +59,19 @@ class PetProfile extends Component {
         console.log('ownerID: ', ownerId );
         console.log('petID: ', petId);
         console.log('vetName: ', vetName);
+        const url = '/server/database_connect/server.php?action=post&resource=disconnectPet';
+        axios({
+            method: 'post',
+            dataType: 'json',
+            url: url,
+            data: {
+                oldVetName: vetName,
+                petID: petId,
+                ownerID: ownerId,
+            }
+        }).then(function(res) {
+            console.log(res);
+        })
 
     }
   getPetInfo() {
