@@ -1,7 +1,6 @@
 
 
 <?php
-print(getcwd());
 require_once ('/var/www/petvet.tech/server/database_connect/connect.php');
 
 
