@@ -104,6 +104,7 @@ class NavBar extends Component {
     );
   }
   render() {
+    console.log("hamburger props:::::",this.props);
     return (
       <div>
         <a href="#">
