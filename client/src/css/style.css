@@ -327,6 +327,10 @@ form {
 }
 
 /************* hamburger log in ******/
+.outsideMenuContainer {
+  width: 100vw;
+  height: 100vh;
+}
 
 .hamburger {
   position: fixed;
