@@ -4,8 +4,9 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
 function handleErrors($errorNum, $errorStr, $errorFile){
-    $message = date('H:i:s h:m:s') . " error from " . $_SERVER['PHP_SELF'] . " $errorNum : $errorStr in $errorFile \n at IP " . $_SERVER['REMOTE_ADDR'] .
-        'GET: ' . print_r($_GET, true) . ' POST: ' . print_r($_POST,true) . ' SERVER: ' . print_r($_SERVER);
+    $message = date('H:i:s h:m:s') . " error from " . $_SERVER['PHP_SELF'] . " $errorNum : $errorStr in $errorFile \n at IP " . $_SERVER['REMOTE_ADDR'];
+//    $message = date('H:i:s h:m:s') . " error from " . $_SERVER['PHP_SELF'] . " $errorNum : $errorStr in $errorFile \n at IP " . $_SERVER['REMOTE_ADDR'] .
+//        'GET: ' . print_r($_GET, true) . ' POST: ' . print_r($_POST,true) . ' SERVER: ' . print_r($_SERVER);
     error_log($message);  //var/log/apache2/error.log
 }
 

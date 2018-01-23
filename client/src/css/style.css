@@ -227,7 +227,7 @@ form {
 .petInfoContainer {
   position: relative;
   height: 25vh;
-  background-color: rgb(237, 131, 49);
+  background-color: rgba(0,0,0, .8);
   color: white;
 }
 
