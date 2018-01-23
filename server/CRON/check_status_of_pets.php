@@ -14,6 +14,6 @@ if($result){
     $message = 'error in SQL query';
 }
 
-print($message);
+print($message . "\n");
 
 ?>
