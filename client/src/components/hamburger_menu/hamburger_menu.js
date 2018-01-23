@@ -107,11 +107,11 @@ class NavBar extends Component {
     console.log("hamburger props:::::",this.props);
     return (
       <div>
-        <a href="#">
-          <div className="backBtn" onClick = {() => this.props.history.goBack()}>
+
+          <a className="backBtn" onClick = {this.props.history.goBack}>
             BACK
-          </div>
-        </a>
+          </a>
+
         <div>
           <div className="hamburger" onClick={this.handleOnClick}>
             <div className="burger-line" />
