@@ -148,7 +148,7 @@ class AddPet extends Component {
   render() {
     const { name, dob, breed } = this.state.form;
 
-    const input = this.state.buttonClick ? '' :<input  className='text-center' type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/>
+      const input = this.state.buttonClick ? '' :<md-button><input  className='text-center' type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/></md-button>
 
 
     return (
