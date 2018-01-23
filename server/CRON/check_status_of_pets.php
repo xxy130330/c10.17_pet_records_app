@@ -1,5 +1,4 @@
 
-<?php header('Access-Control-Allow-Origin: *'); ?>
 
 <?php
 
@@ -25,7 +24,7 @@ if($result){
             $output['data'][] = $row;
         }
         $output['success'] = true;
-    }else{ //there is no row in database
+    }else{
         $output['errors'][] = 'no data available';
     }
 }else{
