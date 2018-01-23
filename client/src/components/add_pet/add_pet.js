@@ -65,12 +65,13 @@ class AddPet extends Component {
     const { name, dob, breed } = this.state.form;
     if(!this.url){
       this.props.addPet(name, dob, breed, this.currentOwnerId , 'http://i.telegraph.co.uk/multimedia/archive/02830/cat_2830677b.jpg')
-            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
+            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')});
       return;
     }
 
-    this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'png'})
+    this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'jpeg'})
       .then(res=>{
+          console.log('LINE 74 add_pet ', res);
             let file = new File([res], 'hello.png', {type: "image/png"});
             let data = new FormData();
             data.append('file', file)
