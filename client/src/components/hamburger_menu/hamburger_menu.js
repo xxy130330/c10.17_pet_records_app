@@ -107,7 +107,7 @@ class NavBar extends Component {
     return (
       <div>
         <a href="#">
-          <div className="backBtn" onClick={() => this.props.history.goBack()}>
+          <div className="backBtn" onClick = {() => {console.log('back clicked'); this.props.history.goBack()}}>
             BACK
           </div>
         </a>
