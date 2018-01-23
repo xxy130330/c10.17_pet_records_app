@@ -74,6 +74,7 @@ class AddPet extends Component {
             let file = new File([res], 'hello.jpg', {type: "image/jpg"});
             let data = new FormData();
             data.append('file', file)
+		alert(file);
             console.log('newFILE', file);
             this.upload(data);
            })
