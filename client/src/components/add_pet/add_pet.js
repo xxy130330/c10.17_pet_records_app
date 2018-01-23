@@ -72,7 +72,7 @@ class AddPet extends Component {
     this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'jpeg'})
       .then(res=>{
           console.log('LINE 74 add_pet ', res.size);
-            let file = new File([res], 'hello.png', {type: "image/png"});
+            let file = new File([res], 'hello.jpeg', {type: "image/jpeg"});
             let data = new FormData();
             data.append('file', file)
             console.log('newFILE', file);
@@ -113,7 +113,7 @@ class AddPet extends Component {
 
         let data = new FormData();
         data.append('file', document.getElementById('file').files[0]);
-        console.dir('.....',document.getElementById('file').files[0])
+        console.log('.....',document.getElementById('file').files[0])
 
 
 
