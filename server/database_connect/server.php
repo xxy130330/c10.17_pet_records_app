@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shobl
- * Date: 1/8/2018
- * Time: 2:29 PM
- */
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
