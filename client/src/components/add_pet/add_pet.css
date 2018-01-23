@@ -24,8 +24,8 @@ input:focus {
     position: relative;
     width: 50%;
     height: 35%;
-    border: 4px dashed orange;
-    border-radius: 5px;
+    /*border: 4px dashed orange;*/
+    /*border-radius: 5px;*/
     margin: 0 auto;
 }
 
@@ -36,9 +36,9 @@ input:focus {
 }
 
 .pictureDiv div{
-    position: absolute;
+/*    position: absolute;*/
     /*width: 100%;*/
-    height: 100%;
+    /*height: 100%;*/
 }
 
 .fileContainer{
@@ -70,3 +70,33 @@ input:focus {
     margin: 0 auto;
     transform: translateY(-50%) translateX(-50%);
 }
+
+
+#file{
+    width:100%;
+    height: 100%;
+    opacity: 0;
+    /*position: absolute;*/
+}
+
+
+.pictureDiv{
+    background-image: url('../../../dist/assets/images/addIcon.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+}
+/* this class is for croppie library*/
+.cr-slider-wrap{
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+
+
+
+
+
+
+
+

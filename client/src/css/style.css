@@ -189,6 +189,7 @@ form {
   display: inline-block;
   margin-left: 10%;
   top: 50%;
+  background-size: cover;
 }
 
 .petName {
