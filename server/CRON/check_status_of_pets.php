@@ -1,8 +1,8 @@
 
 
 <?php
-
-require_once ('../../server/database_connect/connect.php');
+print(getcwd());
+require_once ('/var/www/petvet.tech/server/database_connect/connect.php');
 
 
 //DELETE FROM pets WHERE status='inactive' AND updated < DATE_SUB(NOW(), INTERVAL 1 YEAR)
@@ -11,7 +11,7 @@ require_once ('../../server/database_connect/connect.php');
 $query = "DELETE FROM pets WHERE status='inactive' AND updated < DATE_SUB(NOW(), INTERVAL 1 YEAR)";
 
 $result = mysqli_query($conn, $query);
-
+print_r($conn);
 $output = [
     'success' => false,
     'data' => [],
@@ -19,13 +19,11 @@ $output = [
 ];
 
 if($result){
-    if(mysqli_num_rows($result)>0){
-        while($row = mysqli_fetch_assoc($result)){
-            $output['data'][] = $row;
-        }
+    if(mysqli_affected_rows($conn)>0){
         $output['success'] = true;
+	$output['rowsDeleted'] = mysqli_affected_rows($conn);
     }else{
-        $output['errors'][] = 'no data available';
+        $output['errors'][] = 'no rows deleted';
     }
 }else{
     $output['errors'][] = 'error in SQL query';
