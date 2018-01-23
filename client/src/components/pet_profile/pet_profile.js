@@ -56,9 +56,7 @@ class PetProfile extends Component {
                 var vetName= petDataArray[i].vet;
             }
         }
-        console.log('ownerID: ', ownerId );
-        console.log('petID: ', petId);
-        console.log('vetName: ', vetName);
+
         const url = '/server/database_connect/server.php?action=post&resource=disconnectPet';
         axios({
             method: 'post',
@@ -69,9 +67,17 @@ class PetProfile extends Component {
                 petID: petId,
                 ownerID: ownerId,
             }
-        }).then(function(res) {
-            console.log(res);
-        })
+        }).then(res => {
+            let currentOwnerId = null;
+            if(this.props.id){
+                currentOwnerId = this.props.id;
+                localStorage.id = currentOwnerId;
+            } else {
+                currentOwnerId = localStorage.id;
+            }
+            this.props.fetchProfileData(this.props.match.params.id)
+                .then(()=>this.props.fetchPetData(currentOwnerId));
+        });
 
     }
   getPetInfo() {
