@@ -88,9 +88,8 @@ class PetProfile extends Component {
             </Link>
               <button className='btn btn-outline-danger'
                   onClick={()=>this.disconnectVet()}
-                  style={this.props.vetAccessLevel || petObj.vet=== 'No vet connected'? {'display':'none'}: {'display':'inline-block'}}>
-
-                  {petObj.vet!=='No vet connected' ? 'Diconnect Pet' :''}
+                  style={this.state.canDelete && petObj.vet!=='No vet connected'? {'display':'inline-block'}: {'display':'none'}}>
+                  Disconnect Vet
               </button>
           </div>
           <div className="petInfo">
@@ -189,7 +188,7 @@ class PetProfile extends Component {
               {this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
               <div style={this.props.vetAccessLevel? {'display': 'none'}: {'display': 'inline'} }>
                   <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
-                          onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete A Record": 'Cancel'}
+                          onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Edit Profile": 'Cancel'}
                   </button>
                   <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
                       <button className= "btn btn-outline-success">
