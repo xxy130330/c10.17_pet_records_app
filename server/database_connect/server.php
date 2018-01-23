@@ -8,6 +8,14 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
+function handleErrors($errorNum, $errorStr, $errorFile){
+    $message = date('H:i:s h:m:s') . " error from " . $_SERVER['PHP_SELF'] . " $errorNum : $errorStr in $errorFile \nat IP " . $_SERVER['REMOTE_ADDR'] .
+        'GET: ' . print_r($_GET, true) . ' POST: ' . print_r($_POST,true) . ' SERVER: ' . print_r($_SERVER);
+    error_log($message);  //var/log/apache2/error.log
+}
+
+set_error_handler('handleErrors');
+
 $postJSON = file_get_contents('php://input');
 $post = json_decode($postJSON, TRUE);
 
@@ -28,7 +36,7 @@ if(empty($_GET['action'])){
 if(empty($_GET['resource'])){
     $_GET['action'] = 'pets';
 }
-
+try{
 switch($_GET['action']) {
     case 'get':
         switch ($_GET['resource']) {
@@ -55,6 +63,9 @@ switch($_GET['action']) {
             case 'client_list': {
                 if (!empty($_GET['vetID'])) {
                     require('./actions/read_vets_owners.php');
+                }
+                else{
+
                 }
                 break;
             }
@@ -141,6 +152,12 @@ switch($_GET['action']) {
         }
 
     }
+} catch( Exception $err){
+    $message = date('H:i:s h:m:s') . " error from " . $_SERVER['PHP_SELF'] . " $err \n at IP {$_SERVER['REMOTE_ADDR']} ";
+    error_log($message);
+}
+
+
 
 if (isset($pet_objects)) {
     $output['data'] = $pet_objects;
