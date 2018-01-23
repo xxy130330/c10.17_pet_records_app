@@ -70,13 +70,17 @@ class AddPet extends Component {
             let data = new FormData();
             data.append('file', file)
             console.log('newFILE', file);
-            this.upload(data);
+            // this.upload(data);
+            this.props.uploadImage(data).then((res)=> {
+                console.log('TRYING SOMETHING', res.payload.data.data[0]);
+              });
            })
 
 
   }
 
   upload(data){
+      console.log('This is the fucking data ', data);
     const {name, dob, breed} = this.state.form;
     this.props.uploadImage(data)
         .then( ()=> {
