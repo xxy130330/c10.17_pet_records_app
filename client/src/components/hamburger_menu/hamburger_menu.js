@@ -33,7 +33,7 @@ class NavBar extends Component {
             <div> Pet List </div>
           </Link>
         ) : (
-          <Link to="/client-list/:vetId" onClick={this.handleOnClick}>
+          <Link to={`/client-list/${this.props.vetId}`} onClick={this.handleOnClick}>
             <div> Client List </div>
           </Link>
         )}
@@ -81,6 +81,7 @@ function mapStateToProps(state) {
   return {
     auth: state.user.auth,
     vetAccessLevel: state.vetlogin.accessLevel,
+    vetId: state.vetlogin.id
 
   };
 }
