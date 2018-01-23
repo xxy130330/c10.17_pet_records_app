@@ -67,7 +67,7 @@ class PetToVet extends Component {
           refNum: this.state.form.vetRefNum,
           ownerID: this.props.id,
           petID: this.props.match.params.petId,
-          oldVetName: this.props.match.params.vetName
+          oldVetName: this.props.match.params.vetName,
         }
     }).then(res => {
       console.log(res.data);
