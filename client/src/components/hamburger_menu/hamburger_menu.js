@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import { switchAuthentication } from "../../actions";
 // import Transition from "react-transition-group/Transition";
 // import { slide as Menu } from "react-burger-menu";
+import ReactDOM from "react-dom";
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    console.log("hamburger props:::", props);
     this.handleOnClick = this.handleOnClick.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.state = {
@@ -17,47 +17,67 @@ class NavBar extends Component {
   }
 
   handleOnClick() {
-    console.log("hamburger menu is clicked!", this.state);
-
     let menuState = !this.state.menu;
+    document.addEventListener(
+      "click",
+      this.handleClickOutside.bind(this),
+      true
+    );
     this.setState({
       menu: menuState
     });
   }
 
+  handleClickOutside(event) {
+    // const windowDom = ReactDOM.findDOMNode(this);
+    const windowDom = this.node;
+    
+    if (!windowDom || !windowDom.contains(event.target)) {
+      document.removeEventListener(
+        "click",
+        this.handleClickOutside.bind(this),
+        true
+      );
+      this.setState({
+        menu: false
+      });
+    }
+  }
   showMenu() {
-    console.log("menu will show");
-
     return (
       <div className={!this.state.menu ? "" : "menuContainer slideDown"}>
         <Link to="/" onClick={this.handleOnClick}>
-          <div> home</div>
+          <div> Home</div>
         </Link>
         {!this.props.vetAccessLevel ? (
           <Link to="/pet-list/" onClick={this.handleOnClick}>
-            <div> pet list </div>
+            <div> Pet List </div>
           </Link>
         ) : (
-          <Link to="/client-list/" onClick={this.handleOnClick}>
-            <div> client list </div>
+          <Link to={`/client-list/${this.props.vetId}`} onClick={this.handleOnClick}>
+            <div> Client List </div>
           </Link>
         )}
         {!this.props.vetAccessLevel ? (
           <Link to="/add-pet/" onClick={this.handleOnClick}>
-            <div> add pet </div>
+            <div> Add Pet </div>
           </Link>
         ) : (
           ""
         )}
-        <Link to="/" onClick={() => props.switchAuthentication(false)}>
-          <div> log out </div>
+        <Link to="/about-us" onClick={this.handleOnClick}>
+          <div> About Us </div>
+        </Link>
+        <Link to="/about-us" onClick={this.handleOnClick}>
+          <div> Contact Us </div>
+        </Link>
+        <Link to="/" onClick={() => this.props.switchAuthentication(false)}>
+          <div> Log Out </div>
         </Link>
       </div>
     );
   }
-
   render() {
-    console.log('hamburger render::', this.props);
     return (
       <div>
         <a href="#">
@@ -80,7 +100,8 @@ class NavBar extends Component {
 function mapStateToProps(state) {
   return {
     auth: state.user.auth,
-    vetAccessLevel: state.vetlogin.accessLevel
+    vetAccessLevel: state.vetlogin.accessLevel,
+    vetId: state.vetlogin.id
   };
 }
 

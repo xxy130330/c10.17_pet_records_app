@@ -165,6 +165,11 @@ switch($_GET['action']) {
                 }
                 break;
             }
+            case 'disconnectPet': {
+                if (!empty($post)) {
+                    require('./actions/update_delete_pet_from_vet.php');
+                }
+            }
         }
 
     }

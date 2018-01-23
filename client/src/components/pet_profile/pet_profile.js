@@ -4,6 +4,7 @@ import Logo from "../../../../server/images/petvet_logo.png";
 import { connect } from "react-redux";
 import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../actions/";
 import '../assets/css/modal.css';
+import axios from 'axios';
 
 
 class PetProfile extends Component {
@@ -55,9 +56,28 @@ class PetProfile extends Component {
                 var vetName= petDataArray[i].vet;
             }
         }
-        console.log('ownerID: ', ownerId );
-        console.log('petID: ', petId);
-        console.log('vetName: ', vetName);
+
+        const url = '/server/database_connect/server.php?action=post&resource=disconnectPet';
+        axios({
+            method: 'post',
+            dataType: 'json',
+            url: url,
+            data: {
+                oldVetName: vetName,
+                petID: petId,
+                ownerID: ownerId,
+            }
+        }).then(res => {
+            let currentOwnerId = null;
+            if(this.props.id){
+                currentOwnerId = this.props.id;
+                localStorage.id = currentOwnerId;
+            } else {
+                currentOwnerId = localStorage.id;
+            }
+            this.props.fetchProfileData(this.props.match.params.id)
+                .then(()=>this.props.fetchPetData(currentOwnerId));
+        });
 
     }
   getPetInfo() {
@@ -81,16 +101,15 @@ class PetProfile extends Component {
           <div className='connectPetBtn'>
             <Link to={petObj.vet==='No vet connected'? `/pet-to-vet/${this.props.match.params.id}/null`:
                 `/pet-to-vet/${this.props.match.params.id}/${petObj.vet}`}>
-                <button className='btn btn-outline-warning'
+                <button className='btn btn-warning'
                     style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>
                     {petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}
                 </button>
             </Link>
               <button className='btn btn-outline-danger'
                   onClick={()=>this.disconnectVet()}
-                  style={this.props.vetAccessLevel || petObj.vet=== 'No vet connected'? {'display':'none'}: {'display':'inline-block'}}>
-
-                  {petObj.vet!=='No vet connected' ? 'Diconnect Pet' :''}
+                  style={this.state.canDelete && petObj.vet!=='No vet connected'? {'display':'inline-block'}: {'display':'none'}}>
+                  Disconnect Vet
               </button>
           </div>
           <div className="petInfo">
@@ -189,7 +208,7 @@ class PetProfile extends Component {
               {this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
               <div style={this.props.vetAccessLevel? {'display': 'none'}: {'display': 'inline'} }>
                   <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
-                          onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete A Record": 'Cancel'}
+                          onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Edit Profile": 'Cancel'}
                   </button>
                   <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
                       <button className= "btn btn-outline-success">
