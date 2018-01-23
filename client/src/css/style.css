@@ -189,6 +189,7 @@ form {
   display: inline-block;
   margin-left: 10%;
   top: 50%;
+  background-size: cover;
 }
 
 .petName {
@@ -481,3 +482,17 @@ form {
 .addMedRecContainer {
   margin-top: 10%;
 }
+
+
+/************* pet_to_vet *************/
+
+.petToVetContainer{
+  margin-top: 10%;
+}
+
+
+
+
+
+
+
