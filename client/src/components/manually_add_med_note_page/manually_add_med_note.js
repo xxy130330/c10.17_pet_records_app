@@ -48,7 +48,7 @@ class AddMedNote extends Component {
         const {title,date,comment}= this.state.form;
         return(
             <div className='bodyContainer'>
-                <h1>Add Medical Recrod</h1>
+                <h1>Add Medical Record</h1>
                 <form className='addMedRecContainer'>
                     <div className='form-group'>
                         <input onChange={e=> this.handleChange(e)} name='title' value={title} className='form-control input-lg' type='text' placeholder="Title"/>

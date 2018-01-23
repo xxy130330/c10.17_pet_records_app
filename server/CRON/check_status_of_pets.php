@@ -1,59 +1,29 @@
 
-<?php header('Access-Control-Allow-Origin: *'); ?>
 
 <?php
+require_once ('/var/www/petvet.tech/server/database_connect/connect.php');
 
-require_once ('../../server/database_connect/connect.php');
+
+//DELETE FROM pets WHERE status='inactive' AND updated < DATE_SUB(NOW(), INTERVAL 1 YEAR)
 
 
-$query = "SELECT * FROM pets";
+$query = "DELETE FROM pets WHERE status='inactive' AND updated < DATE_SUB(NOW(), INTERVAL 1 YEAR)";
 
 $result = mysqli_query($conn, $query);
 
-$output = [
-    'success' => false,
-    'data' => [],
-    'errors' => []
-];
-
 if($result){
-    if(mysqli_num_rows($result)>0){
-        while($row = mysqli_fetch_assoc($result)){
-            if($row['status'] === 'inactive'){
-                echo "<br>";
-                print_r($row);
-                echo "<br>";
-                $currentTime = time();
-                $past = $currentTime - 86400;
-                $past = date("Y-m-d h:m:s",$past);
-                echo $past;
-                if($row['updated'] <= $past){
-                    echo "condition true";
-                    $query = "DELETE FROM pets WHERE ID = $row[ID]";
-                    echo $query;
-                    $result = mysqli_query($conn, $query);
-                    if($result){
-                        echo 'true';
-                    } else {
-                        echo 'false';
-                    }
-                }
-            }else {
-                $output['data'][] = $row;
-            }
-        }
-        $output['success'] = true;
+    if(mysqli_affected_rows($conn)>0){
+	$message = date('Y-m-d H:i:s') . ': deleted '. mysqli_affected_rows($conn).' rows';
     }else{
-        $output['errors'][] = 'no data available';
+	$message = date('Y-m-d H:i:s') . ': no rows deleted';
     }
+
 }else{
-    $output['errors'][] = 'error in SQL query';
+    $message = 'error in SQL query';
 }
 
+print($message);
 
-$json_output = json_encode($output);
-
-print($json_output);
 
 
 

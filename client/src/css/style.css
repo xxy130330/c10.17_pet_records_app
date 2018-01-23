@@ -227,7 +227,7 @@ form {
 .petInfoContainer {
   position: relative;
   height: 25vh;
-  background-color: rgb(237, 131, 49);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
 
@@ -285,11 +285,11 @@ form {
 
 .record_item_header,
 .record_item_date,
-.record_item_detail{
+.record_item_detail {
   margin-bottom: 5%;
   text-align: center;
 }
-.editBtn{
+.editBtn {
   margin-top: 5%;
   margin-left: 5%;
 }
@@ -327,6 +327,10 @@ form {
 }
 
 /************* hamburger log in ******/
+.outsideMenuContainer {
+  width: 100vw;
+  height: 100vh;
+}
 
 .hamburger {
   position: fixed;
@@ -336,6 +340,7 @@ form {
   height: 5vmin;
   transition-duration: 1s;
   z-index: 5;
+  cursor: pointer;
 }
 
 .hamburger:hover {
@@ -362,10 +367,11 @@ form {
   right: 2%;
 }
 .menuContainer div {
-  margin: 8%; 
+  margin: 8%;
   background-color: rgba(223, 173, 117, 0.856);
   border-bottom: solid 1px rgb(0, 0, 0);
   border-right: solid 1px rgb(0, 0, 0);
+  cursor: pointer;
 }
 .backBtn {
   position: fixed;
@@ -373,6 +379,7 @@ form {
   left: 5%;
   z-index: 5;
   float: left;
+  cursor: pointer;
 }
 
 .slideDown {
@@ -471,20 +478,6 @@ form {
 }
 /************* manually_add_med_notes *************/
 
-
-.addMedRecContainer{
+.addMedRecContainer {
   margin-top: 10%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
