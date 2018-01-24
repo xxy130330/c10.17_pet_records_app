@@ -498,7 +498,9 @@ form {
 
 /************* about_us page *************/
 .aboutUsContainer {
-  background: url(../../dist/assets/images/orange_bg.png);
+  background: #f46b45;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(80deg, #f8be73b2, #f48545d8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(80deg, #f8be73b2, #f48545d8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
   height: 100%;
   background-size: cover;
 }
