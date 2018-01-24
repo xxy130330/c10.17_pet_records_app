@@ -69,13 +69,13 @@ class AddPet extends Component {
       return;
     }
 
-    this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'jpeg'})
+    this.croppie.result({ type:'base64', size:'viewport', circle: true, format: 'png'})
       .then(res=>{
-
-            let file = new File([res], 'hello.jpeg', {type: "image/jpeg"});
+            console.log('THIS IS THE RESULT ON 74', res);
+            let file = new File([res], 'hello.png', {type: "image/png"});
             let data = new FormData();
             data.append('file', file)
-            console.log('newFILE', file.type);
+            console.log('newFILE', file);
             this.upload(data);
             // this.props.uploadImage(data).then((res)=> {
             //     console.log('TRYING SOMETHING', res.payload.data.data[0]);
