@@ -331,8 +331,14 @@ form {
   text-align: center;
 }
 .editBtn {
-  margin-top: 5%;
-  margin-left: 5%;
+    margin-top: 2%;
+    margin-left: 5%;
+    position: absolute;
+    right: 2%;
+    top: 0;
+}
+.medicalRecordHeader{
+    margin-top: 2%
 }
 /************* client_list *************/
 
