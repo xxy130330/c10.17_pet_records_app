@@ -196,6 +196,12 @@ $json_output = json_encode($output);
 
 if ($_GET['resource'] === 'activate_account') {
     print('Your account has been activated! Thanks for using PetVet, the easiest way to care for your pets health and happiness');
+    //take to the url
+    if ($_SERVER['HTTP_HOST'] === 'localhost:3000') {
+        header("Location: http://localhost:3000?newuser");
+    } else {
+        header("Location: http://petvet.tech?newuser");
+    }
 
 } else {
     print($json_output);
