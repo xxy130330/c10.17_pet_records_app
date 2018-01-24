@@ -20,23 +20,23 @@ $postJSON = file_get_contents('php://input');
 $post = json_decode($postJSON, TRUE);
 
 
-function base64_to_jpeg($base64_string) {
-    // open the output file for writing
-//    $ifp = fopen( $output_file, 'wb' );
-
-    // split the string on commas
-    // $data[ 0 ] == "data:image/png;base64"
-    // $data[ 1 ] == <actual base64 string>
-    $data = explode( ',', $base64_string );
-
-    // we could add validation here with ensuring count( $data ) > 1
-    $output_file = base64_decode( $data[ 1 ] ) ;
-
-    // clean up the file resource
-//    fclose( $ifp );
-
-    return $output_file;
-}
+//function base64_to_jpeg($base64_string) {
+//    // open the output file for writing
+////    $ifp = fopen( $output_file, 'wb' );
+//
+//    // split the string on commas
+//    // $data[ 0 ] == "data:image/png;base64"
+//    // $data[ 1 ] == <actual base64 string>
+//    $data = explode( ',', $base64_string );
+//
+//    // we could add validation here with ensuring count( $data ) > 1
+//    $output_file = base64_decode( $data[ 1 ] ) ;
+//
+//    // clean up the file resource
+////    fclose( $ifp );
+//
+//    return $output_file;
+//}
 
 $result = base64_to_jpeg($post['rawData']);
 
@@ -50,6 +50,16 @@ $fileName = time() . $_FILES['file']['name'];
 //if(isset($_POST['upload'])){
 
     $fileTempName = $_FILES['file']['tmp_name'];
+
+
+define('UPLOAD_DIR', 'images/');
+$img = $_POST['img'];
+$img = str_replace('data:image/png;base64,', '', $img);
+$img = str_replace(' ', '+', $img);
+$data = base64_decode($img);
+$file = UPLOAD_DIR . uniqid() . '.png';
+$success = file_put_contents($file, $data);
+print $success ? $file : 'Unable to save the file.';
 
 //    if(!isset($bucketName)){
 //        $s3->putBucket($bucketName, S3::ACL_PUBLIC_READ);
@@ -68,25 +78,23 @@ $fileName = time() . $_FILES['file']['name'];
 //require_once ('./credential.php');
 //require_once ('../../file_upload/update_avatar_link_db.php');
 
-$url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
-
-$output['data'][] = $url;
-
-//$postJSON = file_get_contents('php://input');
-//$post = json_decode($postJSON, TRUE);
+//$url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
 //
-//
+//$output['data'][] = $url;
+
+
 //require_once '../../aws/aws-autoloader.php';
 //use Aws\S3\S3Client;
-//
+
 //
 //$image_parts = explode(";base64,", $post['rawData']);
 ////$output['data'][] = $image_parts;
 //$image_type_aux = explode("image/", $image_parts[0]);
 //$image_type = $image_type_aux[1];
 //$image_base64 = $image_parts[1];
-//$image_base64 = base64_decode($image_base64);
-////$output['data'][] = $image_base64;
+////$image_base64 = base64_decode($image_base64);
+//$output['data'][] = $image_base64;
+//$output['data'][] = $post['rawData'];
 //
 //$dateTime = new DateTime();
 //$fileName = $dateTime->getTimestamp() . "." . $image_type;
