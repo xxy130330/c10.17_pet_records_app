@@ -34,7 +34,7 @@ class VetPage extends Component {
 
 
 
-    this.props.vet_register(values.username, values.phone, values.password, values.email)
+    this.props.vet_register(values.fullName, values.phone, values.password, values.email)
       .then( ()=> {
           var time = setInterval(()=>{
           this.props.vet_login(values.email, values.password)
@@ -56,8 +56,8 @@ class VetPage extends Component {
           onSubmit={this.props.handleSubmit(this.handleSubmits.bind(this))}
         >
           <Field
-            name="username"
-            label="Username"
+            name="fullName"
+            label="Full Name"
             type="text"
             component={this.renderInput}
           />
@@ -101,8 +101,8 @@ class VetPage extends Component {
 
 function validate(values) {
   const error = {};
-  if(!values.username){
-    error.username = 'Please enter your username';
+  if(!values.fullName){
+    error.fullName = 'Please enter your full name';
   }
   if(!values.phone){
     error.phone = 'Please enter your phone number';
