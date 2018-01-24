@@ -36,7 +36,7 @@ class ParentPage extends Component{
     })
 
 
-		this.props.register(values.username, values.password, values.email)
+		this.props.register(values.fullName, values.password, values.email)
       .then( ()=> {
           var time = setInterval(()=>{
           this.props.login(values.email, values.password)
@@ -58,7 +58,7 @@ class ParentPage extends Component{
             <h1>Pet Owner Register</h1>
           </div>
           <form id='form-container' className='col-xs-10 col-xs-offset-1' onSubmit={this.props.handleSubmit(this.handleSubmits.bind(this))}>
-            <Field name='username' label='Username' type='text' component={this.renderInput}/>
+            <Field name='fullName' label='Full Name' type='text' component={this.renderInput}/>
             <Field name='password' label='Password' type='password' component={this.renderInput}/>
             <Field name='confirmpassword' label='Confirm Password' type='password' component={this.renderInput}/>
 
@@ -84,8 +84,8 @@ class ParentPage extends Component{
 function validate(values){
   const error = {};
 
-    if(!values.username){
-        error.username = 'Please enter your username';
+    if(!values.fullName){
+        error.fullName = 'Please enter your full name';
     }
     if(!values.password){
         error.password = 'Please enter a password';

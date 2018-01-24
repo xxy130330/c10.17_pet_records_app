@@ -13,6 +13,7 @@ class PetList extends Component {
       canDelete: false,
       showModal: false,
       petIndex: null,
+      infoModal: false
     };
     // this.showModal=this.showModal.bind(this);
   }
@@ -25,8 +26,41 @@ class PetList extends Component {
     } else {
       currentOwnerId = localStorage.id;
     }
-    this.props.fetchPetData(currentOwnerId);
+    this.props.fetchPetData(currentOwnerId).then(()=>{
+        if(!this.props.petdata.length) {
+            this.setState({
+                infoModal: true
+            })
+        }
+    });
   }
+    infoModal(){
+        return(
+            <span>
+          <div className='confirm-modal '>
+              <div className="content-modal">
+                  <div className="card petListCard">
+                      <div className="card-header">Welcome To PetVet</div>
+                      <div className='card-title'>Getting Started</div>
+                      <div className="card-block">
+                          <p className='card-text'>Thank you for using our app. To get started, follow these simple steps:</p>
+                          <ul>
+                              <li>Add a pet and upload a cute photo!</li>
+                              <li>If you know your vet's email and reference id, connect your pet. If not, skip and save it for later.</li>
+                              <li>On your pet's profile page, you can choose to add or delete medical record information.</li>
+                              <li>You may also choose to edit your profile and change or disconnect your vet at any time.</li>
+                              <li>We appreciate you using our app!</li>
+                          </ul>
+                      </div>
+                      <div className="card-footer">
+                            <button onClick={()=>this.setState({infoModal: false})} className='btn btn-outline-success'>Got It!</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </span>
+        )
+    }
 
   //////////TRIGGER MODAL HERE//////////
   triggerModal(index) {
@@ -70,21 +104,27 @@ class PetList extends Component {
       ));
   }
   render() {
-    const {showModal}= this.state;
+    const {showModal,infoModal}= this.state;
     const toggleCanDelete= !this.state.canDelete;
     const userPetList = this.props.petdata.map((item, index) => {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
       };
+      const item_name = item.name.length>8 ? <h4>{item.name}</h4> : <h2>{item.name}</h2>
       return (
-        <div key={index} className='petList'>
-          <Link to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
-            <div className="petAvatar petAvatarPetList" style={petAvatar} />
-            <h3 className="petName">{item.name}</h3>
+        <div key={index} className='row justify-content-center petRow'>
+          <Link className='col-3 col-sm-3 col-md-3 col-lg-3' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
+            <div className="petAvatar" style={petAvatar}></div>
           </Link>
-            <div className='deletePetBtn'>
-          <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true": ''}></i>
-            </div>
+          <div className="col-3 col-sm-3 col-md-3 col-lg-3">
+            {item_name}
+          </div>
+
+
+
+          <div className='col-3 col-sm-3 col-md-3 col-lg-3'>
+            <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x pull-right": ''}></i>
+          </div>
         </div>
       );
     });
@@ -92,7 +132,9 @@ class PetList extends Component {
       <div className='bodyContainer'>
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
-            <div className="usersPetContainer">{userPetList}</div>
+            <div className='container'>
+              {userPetList}
+            </div>
         </div>
         <div className="deleteNAddContainer">
           <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
@@ -100,6 +142,7 @@ class PetList extends Component {
           </button>
           <Link to="/add-pet/"><button className='btn btn-outline-success'>Add a Pet</button></Link>
             {showModal? this.showModal(): ''}
+            {infoModal? this.infoModal():''}
         </div>
       </div>
     );

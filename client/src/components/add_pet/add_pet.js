@@ -81,6 +81,14 @@ class AddPet extends Component {
             // this.props.uploadImage(data).then((res)=> {
             //     console.log('TRYING SOMETHING', res.payload.data.data[0]);
             //   });
+
+      // this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'jpg'})
+    //   .then(res=>{
+    //         let file = new File([res], 'hello.jpg', {type: "image/jpg"});
+    //         let data = new FormData();
+    //         data.append('file', file)
+    //         console.log('newFILE', file);
+    //         this.upload(data);
            })
 
 

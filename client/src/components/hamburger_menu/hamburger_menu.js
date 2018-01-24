@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { switchAuthentication } from "../../actions";
 // import Transition from "react-transition-group/Transition";
 // import { slide as Menu } from "react-burger-menu";
+import Logo from "../../../../server/images/petvet_logo.png";
 import ReactDOM from "react-dom";
 
 class NavBar extends Component {
@@ -19,7 +20,7 @@ class NavBar extends Component {
       menu: false
     };
 
-    console.log("click on body::::", event);
+
   }
 
   handleWindowClick() {
@@ -35,35 +36,6 @@ class NavBar extends Component {
       menu: menuState
     });
   }
-  // handleWindowClick() {
-  //   document.addEventListener(
-  //     "click",
-  //     this.handleClickOutside.bind(this),
-  //     true
-  //   );
-  // }
-  // removeWindowClick() {
-  //   console.log("removewindowclick::::", this);
-  //   document.removeEventListener(
-  //     "click",
-  //     this.handleClickOutside.bind(this),
-  //     true
-  //   );
-  //   this.setState({
-  //     menu: false
-  //   });
-  // }
-
-  // handleClickOutside(event) {
-  //   // const windowDom = ReactDOM.findDOMNode(this);
-  //   const windowDom = this.node;
-
-  //   if (!windowDom || !windowDom.contains(event.target)) {
-  //     console.log('this is the menu::::', this.node);
-  //     console.log('window outsideeeee::::', windowDom, event.target);
-  //     this.removeWindowClick();
-  //   }
-  // }
   showMenu() {
     return (
       <div
@@ -71,15 +43,13 @@ class NavBar extends Component {
         onClick={this.handleWindowClick}
       >
         <div className="menuContainer">
-          <Link to="/" onClick={this.handleOnClick}>
-            <div> Home</div>
-          </Link>
+
           {!this.props.vetAccessLevel ? (
             <Link to="/pet-list/" onClick={this.handleOnClick}>
               <div> Pet List </div>
             </Link>
           ) : (
-            <Link to="/client-list/:vetId" onClick={this.handleOnClick}>
+            <Link to={`/client-list/${this.props.vetId}`} onClick={this.handleOnClick}>
               <div> Client List </div>
             </Link>
           )}
@@ -93,7 +63,7 @@ class NavBar extends Component {
           <Link to="/about-us" onClick={this.handleOnClick}>
             <div> About Us </div>
           </Link>
-          <Link to="/about-us" onClick={this.handleOnClick}>
+          <Link to="/contact-us" onClick={this.handleOnClick}>
             <div> Contact Us </div>
           </Link>
           <Link to="/" onClick={() => this.props.switchAuthentication(false)}>
@@ -104,22 +74,46 @@ class NavBar extends Component {
     );
   }
   render() {
-    console.log("hamburger props:::::",this.props);
+
+    const showBackButton = ()=>{
+
+      switch(this.props.match.url){
+
+        case '/pet-list/':
+        case `/client-list/${this.props.vetId}`:
+          return ''
+        default:
+          return(
+            <a href="#" className="backBtn" onClick={() => {console.log("back clicked"); this.props.history.goBack();}}>
+                BACK
+           </a>
+          )
+      }
+    }
+
     return (
-      <div>
-
-          <a className="backBtn" onClick = {this.props.history.goBack}>
-            BACK
-          </a>
-
-        <div>
-          <div className="hamburger" onClick={this.handleOnClick}>
-            <div className="burger-line" />
-            <div className="burger-line" />
-            <div className="burger-line" />
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-2">
+            {showBackButton()}
           </div>
+          {/* <div className="col-8"> */}
+          {/* <div className="title"> */}
+          <div className="logoImgContainer col-8">
+            <img className="logoImg" src={Logo} />
+          </div>
+          {/* </div> */}
+          {/* </div> */}
+
+          <div className="col-2">
+            <div className="hamburger" onClick={this.handleOnClick}>
+              <div className="burger-line" />
+              <div className="burger-line" />
+              <div className="burger-line" />
+            </div>
+          </div>
+          {this.state.menu ? this.showMenu() : ""}
         </div>
-        {this.state.menu ? this.showMenu() : ""}
       </div>
     );
   }
@@ -127,7 +121,8 @@ class NavBar extends Component {
 function mapStateToProps(state) {
   return {
     auth: state.user.auth,
-    vetAccessLevel: state.vetlogin.accessLevel
+    vetAccessLevel: state.vetlogin.accessLevel,
+    vetId: state.vetlogin.id
   };
 }
 
