@@ -20,9 +20,11 @@ if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             $personID = $row['ID'];
             $IdLength = strlen($personID);
+            print($personID);
+            print($IdLength);
 
             //if its a vet
-            if ($IdLength === 6) {
+            if ($IdLength === 13) {
                 $query = "UPDATE `vets` SET `status` = 'active' WHERE `ref_ID` = '$personID'";
                 $result = mysqli_query($conn, $query);
             } else {
