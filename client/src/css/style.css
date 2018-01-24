@@ -76,9 +76,10 @@ img {
   height: 100%;
   margin: auto;
 }
-.title img {
+/* .title a {
+  width: 100%;
   height: 100%;
-}
+} */
 
 form {
   width: 80%;
@@ -90,10 +91,6 @@ form {
   height: 38%;
   margin: 5% 10% 0;
 }
-
-/*.container {
-  width: 85%;
-}*/
 
 .buttonContainer {
   text-align: right;
@@ -336,19 +333,24 @@ form {
 }
 
 /************* hamburger log in ******/
+.logoImgContainer {
+  height: 10vh;
+}
+.logoImg {
+max-width: 100%;
+height: 95%;
+}
+
 .outsideMenuContainer {
   width: 100vw;
   height: 100vh;
+  
 }
 
 .hamburger {
-  position: fixed;
-  top: 3%;
-  right: 5%;
-  width: 6%;
-  height: 5vmin;
+  width: 5vmax;
+  height: 5vh;
   transition-duration: 1s;
-  z-index: 5;
   cursor: pointer;
 }
 
@@ -366,28 +368,24 @@ form {
   margin: 10% 0;
   background-color: rgba(214, 117, 5, 0.89);
   border-radius: 1vmin;
-  transition-duration: 0.5s;
+  transition-duration: 1s;
 }
 
 .menuContainer {
-  width: 30%;
-  background-color: rgba(168, 102, 25, 0.705);
-  position: absolute;
-  right: 2%;
+  width: 100vw;
+  background-color: rgba(68, 68, 68, 0.822);
+  /* position: absolute; */
+  padding: 1%;
 }
 .menuContainer div {
-  margin: 8%;
-  background-color: rgba(223, 173, 117, 0.856);
-  border-bottom: solid 1px rgb(0, 0, 0);
-  border-right: solid 1px rgb(0, 0, 0);
+  margin: 5%;
+  /* background-color: rgba(223, 172, 117, 0.418); */
+  border-bottom: solid 1px rgb(133, 133, 133);
+  /* border-right: solid 1px rgb(0, 0, 0); */
   cursor: pointer;
+  color: white;
 }
 .backBtn {
-  position: fixed;
-  top: 3%;
-  left: 5%;
-  z-index: 5;
-  float: left;
   cursor: pointer;
 }
 
