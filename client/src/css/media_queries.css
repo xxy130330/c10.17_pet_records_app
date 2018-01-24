@@ -106,17 +106,15 @@
         display: inline-block;
         min-width: 36%;
         position: relative;
-        left: 10%;
-        right: 10%;
     }
     .petAvatar {
         height: 25vh;
         width: 25vh;
-        /*background-position: center;*/
-        /*border: 2px solid orange;*/
-        /*border-radius: 50%;*/
         background-size: 100%;
         background-size: cover;
+        transform: translateX(-50%);
+        left: 50%;
+        position: relative;
     }
     .burger-line {
         width: 70%;
@@ -134,6 +132,20 @@
     .menuContainer div {
         padding: 10%;
     }
+    .petRow>a, .petRow>div {
+        margin: auto;
+        float: none;
+        /* height: 100%; */
+        width: 40%;
+        display: block;
+    }
+    .h2, h2 {
+       transform: none;
+    }
+    .deleteButton {
+        text-align: center;
+    }
+
 /************** pet_profile *****************/
 
     .petAvatarProfile {

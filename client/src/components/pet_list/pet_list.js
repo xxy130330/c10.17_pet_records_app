@@ -113,18 +113,15 @@ class PetList extends Component {
       const item_name = item.name.length>8 ? <h4>{item.name}</h4> : <h2>{item.name}</h2>
       return (
         <div key={index} className='row justify-content-center petRow'>
-          <Link className='col-3 col-sm-3 col-md-3 col-lg-3' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
+          <Link className='' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
             <div className="petAvatar" style={petAvatar}></div>
           </Link>
-          <div className="col-3 col-sm-3 col-md-3 col-lg-3">
+          <div className="nameContainer">
             {item_name}
           </div>
-
-
-
-          <div className='col-3 col-sm-3 col-md-3 col-lg-3'>
-            <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x pull-right": ''}></i>
-          </div>
+            <div className='deleteButton'>
+                <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x ": ''}></i>
+            </div>
         </div>
       );
     });

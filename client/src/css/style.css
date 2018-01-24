@@ -50,6 +50,9 @@ img {
 }
 
 /************* Everywhere *************/
+.nameContainer {
+  text-align: center;
+}
 .picture {
   margin: 0 auto;
   padding: 0;
@@ -184,6 +187,7 @@ form {
   border-radius: 50%;
   background-size: 100%;
   background-size: cover;
+  margin: auto;
 }
 
 .petName {
@@ -211,11 +215,18 @@ form {
   padding: 3% 0;
 }
 
-.petRow>a, .petRow>div{
-  margin: auto;
+.petRow>a, .petRow>div {
+  /* margin: auto; */
+  float: left;
+  /* height: 100%; */
+  width: 40%;
 }
-
-
+.h2, h2 {
+  font-size: 2rem;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 /************* pet_profile *************/
 
