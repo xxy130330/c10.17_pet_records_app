@@ -22,14 +22,12 @@ export default props => {
     }
   }
 
-  return (
-    <div className="header">
-      <div className="title align-self-center">
+  return <div className="header">{showNavBar()}</div>;
+};
+{
+  /* <div className="title align-self-center">
         <Link to="/">
           <img src={Logo} />
         </Link>
-      </div>
-      {showNavBar()}
-    </div>
-  );
-};
+      </div> */
+}

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { switchAuthentication } from "../../actions";
 // import Transition from "react-transition-group/Transition";
 // import { slide as Menu } from "react-burger-menu";
+import Logo from "../../../../server/images/petvet_logo.png";
 import ReactDOM from "react-dom";
 
 class NavBar extends Component {
@@ -35,35 +36,6 @@ class NavBar extends Component {
       menu: menuState
     });
   }
-  // handleWindowClick() {
-  //   document.addEventListener(
-  //     "click",
-  //     this.handleClickOutside.bind(this),
-  //     true
-  //   );
-  // }
-  // removeWindowClick() {
-  //   console.log("removewindowclick::::", this);
-  //   document.removeEventListener(
-  //     "click",
-  //     this.handleClickOutside.bind(this),
-  //     true
-  //   );
-  //   this.setState({
-  //     menu: false
-  //   });
-  // }
-
-  // handleClickOutside(event) {
-  //   // const windowDom = ReactDOM.findDOMNode(this);
-  //   const windowDom = this.node;
-
-  //   if (!windowDom || !windowDom.contains(event.target)) {
-  //     console.log('this is the menu::::', this.node);
-  //     console.log('window outsideeeee::::', windowDom, event.target);
-  //     this.removeWindowClick();
-  //   }
-  // }
   showMenu() {
     return (
       <div
@@ -104,22 +76,39 @@ class NavBar extends Component {
     );
   }
   render() {
-    console.log("hamburger props:::::",this.props);
+    console.log("hamburger props:::::", this.props);
     return (
-      <div>
-        <a href="#">
-          <div className="backBtn" onClick = {() => {console.log('back clicked'); this.props.history.goBack()}}>
-            BACK
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-2">
+            <a
+              href="#"
+              className="backBtn"
+              onClick={() => {
+                console.log("back clicked");
+                this.props.history.goBack();
+              }}
+            >
+              BACK
+            </a>
           </div>
-        </a>
-        <div>
-          <div className="hamburger" onClick={this.handleOnClick}>
-            <div className="burger-line" />
-            <div className="burger-line" />
-            <div className="burger-line" />
+          {/* <div className="col-8"> */}
+          {/* <div className="title"> */}
+          <Link className="logoImgContainer col-8" to="/">
+            <img className="logoImg" src={Logo} />
+          </Link>
+          {/* </div> */}
+          {/* </div> */}
+
+          <div className="col-2">
+            <div className="hamburger" onClick={this.handleOnClick}>
+              <div className="burger-line" />
+              <div className="burger-line" />
+              <div className="burger-line" />
+            </div>
           </div>
+          {this.state.menu ? this.showMenu() : ""}
         </div>
-        {this.state.menu ? this.showMenu() : ""}
       </div>
     );
   }
