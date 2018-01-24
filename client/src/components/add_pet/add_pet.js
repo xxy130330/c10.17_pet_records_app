@@ -13,6 +13,7 @@ import '../../../node_modules/croppie/croppie.css';
 import  croppie  from 'croppie';
 
 
+
 class AddPet extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +24,8 @@ class AddPet extends Component {
         dob: "",
         breed: ""
       },
-      buttonClick : false
+      buttonClick : false,
+      errorMessage: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -60,13 +62,16 @@ class AddPet extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const { name, dob, breed } = this.state.form;
+    if(!this.url){
+      this.props.addPet(name, dob, breed, this.currentOwnerId , 'http://i.telegraph.co.uk/multimedia/archive/02830/cat_2830677b.jpg')
+            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
+      return;
+    }
 
-    const {name, dob, breed} = this.state.form;
-
-
-    this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'png'})
+    this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'jpg'})
       .then(res=>{
-            let file = new File([res], 'hello.png', {type: "image/png"});
+            let file = new File([res], 'hello.jpg', {type: "image/jpg"});
             let data = new FormData();
             data.append('file', file)
             console.log('newFILE', file);
@@ -103,7 +108,7 @@ class AddPet extends Component {
 
         let data = new FormData();
         data.append('file', document.getElementById('file').files[0]);
-        console.dir('.....',document.getElementById('file').files[0])
+        console.log('.....',document.getElementById('file').files[0])
 
 
 
@@ -132,8 +137,7 @@ class AddPet extends Component {
         this.croppie = new croppie(el, {
             viewport: {width: '100%', height:'100%', type: 'circle'},
             boundary: {width: '100%', height:'100%'},
-            showZoomer: true,
-            enableResize:true
+            showZoomer: true
         })
         console.log('why?', url);
         this.croppie.bind({
@@ -148,15 +152,13 @@ class AddPet extends Component {
   render() {
     const { name, dob, breed } = this.state.form;
 
-    const input = this.state.buttonClick ? '' :<input  className='text-center' type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/>
+      const input = this.state.buttonClick ? '' :<md-button><input  className='text-center' type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/></md-button>
 
 
     return (
       <div className='bodyContainer'>
         <h2 className="text-center">Add Pet</h2>
-
-
-
+        <p className='text-center' style={{color:'red'}}>{this.state.errorMessage}</p>
           <div className="pictureContainer">
             <div className="pictureDiv">
               {input}
@@ -206,7 +208,7 @@ class AddPet extends Component {
             />
           </div>
 
-          <button className="btn btn-primary">Add Another Pet</button>
+          <button className="btn btn-primary">Add Pet</button>
 
         </form>
       </div>

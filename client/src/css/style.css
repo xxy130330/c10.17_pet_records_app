@@ -183,9 +183,7 @@ form {
   border: 2px solid orange;
   border-radius: 50%;
   background-size: 100%;
-  display: inline-block;
-  margin-left: 10%;
-  top: 50%;
+  background-size: cover;
 }
 
 .petName {
@@ -208,6 +206,17 @@ form {
 .deleteNAddContainer {
   text-align: center;
 }
+
+.petRow{
+  padding: 3% 0;
+}
+
+.petRow>a, .petRow>div{
+  margin: auto;
+}
+
+
+
 /************* pet_profile *************/
 
 .connectPetBtn {
@@ -445,29 +454,29 @@ height: 95%;
 
 /************* parent_page_modal*************/
 
-.confirm-modal {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.75);
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
+/*.confirm-modal {*/
+  /*!*display: flex;*!*/
+  /*!*height: 100vh;*!*/
+  /*!*width: 100vw;*!*/
+  /*!*position: fixed;*!*/
+  /*!*background-color: rgba(0, 0, 0, 0.75);*!*/
+  /*!*top: 0;*!*/
+  /*!*left: 0;*!*/
+  /*!*z-index: 1000;*!*/
+/*}*/
 
-.modal-content {
-  margin: auto;
-  width: 100%;
-}
+/*.modal-content {*/
+  /*margin: auto;*/
+  /*width: 100%;*/
+/*}*/
 
-.card-block {
-  padding-top: 5%;
-}
+/*.card-block {*/
+  /*padding-top: 5%;*/
+/*}*/
 
-.card-block img {
-  width: 20%;
-}
+/*.card-block img {*/
+  /*width: 20%;*/
+/*}*/
 
 /************* about_us page *************/
 
@@ -479,3 +488,17 @@ height: 95%;
 .addMedRecContainer {
   margin-top: 10%;
 }
+
+
+/************* pet_to_vet *************/
+
+.petToVetContainer{
+  margin-top: 10%;
+}
+
+
+
+
+
+
+

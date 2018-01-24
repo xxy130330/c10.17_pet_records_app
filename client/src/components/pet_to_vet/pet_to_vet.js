@@ -27,10 +27,6 @@ class PetToVet extends Component {
   }
 
   componentDidMount() {
-    console.log('PET TO VET PROPS:::', this.props);
-    console.log('PET TO VET ownerID:::', this.props.id);
-    console.log('PET TO VET PETID::::', this.props.match.params.petId);
-    console.log('this is the current state in pet2vet ', this.state);
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
@@ -83,10 +79,10 @@ class PetToVet extends Component {
     const { vetEmail, vetRefNum } = this.state.form;
     return (
       <div className='bodyContainer'>
-        <div className="pictureContainer">
-          <h2 className="text-center">Connect Pet To Vet</h2>
-        </div>
-        <form className="container" onSubmit={e => this.handleSubmit(e)}>
+
+          <h1 className="text-center">Connect Pet To Vet</h1>
+
+        <form className="petToVetContainer" onSubmit={e => this.handleSubmit(e)}>
           <div className="form-group">
             <label>Vet Email</label>
             <input
