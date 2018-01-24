@@ -22,6 +22,7 @@ import PetToVet from "../components/pet_to_vet/pet_to_vet";
 import ClientList from "../components/client_list/client_list";
 import VetClientPets from "../components/vet_client_pets/vet_client_pets";
 import AboutUs from "../components/about_us/about_us";
+import ContactUs from '../components/contact_us/contact_us';
 
 class App extends Component {
   // constructor(props) {
@@ -40,6 +41,7 @@ class App extends Component {
         <div className="mainContainer">
           <Route path="/*" component={Header} />
           <Route path="/about-us" component={AboutUs} />
+          <Route path="/contact-us/" component={ContactUs}/>
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />
           <Route path="/vet-login-page/" component={VetLoginPage} />
