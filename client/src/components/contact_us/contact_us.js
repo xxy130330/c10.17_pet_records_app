@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 import { connect } from "react-redux";
 import { Field, reduxForm } from 'redux-form';
-
+import axios from 'axios';
 
 class ParentPage extends Component{
     constructor(props){
@@ -41,13 +41,26 @@ class ParentPage extends Component{
 
 
     handleSubmits(values){
-
-
       this.setState({
         toggleModal: true
-      })
+      });
 
       console.log(values);
+
+      const url = '/server/database_connect/server.php?action=post&resource=contact_us';
+      axios({
+          method: 'post',
+          dataType: 'json',
+          url: url,
+          data: {
+              name: values.name,
+              email: values.email,
+              message: values.message,
+              contact: true,
+          }
+      }).then(res => {
+          console.log(res);
+      });
 
       //   this.props.register(values.fullName, values.password, values.email)
       // .then( ()=> {
@@ -78,7 +91,7 @@ class ParentPage extends Component{
 
 
             <div className="buttonContainer row">
-              <button className='btn btn-success'>Sign Up</button>
+              <button className='btn btn-success'>Send</button>
             </div>
 
           </form>
