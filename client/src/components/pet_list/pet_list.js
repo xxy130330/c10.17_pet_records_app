@@ -82,7 +82,7 @@ class PetList extends Component {
                       <div className="card-header">Are you sure you want to delete:</div>
                       <div className="card-block">
                           <div className='card-title'>{item.name}</div>
-                          <div className="petAvatar" style={style} />
+                          <div className="petAvatar petAvatarModal" style={style} />
                       </div>
                       <div className="card-footer">
                             <button onClick={()=> this.deleteFromServer()} className='btn btn-outline-success'>Confirm</button>

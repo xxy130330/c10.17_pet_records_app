@@ -8,6 +8,13 @@ body {
   font-family: text-font;
 }
 
+.fa-times-circle {
+  color: #CC0000;
+}
+.fa-times-circle:hover {
+  cursor: pointer;
+}
+
 a {
   color: black;
 }
@@ -53,6 +60,7 @@ img {
 .nameContainer {
   text-align: center;
 }
+
 .picture {
   margin: 0 auto;
   padding: 0;
