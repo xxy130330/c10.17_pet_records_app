@@ -208,7 +208,8 @@ form {
 .petListTitle {
   text-align: center;
   display: block;
-  /*text-decoration: underline;*/
+  font-size: 2rem;
+  position: relative;
 }
 
 .usersPetContainer div {
@@ -228,12 +229,6 @@ form {
   float: left;
   /* height: 100%; */
   width: 40%;
-}
-.h2, h2 {
-  font-size: 2rem;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 /************* pet_profile *************/

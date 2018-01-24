@@ -23,6 +23,11 @@
     .card .card-block {
         margin: -2% 0 6% 0;
     }
+    h2.petListName {
+        top: 50%;
+        position: relative;
+        transform: translateY(-50%);
+    }
 }
 
 
@@ -103,6 +108,7 @@
         width: 60%;
         margin: auto;
     }
+
     .usersPetContainer {
         width: 100%;
         margin: auto;

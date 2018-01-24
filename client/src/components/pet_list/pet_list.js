@@ -110,7 +110,7 @@ class PetList extends Component {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
       };
-      const item_name = item.name.length>8 ? <h4>{item.name}</h4> : <h2>{item.name}</h2>
+      const item_name = item.name.length>8 ? <h4 className='petListName'>{item.name}</h4> : <h2 className='petListName'>{item.name}</h2>
       return (
         <div key={index} className='row justify-content-center petRow'>
           <Link className='' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
