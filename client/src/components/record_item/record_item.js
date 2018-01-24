@@ -90,12 +90,21 @@ class RecordItem extends Component {
 
       );
       const editData =(
-          <div>
-              <input onChange={(e)=>this.handleChange(e)} type= 'text' name='editType' value ={editType} className="record_item_header" placeholder={type}></input>
-              <input onChange={(e)=>this.handleChange(e)}  type ='date' name='editDate' value ={editDate} className="record_item_date" placeholder={date}></input>
+          <form>
+              <div className='form-group'>
+                  <label htmlFor=""></label>
+                  <input onChange={(e)=>this.handleChange(e)} type= 'text' name='editType' value ={editType} className="record_item_header"></input>
+              </div>
+              <div>
+                  <label htmlFor="">Date</label>
+                  <input onChange={(e)=>this.handleChange(e)}  type ='date' name='editDate' value ={editDate} className="record_item_date"></input>
+              </div>
               <hr />
-              <input onChange={(e)=>this.handleChange(e)} type='text' name='editDetails' value ={editDetails} placeholder={details}></input>
-          </div>
+              <div className="form-group">
+                  <label htmlFor="">Details</label>
+                  <input onChange={(e)=>this.handleChange(e)} type='text' name='editDetails' value ={editDetails}></input>
+              </div>
+          </form>
       );
       const viewData= canEdit? editData: staticData;
       return (
