@@ -252,6 +252,9 @@ form {
   width: 40%;
 }
 
+.addPet{
+  margin-left:5%;
+}
 /************* pet_profile *************/
 
 .connectPetBtn {
@@ -320,6 +323,10 @@ form {
 }
 .medicalRecord p {
   display: inline-block;
+}
+
+.addMedicalRecord{
+  margin-left:5%;
 }
 
 /************* record_item *************/

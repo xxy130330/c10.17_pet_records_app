@@ -211,7 +211,7 @@ class PetProfile extends Component {
                           onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Edit Profile": 'Cancel'}
                   </button>
                   <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
-                      <button className= "btn btn-outline-success">
+                      <button className= "btn btn-outline-success addMedicalRecord">
                           Add Medical Record
                       </button>
                   </Link>
