@@ -76,15 +76,21 @@ class PetList extends Component {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
       };
+      const item_name = item.name.length>8 ? <h4>{item.name}</h4> : <h2>{item.name}</h2>
       return (
-        <div key={index} className='petList'>
-          <Link to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
-            <div className="petAvatar petAvatarPetList" style={petAvatar} />
-            <h3 className="petName">{item.name}</h3>
+        <div key={index} className='row justify-content-center petRow'>
+          <Link className='col-3 col-sm-3 col-md-3 col-lg-3' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
+            <div className="petAvatar" style={petAvatar}></div>
           </Link>
-            <div className='deletePetBtn'>
-          <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true": ''}></i>
-            </div>
+          <div className="col-3 col-sm-3 col-md-3 col-lg-3">
+            {item_name}
+          </div>
+
+
+
+          <div className='col-3 col-sm-3 col-md-3 col-lg-3'>
+            <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x pull-right": ''}></i>
+          </div>
         </div>
       );
     });
@@ -92,7 +98,9 @@ class PetList extends Component {
       <div className='bodyContainer'>
         <div className="petListContainer">
           <h1 className="petListTitle">Pet List</h1>
-            <div className="usersPetContainer">{userPetList}</div>
+            <div className='container'>
+              {userPetList}
+            </div>
         </div>
         <div className="deleteNAddContainer">
           <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
