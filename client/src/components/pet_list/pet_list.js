@@ -82,7 +82,7 @@ class PetList extends Component {
                       <div className="card-header">Are you sure you want to delete:</div>
                       <div className="card-block">
                           <div className='card-title'>{item.name}</div>
-                          <div className="petAvatar" style={style} />
+                          <div className="petAvatar petAvatarModal" style={style} />
                       </div>
                       <div className="card-footer">
                             <button onClick={()=> this.deleteFromServer()} className='btn btn-outline-success'>Confirm</button>
@@ -110,21 +110,18 @@ class PetList extends Component {
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
       };
-      const item_name = item.name.length>8 ? <h4>{item.name}</h4> : <h2>{item.name}</h2>
+      const item_name = item.name.length>8 ? <h4 className='petListName'>{item.name}</h4> : <h2 className='petListName'>{item.name}</h2>
       return (
         <div key={index} className='row justify-content-center petRow'>
-          <Link className='col-3 col-sm-3 col-md-3 col-lg-3' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
+          <Link className='' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
             <div className="petAvatar" style={petAvatar}></div>
           </Link>
-          <div className="col-3 col-sm-3 col-md-3 col-lg-3">
+          <div className="nameContainer">
             {item_name}
           </div>
-
-
-
-          <div className='col-3 col-sm-3 col-md-3 col-lg-3'>
-            <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x pull-right": ''}></i>
-          </div>
+            <div className='deleteButton'>
+                <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x ": ''}></i>
+            </div>
         </div>
       );
     });
