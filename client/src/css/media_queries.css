@@ -5,12 +5,8 @@
 /*@media (min-width:1025px) { !* big landscape tablets, laptops, and desktops *! }*/
 /*@media (min-width:1281px) { !* hi-res laptops and desktops *! }*/
 
-
-@media (min-width: 1025px) {
-    /*Everything*/
-    body {
-
-    }
+/*Laptops and monitors*/
+@media (min-width: 1025px)  {
     /********* landing_page ********/
     .loginLogo {
         width: 20%;
@@ -84,11 +80,11 @@
         margin: auto;
     }
     .usersPetContainer {
-        width: 40%;
+        width: 100%;
         margin: auto;
         padding: 20px;
-        /*background-color: rgba(0,0,0, .7);*/
-        /*border-radius: 8%;*/
+        /* background-color: rgba(0,0,0, .7); */
+        /* border-radius: 8%; */
     }
     .deleteNAddContainer button {
        margin: 0 10px;
@@ -96,6 +92,28 @@
     .petAvatarPetList {
         height: 19vh;
         width: 19vh;
+    }
+    .petList {
+        min-width: 26%;
+        position: relative;
+        left: 10%;
+        right: 10%;
+    }
+    .row.justify-content-center.petRow {
+        display: inline-block;
+        min-width: 36%;
+        position: relative;
+        left: 10%;
+        right: 10%;
+    }
+    .petAvatar {
+        height: 25vh;
+        width: 25vh;
+        /*background-position: center;*/
+        /*border: 2px solid orange;*/
+        /*border-radius: 50%;*/
+        background-size: 100%;
+        background-size: cover;
     }
 /************** pet_profile *****************/
 
