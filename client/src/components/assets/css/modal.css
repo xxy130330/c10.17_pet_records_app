@@ -13,9 +13,22 @@
     width: 75%;
     height: 50%
 }
-div.card{
-    height: 75%;
+div.petListCard{
+    height: 63vh;
+    /*z-index: 1000;*/
+}
+div.clientListCard{
+    height: 40vh;
 }
 .card-block{
     height: 75%;
+    padding-top: 5%;
+}
+.modal-content {
+margin: auto;
+width: 100%;
+}
+
+.card-block img {
+width: 20%;
 }
