@@ -20,7 +20,7 @@ class NavBar extends Component {
       menu: false
     };
 
-    console.log("click on body::::", event);
+
   }
 
   handleWindowClick() {
@@ -43,7 +43,7 @@ class NavBar extends Component {
         onClick={this.handleWindowClick}
       >
         <div className="menuContainer">
-          
+
           {!this.props.vetAccessLevel ? (
             <Link to="/pet-list/" onClick={this.handleOnClick}>
               <div> Pet List </div>
@@ -74,27 +74,34 @@ class NavBar extends Component {
     );
   }
   render() {
-    console.log("hamburger props:::::", this.props);
+
+    const showBackButton = ()=>{
+
+      switch(this.props.match.url){
+
+        case '/pet-list/':
+        case `/client-list/${this.props.vetId}`:
+          return ''
+        default:
+          return(
+            <a href="#" className="backBtn" onClick={() => {console.log("back clicked"); this.props.history.goBack();}}>
+                BACK
+           </a>
+          )
+      }
+    }
+
     return (
       <div className="container">
         <div className="row align-items-center">
           <div className="col-2">
-            <a
-              href="#"
-              className="backBtn"
-              onClick={() => {
-                console.log("back clicked");
-                this.props.history.goBack();
-              }}
-            >
-              BACK
-            </a>
+            {showBackButton()}
           </div>
           {/* <div className="col-8"> */}
           {/* <div className="title"> */}
-          <Link className="logoImgContainer col-8" to="/">
+          <div className="logoImgContainer col-8">
             <img className="logoImg" src={Logo} />
-          </Link>
+          </div>
           {/* </div> */}
           {/* </div> */}
 
