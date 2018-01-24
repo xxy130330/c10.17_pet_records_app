@@ -35,6 +35,8 @@ if ($checkResult) {
                             $output['success'] = true;
                         }
                     }
+                }else {
+                    $output['errors'][] = 'no data available';
                 }
 
 
