@@ -1,5 +1,7 @@
 import axios from "axios";
 
+export const LOCALAUTH = "LOCALAUTH";
+
 //******** user Log in auth **********/
 export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
 export const LOG_OUT ="LOG_OUT";
