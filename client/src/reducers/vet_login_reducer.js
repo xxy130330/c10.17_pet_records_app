@@ -10,7 +10,6 @@ const CURRENT_VET = {
 export default function(state = CURRENT_VET, action) {
   switch (action.type) {
     case VET_LOGIN:
-      console.log('VET LOGIN', action.payload);
       return {
         ...state,
         success: action.payload.data.loginSuccess,
@@ -18,14 +17,16 @@ export default function(state = CURRENT_VET, action) {
         errorMessage: action.payload.data.errors[0],
         accessLevel: action.payload.data.accessLevel
       };
+
       case VET_REGISTER:
-        console.log('IN VET LOGIN REDUCER', action.payload);
       return {
         ...state,
         success: action.payload.data.success,
         id: action.payload.data.data.ID,
       };
+
       case LOG_OUT:
+
           return{
               ...state,
               accessLevel: null

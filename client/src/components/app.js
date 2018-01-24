@@ -25,16 +25,10 @@ import AboutUs from "../components/about_us/about_us";
 import ContactUs from '../components/contact_us/contact_us';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
 
-  //   this.state = {
-  //     PetData: []
-  //   };
-  // }
 
   render() {
-    // const { PetData } = this.state;
+
 
     return (
       <Router>
