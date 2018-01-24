@@ -74,7 +74,7 @@ if (isset($activationLink)) {
 
 //$mail->addAddress('ellen@example.com');                        // Name is optional
     $mail->addReplyTo($post['email']); // Add a reply-to address
-    $mail->addBCC('ccampos23@gmail.com');
+    $mail->addBCC('ccamposs23@gmail.com');
     $mail->addBCC('sangwoo89118@gmail.com');
     $mail->addBCC('christin0708@gmail.com');
 //$mail->addCC('cc@example.com');
