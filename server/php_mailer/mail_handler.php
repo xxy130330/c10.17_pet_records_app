@@ -1,6 +1,6 @@
 <?php
 require_once('email_config.php');
-require('phpmailer/PHPMailer/PHPMailerAutoload.php');
+require_once('phpmailer/PHPMailer/PHPMailerAutoload.php');
 
 if (isset($activationLink)) {
     $mail = new PHPMailer;
