@@ -19,8 +19,6 @@ class NavBar extends Component {
     this.state = {
       menu: false
     };
-
-
   }
 
   handleWindowClick() {
@@ -43,75 +41,88 @@ class NavBar extends Component {
         onClick={this.handleWindowClick}
       >
         <div className="menuContainer">
-
           {!this.props.vetAccessLevel ? (
             <Link to="/pet-list/" onClick={this.handleOnClick}>
-              <div> Pet List </div>
+              <div> PET LIST </div>
             </Link>
           ) : (
-            <Link to={`/client-list/${this.props.vetId}`} onClick={this.handleOnClick}>
-              <div> Client List </div>
+            <Link
+              to={`/client-list/${this.props.vetId}`}
+              onClick={this.handleOnClick}
+            >
+              <div> CLIENT LIST </div>
             </Link>
           )}
           {!this.props.vetAccessLevel ? (
             <Link to="/add-pet/" onClick={this.handleOnClick}>
-              <div> Add Pet </div>
+              <div> ADD PET </div>
             </Link>
           ) : (
             ""
           )}
           <Link to="/about-us" onClick={this.handleOnClick}>
-            <div> About Us </div>
+            <div> ABOUT US </div>
           </Link>
           <Link to="/contact-us" onClick={this.handleOnClick}>
-            <div> Contact Us </div>
+            <div> CONTACT US </div>
           </Link>
           <Link to="/" onClick={() => this.props.switchAuthentication(false)}>
-            <div> Log Out </div>
+            <div> LOG OUT </div>
           </Link>
         </div>
       </div>
     );
   }
   render() {
-
-    const showBackButton = ()=>{
-
-      switch(this.props.match.url){
-
-        case '/pet-list/':
+    const showBackButton = () => {
+      switch (this.props.match.url) {
+        case "/login-page":
+        case "/vet-login-page":
+        case "/pet-list/":
         case `/client-list/${this.props.vetId}`:
-          return ''
+          return "";
         default:
-          return(
-            <a href="#" className="backBtn" onClick={() => {console.log("back clicked"); this.props.history.goBack();}}>
-                BACK
-           </a>
-          )
+          return (
+            <a
+              href="#"
+              className="backBtn"
+              onClick={() => {
+                console.log("back clicked");
+                this.props.history.goBack();
+              }}
+            >
+              BACK
+            </a>
+          );
       }
-    }
+    };
+
+    const showHamBtn = () => {
+      switch (this.props.match.url) {
+        case "/login-page":
+        case "/vet-login-page":
+          return "";
+        default:
+          return (
+            <div className="col-2">
+              <div className="hamburger" onClick={this.handleOnClick}>
+                <div className="burger-line" />
+                <div className="burger-line" />
+                <div className="burger-line" />
+              </div>
+            </div>
+          );
+      }
+    };
 
     return (
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-2">
-            {showBackButton()}
-          </div>
-          {/* <div className="col-8"> */}
-          {/* <div className="title"> */}
+          <div className="col-2">{showBackButton()}</div>
           <div className="logoImgContainer col-8">
             <img className="logoImg" src={Logo} />
           </div>
-          {/* </div> */}
-          {/* </div> */}
-
-          <div className="col-2">
-            <div className="hamburger" onClick={this.handleOnClick}>
-              <div className="burger-line" />
-              <div className="burger-line" />
-              <div className="burger-line" />
-            </div>
-          </div>
+          {showHamBtn()}
           {this.state.menu ? this.showMenu() : ""}
         </div>
       </div>
