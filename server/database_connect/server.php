@@ -171,6 +171,13 @@ switch($_GET['action']) {
                     require('./actions/update_delete_pet_from_vet.php');
                 }
             }
+            case 'contact_us': {
+                if (!empty($post)) {
+                    require('../php_mailer/mail_handler.php');
+                } else {
+                    throw new Exception('Must have a post variable when getting trying to send an email');
+                }
+            }
         }
 
     }
