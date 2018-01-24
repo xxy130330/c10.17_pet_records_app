@@ -43,9 +43,7 @@ class NavBar extends Component {
         onClick={this.handleWindowClick}
       >
         <div className="menuContainer">
-          <Link to="/" onClick={this.handleOnClick}>
-            <div> Home</div>
-          </Link>
+          
           {!this.props.vetAccessLevel ? (
             <Link to="/pet-list/" onClick={this.handleOnClick}>
               <div> Pet List </div>
@@ -65,7 +63,7 @@ class NavBar extends Component {
           <Link to="/about-us" onClick={this.handleOnClick}>
             <div> About Us </div>
           </Link>
-          <Link to="/about-us" onClick={this.handleOnClick}>
+          <Link to="/contact-us" onClick={this.handleOnClick}>
             <div> Contact Us </div>
           </Link>
           <Link to="/" onClick={() => this.props.switchAuthentication(false)}>
