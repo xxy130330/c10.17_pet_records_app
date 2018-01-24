@@ -4,12 +4,29 @@ import Logo from "../../../../server/images/petvet_logo.png";
 import axios from "axios";
 import { connect } from "react-redux";
 import { fetchVetClientData } from "../../actions/";
+import '../assets/css/modal.css';
 
 class ClientList extends Component {
+    constructor(props){
+        super(props);
+
+        this.state= {
+            showModal: false
+        }
+    }
   componentWillMount() {
     const params = this.props.match.params;
-    this.props.fetchVetClientData(params.vetId);
+    this.props.fetchVetClientData(params.vetId).then(()=>{
+        console.log('these are the props after .then ', this.props);
+        if(!this.props.clientList.length){
+            this.setState({
+                showModal: true
+            })
+        }
+    });
     console.log("these are the props in client list, ", this.props);
+
+
   }
   handleClientClick(index) {
     this.props.history.push(
@@ -19,11 +36,30 @@ class ClientList extends Component {
         this.props.clientList[index].ownerID
     );
   }
+    infoModal(){
+        return(
+        <span>
+          <div className='confirm-modal '>
+              <div className="content-modal">
+                  <div className="card clientListCard">
+                      <div className="card-header">Welcome To PetVet</div>
+                          <div className='card-title'>Getting Started</div>
+                      <div className="card-block">
+                          <p>Thank you for using our app. To get started, please share your vet email and unique reference id with your clients in order to gain access to their pets.</p>
+                      </div>
+                      <div className="card-footer">
+                            <button onClick={()=>this.setState({showModal: false})} className='btn btn-outline-success'>Got It!</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </span>
+        )
+    }
   render() {
     // if (!this.props.clientList.length) {
     //     return <h1>Loading</h1>;
     // }
-
     let clientInformation = this.props.clientList.map((client, index) => {
       return (
         <div
@@ -50,11 +86,8 @@ class ClientList extends Component {
         <div className="clientList">
           <div className="text-center">
             <h2>Client List</h2>
-            {this.props.clientList.length ? (
-              clientInformation
-            ) : (
-              <h1>No Client Data</h1>
-            )}
+            {this.props.clientList.length ? (clientInformation) : (<h1>No Client Data</h1>)}
+              {this.state.showModal? this.infoModal(): '' }
           </div>
         </div>
       </div>
