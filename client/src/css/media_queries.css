@@ -23,7 +23,7 @@
     .card .card-block {
         margin: -2% 0 6% 0;
     }
-    h2.petListName {
+    h2.petListName, h4.petListName {
         top: 50%;
         position: relative;
         transform: translateY(-50%);
