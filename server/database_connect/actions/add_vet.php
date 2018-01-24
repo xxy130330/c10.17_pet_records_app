@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shobl
- * Date: 1/15/2018
- * Time: 12:36 PM
- */
+
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
@@ -23,12 +18,13 @@ if ($checkResult) {
                 $resultID = mysqli_insert_id($conn);
                 $ref_ID = substr(MD5($resultID),0,6);
 
-                $output['data'][] = $ref_ID;
-
-                $checkQuery = "SELECT * FROM vets WHERE ref_ID";
-                if(isset($checkQuery)){
-                    
-                }else {
+                $checkQuery = "SELECT * FROM vets WHERE `ref_ID` = $ref_ID";
+                $result = mysqli_query($conn, $checkQuery);
+                if($result) {
+                    if (mysqli_num_rows($result) > 0) {
+                        $ref_ID = substr(MD5($resultID), 0, 6);
+                    }
+                    $output['data'][] = $ref_ID;
                     $refIDQuery = "UPDATE `vets` SET `ref_ID` = '$ref_ID' WHERE `ID` = $resultID";
 
                     $output['query'] = $refIDQuery;
@@ -40,6 +36,7 @@ if ($checkResult) {
                         }
                     }
                 }
+
 
                 //Generate authentication number then insert it into the activation database with this user's ID, then send the email;
                 $hashRef_ID = MD5($ref_ID);
