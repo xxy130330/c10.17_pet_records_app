@@ -25,15 +25,19 @@ if ($checkResult) {
 
                 $output['data'][] = $ref_ID;
 
+                $checkQuery = "SELECT * FROM vets WHERE ref_ID";
+                if(isset($checkQuery)){
+                    
+                }else {
+                    $refIDQuery = "UPDATE `vets` SET `ref_ID` = '$ref_ID' WHERE `ID` = $resultID";
 
-                $refIDQuery = "UPDATE `vets` SET `ref_ID` = '$ref_ID' WHERE `ID` = $resultID";
-
-		$output['query'] = $refIDQuery;
-                $result = mysqli_query($conn, $refIDQuery);
-                $output['ref_ID'] = $ref_ID;
-                if ($result) {
-                    if (mysqli_affected_rows($conn) > 0) {
-                        $output['success'] = true;
+                    $output['query'] = $refIDQuery;
+                    $result = mysqli_query($conn, $refIDQuery);
+                    $output['ref_ID'] = $ref_ID;
+                    if ($result) {
+                        if (mysqli_affected_rows($conn) > 0) {
+                            $output['success'] = true;
+                        }
                     }
                 }
 
