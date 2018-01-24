@@ -5,8 +5,37 @@
 /*@media (min-width:1025px) { !* big landscape tablets, laptops, and desktops *! }*/
 /*@media (min-width:1281px) { !* hi-res laptops and desktops *! }*/
 
+/*Mobile styles*/
+@media (min-width:320px) AND (max-width:641px)  {
+    .deleteButton {
+        display: inline-block;
+        position: relative;
+        right: 85%;
+        top: 4vh;
+        width: 0% !important;
+    }
+    .petRow>a, .petRow>div {
+        /* margin: auto; */
+        float: left;
+        /* height: 100%; */
+        width: 37%;
+    }
+    .card .card-block {
+        margin: -2% 0 6% 0;
+    }
+    h2.petListName, h4.petListName {
+        top: 50%;
+        position: relative;
+        transform: translateY(-50%);
+    }
+}
+
+
 /*Laptops and monitors*/
 @media (min-width: 1025px)  {
+    body {
+        overflow: hidden;
+    }
     /********* landing_page ********/
     .loginLogo {
         width: 20%;
@@ -79,6 +108,7 @@
         width: 60%;
         margin: auto;
     }
+
     .usersPetContainer {
         width: 100%;
         margin: auto;
@@ -103,18 +133,54 @@
         display: inline-block;
         min-width: 36%;
         position: relative;
-        left: 10%;
-        right: 10%;
     }
     .petAvatar {
         height: 25vh;
         width: 25vh;
-        /*background-position: center;*/
-        /*border: 2px solid orange;*/
-        /*border-radius: 50%;*/
         background-size: 100%;
         background-size: cover;
+        transform: translateX(-50%);
+        left: 50%;
+        position: relative;
     }
+    .burger-line {
+        width: 70%;
+        height: 17%;
+        /*margin: 10% 0;*/
+        background-color: rgba(214, 117, 5, 0.89);
+        border-radius: 1vmin;
+        transition-duration: 1s;
+    }
+    .menuContainer {
+        width: 20vw;
+        padding: 1%;
+        float: right;
+    }
+    .menuContainer div {
+        padding: 10%;
+    }
+    .petRow>a, .petRow>div {
+        margin: auto;
+        float: none;
+        /* height: 100%; */
+        width: 40%;
+        display: block;
+    }
+    .h2, h2 {
+       transform: none;
+    }
+    .deleteButton {
+        text-align: center;
+    }
+    .petAvatar.petAvatarModal {
+        left: 0;
+        transform: none;
+    }
+    .card .card-block {
+        padding-top: 2% !important;
+        padding-bottom: 2%;
+    }
+
 /************** pet_profile *****************/
 
     .petAvatarProfile {
@@ -162,4 +228,12 @@
     .petInfo {
         top: 20%;
     }
+    .noPetData {
+        width: 60%;
+        margin: auto;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        margin-bottom: 10px;
+    }
+
 }
