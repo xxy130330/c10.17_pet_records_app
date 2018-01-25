@@ -2,28 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 export default function(WrappedComponent) {
-  class Auth extends Component {
-    componentWillMount() {
-      if (!this.props.auth) {
-        this.props.history.push("/");
-      }
+    class Auth extends Component {
+        componentWillMount() {
+            if (!this.props.auth) {
+              this.props.history.push("/");
+            }
+        }
+        componentWillReceiveProps(nextProps) {
+            if (!nextProps.auth) {
+                this.props.history.push("/");
+            }
+        }
+        render() {
+            return <WrappedComponent {...this.props} />;
+        }
     }
-
-    componentWillReceiveProps(nextProps) {
-      if (!nextProps.auth) {
-
-        this.props.history.push("/");
-      }
+    function mapStateToProps(state) {
+        return {
+            auth: state.user.auth
+        };
     }
-
-    render() {
-      return <WrappedComponent {...this.props} />;
-    }
-  }
-  function mapStateToProps(state) {
-    return {
-      auth: state.user.auth
-    };
-  }
-  return connect(mapStateToProps)(Auth);
+    return connect(mapStateToProps)(Auth);
 }
