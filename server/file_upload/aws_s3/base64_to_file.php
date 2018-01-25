@@ -34,6 +34,8 @@ $bucketName = 'petvetlfz';
 
 define('UPLOAD_DIR', './images/');
 $img = $post['rawData'];
+$output['rawData'][] = $img;
+
 $imgHead = substr($img, 0, 22);
 $img = str_replace($imgHead, '', $img);
 $img = str_replace(' ', '+', $img);
