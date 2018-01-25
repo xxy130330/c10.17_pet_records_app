@@ -41,16 +41,16 @@ class PetList extends Component {
               <div className="content-modal">
                   <div className="card petListCard">
                       <div className="card-header">Welcome To PetVet</div>
-                      <div className='card-title'>Getting Started</div>
                       <div className="card-block">
-                          <p className='card-text'>Thank you for using our app. To get started, follow these simple steps:</p>
-                          <ul>
-                              <li>Add a pet and upload a cute photo!</li>
-                              <li>If you know your vet's email and reference id, connect your pet. If not, skip and save it for later.</li>
-                              <li>On your pet's profile page, you can choose to add or delete medical record information.</li>
-                              <li>You may also choose to edit your profile and change or disconnect your vet at any time.</li>
-                              <li>We appreciate you using our app!</li>
-                          </ul>
+                          <p className="card-text">The place where you can share your pet's medical information with your veterinarian!</p>
+                          <p className='card-text'> Follow the steps below to get started:</p>
+                          <ol>
+                              <div>
+                                  <li className='text-left'>Add a pet</li>
+                                  <li className='text-left'>Connect your pet to a vet</li>
+                                  <li className='text-left' >Record medical information</li>
+                              </div>
+                          </ol>
                       </div>
                       <div className="card-footer">
                             <button onClick={()=>this.setState({infoModal: false})} className='btn btn-outline-success'>Got It!</button>
