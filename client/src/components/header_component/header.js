@@ -11,8 +11,6 @@ export default props => {
   function showNavBar() {
     switch (props.match.url) {
       case "/":
-      case "/login-page":
-      case "/vet-login-page":
       case "/parent-page/":
       case "/vet-page/":
         return "";
@@ -22,14 +20,5 @@ export default props => {
     }
   }
 
-  return (
-    <div className="header">
-      <div className="title align-self-center">
-        <Link to="/">
-          <img src={Logo} />
-        </Link>
-      </div>
-      {showNavBar()}
-    </div>
-  );
+  return <div className="header">{showNavBar()}</div>;
 };

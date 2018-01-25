@@ -13,9 +13,14 @@
     width: 75%;
     height: 50%
 }
-div.card{
-    height: 75%;
-}
 .card-block{
-    height: 75%;
+    padding: 5%;
+}
+.modal-content {
+margin: auto;
+width: 100%;
+}
+
+.card-block img {
+width: 20%;
 }

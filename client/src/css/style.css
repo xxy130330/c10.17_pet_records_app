@@ -8,6 +8,20 @@ body {
   font-family: text-font;
 }
 
+.fa-times-circle {
+  color: #cc0000;
+}
+.fa-times-circle:hover {
+  cursor: pointer;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  margin: 0 5px;
+}
+
 a {
   color: black;
 }
@@ -50,6 +64,10 @@ img {
 }
 
 /************* Everywhere *************/
+.nameContainer {
+  text-align: center;
+}
+
 .picture {
   margin: 0 auto;
   padding: 0;
@@ -76,9 +94,10 @@ img {
   height: 100%;
   margin: auto;
 }
-.title img {
+/* .title a {
+  width: 100%;
   height: 100%;
-}
+} */
 
 form {
   width: 80%;
@@ -89,10 +108,6 @@ form {
   text-align: center;
   height: 38%;
   margin: 5% 10% 0;
-}
-
-.container {
-  width: 85%;
 }
 
 .buttonContainer {
@@ -108,6 +123,33 @@ form {
   width: 80%;
   margin: auto;
 }
+
+
+/************* app.js(modal) *************/
+
+.welcomeModalContainer{
+  position: absolute;
+  top: 30%;
+  height: 90%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 5%;
+}
+
+.welcomeModalContainerHidden{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
 /************* landing_page *************/
 .loginLogo {
   width: 80%;
@@ -177,6 +219,20 @@ form {
   margin: 10% 0 5%;
 }
 
+/************* contact_us *************/
+.contactUsPage {
+  margin: 5% 0;
+}
+
+.contactUsPageTitle {
+  margin: 10% 0 5%;
+}
+
+.errorMessage {
+  display: inline-block;
+  padding-left: 40px;
+}
+
 /************* pet_list *************/
 
 .petAvatar {
@@ -186,10 +242,10 @@ form {
   border: 2px solid orange;
   border-radius: 50%;
   background-size: 100%;
-  display: inline-block;
-  margin-left: 10%;
-  top: 50%;
   background-size: cover;
+  margin: auto;
+  /*float: left;*/
+  /*display: inline-block;*/
 }
 
 .petName {
@@ -197,12 +253,15 @@ form {
   left: 10%;
   bottom: 4vh;
   font-size: 2rem;
+  margin-left: 10%;
+  /*transform: translateY(50%);*/
 }
 
 .petListTitle {
   text-align: center;
   display: block;
-  /*text-decoration: underline;*/
+  font-size: 2rem;
+  position: relative;
 }
 
 .usersPetContainer div {
@@ -211,6 +270,22 @@ form {
 
 .deleteNAddContainer {
   text-align: center;
+}
+
+.petRow {
+  padding: 3% 0;
+}
+
+.petRow > a,
+.petRow > div {
+  /* margin: auto; */
+  float: left;
+  /* height: 100%; */
+  width: 40%;
+}
+
+.addPet{
+  margin-left:5%;
 }
 /************* pet_profile *************/
 
@@ -267,10 +342,10 @@ form {
   position: absolute;
 }
 .recordContainer {
-  height: 8vh;
+  height: 10vh;
   position: relative;
 }
-.recordContainer:nth-child(odd) {
+.recordContainer:nth-child(even) {
   background-color: rgba(255, 165, 0, 0.2);
 }
 .addRecordIcon {
@@ -282,6 +357,10 @@ form {
   display: inline-block;
 }
 
+.addMedicalRecord{
+  margin-left:5%;
+}
+
 /************* record_item *************/
 
 .record_item_header,
@@ -291,8 +370,14 @@ form {
   text-align: center;
 }
 .editBtn {
-  margin-top: 5%;
-  margin-left: 5%;
+    margin-top: 2%;
+    margin-left: 5%;
+    position: absolute;
+    right: 2%;
+    top: 0;
+}
+.medicalRecordHeader{
+    margin-top: 2%
 }
 /************* client_list *************/
 
@@ -314,6 +399,18 @@ form {
   height: 100%;
   position: absolute;
 }
+
+.recordContainer{
+  margin:3% 0;
+}
+
+.recordContainer h5{
+  text-decoration: underline;
+}
+
+.clientList h2{
+  font-weight:bold;
+}
 /************* pet log_in *************/
 .formContainer {
   background-color: rgba(255, 255, 255, 0.8);
@@ -322,25 +419,31 @@ form {
   height: 50%;
   border-radius: 25px;
 }
-
-#register > a > button {
-  margin-left: 5%;
+.register {
+  width: 65%; 
+}
+.register a {
+  margin-left: 10%;
 }
 
 /************* hamburger log in ******/
+.logoImgContainer {
+  height: 10vh;
+}
+.logoImg {
+  max-width: 100%;
+  height: 95%;
+}
+
 .outsideMenuContainer {
   width: 100vw;
   height: 100vh;
 }
 
 .hamburger {
-  position: fixed;
-  top: 3%;
-  right: 5%;
-  width: 6%;
-  height: 5vmin;
+  width: 5vmax;
+  height: 5vh;
   transition-duration: 1s;
-  z-index: 5;
   cursor: pointer;
 }
 
@@ -358,28 +461,24 @@ form {
   margin: 10% 0;
   background-color: rgba(214, 117, 5, 0.89);
   border-radius: 1vmin;
-  transition-duration: 0.5s;
+  transition-duration: 1s;
 }
 
 .menuContainer {
-  width: 30%;
-  background-color: rgba(168, 102, 25, 0.705);
-  position: absolute;
-  right: 2%;
+  width: 100vw;
+  background-color: rgba(68, 68, 68, 0.89);
+  /* position: absolute; */
+  padding: 1%;
 }
 .menuContainer div {
-  margin: 8%;
-  background-color: rgba(223, 173, 117, 0.856);
-  border-bottom: solid 1px rgb(0, 0, 0);
-  border-right: solid 1px rgb(0, 0, 0);
+  margin: 5%;
+  /* background-color: rgba(223, 172, 117, 0.418); */
+  border-bottom: solid 1px rgb(133, 133, 133);
+  /* border-right: solid 1px rgb(0, 0, 0); */
   cursor: pointer;
+  color: white;
 }
 .backBtn {
-  position: fixed;
-  top: 3%;
-  left: 5%;
-  z-index: 5;
-  float: left;
   cursor: pointer;
 }
 
@@ -396,47 +495,24 @@ form {
   visibility: visible !important;
 }
 
+@-webkit-keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+
 @keyframes slideDown {
   0% {
     transform: translateY(-100%);
-  }
-  50% {
-    transform: translateY(8%);
-  }
-  65% {
-    transform: translateY(-4%);
-  }
-  80% {
-    transform: translateY(4%);
-  }
-  95% {
-    transform: translateY(-2%);
   }
   100% {
     transform: translateY(0%);
   }
 }
 
-@-webkit-keyframes slideDown {
-  0% {
-    -webkit-transform: translateY(-100%);
-  }
-  50% {
-    -webkit-transform: translateY(8%);
-  }
-  65% {
-    -webkit-transform: translateY(-4%);
-  }
-  80% {
-    -webkit-transform: translateY(4%);
-  }
-  95% {
-    -webkit-transform: translateY(-2%);
-  }
-  100% {
-    -webkit-transform: translateY(0%);
-  }
-}
 /************* vet_page **********************/
 .vetTitle {
   margin-top: 5%;
@@ -448,34 +524,46 @@ form {
 
 /************* parent_page_modal*************/
 
-.confirm-modal {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.75);
-  top: 0;
-  left: 0;
-  z-index: 1000;
-}
+/*.confirm-modal {*/
+/*!*display: flex;*!*/
+/*!*height: 100vh;*!*/
+/*!*width: 100vw;*!*/
+/*!*position: fixed;*!*/
+/*!*background-color: rgba(0, 0, 0, 0.75);*!*/
+/*!*top: 0;*!*/
+/*!*left: 0;*!*/
+/*!*z-index: 1000;*!*/
+/*}*/
 
-.modal-content {
-  margin: auto;
-  width: 100%;
-}
+/*.modal-content {*/
+/*margin: auto;*/
+/*width: 100%;*/
+/*}*/
 
-.card-block {
-  padding-top: 5%;
-}
+/*.card-block {*/
+/*padding-top: 5%;*/
+/*}*/
 
-.card-block img {
-  width: 20%;
-}
+/*.card-block img {*/
+/*width: 20%;*/
+/*}*/
 
 /************* about_us page *************/
-
+.aboutUsContainer {
+  background: #f46b45;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(80deg, #f8be73b2, #f48545d8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(80deg, #f8be73b2, #f48545d8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100%;
+  background-size: cover;
+}
 .teamContainer {
-  margin: 5% 0;
+  padding: 5%;
+  margin: 5%;
+  /* border-bottom: solid 1px black; */
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.teamContainer h1 {
+  margin-bottom: 10%;
 }
 /************* manually_add_med_notes *************/
 
@@ -483,16 +571,14 @@ form {
   margin-top: 10%;
 }
 
-
 /************* pet_to_vet *************/
 
-.petToVetContainer{
+.petToVetContainer {
   margin-top: 10%;
 }
-
-
-
-
-
-
-
+.smallTagDiv{
+    margin-top: 4%;
+}
+.connectPetSmallTag{
+    margin: 25% 5% 0;
+}

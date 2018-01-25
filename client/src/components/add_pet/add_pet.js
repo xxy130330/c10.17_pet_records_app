@@ -64,34 +64,58 @@ class AddPet extends Component {
     e.preventDefault();
     const { name, dob, breed } = this.state.form;
     if(!this.url){
-      this.props.addPet(name, dob, breed, this.currentOwnerId , 'http://i.telegraph.co.uk/multimedia/archive/02830/cat_2830677b.jpg')
+      this.props.addPet(name, dob, breed, this.currentOwnerId , 'https://pawedin.com/system/pets/default_images/default_pet.jpg')
             .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
       return;
     }
 
-    this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'jpg'})
+    this.croppie.result({ type:'base64', size:'viewport', circle: true, format: 'png'})
       .then(res=>{
-            let file = new File([res], 'hello.jpg', {type: "image/jpg"});
-            let data = new FormData();
-            data.append('file', file)
-		alert(file);
-            console.log('newFILE', file);
-            this.upload(data);
+            console.log('THIS IS THE RESULT ON 74', this.props.petId);
+            axios({
+                method: 'post',
+                encType: 'multipart/form-data',
+                url: '/server/database_connect/server.php?action=post&resource=base64_upload',
+                data: {
+                    rawData: res,
+                    petID: this.props.petId
+                }
+            }).then(result => {
+              console.log('URL', result);
+              this.upload(result.data.data[0]);
+
+            })
+
+            // let file = new File([res], 'hello.png', {type: "image/png"});
+            // let data = new FormData();
+            // data.append('file', file)
+            // console.log('newFILE', file);
+            // this.upload(data);
+            // this.props.uploadImage(data).then((res)=> {
+            //     console.log('TRYING SOMETHING', res.payload.data.data[0]);
+            //   });
+
+      // this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'jpg'})
+    //   .then(res=>{
+    //         let file = new File([res], 'hello.jpg', {type: "image/jpg"});
+    //         let data = new FormData();
+    //         data.append('file', file)
+    //         console.log('newFILE', file);
+    //         this.upload(data);
+
            })
 
 
   }
 
-  upload(data){
+  upload(url){
     const {name, dob, breed} = this.state.form;
-    this.props.uploadImage(data)
-        .then( ()=> {
-          this.url = this.props.url.data[0]
-          console.log('THIS PROPS SECONDTIME', this.props);
-        })
-          .then( ()=> this.props.addPet(name, dob, breed, this.currentOwnerId , this.url) )
-            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
-              .then(()=> console.log('secondurl::', this.url))
+    this.url = url;
+
+          this.props.addPet(name, dob, breed, this.currentOwnerId , this.url)
+            .then((res)=>{console.log('CHRISTIAN WANTED THIS NAMED ', res); this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
+              .then(()=> console.log('secondurl::', this.url));
+
     this.setState({
       form: {
         name: "",
@@ -107,14 +131,20 @@ class AddPet extends Component {
 
 
 
+        // let data = {
+        //     data: new FormData(),
+        //     formData: true,
+        // };
         let data = new FormData();
+
         data.append('file', document.getElementById('file').files[0]);
-        console.log('.....',document.getElementById('file').files[0])
+        console.log('.....',document.getElementById('file').files[0]);
 
 
 
         this.props.uploadImage(data)
-          .then(()=> {
+          .then((res)=> {
+            console.log(res);
             this.url = this.props.url.data[0]
             console.log('THIS PROPS ', this.props)
           })
@@ -153,7 +183,7 @@ class AddPet extends Component {
   render() {
     const { name, dob, breed } = this.state.form;
 
-      const input = this.state.buttonClick ? '' :<md-button><input  className='text-center' type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/></md-button>
+      const input = this.state.buttonClick ? '' :<md-button><input  className='text-center' type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/></md-button>;
 
 
     return (
@@ -178,7 +208,10 @@ class AddPet extends Component {
 
 
         <form className="container" onSubmit={e => this.handleSubmit(e)}>
-          <div className="form-group">
+            <div className='text-center smallTagDiv'>
+                <small>Click on the camera to upload an image.</small>
+            </div>
+            <div className="form-group">
             <label>Name</label>
             <input
               className="form-control input-lg"

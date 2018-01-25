@@ -127,11 +127,11 @@ switch($_GET['action']) {
                 break;
 
             case 'upload-item': {
-                if (empty($post)) {
+//                if (empty($post)) {
                     require('../file_upload/aws_s3/page.php');
-                }else{
-                    throw new Exception('Must have a post variable when getting resource upload-item');
-                }
+//                }else{
+//                    throw new Exception('Must have a post variable when getting resource upload-item');
+//                }
                 break;
             }
             case 'deleteRecord': {
@@ -170,6 +170,20 @@ switch($_GET['action']) {
                 if (!empty($post)) {
                     require('./actions/update_delete_pet_from_vet.php');
                 }
+                break;
+            }
+            case 'base64_upload': {
+                if (!empty($post)) {
+                    require('../file_upload/aws_s3/base64_to_file.php');
+                }
+                break;
+            }
+            case 'contact_us': {
+                if (!empty($post)) {
+                    require('../php_mailer/mail_handler.php');
+                } else {
+                    throw new Exception('Must have a post variable when getting trying to send an email');
+                }
             }
         }
 
@@ -188,7 +202,12 @@ if (isset($pet_objects)) {
 $json_output = json_encode($output);
 
 if ($_GET['resource'] === 'activate_account') {
-    print('Your account has been activated! Thanks for using PetVet, the easiest way to care for your pets health and happiness');
+    //take to the url
+    if ($_SERVER['HTTP_HOST'] === 'localhost') {
+        header("Location: http://localhost:3000?newuser");
+    } else {
+        header("Location: http://petvet.tech?newuser");
+    }
 
 } else {
     print($json_output);

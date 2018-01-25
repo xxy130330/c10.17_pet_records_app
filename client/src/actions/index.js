@@ -1,5 +1,7 @@
 import axios from "axios";
 
+export const LOCALAUTH = "LOCALAUTH";
+
 //******** user Log in auth **********/
 export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
 export const LOG_OUT ="LOG_OUT";
@@ -232,9 +234,9 @@ export function editMedicalRecord(recordData, params){
         data: {
             ID: params.recordId,
             petID: params.petId,
-            type: recordData.editType,
-            record_data: recordData.editDetails,
-            treatment_date: recordData.editDate
+            type: recordData.type,
+            record_data: recordData.details,
+            treatment_date: recordData.date
         }
     });
     return{
@@ -266,22 +268,46 @@ export function editMedicalRecord(recordData, params){
 const pet_image_url =
   "/server/database_connect/server.php?action=post&resource=upload-item";
 export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
-export function uploadImage(data) {
-  const request = axios({
-    method: "post",
-    encType: "multipart/form-data",
-    url: pet_image_url,
-    data: data,
-    // headers: {
-    //     "Access-Control-Allow-Origin": "*",
-    //     "Access-Control-Allow-Headers": "*",
-    //     'Content-Type': 'application/x-www-form-urlencoded'
-    // }
-  });
 
-  return {
-    type: UPLOAD_IMAGE,
-    payload: request
-  };
-}
+    //
+    // if (!data.formData) {
+    //     export function uploadImage(data) {
+    //         const request = axios({
+    //             method: "post",
+    //             encType: "multipart/form-data",
+    //             url: pet_image_url,
+    //             ContentEncoding: 'base64',
+    //             data: {
+    //                 rawData: data,
+    //             }
+    //         });
+    //
+    //         return {
+    //             type: UPLOAD_IMAGE,
+    //             payload: request
+    //         };
+    //
+    //     }
+    // } else {
+        export function uploadImage(data) {
+            const request = axios({
+                method: "post",
+                encType: "multipart/form-data",
+                url: pet_image_url,
+                data: data,
+                // headers: {
+                //     "Access-Control-Allow-Origin": "*",
+                //     "Access-Control-Allow-Headers": "*",
+                //     'Content-Type': 'application/x-www-form-urlencoded'
+                // }
+            });
+
+            return {
+                type: UPLOAD_IMAGE,
+                payload: request
+            };
+        }
+    // }
+
+
 

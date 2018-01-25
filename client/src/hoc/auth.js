@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 export default function(WrappedComponent) {
   class Auth extends Component {
     componentWillMount() {
-      console.log("componentwillmouth auth");
       if (!this.props.auth) {
         this.props.history.push("/");
       }
@@ -12,7 +11,7 @@ export default function(WrappedComponent) {
 
     componentWillReceiveProps(nextProps) {
       if (!nextProps.auth) {
-        console.log("componentwillreceiveprops auth:::", nextProps);
+
         this.props.history.push("/");
       }
     }
