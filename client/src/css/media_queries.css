@@ -65,7 +65,7 @@
     .formContainer {
         background-color: initial;
         width: 35%;
-        height: auto;
+        height: 50%;
         border-radius: 25px;
     }
     form {
