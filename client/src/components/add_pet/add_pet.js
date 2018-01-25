@@ -69,28 +69,52 @@ class AddPet extends Component {
       return;
     }
 
-    this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'jpg'})
+    this.croppie.result({ type:'base64', size:'viewport', circle: true, format: 'png'})
       .then(res=>{
-            let file = new File([res], 'hello.jpg', {type: "image/jpg"});
-            let data = new FormData();
-            data.append('file', file)
-            console.log('newFILE', file);
-            this.upload(data);
+            console.log('THIS IS THE RESULT ON 74', this.props.petId);
+            axios({
+                method: 'post',
+                encType: 'multipart/form-data',
+                url: '/server/database_connect/server.php?action=post&resource=base64_upload',
+                data: {
+                    rawData: res,
+                    petID: this.props.petId
+                }
+            }).then(result => {
+              console.log('URL', result);
+              this.upload(result.data.data[0]);
+
+            })
+
+            // let file = new File([res], 'hello.png', {type: "image/png"});
+            // let data = new FormData();
+            // data.append('file', file)
+            // console.log('newFILE', file);
+            // this.upload(data);
+            // this.props.uploadImage(data).then((res)=> {
+            //     console.log('TRYING SOMETHING', res.payload.data.data[0]);
+            //   });
+
+      // this.croppie.result({ type:'blob', size:'viewport', circle: true, format: 'jpg'})
+    //   .then(res=>{
+    //         let file = new File([res], 'hello.jpg', {type: "image/jpg"});
+    //         let data = new FormData();
+    //         data.append('file', file)
+    //         console.log('newFILE', file);
+    //         this.upload(data);
            })
 
 
   }
 
-  upload(data){
+  upload(url){
     const {name, dob, breed} = this.state.form;
-    this.props.uploadImage(data)
-        .then( ()=> {
-          this.url = this.props.url.data[0]
-          console.log('THIS PROPS SECONDTIME', this.props);
-        })
-          .then( ()=> this.props.addPet(name, dob, breed, this.currentOwnerId , this.url) )
-            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
-              .then(()=> console.log('secondurl::', this.url))
+    this.url = url;
+
+          this.props.addPet(name, dob, breed, this.currentOwnerId , this.url)
+            .then((res)=>{console.log('CHRISTIAN WANTED THIS NAMED ', res); this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
+              .then(()=> console.log('secondurl::', this.url));
+
     this.setState({
       form: {
         name: "",
@@ -106,14 +130,20 @@ class AddPet extends Component {
 
 
 
+        // let data = {
+        //     data: new FormData(),
+        //     formData: true,
+        // };
         let data = new FormData();
+
         data.append('file', document.getElementById('file').files[0]);
-        console.log('.....',document.getElementById('file').files[0])
+        console.log('.....',document.getElementById('file').files[0]);
 
 
 
         this.props.uploadImage(data)
-          .then(()=> {
+          .then((res)=> {
+            console.log(res);
             this.url = this.props.url.data[0]
             console.log('THIS PROPS ', this.props)
           })
