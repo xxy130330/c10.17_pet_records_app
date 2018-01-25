@@ -97,7 +97,7 @@ class PetList extends Component {
   deleteFromServer(){
       const {petIndex}= this.state;
       const petDataProps= this.props.petdata;
-      console.log('we have deleted this item from server', petDataProps);
+      // console.log('we have deleted this item from server', petDataProps);
       this.setState({...this.state, showModal:false, canDelete: false});
       this.props.delete_pet(petDataProps[petIndex]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')).then(
           ()=>this.setState({...this.state, showModal: false, canDelete: false,})
@@ -107,6 +107,7 @@ class PetList extends Component {
     const {showModal,infoModal}= this.state;
     const toggleCanDelete= !this.state.canDelete;
     const userPetList = this.props.petdata.map((item, index) => {
+
       const petAvatar = {
         backgroundImage: `url(${item.avatar})`
       };
@@ -125,10 +126,14 @@ class PetList extends Component {
         </div>
       );
     });
+    // console.log('pet list data length:::::', this.props.petdata);
+    
     return (
       <div className='bodyContainer'>
         <div className="petListContainer">
-          <h1 className="petListTitle">Pet List</h1>
+          <h1 className="petListTitle">
+          {this.props.petdata.length !== 0 ? 'Pet List' :'No Pet Added'}
+          </h1>
             <div className='container'>
               {userPetList}
             </div>
@@ -138,8 +143,8 @@ class PetList extends Component {
               onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete a Pet": 'Cancel'}
           </button>
           <Link to="/add-pet/"><button className='btn btn-outline-success'>Add a Pet</button></Link>
-            {showModal? this.showModal(): ''}
-            {infoModal? this.infoModal():''}
+            {showModal ? this.showModal(): ''}
+            {infoModal ? this.infoModal():''}
         </div>
       </div>
     );
