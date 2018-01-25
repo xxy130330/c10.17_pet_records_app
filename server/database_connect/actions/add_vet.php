@@ -46,9 +46,9 @@ if ($checkResult) {
                         $output['success'] = true;
                         $output['code'] = $authStr;
                         if ($_SERVER['HTTP_HOST'] === 'localhost:3000') {
-                            $activationLink = 'http://localhost/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
+                            $activationLink = "<a href='http://localhost/server/database_connect/server.php?action=get&resource=activate_account&actNum=$authStr'>click here to register</a>";
                         } else {
-                            $activationLink = 'http://petvet.tech/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
+                            $activationLink = "<a href='http://petvet.tech/server/database_connect/server.php?action=get&resource=activate_account&actNum=$authStr'>click here to register</a>";
                         }
                         require('../php_mailer/mail_handler.php');
                     } else {
@@ -62,14 +62,14 @@ if ($checkResult) {
 
 
 
-                $output['success'] = true;
-                $output['code'] = $authStr;
-                if ($_SERVER['HTTP_HOST'] === 'localhost:3000') {
-                    $activationLink = 'http://localhost/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
-                } else {
-                    $activationLink = 'http://petvet.tech/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
-                }
-                require('../php_mailer/mail_handler.php');
+//                $output['success'] = true;
+//                $output['code'] = $authStr;
+//                if ($_SERVER['HTTP_HOST'] === 'localhost:3000') {
+//                    $activationLink = 'http://localhost/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
+//                } else {
+//                    $activationLink = 'http://petvet.tech/server/database_connect/server.php?action=get&resource=activate_account&actNum=' . $authStr;
+//                }
+//                require('../php_mailer/mail_handler.php');
 
                 } else {
                     $output['errors'][] = 'no data available';

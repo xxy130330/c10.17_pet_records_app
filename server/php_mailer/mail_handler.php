@@ -47,7 +47,9 @@ if (isset($activationLink)) {
 //    echo 'Message has been sent';
         $output['emailSent'] = true;
     }
-} else if ($post['contact']) {
+}
+
+else if ($post['contact']) {
     $mail = new PHPMailer;
     $mail->SMTPDebug = 0;           // Enable verbose debug output. Change to 0 to disable debugging output.
 
