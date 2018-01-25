@@ -123,6 +123,33 @@ form {
   width: 80%;
   margin: auto;
 }
+
+
+/************* app.js(modal) *************/
+
+.welcomeModalContainer{
+  position: absolute;
+  top: 30%;
+  height: 90%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 5%;
+}
+
+.welcomeModalContainerHidden{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
 /************* landing_page *************/
 .loginLogo {
   width: 80%;
@@ -500,7 +527,7 @@ form {
 .aboutUsContainer {
   background: #f46b45;  /* fallback for old browsers */
   background: -webkit-linear-gradient(80deg, #f8be73b2, #f48545d8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(80deg, #f8be73b2, #f48545d8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+  background: linear-gradient(80deg, #f8be73b2, #f48545d8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 100%;
   background-size: cover;
 }
