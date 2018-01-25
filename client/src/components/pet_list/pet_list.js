@@ -113,10 +113,11 @@ class PetList extends Component {
       };
       const item_name = item.name.length>8 ? <h4 className='petListName'>{item.name}</h4> : <h2 className='petListName'>{item.name}</h2>
       return (
-          <Link key={index} className='' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
                 <div key={index} className='row justify-content-center petRow'>
                   <div>
-                    <div className="petAvatar" style={petAvatar}></div>
+                      <Link key={index} className='' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
+                          <div className="petAvatar" style={petAvatar}></div>
+                      </Link>
                   </div>
                   <div className="nameContainer">
                     {item_name}
@@ -125,7 +126,6 @@ class PetList extends Component {
                         <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x ": ''}></i>
                     </div>
                 </div>
-          </Link>
       );
     });
     // console.log('pet list data length:::::', this.props.petdata);
