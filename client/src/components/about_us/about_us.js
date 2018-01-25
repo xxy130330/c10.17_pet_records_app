@@ -4,7 +4,9 @@ const AboutUs = () => {
   return (
     <div className="container">
       <div className="aboutUsContainer">
+      <h1 className="col-12">Meet the team</h1>
         <div className="row teamContainer">
+          
           <div className="col-5">
             <img
               src="http://img.timeinc.net/time/photoessays/2010/time_100/t100art_simon_cowell.jpg"

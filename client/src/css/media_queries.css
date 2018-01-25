@@ -30,7 +30,6 @@
     }
 }
 
-
 /*Laptops and monitors*/
 @media (min-width: 1025px)  {
     body {
@@ -142,6 +141,14 @@
         transform: translateX(-50%);
         left: 50%;
         position: relative;
+        vertical-align: top;
+    }
+    /*.petAvatar:hover {*/
+        /*height: 30vh;*/
+        /*width: 30vh;*/
+    /*}*/
+    .petRow {
+        vertical-align: top;
     }
     .burger-line {
         width: 70%;
