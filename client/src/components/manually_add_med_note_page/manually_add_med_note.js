@@ -22,9 +22,9 @@ class AddMedNote extends Component {
     renderTextArea({input, placeholder, meta: {touched, error, active}}){
 
         return(
-            <div className="form-group">
+            <div className="form-group row">
 
-                <textarea {...input} placeholder={placeholder} rows="6" className="form-control"></textarea>
+                <textarea {...input} placeholder={placeholder} rows="6" className="form-control "></textarea>
                 <p className="text-danger">{ touched && !active && error }</p>
             </div>
         )
