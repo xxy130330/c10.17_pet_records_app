@@ -71,7 +71,7 @@ class AddPet extends Component {
 
     this.croppie.result({ type:'base64', size:'viewport', circle: true, format: 'png'})
       .then(res=>{
-            console.log('THIS IS THE RESULT ON 74', this.props.petId);
+          console.log('RAW DATA', res);
             axios({
                 method: 'post',
                 encType: 'multipart/form-data',
