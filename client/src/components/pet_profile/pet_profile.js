@@ -102,11 +102,11 @@ class PetProfile extends Component {
             <Link to={petObj.vet==='No vet connected'? `/pet-to-vet/${this.props.match.params.id}/null`:
                 `/pet-to-vet/${this.props.match.params.id}/${petObj.vet}`}>
                 <button className='btn btn-warning'
-                    style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>
+                    style={this.props.vetAccessLevel || this.state.canDelete && petObj.vet !== 'No vet connected' ? {'display':'none'}: {'display':'inline-block'}}>
                     {petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}
                 </button>
             </Link>
-              <button className='btn btn-outline-danger'
+              <button className='btn btn-danger'
                   onClick={()=>this.disconnectVet()}
                   style={this.state.canDelete && petObj.vet!=='No vet connected'? {'display':'inline-block'}: {'display':'none'}}>
                   Disconnect Vet
@@ -205,13 +205,13 @@ class PetProfile extends Component {
         <div className="medicalRecord">
           <div className="text-center">
             <h1 className='listTitle'>Record List for {petName}</h1>
-              {this.props.petProfile.length ?  this.listMedicalRecords() : <h1>No Pet Data</h1>}
-              <div style={this.props.vetAccessLevel? {'display': 'none'}: {'display': 'inline'} }>
+              {this.props.petProfile.length ?  this.listMedicalRecords() : <h1 className="noPetData">No Pet Data</h1>}
+              <div style={this.props.vetAccessLevel ? {'display': 'none'}: {'display': 'inline'} }>
                   <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
                           onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Edit Profile": 'Cancel'}
                   </button>
                   <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
-                      <button className= "btn btn-outline-success">
+                      <button className= "btn btn-outline-success addMedicalRecord">
                           Add Medical Record
                       </button>
                   </Link>

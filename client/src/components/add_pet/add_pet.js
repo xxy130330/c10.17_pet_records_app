@@ -64,8 +64,8 @@ class AddPet extends Component {
     e.preventDefault();
     const { name, dob, breed } = this.state.form;
     if(!this.url){
-      this.props.addPet(name, dob, breed, this.currentOwnerId , 'http://i.telegraph.co.uk/multimedia/archive/02830/cat_2830677b.jpg')
-            .then(()=>{ this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')});
+      this.props.addPet(name, dob, breed, this.currentOwnerId , 'https://pawedin.com/system/pets/default_images/default_pet.jpg')
+            .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
       return;
     }
 
@@ -182,7 +182,7 @@ class AddPet extends Component {
   render() {
     const { name, dob, breed } = this.state.form;
 
-      const input = this.state.buttonClick ? '' :<md-button><input  className='text-center' type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/></md-button>
+      const input = this.state.buttonClick ? '' :<md-button><input  className='text-center' type="file" name="file" id='file' onChange={(e)=>this.getFileName(e)}/></md-button>;
 
 
     return (
@@ -207,7 +207,10 @@ class AddPet extends Component {
 
 
         <form className="container" onSubmit={e => this.handleSubmit(e)}>
-          <div className="form-group">
+            <div className='text-center smallTagDiv'>
+                <small>Click on the camera to upload an image.</small>
+            </div>
+            <div className="form-group">
             <label>Name</label>
             <input
               className="form-control input-lg"

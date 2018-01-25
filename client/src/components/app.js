@@ -22,24 +22,58 @@ import PetToVet from "../components/pet_to_vet/pet_to_vet";
 import ClientList from "../components/client_list/client_list";
 import VetClientPets from "../components/vet_client_pets/vet_client_pets";
 import AboutUs from "../components/about_us/about_us";
+import ContactUs from '../components/contact_us/contact_us';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
 
-  //   this.state = {
-  //     PetData: []
-  //   };
-  // }
+    constructor(props){
+        super(props);
+        this.state= {
+            visible: true
+        };
+        this.handleConfirm=this.handleConfirm.bind(this);
+    }
+    handleConfirm(){
+        this.setState({
+            visible: false
+        })
+    }
+
+
+
+  renderActivateModal(){
+    const currentUrl = window.location.href;
+    console.log('hello', currentUrl);
+      if(currentUrl == 'http://localhost:3000/?newuser'){
+      console.log('yes');
+      return(
+        <div className={`welcomeModalContainer ${!this.state.visible ? 'welcomeModalContainerHidden': ''}`}>
+          <div className="card text-center">
+            <div className='card-header'>
+                PET VET
+            </div>
+            <div className="card-block">
+                <h4 className='card-title'>You have successfully verified your account</h4>
+                <p className="card-text">Please Log In</p>
+            </div>
+            <div className="card-action">
+                <button className=' btn btn-primary text-center' onClick={this.handleConfirm}>Log In</button>
+            </div>
+            <div className="card-footer text-muted">Thank you</div>
+          </div>
+        </div>
+
+      )
+    }
+  }
 
   render() {
-    // const { PetData } = this.state;
-
     return (
       <Router>
         <div className="mainContainer">
           <Route path="/*" component={Header} />
           <Route path="/about-us" component={AboutUs} />
+          <Route path="/contact-us/" component={ContactUs}/>
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />
           <Route path="/vet-login-page/" component={VetLoginPage} />
@@ -64,6 +98,9 @@ class App extends Component {
             component={auth(VetClientPets)}
           />
           {/* <Route path="/*" component={Footer} /> */}
+          {this.renderActivateModal()}
+
+
         </div>
       </Router>
     );
