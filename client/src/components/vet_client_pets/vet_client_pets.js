@@ -27,7 +27,7 @@ class VetClientPets extends Component {
             };
             const pet_name = pet.name.length>8 ? <h4 className='petListName'>{pet.name}</h4> : <h2 className='petListName'>{pet.name}</h2>
             return (
-                <Link to={"/pet-profile/" + this.props.clientPetList[index]['petID']}>
+                <Link key={index} to={"/pet-profile/" + this.props.clientPetList[index]['petID']}>
                 <div key={index} className='row justify-content-center petRow'>
                     <div>
                         <div className="petAvatar" style={petAvatar} />
