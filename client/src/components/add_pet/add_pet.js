@@ -177,7 +177,10 @@ class AddPet extends Component {
 
 
         <form className="container" onSubmit={e => this.handleSubmit(e)}>
-          <div className="form-group">
+            <div className='text-center smallTagDiv'>
+                <small>Click on the camera to upload an image.</small>
+            </div>
+            <div className="form-group">
             <label>Name</label>
             <input
               className="form-control input-lg"
