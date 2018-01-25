@@ -94,18 +94,21 @@ class LoginPage extends Component {
             </div>
             <div className="buttonContainer">
               <div className="register float-left text-left">
-
-                <p className="d-inline"><small>New User?</small></p>
+                <p className="d-inline">
+                  <small>New User?</small>
+                </p>
                 <Link className="d-inline" to="/parent-page/">
-                  <button className="btn btn-outline-success btn-sm">
+                  <button
+                    type="button"
+                    className="btn btn-outline-success btn-sm"
+                  >
                     Register
                   </button>
                 </Link>
-    
               </div>
-              {/*<Link to="/pet-list/" >*/}
-              <button className="btn btn-outline-primary btn-sm">Login</button>
-              {/*</Link>*/}
+              <button type="submit" className="btn btn-outline-primary btn-sm">
+                Login
+              </button>
             </div>
           </form>
         </div>
