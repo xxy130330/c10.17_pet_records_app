@@ -64,7 +64,7 @@ class AddPet extends Component {
     e.preventDefault();
     const { name, dob, breed } = this.state.form;
     if(!this.url){
-      this.props.addPet(name, dob, breed, this.currentOwnerId , 'http://i.telegraph.co.uk/multimedia/archive/02830/cat_2830677b.jpg')
+      this.props.addPet(name, dob, breed, this.currentOwnerId , 'https://pawedin.com/system/pets/default_images/default_pet.jpg')
             .then(()=>{this.props.history.push('/pet-to-vet/' + this.props.petId+'/null')})
       return;
     }
