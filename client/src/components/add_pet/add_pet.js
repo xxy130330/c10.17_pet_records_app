@@ -72,6 +72,16 @@ class AddPet extends Component {
     this.croppie.result({ type:'base64', size:'viewport', circle: true, format: 'png'})
       .then(res=>{
             console.log('THIS IS THE RESULT ON 74', res);
+            axios({
+                method: 'post',
+                encType: 'multipart/form-data',
+                url: '/server/file_upload/aws_s3/base64_to_file.php',
+                data: {
+                  rawData: res,
+                }
+            }).then(result => {
+              console.log(result);
+            })
 
             // let file = new File([res], 'hello.png', {type: "image/png"});
             // let data = new FormData();
@@ -120,9 +130,14 @@ class AddPet extends Component {
 
 
 
+        // let data = {
+        //     data: new FormData(),
+        //     formData: true,
+        // };
         let data = new FormData();
+
         data.append('file', document.getElementById('file').files[0]);
-        console.log('.....',document.getElementById('file').files[0])
+        console.log('.....',document.getElementById('file').files[0]);
 
 
 
