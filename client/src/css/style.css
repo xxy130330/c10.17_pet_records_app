@@ -217,6 +217,8 @@ form {
   background-size: 100%;
   background-size: cover;
   margin: auto;
+  /*float: left;*/
+  /*display: inline-block;*/
 }
 
 .petName {
@@ -224,6 +226,8 @@ form {
   left: 10%;
   bottom: 4vh;
   font-size: 2rem;
+  margin-left: 10%;
+  /*transform: translateY(50%);*/
 }
 
 .petListTitle {
@@ -253,6 +257,9 @@ form {
   width: 40%;
 }
 
+.addPet{
+  margin-left:5%;
+}
 /************* pet_profile *************/
 
 .connectPetBtn {
@@ -308,10 +315,10 @@ form {
   position: absolute;
 }
 .recordContainer {
-  height: 8vh;
+  height: 10vh;
   position: relative;
 }
-.recordContainer:nth-child(odd) {
+.recordContainer:nth-child(even) {
   background-color: rgba(255, 165, 0, 0.2);
 }
 .addRecordIcon {
@@ -321,6 +328,10 @@ form {
 }
 .medicalRecord p {
   display: inline-block;
+}
+
+.addMedicalRecord{
+  margin-left:5%;
 }
 
 /************* record_item *************/
@@ -360,6 +371,18 @@ form {
   width: 100%;
   height: 100%;
   position: absolute;
+}
+
+.recordContainer{
+  margin:3% 0;
+}
+
+.recordContainer h5{
+  text-decoration: underline;
+}
+
+.clientList h2{
+  font-weight:bold;
 }
 /************* pet log_in *************/
 .formContainer {

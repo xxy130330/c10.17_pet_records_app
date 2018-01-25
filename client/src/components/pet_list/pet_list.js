@@ -142,9 +142,10 @@ class PetList extends Component {
           <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
               onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Delete a Pet": 'Cancel'}
           </button>
-          <Link to="/add-pet/"><button className='btn btn-outline-success'>Add a Pet</button></Link>
-            {showModal ? this.showModal(): ''}
-            {infoModal ? this.infoModal():''}
+          <Link to="/add-pet/"><button className='btn btn-outline-success addPet'>Add a Pet</button></Link>
+            {showModal? this.showModal(): ''}
+            {infoModal? this.infoModal():''}
+
         </div>
       </div>
     );
