@@ -26,10 +26,48 @@ import ContactUs from '../components/contact_us/contact_us';
 
 class App extends Component {
 
+    constructor(props){
+        super(props);
+        this.state= {
+            visible: true
+        };
+        this.handleConfirm=this.handleConfirm.bind(this);
+    }
+    handleConfirm(){
+        this.setState({
+            visible: false
+        })
+    }
+
+
+
+  renderActivateModal(){
+    const currentUrl = window.location.href;
+    console.log('hello', currentUrl);
+      if(currentUrl == 'http://localhost:3000/?newuser'){
+      console.log('yes');
+      return(
+        <div className={`welcomeModalContainer ${!this.state.visible ? 'welcomeModalContainerHidden': ''}`}>
+          <div className="card text-center">
+            <div className='card-header'>
+                PET VET
+            </div>
+            <div className="card-block">
+                <h4 className='card-title'>You have successfully verified your account</h4>
+                <p className="card-text">Please Log In</p>
+            </div>
+            <div className="card-action">
+                <button className=' btn btn-primary text-center' onClick={this.handleConfirm}>Log In</button>
+            </div>
+            <div className="card-footer text-muted">Thank you</div>
+          </div>
+        </div>
+
+      )
+    }
+  }
 
   render() {
-
-
     return (
       <Router>
         <div className="mainContainer">
@@ -60,6 +98,9 @@ class App extends Component {
             component={auth(VetClientPets)}
           />
           {/* <Route path="/*" component={Footer} /> */}
+          {this.renderActivateModal()}
+
+
         </div>
       </Router>
     );
