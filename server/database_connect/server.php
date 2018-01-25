@@ -170,6 +170,13 @@ switch($_GET['action']) {
                 if (!empty($post)) {
                     require('./actions/update_delete_pet_from_vet.php');
                 }
+                break;
+            }
+            case 'base64_upload': {
+                if (!empty($post)) {
+                    require('../file_upload/aws_s3/base64_to_file.php');
+                }
+                break;
             }
         }
 

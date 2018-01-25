@@ -8,9 +8,9 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
-//if(!isset($PAGEACCESS) || $PAGEACCESS===false){
-//    die('NO DIRECT ACCESS ALLOWED');
-//}
+if(!isset($PAGEACCESS) || $PAGEACCESS===false){
+    die('NO DIRECT ACCESS ALLOWED');
+}
 
 if (!class_exists('S3'))require_once('s3.php');
 
@@ -25,10 +25,11 @@ if (!defined('awsSecretKey')) define('awsSecretKey', $secretKey);
 $postJSON = file_get_contents('php://input');
 $post = json_decode($postJSON, TRUE);
 
+$post['data'][] = $post['petID'];
+
 $s3 = new S3(awsAccessKey, awsSecretKey);
 
 $bucketName = 'petvetlfz';
-$output['data'][] = $post['formData'];
 
 
 define('UPLOAD_DIR', './images/');
@@ -39,7 +40,7 @@ $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
 $file = UPLOAD_DIR . uniqid() . '.png';
 $success = file_put_contents($file, $data);
-print $success ? $file : 'Unable to save the file.';
+//$output['data'][] = $success ? $file : 'Unable to save the file.';
 
 $fileName = time() . $file;
 //if(isset($_POST['upload'])){
@@ -51,8 +52,10 @@ if ($s3->putObjectFile($fileTempName, $bucketName, $fileName, S3::ACL_PUBLIC_REA
 //        echo "We successfully uploaded your file.";
     $output['success'] = true;
 }else{
+    $output['success'] = false;
 //        echo "Something went wrong while uploading your file... sorry.";
 };
 
-    print($url = "http://{$bucketName}.s3.amazonaws.com/".$fileName);
+    $url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
+    $output['data'][] = $url;
 
