@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {fetchVetClientPets} from "../../actions/";
+import '../assets/css/modal.css';
+
 
 class VetClientPets extends Component {
     constructor(props) {
@@ -23,11 +25,14 @@ class VetClientPets extends Component {
             const petAvatar = {
                 backgroundImage: `url(${pet.avatar})`
             };
+            const pet_name = pet.name.length>8 ? <h4 className='petListName'>{pet.name}</h4> : <h2 className='petListName'>{pet.name}</h2>
             return (
-                <div key={index}>
+                <div key={index} className='row justify-content-center petRow'>
                     <Link to={"/pet-profile/" + this.props.clientPetList[index]['petID']}>
                         <div className="petAvatar" style={petAvatar} />
-                        <h3 className="petName">{pet.name}</h3>
+                    </Link>
+                    <Link to={"/pet-profile/" + this.props.clientPetList[index]['petID']} className="nameContainer">
+                        {pet_name}
                     </Link>
                 </div>
             );
@@ -36,8 +41,9 @@ class VetClientPets extends Component {
             <div className='bodyContainer'>
                 <div className="petListContainer">
                     <h1 className="petListTitle">Patient# {this.props.match.params.ownerId} Pets</h1>
-                    <div className="iconNav"></div>
-                    <div className="usersPetContainer">{clientPetList}</div>
+                    <div className="container">
+                        {clientPetList}
+                        </div>
                 </div>
             </div>
         );
