@@ -217,6 +217,8 @@ form {
   background-size: 100%;
   background-size: cover;
   margin: auto;
+  /*float: left;*/
+  /*display: inline-block;*/
 }
 
 .petName {
@@ -224,6 +226,8 @@ form {
   left: 10%;
   bottom: 4vh;
   font-size: 2rem;
+  margin-left: 10%;
+  /*transform: translateY(50%);*/
 }
 
 .petListTitle {
