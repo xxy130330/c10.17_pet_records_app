@@ -32,14 +32,14 @@ $s3 = new S3(awsAccessKey, awsSecretKey);
 $bucketName = 'petvetlfz';
 
 
-define('UPLOAD_DIR', './images/');
+
 $img = $post['rawData'];
 $imgHead = substr($img, 0, 22);
 $img = str_replace($imgHead, '', $img);
 $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
-$file = UPLOAD_DIR . uniqid() . '.png';
-$success = file_put_contents($file, $data);
+$file = uniqid() . '.png';
+
 //$output['data'][] = $success ? $file : 'Unable to save the file.';
 
 $fileName = time() . $file;
