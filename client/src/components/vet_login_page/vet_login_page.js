@@ -51,12 +51,12 @@ class VetLoginPage extends Component {
     const { username, password } = this.state.form;
 
     const noScroll = {
-      "overflowY": "none"
+      overflowY: "none"
     };
 
     const btnSize = {
-      width: '150px'
-    }
+      width: "150px"
+    };
 
     return (
       <div className="bodyContainer" style={noScroll}>
@@ -65,42 +65,49 @@ class VetLoginPage extends Component {
           <img style={btnSize} src={vetBtn} />
         </div>
         <div className="row formContainer align-items-center">
-        <form
-        className="col-10 offset-1"
-          onSubmit={e => this.handleSubmit(e)}
-        >
-          <div className="form-group">
-            <label>Email: </label>
-            <input
-              className="form-control "
-              type="text"
-              placeholder="Email"
-              onChange={e => this.handleInputChange(e)}
-              name="username"
-              value={username}
-            />
-          </div>
-          <div className="form-group">
-            <label>Password:</label>
-            <input
-              className="form-control"
-              type="password"
-              placeholder="Password"
-              onChange={e => this.handleInputChange(e)}
-              name="password"
-              value={password}
-            />
-            <p className="text-danger">{this.props.errorMessage}</p>
-          </div>
-          <div className="buttonContainer">
-            <button className="btn btn-outline-primary">Login</button>
-          </div>
-          <br />
-          <div id="register">
-            New User?
-            <Link to="/vet-page/"><button className="btn btn-outline-success btn-sm">Register</button></Link>
-          </div>
-        </form>
+          <form
+            className="col-10 offset-1"
+            onSubmit={e => this.handleSubmit(e)}
+          >
+            <div className="form-group">
+              <label>Email: </label>
+              <input
+                className="form-control "
+                type="text"
+                placeholder="Email"
+                onChange={e => this.handleInputChange(e)}
+                name="username"
+                value={username}
+              />
+            </div>
+            <div className="form-group">
+              <label>Password:</label>
+              <input
+                className="form-control"
+                type="password"
+                placeholder="Password"
+                onChange={e => this.handleInputChange(e)}
+                name="password"
+                value={password}
+              />
+              <p className="text-danger">{this.props.errorMessage}</p>
+            </div>
+            <div className="buttonContainer">
+              <div className="register float-left text-left">
+                <p className="d-inline">
+                  <small>New User?</small>
+                </p>
+                <Link className="d-inline" to="/vet-page/">
+                  <button className="btn btn-outline-success btn-sm">
+                    Register
+                  </button>
+                </Link>
+              </div>
+              {/*<Link to="/pet-list/" >*/}
+              <button className="btn btn-outline-primary btn-sm">Login</button>
+              {/*</Link>*/}
+            </div>
+          </form>
         </div>
       </div>
     );
