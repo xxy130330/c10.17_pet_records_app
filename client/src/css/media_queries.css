@@ -70,13 +70,16 @@
     }
     form {
         padding: 10px;
-        width: 45%;
+        width: 33%;
         margin: auto;
         background-color: rgba(0,0,0, 0.7);
-        border-radius: 6%;
+        border-radius: 0%;
         color: white;
     }
 
+    .buttonContainer {
+        padding-bottom: 20px;
+    }
     /*********** vet_page ***************/
     .vetTitle {
         width: 60%;
@@ -243,4 +246,37 @@
         margin-bottom: 10px;
     }
 
+    /******* add_pet ********/
+    .bodyContainer .pictureContainer {
+        /* margin-top: 20vh; */
+        position: relative;
+        width: 11%;
+        height: 35%;
+        /* border: 4px dashed orange; */
+        /* border-radius: 5px; */
+        margin: 0 auto;
+    }
+    .bodyContainer form.container {
+        width: 40%;
+    }
+    form.container .btn-primary {
+        position: relative;
+        left: 10%;
+        margin-top: 10px;
+    }
+}
+/********* connect pet to vet *********/
+/*apply to submit button*/
+.submitBtnPetToVet {
+    position: relative;
+    left: 10%;
+    top: 2vh;
+    margin-bottom: 10px;
+}
+
+.skipBtn {
+    position: relative;
+    left: 75%;
+    top: 1vh;
+    color: white;
 }

@@ -27,14 +27,16 @@ class VetClientPets extends Component {
             };
             const pet_name = pet.name.length>8 ? <h4 className='petListName'>{pet.name}</h4> : <h2 className='petListName'>{pet.name}</h2>
             return (
+                <Link key={index} to={"/pet-profile/" + this.props.clientPetList[index]['petID']}>
                 <div key={index} className='row justify-content-center petRow'>
-                    <Link to={"/pet-profile/" + this.props.clientPetList[index]['petID']}>
+                    <div>
                         <div className="petAvatar" style={petAvatar} />
-                    </Link>
-                    <Link to={"/pet-profile/" + this.props.clientPetList[index]['petID']} className="nameContainer">
+                    </div>
+                    <div className="nameContainer">
                         {pet_name}
-                    </Link>
+                    </div>
                 </div>
+                </Link>
             );
         });
         return (
