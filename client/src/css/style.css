@@ -419,9 +419,11 @@ form {
   height: 50%;
   border-radius: 25px;
 }
-
-#register > a > button {
-  margin-left: 5%;
+.register {
+  width: 65%; 
+}
+.register a {
+  margin-left: 10%;
 }
 
 /************* hamburger log in ******/
