@@ -268,22 +268,46 @@ export function editMedicalRecord(recordData, params){
 const pet_image_url =
   "/server/database_connect/server.php?action=post&resource=upload-item";
 export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
-export function uploadImage(data) {
-  const request = axios({
-    method: "post",
-    encType: "multipart/form-data",
-    url: pet_image_url,
-    data: data,
-    // headers: {
-    //     "Access-Control-Allow-Origin": "*",
-    //     "Access-Control-Allow-Headers": "*",
-    //     'Content-Type': 'application/x-www-form-urlencoded'
-    // }
-  });
 
-  return {
-    type: UPLOAD_IMAGE,
-    payload: request
-  };
-}
+    //
+    // if (!data.formData) {
+    //     export function uploadImage(data) {
+    //         const request = axios({
+    //             method: "post",
+    //             encType: "multipart/form-data",
+    //             url: pet_image_url,
+    //             ContentEncoding: 'base64',
+    //             data: {
+    //                 rawData: data,
+    //             }
+    //         });
+    //
+    //         return {
+    //             type: UPLOAD_IMAGE,
+    //             payload: request
+    //         };
+    //
+    //     }
+    // } else {
+        export function uploadImage(data) {
+            const request = axios({
+                method: "post",
+                encType: "multipart/form-data",
+                url: pet_image_url,
+                data: data,
+                // headers: {
+                //     "Access-Control-Allow-Origin": "*",
+                //     "Access-Control-Allow-Headers": "*",
+                //     'Content-Type': 'application/x-www-form-urlencoded'
+                // }
+            });
+
+            return {
+                type: UPLOAD_IMAGE,
+                payload: request
+            };
+        }
+    // }
+
+
 
