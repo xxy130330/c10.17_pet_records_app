@@ -28,6 +28,7 @@ class VetPage extends Component {
             }, 4000)});
     }
     render() {
+
         return (
             <div className='bodyContainer'>
                 <h1 className="vetTitle">Vet Registration</h1>
@@ -41,7 +42,7 @@ class VetPage extends Component {
                       <div className="buttonContainer row">
                           <button className="btn btn-success">Sign Up</button>
                       </div>
-                      {this.state.toggleModal ? <RegisterModal routeUrl='/vet-login-page' {...this.props} confirm={this.props.id}/> : ''}
+                      {/*{this.state.toggleModal ? <RegisterModal routeUrl='/vet-login-page' {...this.props} confirm={this.props.id}/> : ''}*/}
                 </form>
           </div>
         );
