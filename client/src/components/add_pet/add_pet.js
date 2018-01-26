@@ -88,7 +88,6 @@ class AddPet extends Component {
     this.props
       .addPet(name, dob, breed, this.currentOwnerId, this.url)
       .then(res => {
-        console.log("CHRISTIAN WANTED THIS NAMED ", res);
         this.props.history.push("/pet-to-vet/" + this.props.petId + "/null");
       })
 
