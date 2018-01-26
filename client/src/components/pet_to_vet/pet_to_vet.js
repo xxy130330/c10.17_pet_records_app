@@ -84,12 +84,7 @@ class PetToVet extends Component {
     );
   }
 
-  renderInput({
-    label,
-    input,
-    type,
-    meta: { touched, error, active, visited }
-  }) {
+  renderInput({ label, input, type, meta: { touched, error, active, visited }}) {
     return (
       <div className="form-group">
         <label className="col-form-label">{label}</label>
