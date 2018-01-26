@@ -47,7 +47,7 @@ class AddMedNote extends Component {
                 <form className='addMedRecContainer' onSubmit={this.props.handleSubmit(this.handleSubmit.bind(this))}>
                     <Field name='title' placeholder='Title' type='text' component={this.renderInput}/>
                     <Field name='date' type='date' component={this.renderInput}/>
-                    <Field name='message' placeholder='Comment' component={this.renderTextArea}/>
+                    <Field name='comment' placeholder='Comment' component={this.renderTextArea}/>
 
                     <div className="buttonContainer row">
                         <button className='btn btn-success'>Submit</button>
@@ -66,8 +66,8 @@ function validate(values) {
   if(!values.date){
     error.date = 'Passwords enter the date';
   }
-  if(!values.message){
-    error.message = 'Please enter the comment'
+  if(!values.comment){
+    error.comment = 'Please enter the comment'
   }
   return error;
 }
