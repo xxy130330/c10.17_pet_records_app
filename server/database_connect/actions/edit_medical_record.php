@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: christin
- * Date: 1/15/18
- * Time: 11:23
- */
 
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
@@ -16,12 +10,9 @@ $petID = $post['petID'];
 $recordData = $post['record_data'];
 $treatmentDate = $post['treatment_date'];
 
-//$output['errors'][] = $title;
-//$output['errors'][] = $type;
-//$output['errors'][] = $petID;
-
-
-$query = "UPDATE `medical_records` SET `title` = '$title', `type` = 'hardcoded for now', `petID` = '$petID', `record_data` = '$recordData', `treatment_date` = '$treatmentDate', `updated` = CURRENT_TIMESTAMP WHERE `ID` = $ID";
+$query = "UPDATE `medical_records` 
+          SET `title` = '$title', `type` = 'hardcoded for now', `petID` = '$petID', `record_data` = '$recordData', 
+          `treatment_date` = '$treatmentDate', `updated` = CURRENT_TIMESTAMP WHERE `ID` = $ID";
 
 $output['errors'][] = $query;
 
@@ -36,11 +27,5 @@ if ($result) {
 } else {
     $output['errors'][] = 'Error in SQL Query';
 }
-
-
-
-
-
-
 
 ?>
