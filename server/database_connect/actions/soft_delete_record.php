@@ -19,10 +19,6 @@ if ($result) {
     if (mysqli_affected_rows($conn) > 0) {
         $output['success'] = true;
         $output['data'] = 'The record is set to inactive';
-    } else {
-        $output['errors'][] = 'no data available';
-    }
-} else {
-    $output['errors'][] = 'error in query';
-}
+    } else {$output['errors'][] = 'no data available';}
+} else {$output['errors'][] = 'error in query';}
 ?>
