@@ -49,6 +49,12 @@ class AddPet extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    this.setState({
+      imageUpload:false
+    })
+
+
     const { name, dob, breed } = this.state.form;
     if (!this.url) {
       this.props
@@ -142,9 +148,6 @@ class AddPet extends Component {
     this.croppie.bind({
       url: url
     });
-    // this.setState({
-    //   imageUpload:false
-    // })
 
   }
 
@@ -163,7 +166,6 @@ class AddPet extends Component {
       </md-button>
     );
 
-    // const imgUpload = this.state.imageUpload ? <h1>Loading</h1> : <div type="file" name="croppie" id="croppie" />
     console.log('image state', this.state.imageUpload);
 
     return (
