@@ -420,7 +420,7 @@ form {
   border-radius: 25px;
 }
 .register {
-  width: 65%; 
+  width: 65%;
 }
 .register a {
   margin-left: 10%;
@@ -519,7 +519,7 @@ form {
 }
 
 .petProfileSpan {
-  width: 15%;
+  right: 10%;
 }
 
 /************* parent_page_modal*************/
