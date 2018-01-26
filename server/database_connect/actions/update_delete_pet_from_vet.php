@@ -57,7 +57,7 @@ if ($oldVetName !== 'null') {
                                             $output['success'] = true;
                                         }
                                     } else {
-                                        $output['errors'][] = 'Error in SQL Query';
+                                        $output['errors'][] = 'error in query';
                                         $output['success'] = false;
                                     }
                                     //if the user is only pulling their pet from a vet but not assigning them a new one
@@ -72,7 +72,7 @@ if ($oldVetName !== 'null') {
                                                 $output['success'] = true;
                                             }
                                         } else {
-                                            $output['errors'][] = 'Error in SQL Query';
+                                            $output['errors'][] = 'error in query';
                                             $output['success'] = false;
                                         }
                                     }
@@ -82,7 +82,7 @@ if ($oldVetName !== 'null') {
                     }
                 }
             }
-        } else {$output['success'][] = false;}
+        } else {$output['success'] = false;}
     } else {$output['success'] = false;}
 }
 ?>
