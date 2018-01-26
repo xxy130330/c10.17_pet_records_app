@@ -43,7 +43,7 @@ $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
 $file = UPLOAD_DIR . uniqid() . '.png';
 $success = file_put_contents($file, $data);
-//$output['data'][] = $success ? $file : 'Unable to save the file.';
+//change permissions if this stops working
 
 $fileName = time() . $file;
 //if(isset($_POST['upload'])){
