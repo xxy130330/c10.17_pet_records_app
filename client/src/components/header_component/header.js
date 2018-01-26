@@ -11,8 +11,6 @@ export default props => {
   function showNavBar() {
     switch (props.match.url) {
       case "/":
-      case "/parent-page/":
-      case "/vet-page/":
         return "";
 
       default:
