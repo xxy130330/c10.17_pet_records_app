@@ -44,7 +44,7 @@ class App extends Component {
   renderActivateModal(){
     const currentUrl = window.location.href;
     console.log('hello', currentUrl);
-      if(currentUrl == 'http://localhost:3000/?newuser'){
+      if(currentUrl === 'http://localhost:3000/?newuser' || currentUrl === 'https://petvet.tech/?newuser'){
       console.log('yes');
       return(
         <div className={`welcomeModalContainer ${!this.state.visible ? 'welcomeModalContainerHidden': ''}`}>
