@@ -40,8 +40,8 @@ const AboutUs = () => {
             />
           </div>
           <div className="col-7">
-            <h3>this is jay</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quod enim perspiciatis mollitia pariatur id cumque voluptatibus dolor, veniam ad fugiat repellat dolorum alias ipsam quibusdam soluta maxime magni animi?</p>  
+            <h3>This is Jay.</h3>
+            <p>Jay worked mainly on front-end development.</p>  
             
           </div>
         </div>
