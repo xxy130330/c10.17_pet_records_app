@@ -3,7 +3,6 @@
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
-
 $ID = $_GET['petID'];
 
 $query = "SELECT `title` AS `type`, `ID` AS `recordID` 
@@ -19,11 +18,7 @@ if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
             $pet_objects[] = $row;
         }
-    } else {
-        $output['errors'][] = 'no data available';
-    }
-}
-else {
-    $output['errors'][] = 'error in SQL';
-}
 
+    } else {$output['errors'][] = 'no data available';}
+} else {$output['errors'][] = 'error in query';}
+?>
