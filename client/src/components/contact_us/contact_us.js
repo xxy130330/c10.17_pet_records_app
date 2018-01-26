@@ -9,7 +9,7 @@ class ParentPage extends Component {
     super(props);
 
     this.state = {
-      toggleModal: false
+      thankyouModal: false
     };
   }
 
@@ -39,10 +39,6 @@ class ParentPage extends Component {
   }
 
   handleSubmits(values) {
-    this.setState({
-      toggleModal: true
-    });
-
     const url =
       "/server/database_connect/server.php?action=post&resource=contact_us";
     axios({
@@ -56,9 +52,38 @@ class ParentPage extends Component {
         contact: true
       }
     }).then(()=>{
-      console.log('props', this.props);
       this.props.reset();
+      this.setState({
+        thankyouModal: true
+      });
     })
+  }
+
+  thankyouModal() {
+    return (
+      <span>
+        <div className="confirm-modal ">
+          <div className="content-modal">
+            <div className="card petListCard">
+              <div className="card-header">Thank You!</div>
+              <div className="card-block">
+                <p className="card-text">
+                  Thank you for contacting us. We will respond back to you soon.
+                </p>
+              </div>
+              <div className="card-footer">
+                <button
+                  onClick={()=> this.setState({thankyouModal: false})}
+                  className="btn btn-outline-success"
+                >
+                  Done!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </span>
+    );
   }
 
   render() {
@@ -95,6 +120,7 @@ class ParentPage extends Component {
               <button className="btn btn-success">Send</button>
             </div>
           </form>
+          {this.state.thankyouModal ? this.thankyouModal() : ""}
         </div>
       </div>
     );
