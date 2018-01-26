@@ -8,15 +8,11 @@
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
-
 $ID = $post['recordID'];
 
-$output['errors'][] = $ID;
-
-$query = "UPDATE `medical_records` SET `status` = 'inactive', `updated` = CURRENT_DATE WHERE `ID` = $ID";
-
-$output['errors'][] = $query;
-
+$query = "UPDATE `medical_records` 
+          SET `status` = 'inactive', `updated` = CURRENT_DATE 
+          WHERE `ID` = $ID";
 $result = mysqli_query($conn, $query);
 
 if ($result) {
@@ -27,6 +23,6 @@ if ($result) {
         $output['errors'][] = 'no data available';
     }
 } else {
-    $output['errors'][] = 'Error in SQL Query';
+    $output['errors'][] = 'error in query';
 }
 ?>
