@@ -112,7 +112,7 @@ function validate(values){
         error.email = 'Please enter your email';
     }
     if(!values.message){
-        error.password = 'Please say something!!!';
+        error.message = 'Please say something!!!';
     }
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+////////*** THIS FUNCTION CAN MAYBE USED LATER INSTEAD OF USING MULTIPLE MODALS*****/////
 export function ShowModal(self, onDelete){
     console.log('this is refering to keyword this and pet index ', self.state.petIndex);
     console.log('this is what onDelete is ', onDelete);
@@ -22,8 +22,3 @@ export function ShowModal(self, onDelete){
         </span>
     )
 }
-
-
-
-
-

@@ -5,7 +5,6 @@ const DEFAULT_STATE= {
     email: null,
     ref_id: null
 };
-
 export default function(state=DEFAULT_STATE, action){
     switch(action.type){
         case VET_CLIENT_DATA:

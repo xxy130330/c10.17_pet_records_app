@@ -150,27 +150,19 @@ class PetList extends Component {
           <h2 className="petListName">{item.name}</h2>
         );
       return (
-        <div key={index} className="row justify-content-center petRow">
-          <Link
-            className=""
-            to={"/pet-profile/" + this.props.petdata[index]["ID"]}
-          >
-            <div className="petAvatar" style={petAvatar} />
-          </Link>
-          <div className="nameContainer">{item_name}</div>
-          <div className="deleteButton">
-            <i
-              onClick={() => {
-                this.triggerModal(index);
-              }}
-              className={
-                this.state.canDelete
-                  ? "fa fa-times-circle aria-hidden=true fa-3x "
-                  : ""
-              }
-            />
-          </div>
-        </div>
+                <div key={index} className='row justify-content-center petRow'>
+                  <div>
+                      <Link key={index} className='' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
+                          <div className="petAvatar" style={petAvatar}></div>
+                      </Link>
+                  </div>
+                  <Link className="nameContainer" to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
+                    {item_name}
+                  </Link>
+                    <div className='deleteButton'>
+                        <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x ": ''}></i>
+                    </div>
+                </div>
       );
     });
     // console.log('pet list data length:::::', this.props.petdata);
