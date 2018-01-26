@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../../../server/images/petvet_logo.png";
 import axios from "axios";
 import { connect } from "react-redux";
 import { login, switchAuthentication } from "../../actions/";
@@ -9,7 +8,6 @@ import petBtn from "../../../dist/assets/images/pet_btn.png";
 class LoginPage extends Component {
   constructor(props) {
     super(props);
-    console.log("login props url:", props.match.url);
     this.state = {
       form: {
         username: "",
@@ -117,8 +115,6 @@ class LoginPage extends Component {
   }
 }
 
-// onclick="verifyLogin()"
-
 function mapStateToProps(state) {
   return {
     id: state.login.id,
@@ -127,6 +123,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { login, switchAuthentication })(
-  LoginPage
-);
+export default connect(mapStateToProps, { login, switchAuthentication })(LoginPage);

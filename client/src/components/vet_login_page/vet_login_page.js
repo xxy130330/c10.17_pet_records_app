@@ -98,7 +98,10 @@ class VetLoginPage extends Component {
                   <small>New User?</small>
                 </p>
                 <Link className="d-inline" to="/vet-page/">
-                  <button type="button" className="btn btn-outline-success btn-sm">
+                  <button
+                    type="button"
+                    className="btn btn-outline-success btn-sm"
+                  >
                     Register
                   </button>
                 </Link>
@@ -113,8 +116,6 @@ class VetLoginPage extends Component {
     );
   }
 }
-
-// onclick="verifyLogin()"
 
 function mapStateToProps(state) {
   return {
