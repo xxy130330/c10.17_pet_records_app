@@ -8,6 +8,7 @@ const CURRENT_USER = {
 export default function(state = CURRENT_USER, action) {
     switch (action.type) {
         case LOGIN:
+        debugger;
             return {
                 ...state,
                 success: action.payload.data.loginSuccess,
