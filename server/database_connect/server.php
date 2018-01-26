@@ -127,11 +127,11 @@ switch($_GET['action']) {
                 break;
 
             case 'upload-item': {
-//                if (empty($post)) {
+                if (empty($post)) {
                     require('../file_upload/aws_s3/page.php');
-//                }else{
-//                    throw new Exception('Must have a post variable when getting resource upload-item');
-//                }
+                }else{
+                    throw new Exception('Must have a post variable when getting resource upload-item');
+                }
                 break;
             }
             case 'deleteRecord': {
