@@ -7,14 +7,10 @@ export default class ParentPageModal extends Component{
         super(props);
         this.handleLoginBtn = this.handleLoginBtn.bind(this);
     }
-
     handleLoginBtn(){
-        console.log('handleLoginBtn', this.props.routeUrl);
         this.props.history.push(this.props.routeUrl)
     }
-
     message(){
-
         return(
             <div className="card text-center">
                 <div className='card-header'>
@@ -27,11 +23,8 @@ export default class ParentPageModal extends Component{
                 </div>
                 <div className="card-footer text-muted">Thank you</div>
             </div>
-
-
         )
     }
-
     confirmMessage(){
         return(
             <div className="card text-center">
@@ -49,20 +42,17 @@ export default class ParentPageModal extends Component{
             </div>
         )
     }
-
-
     render(){
-            return (
-                <span>
+        return (
+            <span>
 
-                    <div className="confirm-modal">
-                        <div className="modal-content">
-                            {this.props.confirm ? this.confirmMessage(): this.message() }
-                        </div>
+                <div className="confirm-modal">
+                    <div className="modal-content">
+                        {this.props.confirm ? this.confirmMessage(): this.message() }
                     </div>
-                </span>
-            );
-
+                </div>
+            </span>
+        );
     }
 }
 
