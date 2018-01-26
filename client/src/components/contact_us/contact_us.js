@@ -55,6 +55,9 @@ class ParentPage extends Component {
         message: values.message,
         contact: true
       }
+    }).then(()=>{
+      console.log('props', this.props);
+      this.props.reset();
     })
   }
 

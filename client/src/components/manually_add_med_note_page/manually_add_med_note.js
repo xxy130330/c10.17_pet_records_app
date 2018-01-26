@@ -40,7 +40,9 @@ class AddMedNote extends Component {
     const petId = this.props.match.params.id;
     this.props.addMedicalItem(petId, values).then(() => {
       this.props.history.push("/pet-profile/" + petId);
-    });
+    }).then(()=>{
+      this.props.resetForm();
+    })
   }
 
   render() {
