@@ -3,7 +3,6 @@
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
-
 $ID = $_GET['recordID'];
 
 $query = "SELECT `title` AS `type`, 
@@ -20,12 +19,6 @@ if ($result) {
             $pet_objects[] = $row;
         }
         $output['success'] = true;
-    } else {
-        $output['errors'][] = 'no data found';
-    }
-}
-else {
-    $output['errors'][] = 'error in SQL query';
-}
 
-?>
+    } else {$output['errors'][] = 'no data found';}
+} else {$output['errors'][] = 'error in SQL query';}

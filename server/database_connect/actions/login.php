@@ -28,7 +28,6 @@ if ($result) {
     if(mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             if ($row['status'] === 'active') {
-                $output['data'] = 'successful_login';
                 $output['accessLevel'] = $row['level'];
                 $output['loginSuccess'] = true;
                 $output['ownerID'] = $row['ID'];
@@ -37,13 +36,9 @@ if ($result) {
                 $output['active'] = false;
             }
         }
-    } else {
-        $output['errors'][] = 'Incorrect username or password';
-    }
-} else {
-    $output['errors'][] = 'Error in SQL query';
-}
 
+    } else {$output['errors'][] = 'Incorrect username or password';}
+} else {$output['errors'][] = 'Error in SQL query';}
 unset($username, $password,  $sanitizeUsername1, $sanitizePassword1,  $sanitizedUsername, $sanitizedPassword);
 
 ?>

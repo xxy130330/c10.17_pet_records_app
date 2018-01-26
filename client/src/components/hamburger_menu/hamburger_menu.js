@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { switchAuthentication } from "../../actions";
-// import Transition from "react-transition-group/Transition";
-// import { slide as Menu } from "react-burger-menu";
 import Logo from "../../../../server/images/petvet_logo.png";
 import ReactDOM from "react-dom";
 
@@ -13,8 +11,6 @@ class NavBar extends Component {
     this.handleOnClick = this.handleOnClick.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.handleWindowClick = this.handleWindowClick.bind(this);
-    // this.handleWindowClick = this.handleWindowClick.bind(this);
-    // this.removeWindowClick = this.removeWindowClick.bind(this);
 
     this.state = {
       menu: false
@@ -29,11 +25,11 @@ class NavBar extends Component {
 
   handleOnClick() {
     let menuState = !this.state.menu;
-    // this.handleWindowClick();
     this.setState({
       menu: menuState
     });
   }
+
   showMenu() {
     return (
       <div
@@ -73,6 +69,7 @@ class NavBar extends Component {
       </div>
     );
   }
+
   render() {
     const showBackButton = () => {
       switch (this.props.match.url) {
@@ -86,10 +83,7 @@ class NavBar extends Component {
             <a
               href="#"
               className="backBtn"
-              onClick={() => {
-                console.log("back clicked");
-                this.props.history.goBack();
-              }}
+              onClick={() => {this.props.history.goBack()}}
             >
               BACK
             </a>
