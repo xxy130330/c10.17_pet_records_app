@@ -42,7 +42,7 @@ $img = str_replace($imgHead, '', $img);
 $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
 $file = UPLOAD_DIR . uniqid() . '.png';
-//$success = file_put_contents($file, $data);
+$success = file_put_contents($file, $data);
 //$output['data'][] = $success ? $file : 'Unable to save the file.';
 
 $fileName = time() . $file;

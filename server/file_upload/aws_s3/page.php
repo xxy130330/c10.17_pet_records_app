@@ -26,6 +26,7 @@ if ($s3->putObjectFile($fileTempName, $bucketName, $fileName, S3::ACL_PUBLIC_REA
 //        echo "We successfully uploaded your file.";
     $output['success'] = true;
 }else{
+    $output['success'] = false;
 //        echo "Something went wrong while uploading your file... sorry.";
 };
 //}
