@@ -1,0 +1,282 @@
+/*@media (min-width:320px)  { !* smartphones, iPhone, portrait 480x320 phones *! }*/
+/*@media (min-width:481px)  { !* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. *! }*/
+/*@media (min-width:641px)  { !* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones *! }*/
+/*@media (min-width:961px)  { !* tablet, landscape iPad, lo-res laptops ands desktops *! }*/
+/*@media (min-width:1025px) { !* big landscape tablets, laptops, and desktops *! }*/
+/*@media (min-width:1281px) { !* hi-res laptops and desktops *! }*/
+
+/*Mobile styles*/
+@media (min-width:320px) AND (max-width:641px)  {
+    .deleteButton {
+        display: inline-block;
+        position: relative;
+        right: 85%;
+        top: 4vh;
+        width: 0% !important;
+    }
+    .petRow>a, .petRow>div {
+        /* margin: auto; */
+        float: left;
+        /* height: 100%; */
+        width: 37%;
+    }
+    .card .card-block {
+        margin: -2% 0 6% 0;
+    }
+    h2.petListName, h4.petListName {
+        top: 50%;
+        position: relative;
+        transform: translateY(-50%);
+    }
+}
+
+/*Laptops and monitors*/
+@media (min-width: 1025px)  {
+    body {
+        overflow: hidden;
+    }
+    /********* landing_page ********/
+    .loginLogo {
+        width: 20%;
+    }
+    .loginBtnContainer {
+        margin: auto;
+        width: 40vw;
+
+    }
+    .homeBtn {
+        text-align: center;
+        width: 11vw;
+    }
+    .msgBtnContainer {
+        padding: 0 5%;
+    }
+    .landinglogoContainer {
+        margin-top: 4%;
+    }
+    .home-msg {
+        margin: 2% 10%;
+    }
+    /********* login_page ************/
+
+    .logoContainer {
+        margin: 2% 10% 0;
+    }
+    .formContainer {
+        background-color: initial;
+        width: 35%;
+        height: 50%;
+        border-radius: 25px;
+    }
+    form {
+        padding: 10px;
+        width: 33%;
+        margin: auto;
+        background-color: rgba(0,0,0, 0.7);
+        border-radius: 0%;
+        color: white;
+    }
+
+    .buttonContainer {
+        padding-bottom: 20px;
+    }
+    /*********** vet_page ***************/
+    .vetTitle {
+        width: 60%;
+        margin: 2% auto 2%;
+    }
+
+    .buttonContainer {
+        position : relative;
+        width: 80%;
+        margin: inherit;
+        top: 2vh;
+
+    }
+    .form-group {
+        width: 80%;
+        margin: auto;
+    }
+    /************* pet_title ****************/
+    .parentPageTitle {
+        margin: 0% auto 2%;
+        width: 60%;
+    }
+    .parentPage {
+        margin: 2% 0;
+    }
+    /********** pet_list **************/
+    .petListTitle {
+        width: 60%;
+        margin: auto;
+    }
+
+    .usersPetContainer {
+        width: 100%;
+        margin: auto;
+        padding: 20px;
+        /* background-color: rgba(0,0,0, .7); */
+        /* border-radius: 8%; */
+    }
+    .deleteNAddContainer button {
+       margin: 0 10px;
+    }
+    .petAvatarPetList {
+        height: 19vh;
+        width: 19vh;
+    }
+    .petList {
+        min-width: 26%;
+        position: relative;
+        left: 10%;
+        right: 10%;
+    }
+    .row.justify-content-center.petRow {
+        display: inline-block;
+        min-width: 36%;
+        position: relative;
+    }
+    .petAvatar {
+        height: 25vh;
+        width: 25vh;
+        background-size: 100%;
+        background-size: cover;
+        transform: translateX(-50%);
+        left: 50%;
+        position: relative;
+        vertical-align: top;
+    }
+    /*.petAvatar:hover {*/
+        /*height: 30vh;*/
+        /*width: 30vh;*/
+    /*}*/
+    .petRow {
+        vertical-align: top;
+    }
+    .burger-line {
+        width: 70%;
+        height: 17%;
+        /*margin: 10% 0;*/
+        background-color: rgba(214, 117, 5, 0.89);
+        border-radius: 1vmin;
+        transition-duration: 1s;
+    }
+    .menuContainer {
+        width: 20vw;
+        padding: 1%;
+        float: right;
+    }
+    .menuContainer div {
+        padding: 10%;
+    }
+    .petRow>a, .petRow>div {
+        margin: auto;
+        float: none;
+        /* height: 100%; */
+        width: 40%;
+        display: block;
+    }
+    .h2, h2 {
+       transform: none;
+    }
+    .deleteButton {
+        text-align: center;
+    }
+    .petAvatar.petAvatarModal {
+        left: 0;
+        transform: none;
+    }
+    .card .card-block {
+        padding-top: 2% !important;
+        padding-bottom: 2%;
+    }
+
+/************** pet_profile *****************/
+
+    .petAvatarProfile {
+        height: 30vh;
+        width: 30vh;
+        margin-left: 55%;
+        top: 50%;
+    }
+    .listTitle {
+        width: 60%;
+        margin: auto;
+    }
+    .record-item {
+        margin: 0;
+        position: relative;
+        top: 50%;
+        /*height: 100%;*/
+        transform: translateY(-50%);
+        /*width: 100%;*/
+    }
+    .recordContainer {
+        height: 8vh;
+        position: relative;
+        width: 60%;
+        margin: auto;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+    .petInfoContainer {
+        height: 30vh;
+        background-color: rgba(0,0,0, .8);
+        color: white;
+    }
+    .connectPetBtn {
+        position: absolute;
+        display: inline-block;
+        top: 50%;
+        left: 35%;
+        z-index: 200;
+    }
+    .petImgContainer .petAvatar {
+        top: 0vh;
+        left: 37%;
+    }
+    .petInfo {
+        top: 20%;
+    }
+    .noPetData {
+        width: 60%;
+        margin: auto;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        margin-bottom: 10px;
+    }
+
+    /******* add_pet ********/
+    .bodyContainer .pictureContainer {
+        /* margin-top: 20vh; */
+        position: relative;
+        width: 11%;
+        height: 35%;
+        /* border: 4px dashed orange; */
+        /* border-radius: 5px; */
+        margin: 0 auto;
+    }
+    .bodyContainer form.container {
+        width: 40%;
+    }
+    form.container .btn-primary {
+        position: relative;
+        left: 10%;
+        margin-top: 10px;
+    }
+}
+/********* connect pet to vet *********/
+/*apply to submit button*/
+.submitBtnPetToVet {
+    position: relative;
+    left: 10%;
+    top: 2vh;
+    margin-bottom: 10px;
+}
+
+.skipBtn {
+    position: relative;
+    left: 75%;
+    top: 1vh;
+    color: white;
+}

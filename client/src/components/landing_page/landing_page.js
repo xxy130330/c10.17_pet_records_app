@@ -1,29 +1,40 @@
-import React from 'react';
-import './landing_page.css';
-import {Link} from 'react-router-dom';
-// import Logo from '../../assets/images/logo.svg';
+import React from "react";
+import { Link } from "react-router-dom";
+import Logo from "../../../dist/assets/images/petvet_logo.png";
+import petBtn from "../../../dist/assets/images/pet_btn.png";
+import vetBtn from "../../../dist/assets/images/vet_btn.png";
+import backgroundImg from "../../../dist/assets/images/landing_bg.png";
 
-export default props=>{
-
-    return(
-        <div>
-            <header>
-                <h1 className='title'>Pet to Vet</h1>
-            </header>
-            <div className='logoContainer'>
-                <div className='logo'></div>
-            </div>
-            <div className='container'>
-                <div className="home-msg">Welcome to PetVet! The easiest way to care for your pet's health and happiness!</div>
-                <div className='buttonContainer'>
-                    <Link to ='/pet-list'><button className='btn btn-primary btn-block'>Pet Login</button></Link>
-                    <button className='btn btn-success btn-block'>Vet Login</button>
-                </div>
-            </div>
+export default props => {
+  return (
+    <div className="landingContainer">
+      <div className="contentContainer">
+        <div className="landinglogoContainer">
+          <img className="loginLogo" src={Logo} />
         </div>
-    )
-}
+        <div className="msgBtnContainer">
+          <div className="home-msg">
+          
+            Welcome to PetVet!
+            <br />The easiest way to care for your pet's health and happiness!
+           
+          </div>
+          <div className="loginBtnContainer">
+            <Link to="/login-page">
+              <div className="homeBtn">
+                <img src={petBtn} />Pet Login
+              </div>
+            </Link>
+            <Link to="/vet-login-page">
+              <div className="homeBtn">
+                <img src={vetBtn} />Vet Login
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-
-
-//onClick='openLoginPage()'
+//onClick='openLoginPage()

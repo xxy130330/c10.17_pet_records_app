@@ -5,6 +5,8 @@
     "react"
   ],
   "plugins": [
-    "syntax-async-functions"
+    "syntax-async-functions",
+    "transform-object-rest-spread"
   ]
 }
+

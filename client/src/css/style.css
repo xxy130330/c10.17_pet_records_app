@@ -1,0 +1,584 @@
+@font-face {
+  font-family: text-font;
+  src: url(../components/assets/fonts/Forum-Regular.ttf);
+}
+
+body {
+  background-color: rgb(255, 232, 208);
+  font-family: text-font;
+}
+
+.fa-times-circle {
+  color: #cc0000;
+}
+.fa-times-circle:hover {
+  cursor: pointer;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  margin: 0 5px;
+}
+
+a {
+  color: black;
+}
+
+.mainContainer {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.header {
+  height: 10%;
+  width: 100%;
+  text-align: center;
+  background-color: #fdd08b;
+  top: 0;
+  position: relative;
+  z-index: 200;
+}
+
+.bodyContainer {
+  position: absolute;
+  top: 10%;
+  height: 90%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 5%;
+}
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid black;
+}
+img {
+  border-style: none;
+  margin: auto;
+  display: block;
+}
+
+/************* Everywhere *************/
+.nameContainer {
+  text-align: center;
+}
+
+.picture {
+  margin: 0 auto;
+  padding: 0;
+  width: 40%;
+  height: 30vmin;
+
+  border: 1px dashed black;
+  border-radius: 15%;
+
+  position: relative;
+}
+
+.picture > img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40%;
+  margin: 0 auto;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.title {
+  width: 50%;
+  height: 100%;
+  margin: auto;
+}
+/* .title a {
+  width: 100%;
+  height: 100%;
+} */
+
+form {
+  width: 80%;
+  margin: auto;
+}
+
+.logoContainer {
+  text-align: center;
+  height: 38%;
+  margin: 5% 10% 0;
+}
+
+.buttonContainer {
+  text-align: right;
+}
+
+input:focus {
+  border: 2px solid orange !important;
+  color: #0c5460;
+}
+
+form {
+  width: 80%;
+  margin: auto;
+}
+
+
+/************* app.js(modal) *************/
+
+.welcomeModalContainer{
+  position: absolute;
+  top: 30%;
+  height: 90%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 5%;
+}
+
+.welcomeModalContainerHidden{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+/************* landing_page *************/
+.loginLogo {
+  width: 80%;
+}
+.landinglogoContainer {
+  text-align: center;
+  height: 100px;
+  margin-top: 15%;
+}
+.contentContainer {
+  height: 90%;
+  width: 90%;
+  flex-wrap: wrap;
+}
+.contentContainer::after {
+  content: "";
+  background: url(../../dist/assets/images/landing_bg.png);
+  background-size: cover;
+  opacity: 0.5;
+  top: 5%;
+  left: 5%;
+  bottom: 5%;
+  right: 5%;
+  position: absolute;
+  z-index: -1;
+}
+.landingContainer {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.msgBtnContainer {
+  padding: 5%;
+  bottom: 20%;
+}
+.home-msg {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 10%;
+}
+
+.homeBtn {
+  text-align: center;
+  width: 30vw;
+}
+.homeBtn > img {
+  width: 100%;
+  height: 100%;
+}
+
+.loginBtnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/************* parent_page *************/
+
+.parentPage {
+  margin: 5% 0;
+}
+
+.parentPageTitle {
+  margin: 10% 0 5%;
+}
+
+/************* contact_us *************/
+.contactUsPage {
+  margin: 5% 0;
+}
+
+.contactUsPageTitle {
+  margin: 10% 0 5%;
+}
+
+.errorMessage {
+  display: inline-block;
+  padding-left: 40px;
+}
+
+/************* pet_list *************/
+
+.petAvatar {
+  height: 15vh;
+  width: 15vh;
+  background-position: center;
+  border: 2px solid orange;
+  border-radius: 50%;
+  background-size: 100%;
+  background-size: cover;
+  margin: auto;
+  /*float: left;*/
+  /*display: inline-block;*/
+}
+
+.petName {
+  display: inline-block;
+  left: 10%;
+  bottom: 4vh;
+  font-size: 2rem;
+  margin-left: 10%;
+  /*transform: translateY(50%);*/
+}
+
+.petListTitle {
+  text-align: center;
+  display: block;
+  font-size: 2rem;
+  position: relative;
+}
+
+.usersPetContainer div {
+  margin-bottom: 2%;
+}
+
+.deleteNAddContainer {
+  text-align: center;
+}
+
+.petRow {
+  padding: 3% 0;
+}
+
+.petRow > a,
+.petRow > div {
+  /* margin: auto; */
+  float: left;
+  /* height: 100%; */
+  width: 40%;
+}
+
+.addPet{
+  margin-left:5%;
+}
+/************* pet_profile *************/
+
+.connectPetBtn {
+  position: relative;
+  top: 75%;
+}
+
+.petImgContainer .petAvatar {
+  position: absolute;
+  margin-left: 15%;
+  top: 5vh;
+}
+
+.petInfoContainer {
+  position: relative;
+  height: 25vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.petImgContainer {
+  width: 45%;
+  height: 100%;
+  position: absolute;
+}
+.petImg {
+  left: 5%;
+  top: 12%;
+  border-radius: 50%;
+  border: 2px solid orange;
+  position: absolute;
+  height: 70%;
+  width: 70%;
+  background-position: center;
+  background-size: 100%;
+}
+.petImg > img {
+  width: 100%;
+}
+.petInfo h4 {
+  font-size: 1.2rem;
+}
+
+.petInfoDiv {
+  width: 55%;
+  height: 100%;
+  left: 45%;
+  position: absolute;
+}
+.petInfo {
+  top: 2%;
+  width: 100%;
+  position: absolute;
+}
+.recordContainer {
+  height: 10vh;
+  position: relative;
+}
+.recordContainer:nth-child(even) {
+  background-color: rgba(255, 165, 0, 0.2);
+}
+.addRecordIcon {
+  color: orange;
+  font-size: 1.5em;
+  margin-left: 2%;
+}
+.medicalRecord p {
+  display: inline-block;
+}
+
+.addMedicalRecord{
+  margin-left:5%;
+}
+
+/************* record_item *************/
+
+.record_item_header,
+.record_item_date,
+.record_item_detail {
+  margin-bottom: 5%;
+  text-align: center;
+}
+.editBtn {
+    margin-top: 2%;
+    margin-left: 5%;
+    position: absolute;
+    right: 2%;
+    top: 0;
+}
+.medicalRecordHeader{
+    margin-top: 2%
+}
+/************* client_list *************/
+
+.petList h3 {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.vetInfoContainer {
+  position: relative;
+  margin-top: 5vh;
+  height: 10vh;
+}
+
+.vetInfoDiv {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.recordContainer{
+  margin:3% 0;
+}
+
+.recordContainer h5{
+  text-decoration: underline;
+}
+
+.clientList h2{
+  font-weight:bold;
+}
+/************* pet log_in *************/
+.formContainer {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 3% auto 0;
+  width: 75%;
+  height: 50%;
+  border-radius: 25px;
+}
+.register {
+  width: 65%; 
+}
+.register a {
+  margin-left: 10%;
+}
+
+/************* hamburger log in ******/
+.logoImgContainer {
+  height: 10vh;
+}
+.logoImg {
+  max-width: 100%;
+  height: 95%;
+}
+
+.outsideMenuContainer {
+  width: 100vw;
+  height: 100vh;
+}
+
+.hamburger {
+  width: 5vmax;
+  height: 5vh;
+  transition-duration: 1s;
+  cursor: pointer;
+}
+
+.hamburger:hover {
+  cursor: pointer;
+}
+
+.hamburger:hover .burger-line {
+  background-color: rgb(167, 167, 167);
+}
+
+.burger-line {
+  width: 100%;
+  height: 20%;
+  margin: 10% 0;
+  background-color: rgba(214, 117, 5, 0.89);
+  border-radius: 1vmin;
+  transition-duration: 1s;
+}
+
+.menuContainer {
+  width: 100vw;
+  background-color: rgba(68, 68, 68, 0.89);
+  /* position: absolute; */
+  padding: 1%;
+}
+.menuContainer div {
+  margin: 5%;
+  /* background-color: rgba(223, 172, 117, 0.418); */
+  border-bottom: solid 1px rgb(133, 133, 133);
+  /* border-right: solid 1px rgb(0, 0, 0); */
+  cursor: pointer;
+  color: white;
+}
+.backBtn {
+  cursor: pointer;
+}
+
+.slideDown {
+  animation-name: slideDown;
+  -webkit-animation-name: slideDown;
+
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+
+  visibility: visible !important;
+}
+
+@-webkit-keyframes slideDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/************* vet_page **********************/
+.vetTitle {
+  margin-top: 5%;
+}
+
+.petProfileSpan {
+  width: 15%;
+}
+
+/************* parent_page_modal*************/
+
+/*.confirm-modal {*/
+/*!*display: flex;*!*/
+/*!*height: 100vh;*!*/
+/*!*width: 100vw;*!*/
+/*!*position: fixed;*!*/
+/*!*background-color: rgba(0, 0, 0, 0.75);*!*/
+/*!*top: 0;*!*/
+/*!*left: 0;*!*/
+/*!*z-index: 1000;*!*/
+/*}*/
+
+/*.modal-content {*/
+/*margin: auto;*/
+/*width: 100%;*/
+/*}*/
+
+/*.card-block {*/
+/*padding-top: 5%;*/
+/*}*/
+
+/*.card-block img {*/
+/*width: 20%;*/
+/*}*/
+
+/************* about_us page *************/
+.aboutUsContainer {
+  background: #f46b45;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(80deg, #f8be73b2, #f48545d8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(80deg, #f8be73b2, #f48545d8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100%;
+  background-size: cover;
+}
+.teamContainer {
+  padding: 5%;
+  margin: 5%;
+  /* border-bottom: solid 1px black; */
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.teamContainer h1 {
+  margin-bottom: 10%;
+}
+/************* manually_add_med_notes *************/
+
+.addMedRecContainer {
+  margin-top: 10%;
+}
+
+/************* pet_to_vet *************/
+
+.petToVetContainer {
+  margin-top: 10%;
+}
+.smallTagDiv{
+    margin-top: 4%;
+}
+.connectPetSmallTag{
+    margin: 25% 5% 0;
+}

@@ -1,0 +1,114 @@
+input[type="file"] {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    z-index: 100 !important;
+    margin-top: -20px;
+    padding-top: -20px;
+    top: -20px;
+}
+
+input {
+    height: 20%;
+}
+/*.container {
+    width: 85%;
+
+}*/
+/*.buttonContainer {
+    text-align: right;
+}
+input:focus {
+    border: 2px solid orange !important;
+    color: #0c5460;
+}*/
+.uploadContainer{
+    position: relative;
+    display: inline-block;
+}
+
+
+
+.pictureContainer {
+    /*margin-top: 20vh;*/
+    position: relative;
+    width: 50%;
+    height: 35%;
+    /*border: 4px dashed orange;*/
+    /*border-radius: 5px;*/
+    margin: 0 auto;
+}
+
+.pictureDiv{
+    position: absolute;
+    width:100%;
+    height: 100%;
+}
+
+.pictureDiv div{
+/*    position: absolute;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+.fileContainer{
+    position: relative;
+    width: 48%;
+    height: 35%;
+    float: right;
+    /*border: 1px solid;*/
+}
+
+.picture{
+
+    margin: auto;
+    padding: 0;
+    width: 100px;
+    height: 75px;
+
+    border: 1px dashed black;
+    border-radius: 15%;
+
+    position: relative;
+}
+
+.picture > img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 40%;
+    margin: 0 auto;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+
+#file{
+    width:100%;
+    height: 100%;
+    opacity: 0;
+    /*position: absolute;*/
+}
+
+
+.pictureDiv{
+    background-image: url('../../../dist/assets/images/addIcon.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+}
+/* this class is for croppie library*/
+.cr-slider-wrap{
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+
+
+
+
+
+
+
+
