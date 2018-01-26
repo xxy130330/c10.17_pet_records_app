@@ -13,7 +13,9 @@ $ownerID = $_GET['ownerID'];
 $vetID = $_GET['vetID'];
 $foundPetIDArr = false;
 
-$query = "SELECT `active_pets` FROM `vets` WHERE `ID` = $vetID";
+$query = "SELECT `active_pets` 
+          FROM `vets` 
+          WHERE `ID` = $vetID";
 $result = mysqli_query($conn, $query);
 
 if ($result) {
@@ -36,7 +38,10 @@ if ($result) {
                 //grab the pet info to generate a pet list
                $count = count($petIDArr);
                for ($k = 0; $k < $count; $k++) {
-                   $query = "SELECT `ID` AS `petID`, `avatar`, `name` FROM `pets` WHERE `ID` = $petIDArr[$k] AND `status` = 'active'";
+                   $query = "SELECT `ID` AS `petID`, `avatar`, `name` 
+                             FROM `pets` 
+                             WHERE `ID` = $petIDArr[$k] 
+                             AND `status` = 'active'";
                    $result = mysqli_query($conn, $query);
 
                    if ($result) {
@@ -45,19 +50,14 @@ if ($result) {
                                $output['data'][] = $row;
                            }
                        } else {
-                           $output['errors'][] = 'couldn\'t find an pet with that ID';
+                           $output['errors'][] = 'no data available';
                        }
                    } else {
-                       $output['errors'][] = 'Error in SQL query fetching pet data';
+                       $output['errors'][] = 'error in query';
                    }
                }
            }
-
         }
-    } else {
-        $output['errors'][] = 'no data available';
-    }
-} else {
-    $output['errors'][] = 'Error in SQL query fetching owner data from active_pets';
-}
+    } else {$output['errors'][] = 'no data available';}
+} else {$output['errors'][] = 'error in query';}
 ?>
