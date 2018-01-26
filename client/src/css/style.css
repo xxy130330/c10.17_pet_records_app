@@ -8,6 +8,9 @@ body {
   font-family: text-font;
 }
 
+h1.listTitle {
+  margin-bottom: 0 !important;
+}
 .fa-times-circle {
   color: #cc0000;
 }
@@ -281,7 +284,7 @@ form {
   transform: translateY(-50%);
   float: right;
   margin-right: 10px;
-  z-index: 1000;
+  z-index: 100;
 }
 h3.medicalRecord {
   position: relative;
@@ -402,8 +405,14 @@ h3.medicalRecord {
   position: absolute;
 }
 
+.btnContainerPetProfile {
+  position: relative;
+  top: 2vh;
+
+}
+
 .recordContainer{
-  margin:3% 0;
+  /*margin:3% 0;*/
 }
 
 .recordContainer h5{

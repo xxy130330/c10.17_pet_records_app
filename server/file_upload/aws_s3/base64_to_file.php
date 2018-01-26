@@ -60,6 +60,6 @@ if ($s3->putObjectFile($fileTempName, $bucketName, $fileName, S3::ACL_PUBLIC_REA
 //        echo "Something went wrong while uploading your file... sorry.";
 };
 
-    $url = "http://{$bucketName}.s3.amazonaws.com/".$fileName;
+    $url = "https://{$bucketName}.s3.amazonaws.com/".$fileName;
     $output['data'][] = $url;
 

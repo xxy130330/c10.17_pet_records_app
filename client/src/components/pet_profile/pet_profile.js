@@ -181,7 +181,7 @@ class PetProfile extends Component {
               <div className="text-center">
                 <h1 className='listTitle'>Record List for {petName}</h1>
                   {this.props.petProfile.length ?  this.listMedicalRecords() : <h1 className="noPetData">No Pet Data</h1>}
-                  <div style={this.props.vetAccessLevel ? {'display': 'none'}: {'display': 'inline'} }>
+                  <div className='btnContainerPetProfile' style={this.props.vetAccessLevel ? {'display': 'none'}: {'display': 'inline'} }>
                       <button className={!this.state.canDelete? 'editBtn btn btn-outline-danger':'editBtn btn btn-outline-warning'}
                               onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Edit Profile": 'Cancel'}
                       </button>
