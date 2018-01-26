@@ -10,7 +10,7 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
 
-
+$output['test'][] = 'yo ho';
 $ID = $post['petID'];
 $title = $post['title'];
 $type = $post['type'];
