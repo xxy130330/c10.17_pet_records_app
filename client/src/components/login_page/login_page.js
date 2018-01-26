@@ -59,7 +59,7 @@ class LoginPage extends Component {
     return (
       <div className="bodyContainer" style={noScroll}>
         <div className="logoContainer">
-          <h1>PET LOG IN</h1>
+          <h1>OWNER LOG IN</h1>
           <img style={btnSize} src={petBtn} />
         </div>
         <div className="row formContainer align-items-center">

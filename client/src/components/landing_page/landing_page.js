@@ -20,7 +20,7 @@ export default props => {
           <div className="loginBtnContainer">
             <Link to="/login-page">
               <div className="homeBtn">
-                <img src={petBtn} />Pet Login
+                <img src={petBtn} />Owner Login
               </div>
             </Link>
             <Link to="/vet-login-page">
