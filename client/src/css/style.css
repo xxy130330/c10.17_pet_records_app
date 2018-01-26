@@ -405,6 +405,12 @@ h3.medicalRecord {
   position: absolute;
 }
 
+.btnContainerPetProfile {
+  position: relative;
+  top: 2vh;
+
+}
+
 .recordContainer{
   /*margin:3% 0;*/
 }
