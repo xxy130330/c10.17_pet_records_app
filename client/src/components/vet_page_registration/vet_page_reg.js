@@ -6,6 +6,13 @@ import { Field, reduxForm } from "redux-form";
 import RegisterModal from '../register_modal/register_modal';
 
 class VetPage extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state ={
+            toggleModal: false
+        }
+    }
     renderInput({ label, input, type, meta: { touched, error, active, visited } }) {
         return (
           <div className="form-group row">
@@ -42,7 +49,7 @@ class VetPage extends Component {
                       <div className="buttonContainer row">
                           <button className="btn btn-success">Sign Up</button>
                       </div>
-                      {/*{this.state.toggleModal ? <RegisterModal routeUrl='/vet-login-page' {...this.props} confirm={this.props.id}/> : ''}*/}
+                      {this.state.toggleModal ? <RegisterModal routeUrl='/vet-login-page' {...this.props} confirm={this.props.id}/> : ''}
                 </form>
           </div>
         );
