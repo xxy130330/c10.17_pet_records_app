@@ -5,20 +5,17 @@ const DEFAULT_STATE = {
 
 };
 export default function(state = DEFAULT_STATE, action) {
-  switch (action.type) {
-    case SWITCH_AUTHENTICATION:
-        localStorage.auth = action.auth;
-      return { auth: localStorage.auth};
-
-
-    case LOG_OUT:
-        localStorage.removeItem('auth');
-        localStorage.removeItem('id');
-
-        return {auth: false}
-    case LOCALAUTH:
-        return {auth: localStorage.auth};
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case SWITCH_AUTHENTICATION:
+            localStorage.auth = action.auth;
+            return { auth: localStorage.auth};
+        case LOG_OUT:
+            localStorage.removeItem('auth');
+            localStorage.removeItem('id');
+            return {auth: false};
+        case LOCALAUTH:
+            return {auth: localStorage.auth};
+        default:
+            return state;
+    }
 }

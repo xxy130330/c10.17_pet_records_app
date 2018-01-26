@@ -103,8 +103,8 @@ class PetToVet extends Component {
               value={vetRefNum}
             />
           </div>
-          <button className="btn btn-primary">Submit</button>
-          <Link to='/pet-list' className='pull-right my-5'> Skip </Link>
+          <button className="btn btn-primary submitBtnPetToVet">Submit</button>
+          <Link to='/pet-list' className='skipBtn'> Skip </Link>
         </form>
         <div className='text-center connectPetSmallTag'>
             <small className='text-muted'>Contact your vet. If you know your vet's email and reference id please enter them above.
