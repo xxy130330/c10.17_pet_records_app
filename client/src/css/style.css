@@ -379,6 +379,10 @@ h3.medicalRecord {
 }
 /************* client_list *************/
 
+.recordContainer.recordContainerClientList {
+  height: auto;
+}
+
 .petList h3 {
   margin: 0;
   position: relative;
