@@ -79,7 +79,7 @@ export function addMedicalItem(petId, form) {
           petID: "" + petId,
           title: form.title,
           type: "hardcoded for now",
-          record_data: form.comment,
+          record_data: form.message,
           treatment_date: form.date
         }
     });
