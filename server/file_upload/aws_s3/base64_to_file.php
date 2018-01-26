@@ -50,6 +50,7 @@ $fileTempName = $file;
 if(!isset($bucketName)){
     $s3->putBucket($bucketName, S3::ACL_PUBLIC_READ);
 }
+
 if ($s3->putObjectFile($fileTempName, $bucketName, $fileName, S3::ACL_PUBLIC_READ)) {
 //        echo "We successfully uploaded your file.";
     $output['success'] = true;
