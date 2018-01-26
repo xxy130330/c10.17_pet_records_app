@@ -61,7 +61,7 @@ class ClientList extends Component {
     let clientInformation = this.props.clientList.map((client, index) => {
       return (
         <div
-          className="recordContainer"
+          className="recordContainer recordContainerClientList"
           key={index}
           onClick={key => this.handleClientClick(index)}
         >
