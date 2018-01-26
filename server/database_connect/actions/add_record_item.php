@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shobl
- * Date: 1/9/2018
- * Time: 1:21 PM
- */
 
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
@@ -26,7 +20,5 @@ if ($result) {
     } else {$output['errors'][] = 'no data available';}
 }
 else {$output['errors'][] = 'error in query';}
-
-
 
 ?>

@@ -4,8 +4,6 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
 
-
-
 function getRandomRefID($conn){
     do{
         $refId = uniqid();
@@ -24,10 +22,10 @@ $queryCheckEmail = "SELECT `email`
 
 $checkResult = mysqli_query($conn, $queryCheckEmail);
 
-//Check to see if the email is already in the db
 if ($checkResult) {
     if (mysqli_num_rows($checkResult) === 0) {
         $ref_ID = getRandomRefID($conn);
+      
         $query = "INSERT INTO `vets` 
                   (`name`, `email`, `phone`, `ID`, `ref_ID`, `active_pets`, `password`, `status`, `updated`, `level`) 
                   VALUES ('$post[name]', '$post[email]', '$post[phone]', NULL, '$ref_ID', 'NULL', SHA1('$post[password]'), 'inactive', CURRENT_DATE, '2')";
@@ -44,6 +42,7 @@ if ($checkResult) {
                           VALUES ('$ref_ID', '$authStr')";
                 $results = mysqli_query($conn, $query);
 
+                $results = mysqli_query($conn, $query);
                 if ($results) {
                     if (mysqli_affected_rows($conn) > 0) {
                         $output['success'] = true;
@@ -58,7 +57,7 @@ if ($checkResult) {
                         require('../php_mailer/mail_handler.php');
                     } else {$output['success'] = false;}
                 } else {
-                    $output['errors'][] = 'Error in SQL query inserting into activation';
+                    $output['errors'][] = 'Error in SQL query';
                     $output['success'] = false;
                 }
             } else {$output['errors'][] = 'no data available';}
