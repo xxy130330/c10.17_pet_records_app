@@ -13,26 +13,22 @@ $ID = $_GET['ID'];
 
 $pet_objects = [];
 
-$query = "SELECT `ID`, `name`, `avatar`, `DOB` AS `dob`, `animal_type` AS `breed`, `vet` FROM  `pets` WHERE `ownerID` = $ID AND `status` = 'active'";
-
-
+$query = "SELECT `ID`, `name`, `avatar`, `DOB` AS `dob`, `animal_type` AS `breed`, `vet` 
+          FROM  `pets` 
+          WHERE `ownerID` = $ID 
+          AND `status` = 'active'";
 $result = mysqli_query($conn, $query);
-
 
 if ($result) {
     if (mysqli_num_rows($result) > 0) {
+        $output['success'] = true;
         while ($row = mysqli_fetch_assoc($result)) {
             $row['medicalRecords'] = [];
             $pet_objects[] = $row;
         }
-        $output['success'] = true;
-    } else {
-        $output['errors'][] = 'no data found';
-    }
+    } else {$output['errors'][] = 'no data found';}
 }
-else {
-    $output['errors'][] = 'error in SQL query';
-}
+else {$output['errors'][] = 'error in SQL query';}
 
 //$query = "SELECT `name` FROM `vets` WHERE "
 
