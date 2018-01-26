@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { addPet, uploadImage } from "../../actions/";
 import "../../../node_modules/croppie/croppie.css";
 import croppie from "croppie";
+import loading from '../../../dist/assets/images/loading.gif';
 
 class AddPet extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class AddPet extends Component {
         breed: ""
       },
       buttonClick: false,
-      errorMessage: ""
+      errorMessage: "",
+      imageUpload: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -103,6 +105,10 @@ class AddPet extends Component {
   getFileName(e) {
     e.preventDefault();
 
+    this.setState({
+      imageUpload: true
+    })
+
     let data = new FormData();
 
     data.append("file", document.getElementById("file").files[0]);
@@ -118,11 +124,13 @@ class AddPet extends Component {
 
     this.setState({
       form: { ...this.state.form },
-      buttonClick: true
+      buttonClick: true,
     });
   }
 
   setupCroppie(url) {
+
+
     let el = document.getElementById("croppie");
 
     this.croppie = new croppie(el, {
@@ -130,9 +138,14 @@ class AddPet extends Component {
       boundary: { width: "100%", height: "100%" },
       showZoomer: true
     });
+
     this.croppie.bind({
       url: url
     });
+    // this.setState({
+    //   imageUpload:false
+    // })
+
   }
 
   render() {
@@ -150,14 +163,17 @@ class AddPet extends Component {
       </md-button>
     );
 
+    // const imgUpload = this.state.imageUpload ? <h1>Loading</h1> : <div type="file" name="croppie" id="croppie" />
+    console.log('image state', this.state.imageUpload);
+
     return (
       <div className="bodyContainer">
         <h2 className="text-center">Add Pet</h2>
         <p className="text-center" style={{ color: "red" }}>
           {this.state.errorMessage}
         </p>
-        <div className="pictureContainer">
-          <div className="pictureDiv">
+        <div className='pictureContainer'>
+          <div className={this.state.imageUpload ? 'pictureDivLoading' : 'pictureDiv'}>
             {input}
             <div type="file" name="croppie" id="croppie" />
           </div>

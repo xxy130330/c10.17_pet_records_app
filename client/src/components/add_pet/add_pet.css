@@ -98,6 +98,15 @@ input:focus {
     background-repeat: no-repeat;
     background-position-y: center;
 }
+
+.pictureDivLoading{
+    background-image: url('../../../dist/assets/images/loading.gif');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    width:100%;
+    height:100%;
+}
 /* this class is for croppie library*/
 .cr-slider-wrap{
     margin: 0 auto !important;
