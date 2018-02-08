@@ -8,6 +8,9 @@ body {
   font-family: text-font;
 }
 
+h1.listTitle {
+  margin-bottom: 0 !important;
+}
 .fa-times-circle {
   color: #cc0000;
 }
@@ -275,7 +278,23 @@ form {
   position: relative;
   top: 75%;
 }
+.deleteBtnPetProfile {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  float: right;
+  margin-right: 10px;
+  z-index: 100;
+}
+h3.medicalRecord {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
+.editBtn {
+  width: 100px;
+}
 .petImgContainer .petAvatar {
   position: absolute;
   margin-left: 15%;
@@ -352,16 +371,20 @@ form {
   text-align: center;
 }
 .editBtn {
-    margin-top: 2%;
-    margin-left: 5%;
-    position: absolute;
-    right: 2%;
-    top: 0;
+  margin-left: 5%;
+  /* position: absolute; */
+  right: 2%;
+  top: 0;
+  width: 100px;
 }
 .medicalRecordHeader{
     margin-top: 2%
 }
 /************* client_list *************/
+
+.recordContainer.recordContainerClientList {
+  height: auto;
+}
 
 .petList h3 {
   margin: 0;
@@ -382,8 +405,14 @@ form {
   position: absolute;
 }
 
+.btnContainerPetProfile {
+  position: relative;
+  top: 2vh;
+
+}
+
 .recordContainer{
-  margin:3% 0;
+  /*margin:3% 0;*/
 }
 
 .recordContainer h5{

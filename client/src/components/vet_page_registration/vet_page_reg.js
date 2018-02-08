@@ -6,6 +6,13 @@ import { Field, reduxForm } from "redux-form";
 import RegisterModal from '../register_modal/register_modal';
 
 class VetPage extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state ={
+            toggleModal: false
+        }
+    }
     renderInput({ label, input, type, meta: { touched, error, active, visited } }) {
         return (
           <div className="form-group row">
@@ -28,6 +35,7 @@ class VetPage extends Component {
             }, 4000)});
     }
     render() {
+
         return (
             <div className='bodyContainer'>
                 <h1 className="vetTitle">Vet Registration</h1>

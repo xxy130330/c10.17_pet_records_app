@@ -114,10 +114,10 @@ class PetProfile extends Component {
           const medicalRecordsList = this.props.petProfile.map((item, index) => {
               return (
                 <div className="recordContainer" key={index}>
-                  <span onClick={()=>this.triggerModal(index)} className="pull-right">
-                    <i  className={this.state.canDelete? "fa fa-times-circle fa-2x aria-hidden=true": ''} ></i>
-                  </span>
-                  <h3>
+
+                    <i onClick={()=>this.triggerModal(index)}  className={this.state.canDelete? "deleteBtnPetProfile fa fa-times-circle fa-2x aria-hidden=true": ''} ></i>
+
+                    <h3 className='medicalRecord'>
                     <Link to={"/pet-profile/" + petId + "/record-item/" + this.props.petProfile[index]["recordID"]}>
                           {item.type}
                     </Link>
@@ -181,8 +181,8 @@ class PetProfile extends Component {
               <div className="text-center">
                 <h1 className='listTitle'>Record List for {petName}</h1>
                   {this.props.petProfile.length ?  this.listMedicalRecords() : <h1 className="noPetData">No Pet Data</h1>}
-                  <div style={this.props.vetAccessLevel ? {'display': 'none'}: {'display': 'inline'} }>
-                      <button className={!this.state.canDelete? 'btn btn-outline-danger':'btn btn-outline-warning'}
+                  <div className='btnContainerPetProfile' style={this.props.vetAccessLevel ? {'display': 'none'}: {'display': 'inline'} }>
+                      <button className={!this.state.canDelete? 'editBtn btn btn-outline-danger':'editBtn btn btn-outline-warning'}
                               onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Edit Profile": 'Cancel'}
                       </button>
                       <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
