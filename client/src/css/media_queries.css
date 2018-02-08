@@ -28,6 +28,10 @@
         position: relative;
         transform: translateY(-50%);
     }
+    button.btn.btn-success {
+        position: relative;
+        left: 16px;
+    }
 }
 
 /*Laptops and monitors*/
