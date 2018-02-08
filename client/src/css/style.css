@@ -415,8 +415,9 @@ h3.medicalRecord {
   /*margin:3% 0;*/
 }
 
-.recordContainer h5{
-  text-decoration: underline;
+.recordContainer h5 {
+  margin-bottom: 0;
+  padding-bottom: 10px;
 }
 
 .clientList h2{
