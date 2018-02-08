@@ -35,6 +35,9 @@
     body {
         overflow: hidden;
     }
+    .content-modal {
+        width: 40% !important;
+    }
     /********* landing_page ********/
     .loginLogo {
         width: 20%;
