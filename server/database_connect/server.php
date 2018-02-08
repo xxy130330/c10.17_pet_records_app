@@ -16,11 +16,6 @@ set_error_handler('handleErrors');
 $postJSON = file_get_contents('php://input');
 $post = json_decode($postJSON, TRUE);
 
-
-//DATA SANITIZATION
-
-
-
 $PAGEACCESS = true;
 require_once ('./connect.php');
 //require_once('../file_upload/aws_s3/credential.php');
@@ -37,7 +32,7 @@ $sanitizeArr = [$post, $_GET];
 for ($i = 0; $i < 2; $i++) {
     foreach ($sanitizeArr[$i] as $key => &$value) {
         $value = stripslashes($value);
-        $value = htmlentities($value);
+        $value = htmlentities(trim($value));
         $output['sanitized_vals'][] = $value;
     }
 }
