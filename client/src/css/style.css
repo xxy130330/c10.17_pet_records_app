@@ -7,6 +7,12 @@ body {
   background-color: rgb(255, 232, 208);
   font-family: text-font;
 }
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  outline: none;
+  box-shadow: none !important;
+}
 
 h1.listTitle {
   margin-bottom: 0 !important;
@@ -114,7 +120,7 @@ form {
 }
 
 input:focus {
-  border: 2px solid orange !important;
+  border: 1px solid orange !important;
   color: #0c5460;
 }
 
