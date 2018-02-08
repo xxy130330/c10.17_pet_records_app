@@ -3,6 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 
+
 function handleErrors($errorNum, $errorStr, $errorFile){
     $message = date('H:i:s h:m:s') . " error from " . $_SERVER['PHP_SELF'] . " $errorNum : $errorStr in $errorFile \n at IP " . $_SERVER['REMOTE_ADDR'];
 //    $message = date('H:i:s h:m:s') . " error from " . $_SERVER['PHP_SELF'] . " $errorNum : $errorStr in $errorFile \n at IP " . $_SERVER['REMOTE_ADDR'] .
@@ -15,6 +16,11 @@ set_error_handler('handleErrors');
 $postJSON = file_get_contents('php://input');
 $post = json_decode($postJSON, TRUE);
 
+
+//DATA SANITIZATION
+
+
+
 $PAGEACCESS = true;
 require_once ('./connect.php');
 //require_once('../file_upload/aws_s3/credential.php');
@@ -25,6 +31,19 @@ $output = [
     'data' => [],
     'errors' => [],
 ];
+
+$sanitizeArr = [$post, $_GET];
+
+for ($i = 0; $i < 2; $i++) {
+    foreach ($sanitizeArr[$i] as $key => &$value) {
+        $value = stripslashes($value);
+        $value = htmlentities($value);
+        $output['sanitized_vals'][] = $value;
+    }
+}
+
+
+$output['get_vals'][] = $_GET;
 
 if(empty($_GET['action'])){
     $_GET['action'] = 'get';
