@@ -7,6 +7,12 @@ body {
   background-color: rgb(255, 232, 208);
   font-family: text-font;
 }
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  outline: none;
+  box-shadow: none !important;
+}
 
 h1.listTitle {
   margin-bottom: 0 !important;
@@ -114,7 +120,7 @@ form {
 }
 
 input:focus {
-  border: 2px solid orange !important;
+  border: 1px solid orange !important;
   color: #0c5460;
 }
 
@@ -211,7 +217,7 @@ form {
 
 /************* contact_us *************/
 .contactUsPage {
-  margin: 5% 0;
+  margin: 10px 0;
 }
 
 .contactUsPageTitle {
@@ -222,7 +228,14 @@ form {
   display: inline-block;
   padding-left: 40px;
 }
-
+.form-group.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: auto;
+}
 /************* pet_list *************/
 
 .petAvatar {
@@ -385,7 +398,9 @@ h3.medicalRecord {
 .recordContainer.recordContainerClientList {
   height: auto;
 }
-
+.recordContainer.recordContainerClientList:hover {
+  cursor: pointer;
+}
 .petList h3 {
   margin: 0;
   position: relative;
@@ -409,10 +424,6 @@ h3.medicalRecord {
   position: relative;
   top: 2vh;
 
-}
-
-.recordContainer{
-  /*margin:3% 0;*/
 }
 
 .recordContainer h5 {
