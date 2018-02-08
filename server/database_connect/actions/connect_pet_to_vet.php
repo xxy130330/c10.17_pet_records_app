@@ -1,14 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shobl
- * Date: 1/16/2018
- * Time: 9:57 AM
- */
+
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
-
 $email = $post['vetEmail'];
 $refNum = $post['refNum'];
 $ownerID = $post['ownerID'];
@@ -19,7 +13,9 @@ $hasPetID = false;
 $vetName = null;
 
 //Check to see if the email and reference number match
-$query = "SELECT * FROM `vets` WHERE `ref_ID` = '$refNum' AND `email` = '$email'";
+$query = "SELECT * FROM `vets` 
+          WHERE `ref_ID` = '$refNum' 
+          AND `email` = '$email'";
 $result = mysqli_query($conn, $query);
 
 class OwnerObj  {
@@ -37,7 +33,10 @@ function createNewDataObj($ownerID, $petID) {
 
 function storeActivePets($res, $refNum, $conn) {
     $res = json_encode($res);
-    $query = "UPDATE `vets` SET `active_pets` = '$res' WHERE `ref_ID` = '$refNum'";
+
+    $query = "UPDATE `vets` 
+              SET `active_pets` = '$res' 
+              WHERE `ref_ID` = '$refNum'";
     $result = mysqli_query($conn, $query);
     return $result;
 }
@@ -45,17 +44,14 @@ function storeActivePets($res, $refNum, $conn) {
 if ($result) {
     if (mysqli_num_rows($result) > 0) {
         $output['success'] = true;
-
+      
         //Insert the users ID into the vet db if there isn't anything in active_pets otherwise pull active_pets and append data to it.
-
         if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     $petStr = $row['active_pets'];
                     $vetName = $row['name'];
                     if ($petStr === "NULL") {
                         $output['errors'][] = 'No active pets';
-                        //create the object to be inserted into the database
-
                         $res = createNewDataObj($ownerID, $petID);
                         $res = array($res);
                         $result = storeActivePets($res, $refNum, $conn);
@@ -65,16 +61,12 @@ if ($result) {
                             $output['success'] = false;
                         }
                     } else {
-                        //decode the vets active pets
                         $petObj = json_decode($petStr);
                         $ownerCount = count($petObj);
-
                         for ($i = 0; $i < $ownerCount; $i++) {
                             if ($petObj[$i]->ownerID === $ownerID) {
                                 $ownerIndex = $i;
                                 $hasID = true;
-
-                                //check to see if the pet has already been added
                                 $petCount = count($petObj[$ownerIndex]->petID);
                                 for ($k = 0; $k < $petCount; $k++) {
                                     if ($petObj[$ownerIndex]->petID[$k] === $petID) {
@@ -86,8 +78,8 @@ if ($result) {
                             }
                         }
                     if (!$hasID) {
+
                             $output['data'][] = 'new owner';
-                            //create the dataObj and append it to the existing array;
                             $res = createNewDataObj($ownerID, $petID);
                             $petObj[] = $res;
                             $result = storeActivePets($petObj, $refNum, $conn);
@@ -106,21 +98,23 @@ if ($result) {
                                 $output['success'] = false;
                             }
                         } else {
-                            $output['data'][] = 'the pet is already filed under the vets account';
+                            $output['errors'][] = 'duplicate';
                         }
                     }
                 }
             }
         } else {
-            $output['errors'][] = 'Error in SQL query fetching active_pets';
+            $output['errors'][] = 'error in query';
         }
-
     } else {
-        $output['errors'][] = 'No data available';
+        $output['errors'][] = 'no data available';
     }
     //add vet name to pet table
     if ($vetName !== null) {
-        $query = "UPDATE `pets` SET `vet` = '$vetName' WHERE `ID` = $petID";
+        $query = "UPDATE `pets` 
+                  SET `vet` = '$vetName' 
+                  WHERE `ID` = $petID";
+      
         $result = mysqli_query($conn, $query);
 
         if ($result) {
@@ -128,15 +122,15 @@ if ($result) {
                 $output['success'] = true;
             }
         } else {
-            $output['errors'][] = 'Error in SQL query';
+            $output['errors'][] = 'error in query';
             $output['success'] = false;
-
         }
     }
- //********removing old vet***********************
+
+ //********removing pet from the old vet***********************
 
     require('./actions/update_delete_pet_from_vet.php');
 
-    //*********removing old vet*************
+    //*********removing pet from the old vet*************
 
 ?>

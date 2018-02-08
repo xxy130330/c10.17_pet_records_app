@@ -14,10 +14,8 @@ export default props => {
         </div>
         <div className="msgBtnContainer">
           <div className="home-msg">
-          
             Welcome to PetVet!
             <br />The easiest way to care for your pet's health and happiness!
-           
           </div>
           <div className="loginBtnContainer">
             <Link to="/login-page">
@@ -36,5 +34,3 @@ export default props => {
     </div>
   );
 };
-
-//onClick='openLoginPage()

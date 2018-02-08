@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchPetData, delete_pet } from "../../actions/";
 import '../assets/css/modal.css';
-// import {ShowModal} from '../../helpers';
-
 
 class PetList extends Component {
   constructor(props) {
@@ -15,10 +13,8 @@ class PetList extends Component {
       petIndex: null,
       infoModal: false
     };
-    // this.showModal=this.showModal.bind(this);
   }
   componentWillMount() {
-    console.log('PET LIST PROPS::::::', this.props);
     let currentOwnerId = null;
     if(this.props.id){
       currentOwnerId = this.props.id;
@@ -34,9 +30,9 @@ class PetList extends Component {
         }
     });
   }
-    infoModal(){
-        return(
-            <span>
+  infoModal(){
+    return(
+        <span>
           <div className='confirm-modal '>
               <div className="content-modal">
                   <div className="card petListCard">
@@ -58,21 +54,19 @@ class PetList extends Component {
                   </div>
               </div>
           </div>
-        </span>
-        )
-    }
-
+      </span>
+    )
+  }
   //////////TRIGGER MODAL HERE//////////
   triggerModal(index) {
     this.setState({...this.state, showModal:true, petIndex: index});
   }
     //////////SHOW MODAL HERE//////////
   showModal(){
-    // return PetListModal(this.state, self );
       const {petIndex}= this.state;
       const style={
           backgroundImage: `url(${this.props.petdata[petIndex].avatar})`
-      }
+      };
       const item= this.props.petdata[petIndex];
       return(
         <span>
@@ -97,7 +91,6 @@ class PetList extends Component {
   deleteFromServer(){
       const {petIndex}= this.state;
       const petDataProps= this.props.petdata;
-      // console.log('we have deleted this item from server', petDataProps);
       this.setState({...this.state, showModal:false, canDelete: false});
       this.props.delete_pet(petDataProps[petIndex]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')).then(
           ()=>this.setState({...this.state, showModal: false, canDelete: false,})
@@ -107,29 +100,26 @@ class PetList extends Component {
     const {showModal,infoModal}= this.state;
     const toggleCanDelete= !this.state.canDelete;
     const userPetList = this.props.petdata.map((item, index) => {
-
-      const petAvatar = {
+    const petAvatar = {
         backgroundImage: `url(${item.avatar})`
-      };
-      const item_name = item.name.length>8 ? <h4 className='petListName'>{item.name}</h4> : <h2 className='petListName'>{item.name}</h2>
+    };
+    const item_name = item.name.length>8 ? <h4 className='petListName'>{item.name}</h4> : <h2 className='petListName'>{item.name}</h2>
       return (
-                <div key={index} className='row justify-content-center petRow'>
-                  <div>
-                      <Link key={index} className='' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
-                          <div className="petAvatar" style={petAvatar}></div>
-                      </Link>
-                  </div>
-                  <Link className="nameContainer" to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
-                    {item_name}
-                  </Link>
-                    <div className='deleteButton'>
-                        <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x ": ''}></i>
-                    </div>
-                </div>
+        <div key={index} className='row justify-content-center petRow'>
+          <div>
+              <Link key={index} className='' to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
+                  <div className="petAvatar" style={petAvatar}></div>
+              </Link>
+          </div>
+          <Link className="nameContainer" to={"/pet-profile/" + this.props.petdata[index]["ID"]}>
+            {item_name}
+          </Link>
+            <div className='deleteButton'>
+                <i onClick={()=>{this.triggerModal(index)}} className={this.state.canDelete? "fa fa-times-circle aria-hidden=true fa-3x ": ''}></i>
+            </div>
+        </div>
       );
     });
-    // console.log('pet list data length:::::', this.props.petdata);
-
     return (
       <div className='bodyContainer'>
         <div className="petListContainer">
@@ -147,22 +137,18 @@ class PetList extends Component {
           <Link to="/add-pet/"><button className='btn btn-outline-success addPet'>Add a Pet</button></Link>
             {showModal? this.showModal(): ''}
             {infoModal? this.infoModal():''}
-
         </div>
       </div>
     );
   }
 }
 function mapStateToProps(state) {
-  return {
-    petdata: state.petdata,
-    id: state.login.id,
-    success: state.login.success,
-    errorMessage: state.login.errorMessage,
-    delete_pet: state.deletePet.delete_pet
-  };
+    return {
+        petdata: state.petdata,
+        id: state.login.id,
+        success: state.login.success,
+        errorMessage: state.login.errorMessage,
+        delete_pet: state.deletePet.delete_pet
+    };
 }
-
-export default connect(mapStateToProps, { fetchPetData: fetchPetData, delete_pet: delete_pet})(
-  PetList
-);
+export default connect(mapStateToProps, { fetchPetData: fetchPetData, delete_pet: delete_pet})(PetList);

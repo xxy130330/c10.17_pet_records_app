@@ -94,10 +94,6 @@ img {
   height: 100%;
   margin: auto;
 }
-/* .title a {
-  width: 100%;
-  height: 100%;
-} */
 
 form {
   width: 80%;
@@ -140,15 +136,6 @@ form {
 .welcomeModalContainerHidden{
   display: none;
 }
-
-
-
-
-
-
-
-
-
 
 /************* landing_page *************/
 .loginLogo {
@@ -244,8 +231,6 @@ form {
   background-size: 100%;
   background-size: cover;
   margin: auto;
-  /*float: left;*/
-  /*display: inline-block;*/
 }
 
 .petName {
@@ -254,7 +239,6 @@ form {
   bottom: 4vh;
   font-size: 2rem;
   margin-left: 10%;
-  /*transform: translateY(50%);*/
 }
 
 .petListTitle {
@@ -278,9 +262,7 @@ form {
 
 .petRow > a,
 .petRow > div {
-  /* margin: auto; */
   float: left;
-  /* height: 100%; */
   width: 40%;
 }
 
@@ -420,7 +402,7 @@ form {
   border-radius: 25px;
 }
 .register {
-  width: 65%; 
+  width: 65%;
 }
 .register a {
   margin-left: 10%;
@@ -467,14 +449,11 @@ form {
 .menuContainer {
   width: 100vw;
   background-color: rgba(68, 68, 68, 0.89);
-  /* position: absolute; */
   padding: 1%;
 }
 .menuContainer div {
   margin: 5%;
-  /* background-color: rgba(223, 172, 117, 0.418); */
   border-bottom: solid 1px rgb(133, 133, 133);
-  /* border-right: solid 1px rgb(0, 0, 0); */
   cursor: pointer;
   color: white;
 }
@@ -519,52 +498,29 @@ form {
 }
 
 .petProfileSpan {
-  width: 15%;
+  right: 10%;
 }
 
 /************* parent_page_modal*************/
 
-/*.confirm-modal {*/
-/*!*display: flex;*!*/
-/*!*height: 100vh;*!*/
-/*!*width: 100vw;*!*/
-/*!*position: fixed;*!*/
-/*!*background-color: rgba(0, 0, 0, 0.75);*!*/
-/*!*top: 0;*!*/
-/*!*left: 0;*!*/
-/*!*z-index: 1000;*!*/
-/*}*/
-
-/*.modal-content {*/
-/*margin: auto;*/
-/*width: 100%;*/
-/*}*/
-
-/*.card-block {*/
-/*padding-top: 5%;*/
-/*}*/
-
-/*.card-block img {*/
-/*width: 20%;*/
-/*}*/
 
 /************* about_us page *************/
 .aboutUsContainer {
-  background: #f46b45;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(80deg, #f8be73b2, #f48545d8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(80deg, #f8be73b2, #f48545d8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #f46b45; 
+  background: -webkit-linear-gradient(80deg, #f8be73b2, #f48545d8);
+  background: linear-gradient(80deg, #f8be73b2, #f48545d8); 
   height: 100%;
   background-size: cover;
 }
 .teamContainer {
   padding: 5%;
   margin: 5%;
-  /* border-bottom: solid 1px black; */
   background-color: rgba(255, 255, 255, 0.2);
 }
 .teamContainer h1 {
   margin-bottom: 10%;
 }
+
 /************* manually_add_med_notes *************/
 
 .addMedRecContainer {
