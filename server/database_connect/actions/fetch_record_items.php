@@ -6,9 +6,10 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 $ID = $_GET['petID'];
 
 $query = "SELECT `title` AS `type`, `ID` AS `recordID` 
-          FROM medical_records 
+          FROM medical_records  
           WHERE petID = $ID 
-          AND `status` = 'active'";
+          AND `status` = 'active'
+          ORDER BY `ID` DESC";
 
 $result = mysqli_query($conn, $query);
 
