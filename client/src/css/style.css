@@ -505,13 +505,10 @@ h3.medicalRecord {
 .slideDown {
   animation-name: slideDown;
   -webkit-animation-name: slideDown;
-
-  animation-duration: 1s;
-  -webkit-animation-duration: 1s;
-
+  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
-
   visibility: visible !important;
 }
 
