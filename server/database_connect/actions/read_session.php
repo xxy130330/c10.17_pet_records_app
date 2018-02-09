@@ -12,4 +12,5 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 $id = $post['id'];
 $auth = json_decode($_SESSION['petVetAuth']);
 $output['authorized'] = $auth->$id;
+$output['success'] = true;
 ?>
