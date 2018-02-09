@@ -184,6 +184,19 @@ switch($_GET['action']) {
                 } else {
                     throw new Exception('Must have a post variable when getting trying to send an email');
                 }
+                break;
+            }
+            case 'update_session': {
+                if (!empty($post)) {
+                    require('./actions/update_session.php');
+                }
+                break;
+            }
+            case 'read_session': {
+                if (!empty($post)) {
+                    require('./actions/read_session.php');
+                }
+                break;
             }
         }
 
