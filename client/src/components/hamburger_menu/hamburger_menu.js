@@ -71,7 +71,6 @@ class NavBar extends Component {
   }
 
   render() {
-    console.log(this.props);
     const showBackButton = () => {
       switch (this.props.match.url) {
         case "/login-page":

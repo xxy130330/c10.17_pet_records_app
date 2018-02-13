@@ -13,7 +13,8 @@ class VetLoginPage extends Component {
       form: {
         username: "",
         password: ""
-      }
+      },
+      loginSuccess: true
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,9 +28,13 @@ class VetLoginPage extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.vet_login(this.state.form.username, this.state.form.password).then(() => {
-        if (this.props.success) {
+        if (this.props.loginSuccess) {
           this.props.switchAuthentication(true);
           this.props.history.push("/client-list/" + this.props.id);
+        }else{
+          this.setState({
+            loginSuccess: false
+          })
         }
       });
     this.setState({
@@ -67,7 +72,7 @@ class VetLoginPage extends Component {
               <input className="form-control" type="password" placeholder="Password"
                      onChange={e => this.handleInputChange(e)} name="password" value={password}
               />
-              <p className="text-danger">{this.props.errorMessage}</p>
+              <p className="text-danger">{!this.state.loginSuccess? 'Incorrect username or password': ''}</p>
             </div>
             <div className="buttonContainer">
               <div className="register float-left text-left">
@@ -96,8 +101,7 @@ class VetLoginPage extends Component {
 function mapStateToProps(state) {
   return {
     id: state.vetlogin.id,
-    success: state.vetlogin.success,
-    errorMessage: state.vetlogin.errorMessage,
+    loginSuccess: state.vetlogin.loginSuccess,
     accessLevel: state.vetlogin.accessLevel
   };
 }

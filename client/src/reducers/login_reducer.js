@@ -1,6 +1,6 @@
 import { LOGIN, REGISTER } from "../actions/index";
 const CURRENT_USER = {
-  success: false,
+  loginSuccess: false,
   id: null,
   errorMessage: ""
 };
@@ -8,11 +8,11 @@ const CURRENT_USER = {
 export default function(state = CURRENT_USER, action) {
     switch (action.type) {
         case LOGIN:
+
             return {
                 ...state,
-                success: action.payload.data.loginSuccess,
                 id: action.payload.data.ownerID,
-                errorMessage: action.payload.data.errors[0]
+                loginSuccess: action.payload.data.loginSuccess
             };
         case REGISTER:
             return {
