@@ -8,7 +8,7 @@ if (!empty($post)) {
     $output['success'] = true;
     $password = sha1($post['password']);
 }
-
+$output['loginSuccess'] = false;
 unset($post['password']);
 
 $username = $post['username'];

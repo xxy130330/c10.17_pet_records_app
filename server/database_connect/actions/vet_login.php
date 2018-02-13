@@ -9,6 +9,7 @@ if (!empty($post)) {
     $output['success'] = true;
     $password = sha1($post['password']);
 }
+$output['loginSuccess'] = false;
     //Don't store the password for longer than we need to
     unset($post['password']);
 
