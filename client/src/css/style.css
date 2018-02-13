@@ -236,6 +236,11 @@ form {
   flex-wrap: wrap;
   margin: auto;
 }
+.contactUsPage .buttonContainer img {
+  margin: auto;
+  width: 10%;
+  height: 10%;
+}
 /************* pet_list *************/
 
 .petAvatar {
