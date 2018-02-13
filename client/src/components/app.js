@@ -99,8 +99,6 @@ class App extends Component {
           />
           {/* <Route path="/*" component={Footer} /> */}
           {this.renderActivateModal()}
-
-
         </div>
       </Router>
     );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+import loading from '../../../dist/assets/images/loading.gif';
 import axios from "axios";
 
 class ParentPage extends Component {
@@ -9,7 +10,8 @@ class ParentPage extends Component {
     super(props);
 
     this.state = {
-      thankyouModal: false
+      thankyouModal: false,
+      load: false
     };
   }
 
@@ -39,6 +41,9 @@ class ParentPage extends Component {
   }
 
   handleSubmits(values) {
+    this.setState({
+      load: true
+    })
     const url =
       "/server/database_connect/server.php?action=post&resource=contact_us";
     axios({
@@ -51,10 +56,12 @@ class ParentPage extends Component {
         message: values.message,
         contact: true
       }
-    }).then(()=>{
+    }).then((data)=>{
+      console.log("contact us:" , data);
       this.props.reset();
       this.setState({
-        thankyouModal: true
+        thankyouModal: true,
+        load: false
       });
     })
   }
@@ -117,7 +124,9 @@ class ParentPage extends Component {
               component={this.renderTextArea}
             />
             <div className="buttonContainer row">
-              <button className="btn btn-success">Send</button>
+            {!this.state.load ? <button className="btn btn-success">
+                Send 
+                </button> : <img src={loading}/>}
             </div>
           </form>
           {this.state.thankyouModal ? this.thankyouModal() : ""}
@@ -137,7 +146,7 @@ function validate(values) {
     error.email = "Please enter your email";
   }
   if (!values.message) {
-    error.message = "Please say something!!!";
+    error.message = "Please enter a message";
   }
   return error;
 }
