@@ -43,7 +43,6 @@ class App extends Component {
 
   renderActivateModal(){
     const currentUrl = window.location.href;
-    console.log('hello', currentUrl);
       if(currentUrl === 'http://localhost:3000/?newuser' || currentUrl === 'https://petvet.tech/?newuser'){
       console.log('yes');
       return(

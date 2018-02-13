@@ -1,7 +1,7 @@
 import { VET_LOGIN, VET_REGISTER, LOG_OUT  } from "../actions/index";
 
 const CURRENT_VET = {
-  success: false,
+  loginSuccess: false,
   id: null,
   errorMessage: "",
   accessLevel: null
@@ -12,9 +12,8 @@ export default function(state = CURRENT_VET, action) {
         case VET_LOGIN:
             return {
                 ...state,
-                success: action.payload.data.loginSuccess,
+                loginSuccess: action.payload.data.loginSuccess,
                 id: action.payload.data.vetID,
-                errorMessage: action.payload.data.errors[0],
                 accessLevel: action.payload.data.accessLevel
             };
         case VET_REGISTER:
