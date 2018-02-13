@@ -12,7 +12,8 @@ class LoginPage extends Component {
       form: {
         username: "",
         password: ""
-      }
+      },
+      loginSuccess: true
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,7 +41,6 @@ class LoginPage extends Component {
               logout: false,
           }
       }).then(function(res) {
-        console.log(res);
         url = '/server/database_connect/server.php?action=post&resource=read_session';
         axios({
             url: url,
@@ -49,8 +49,6 @@ class LoginPage extends Component {
             data: {
               id: 1,
             }
-        }).then(function(res) {
-          console.log(res);
         })
       });
       // //////////////////////////////
@@ -58,9 +56,13 @@ class LoginPage extends Component {
     this.props
       .login(this.state.form.username, this.state.form.password)
       .then(() => {
-        if (this.props.success) {
+        if (this.props.loginSuccess) {
           this.props.switchAuthentication(true);
           this.props.history.push("/pet-list/");
+        }else{
+          this.setState({
+            loginSuccess: false
+          })
         }
       });
 
@@ -74,6 +76,7 @@ class LoginPage extends Component {
   }
 
   render() {
+
     const { username, password } = this.state.form;
 
     const noScroll = {
@@ -115,7 +118,7 @@ class LoginPage extends Component {
                 name="password"
                 value={password}
               />
-              <p className="text-danger">{this.props.errorMessage}</p>
+              <p className="text-danger">{!this.state.loginSuccess? 'Incorrect username or password': ''}</p>
             </div>
             <div className="buttonContainer">
               <div className="register float-left text-left">
@@ -145,8 +148,7 @@ class LoginPage extends Component {
 function mapStateToProps(state) {
   return {
     id: state.login.id,
-    success: state.login.success,
-    errorMessage: state.login.errorMessage
+    loginSuccess: state.login.loginSuccess
   };
 }
 
