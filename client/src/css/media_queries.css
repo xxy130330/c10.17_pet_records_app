@@ -33,11 +33,28 @@
         left: 16px;
     }
 }
+/*special media query for about us page, tablets will have the same view as phones do*/
+@media (max-width: 800px) and (min-width: 320px) {
+    .profileContainer {
+        width: 100%;
+        /* float: left; */
+        display: block;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .textContainer {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
 
 /*Laptops and monitors*/
 @media (min-width: 1025px)  {
     body {
         overflow: hidden;
+        overflow-y: visible;
     }
     .content-modal {
         width: 40% !important;

@@ -563,6 +563,13 @@ h3.medicalRecord {
 .teamContainer h1 {
   margin-bottom: 10%;
 }
+.textContainer {
+  width: 50%;
+  margin-left: 20px;
+}
+.profileContainer {
+  width: 40%;
+}
 
 /************* manually_add_med_notes *************/
 
