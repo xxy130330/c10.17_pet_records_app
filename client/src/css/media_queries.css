@@ -38,6 +38,7 @@
 @media (min-width: 1025px)  {
     body {
         overflow: hidden;
+        overflow-y: visible;
     }
     .content-modal {
         width: 40% !important;
