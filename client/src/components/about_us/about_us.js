@@ -1,4 +1,6 @@
 import React from "react";
+import simonPic from  '../../../dist/assets/images/simon_profile.jpg';
+
 
 const AboutUs = () => {
   return (
@@ -7,15 +9,17 @@ const AboutUs = () => {
       <h1 className="col-12">Meet the team</h1>
         <div className="row teamContainer">
           
-          <div className="col-5">
+          <div className="profileContainer">
             <img
-              src="http://img.timeinc.net/time/photoessays/2010/time_100/t100art_simon_cowell.jpg"
-              className="img-fluid"
+              src={simonPic}
+              className="img-fluid simonPic"
             />
           </div>
-          <div className="col-7">
-            <h3>this is simon</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quod enim perspiciatis mollitia pariatur id cumque voluptatibus dolor, veniam ad fugiat repellat dolorum alias ipsam quibusdam soluta maxime magni animi?</p>  
+          <div className="textContainer">
+            <h3>this is Simon</h3>
+            <p>Simon was the team's primary back end developer. He created endpoints that facilitated CRUD operations throughout the application as well as worked with Amazon Web Services to launch the live app and host content with Amazon S3.
+            In addition Simon worked closely with the front end team, creating media queries for a fresh looking desktop view that utilized the extra real estate on the DOM.
+            </p>
           </div>
         </div>
 
