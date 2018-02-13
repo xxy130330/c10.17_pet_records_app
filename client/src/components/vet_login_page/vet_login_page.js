@@ -101,7 +101,7 @@ class VetLoginPage extends Component {
 function mapStateToProps(state) {
   return {
     id: state.vetlogin.id,
-    loginSuccess: state.vetlogin.success,
+    loginSuccess: state.vetlogin.loginSuccess,
     accessLevel: state.vetlogin.accessLevel
   };
 }
