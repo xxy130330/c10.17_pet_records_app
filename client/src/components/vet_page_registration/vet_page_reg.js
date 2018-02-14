@@ -18,7 +18,7 @@ class VetPage extends Component {
           <div className="form-group row">
             <label className="col-form-label">{label}</label>
             <input className="form-control" type={type} {...input} />
-            <p className="text-danger">{ input.name==='confirmpassword' ? touched && visited && error : touched && !active && error }</p>
+            <p className="text-danger">{ !input.name ? touched && visited && error : touched && !active && error }</p>
           </div>
         );
     }
@@ -43,9 +43,9 @@ class VetPage extends Component {
                       onSubmit={this.props.handleSubmit(this.handleSubmits.bind(this))}>
                       <Field name="fullName" label="Full Name" type="text" component={this.renderInput}/>
                       <Field name="phone" label="Phone" type="text" component={this.renderInput}/>
+                      <Field name="email" label="Email" type="email" component={this.renderInput}/>
                       <Field name="password" label="Password" type="password" component={this.renderInput}/>
                       <Field name="confirmpassword" label="Confirm Password" type="password" component={this.renderInput}/>
-                      <Field name="email" label="Email" type="email" component={this.renderInput}/>
                       <div className="buttonContainer row">
                           <button className="btn btn-success">Sign Up</button>
                       </div>
@@ -68,6 +68,9 @@ function validate(values) {
     }
     if(!(values.password === values.confirmpassword)){
     error.confirmpassword = 'Passwords do not match';
+    }
+    if(!values.confirmpassword){
+        error.confirmpassword = "Please confirm your password";
     }
     if(!values.email){
     error.email = 'Please enter your email'
