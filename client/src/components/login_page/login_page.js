@@ -36,19 +36,15 @@ class LoginPage extends Component {
           method: 'post',
           dataType: 'json',
           data: {
-              id: 1,
               auth: true,
-              logout: true,
+              logout: false,
           }
       }).then(function(res) {
-        url = '/server/database_connect/server.php?action=post&resource=read_session';
+        url = '/server/database_connect/server.php?action=get&resource=read_session';
         axios({
             url: url,
-            method: 'post',
+            method: 'get',
             dataType: 'json',
-            data: {
-              id: 1,
-            }
         })
       });
       // //////////////////////////////
