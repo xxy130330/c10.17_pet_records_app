@@ -8,23 +8,19 @@ import { addPet, uploadImage } from "../../actions/";
 import "../../../node_modules/croppie/croppie.css";
 import croppie from "croppie";
 import loading from '../../../dist/assets/images/loading.gif';
+import { Field, reduxForm } from "redux-form";
 
 class AddPet extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      form: {
-        name: "",
-        dob: "",
-        breed: ""
-      },
       buttonClick: false,
       errorMessage: "",
       imageUpload: false
     };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+
+
     this.upload = this.upload.bind(this);
     this.currentOwnerId = null;
     this.url = null;
@@ -40,22 +36,13 @@ class AddPet extends Component {
     }
   }
 
-  handleInputChange(e) {
-    const { name, value } = e.target;
-    const { form } = this.state;
-    form[name] = value;
-    this.setState({ form: { ...form } });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-
+  handleSubmit(values) {
     this.setState({
       imageUpload:false
     })
 
 
-    const { name, dob, breed } = this.state.form;
+    const { name, dob, breed } = values;
     if (!this.url) {
       this.props
         .addPet(
@@ -84,13 +71,13 @@ class AddPet extends Component {
             petID: this.props.petId
           }
         }).then(result => {
-          this.upload(result.data.data[0]);
+          this.upload(result.data.data[0], values);
         });
       });
   }
 
-  upload(url) {
-    const { name, dob, breed } = this.state.form;
+  upload(url, values) {
+    const { name, dob, breed } = values;
     this.url = url;
 
     this.props
@@ -99,13 +86,7 @@ class AddPet extends Component {
         this.props.history.push("/pet-to-vet/" + this.props.petId + "/null");
       })
 
-    this.setState({
-      form: {
-        name: "",
-        dob: "",
-        breed: ""
-      }
-    });
+    this.props.reset();
   }
 
   getFileName(e) {
@@ -129,7 +110,6 @@ class AddPet extends Component {
       })
 
     this.setState({
-      form: { ...this.state.form },
       buttonClick: true,
     });
   }
@@ -151,8 +131,22 @@ class AddPet extends Component {
 
   }
 
+
+  renderInput({input, type, label, meta:{touched, error}, meta}){
+    return(
+      <div className="form-group">
+        <label>{label}</label>
+        <input
+          className="form-control input-lg"
+          type={type}
+          {...input}
+        />
+        <p className="text-danger">{touched && error}</p>
+      </div>
+    )
+  }
+
   render() {
-    const { name, dob, breed } = this.state.form;
 
     const input = this.state.buttonClick ? ( "" ) : (
       <md-button>
@@ -166,7 +160,7 @@ class AddPet extends Component {
       </md-button>
     );
 
-    console.log('image state', this.state.imageUpload);
+
 
     return (
       <div className="bodyContainer">
@@ -181,50 +175,56 @@ class AddPet extends Component {
           </div>
         </div>
 
-        <form className="container" onSubmit={e => this.handleSubmit(e)}>
+        <form className="container" onSubmit={this.props.handleSubmit(this.handleSubmit.bind(this))}>
           <div className="text-center smallTagDiv">
             <small>Click on the camera to upload an image.</small>
           </div>
 
-          <div className="form-group">
-            <label>Name</label>
-            <input
-              className="form-control input-lg"
-              type="text"
-              onChange={e => this.handleInputChange(e)}
-              name="name"
-              value={name}
-            />
-          </div>
+          <Field
+            name="name"
+            type="text"
+            label="Name"
+            component={this.renderInput}
+          />
+          <Field
+            name="dob"
+            type="date"
+            label="D O B"
+            component={this.renderInput}
+          />
+          <Field
+            name="breed"
+            type="text"
+            label="Breed"
+            component={this.renderInput}
+          />
 
-          <div className="form-group">
-            <label>D O B</label>
-            <input
-              className="form-control input-lg"
-              type="date"
-              onChange={e => this.handleInputChange(e)}
-              name="dob"
-              value={dob}
-            />
-          </div>
-
-          <div className="form-group">
-            <label>Breed</label>
-            <input
-              className="form-control input-lg"
-              type="text"
-              onChange={e => this.handleInputChange(e)}
-              name="breed"
-              value={breed}
-            />
-          </div>
-
-          <button className="btn btn-primary">Add Pet</button>
+          <button type='submit' className="btn btn-primary">Add Pet</button>
         </form>
       </div>
     );
   }
 }
+
+
+function validate(values) {
+  const error = {};
+  if (!values.name) {
+    error.name = "Please enter your pet's name";
+  }
+  if (!values.dob) {
+    error.dob = "Passwords enter your pet's D O B";
+  }
+  if (!values.breed) {
+    error.breed = "Please enter your pet's breed";
+  }
+  return error;
+}
+
+AddPet = reduxForm({
+  form: "add-pet",
+  validate: validate
+})(AddPet);
 
 function mapStateToProps(state) {
   return {
