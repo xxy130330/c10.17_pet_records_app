@@ -37,15 +37,12 @@ export function updateSessions(id,auth, logout){
 }
 
 export const READ_SESSIONS = "READ_SESSIONS";
-export function readSessions(id){
-    const url = '/server/database_connect/server.php?action=post&resource=read_session';
+export function readSessions(){
+    const url = '/server/database_connect/server.php?action=get&resource=read_session';
     const request=axios({
         url: url,
-        method: 'post',
+        method: 'get',
         dataType: 'json',
-        data: {
-            id: id,
-        }
     });
     return {
         type: READ_SESSIONS,

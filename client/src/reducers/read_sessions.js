@@ -1,17 +1,19 @@
 import { READ_SESSIONS, UPDATE_SESSIONS } from "../actions"
 
 const DEFAULT_STATE = {
-    auth: null
+    auth: null,
+    id: null,
+    logoutSuccess: null
 
 };
 export default function(state = DEFAULT_STATE, action) {
     switch (action.type) {
         case UPDATE_SESSIONS:
-            console.log('we are updating the sessions and this is the action.payload ', action.payload);
-            return {auth: action.payload.data.authorized};
+            console.log('we are updating the sessions and this is the action.payload ', action.payload.data.authorized);
+            return {auth: action.payload.data.authorized, ...state};
         case READ_SESSIONS:
             console.log('please work this is the action payload, ', action.payload);
-            return  {auth: action.payload.data.authorized};
+            return  {id: action.payload.data.id, auth: action.payload.data.authorized};
         default:
             console.log('going through the default state in read sessions');
             return state;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-// import { switchAuthentication } from "../../actions";
+import { updateSessions } from "../../actions";
 import Logo from "../../../../server/images/petvet_logo.png";
 import ReactDOM from "react-dom";
 
@@ -32,7 +32,8 @@ class NavBar extends Component {
   handleLogout(){
       const auth = false;
       const logout = true;
-      const {id}= this.props.id;
+      //hard coded id cus it doesnt matter
+      const {id}= 1;
       this.props.updateSessions(id, auth, logout).then(()=>{
             console.log('this is the current authorization', this.props.auth);
       })
@@ -139,4 +140,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps )(NavBar);
+export default connect(mapStateToProps, {updateSessions} )(NavBar);

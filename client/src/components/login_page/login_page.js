@@ -41,7 +41,7 @@ class LoginPage extends Component {
       //         }
       //     })
       // });
-    /////////////////////////////////////just for testing purposes
+    ///////////////////////////////////just for testing purposes
     //   let url = '/server/database_connect/server.php?action=post&resource=update_session';
     //   axios({
     //       url: url,

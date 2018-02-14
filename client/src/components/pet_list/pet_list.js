@@ -15,12 +15,14 @@ class PetList extends Component {
     };
   }
   componentWillMount() {
-      console.log('this is the current owner id ', this.props);
-      this.props.readSessions(this.props.id).then(()=>{
+      if(!this.props.auth){
+          this.props.history.push('/');
+      }
+      this.props.readSessions().then(()=>{
           console.log('this is the current auth', this.props.auth);
           let currentOwnerId= null;
           if(this.props.auth){
-              currentOwnerId= this.props.id;
+              currentOwnerId= this.props.sessionId;
           }
           this.props.fetchPetData(currentOwnerId).then(()=>{
               if(!this.props.petdata.length) {
@@ -151,7 +153,8 @@ function mapStateToProps(state) {
         success: state.login.success,
         errorMessage: state.login.errorMessage,
         delete_pet: state.deletePet.delete_pet,
-        auth: state.sessions.auth
+        auth: state.sessions.auth,
+        sessionId: state.sessions.id
     };
 }
 export default connect(mapStateToProps, { fetchPetData: fetchPetData, delete_pet: delete_pet, readSessions:readSessions} )(PetList);
