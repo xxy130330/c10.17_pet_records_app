@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { switchAuthentication } from "../../actions";
+// import { switchAuthentication } from "../../actions";
 import Logo from "../../../../server/images/petvet_logo.png";
 import ReactDOM from "react-dom";
 
@@ -29,7 +29,14 @@ class NavBar extends Component {
       menu: menuState
     });
   }
-
+  handleLogout(){
+      const auth = false;
+      const logout = true;
+      const {id}= this.props.id;
+      this.props.updateSessions(id, auth, logout).then(()=>{
+            console.log('this is the current authorization', this.props.auth);
+      })
+  }
   showMenu() {
     return (
       <div
@@ -62,7 +69,7 @@ class NavBar extends Component {
           <Link to="/contact-us" onClick={this.handleOnClick}>
             <div> CONTACT US </div>
           </Link>
-          <Link to="/" onClick={() => this.props.switchAuthentication(false)}>
+          <Link to="/" onClick={this.handleLogout()}>
             <div> LOG OUT </div>
           </Link>
         </div>
@@ -125,10 +132,11 @@ class NavBar extends Component {
 }
 function mapStateToProps(state) {
   return {
-    auth: state.user.auth,
-    vetAccessLevel: state.vetlogin.accessLevel,
-    vetId: state.vetlogin.id
+      id: state.login.id,
+      auth: state.sessions.auth,
+      vetAccessLevel: state.vetlogin.accessLevel,
+      vetId: state.vetlogin.id
   };
 }
 
-export default connect(mapStateToProps, { switchAuthentication })(NavBar);
+export default connect(mapStateToProps )(NavBar);

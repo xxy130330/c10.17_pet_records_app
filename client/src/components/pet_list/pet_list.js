@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchPetData, delete_pet } from "../../actions/";
+import { fetchPetData, delete_pet,readSessions } from "../../actions/";
 import '../assets/css/modal.css';
 
 class PetList extends Component {
@@ -15,20 +15,22 @@ class PetList extends Component {
     };
   }
   componentWillMount() {
-    let currentOwnerId = null;
-    if(this.props.id){
-      currentOwnerId = this.props.id;
-      localStorage.id = currentOwnerId;
-    } else {
-      currentOwnerId = localStorage.id;
-    }
-    this.props.fetchPetData(currentOwnerId).then(()=>{
-        if(!this.props.petdata.length) {
-            this.setState({
-                infoModal: true
-            })
-        }
-    });
+      console.log('this is the current owner id ', this.props);
+      this.props.readSessions(this.props.id).then(()=>{
+          console.log('this is the current auth', this.props.auth);
+          let currentOwnerId= null;
+          if(this.props.auth){
+              currentOwnerId= this.props.id;
+          }
+          this.props.fetchPetData(currentOwnerId).then(()=>{
+              if(!this.props.petdata.length) {
+                  this.setState({
+                      infoModal: true
+                  })
+              }
+          });
+      });
+
   }
   infoModal(){
     return(
@@ -148,7 +150,8 @@ function mapStateToProps(state) {
         id: state.login.id,
         success: state.login.success,
         errorMessage: state.login.errorMessage,
-        delete_pet: state.deletePet.delete_pet
+        delete_pet: state.deletePet.delete_pet,
+        auth: state.sessions.auth
     };
 }
-export default connect(mapStateToProps, { fetchPetData: fetchPetData, delete_pet: delete_pet})(PetList);
+export default connect(mapStateToProps, { fetchPetData: fetchPetData, delete_pet: delete_pet, readSessions:readSessions} )(PetList);

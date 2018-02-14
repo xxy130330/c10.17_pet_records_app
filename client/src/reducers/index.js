@@ -11,7 +11,7 @@ import DeleteMedicalRecordItemReducer from './delete_medical_record_reducer';
 import UploadImageReducer from './upload_image_reducer';
 import editMedicalRecordReducer from './edit_medical_record_reducer';
 import VetLoginReducer from './vet_login_reducer';
-import userReducer from './user_reducer';
+import Sessions from './read_sessions';
 import VetClientDataReducer from './fetch_vet_client_data_reducer';
 import VetClientPetsReducer from './vet_client_pets_reducer';
 
@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
   deletePet: DeletePetReducer,
   deleteMedicalRecordItem: DeleteMedicalRecordItemReducer,
   uploadImage: UploadImageReducer,
-  user: userReducer,
+  sessions: Sessions,
   editMedicalRecord: editMedicalRecordReducer,
   vetlogin: VetLoginReducer,
   vetClientData: VetClientDataReducer,

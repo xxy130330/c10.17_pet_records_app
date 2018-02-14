@@ -1,21 +1,61 @@
 import axios from "axios";
-export const LOCALAUTH = "LOCALAUTH";
+// export const LOCALAUTH = "LOCALAUTH";
 //******** user Log in auth **********/
-export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
-export const LOG_OUT ="LOG_OUT";
-export function switchAuthentication(auth) {
-  if(auth){
-      return {
-          type: SWITCH_AUTHENTICATION,
-          auth: auth
-      };
-  } else {
-      return {
-          type: LOG_OUT,
-          auth: auth
-      };
-  }
+// export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
+// export const LOG_OUT ="LOG_OUT";
+// export function switchAuthentication(auth) {
+//   if(auth){
+//       return {
+//           type: SWITCH_AUTHENTICATION,
+//           auth: auth
+//       };
+//   } else {
+//       return {
+//           type: LOG_OUT,
+//           auth: auth
+//       };
+//   }
+// }
+export const UPDATE_SESSIONS = "SESSIONS";
+export function updateSessions(id,auth, logout){
+    console.log(' we made it to the action', id, auth, logout);
+    const url = '/server/database_connect/server.php?action=post&resource=update_session';
+    const request =axios({
+        url: url,
+        method: 'post',
+        dataType: 'json',
+        data: {
+            id: id,
+            auth: auth,
+            logout: logout,
+        }
+    });
+    return{
+        type: UPDATE_SESSIONS,
+        payload: request
+    }
 }
+
+export const READ_SESSIONS = "READ_SESSIONS";
+export function readSessions(id){
+    const url = '/server/database_connect/server.php?action=post&resource=read_session';
+    const request=axios({
+        url: url,
+        method: 'post',
+        dataType: 'json',
+        data: {
+            id: id,
+        }
+    });
+    return {
+        type: READ_SESSIONS,
+        payload: request
+    }
+
+}
+
+
+
 //****** GET pet list records ********/
 const pet_list_url = "/server/database_connect/server.php?action=get&resource=pets&ID=";
 export const PET_DATA = "PET_DATA";

@@ -76,25 +76,25 @@ class App extends Component {
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />
           <Route path="/vet-login-page/" component={VetLoginPage} />
-          <Route path="/pet-list/" component={auth(PetList)} />
-          <Route exact path="/pet-profile/:id" component={auth(PetProfile)} />
+          <Route path="/pet-list/" component={PetList} />
+          <Route exact path="/pet-profile/:id" component={PetProfile} />
           <Route
             exact
             path="/pet-profile/:petId/record-item/:recordId"
-            component={auth(RecordItem)}
+            component={RecordItem}
           />
           <Route path="/parent-page" component={ParentPage} />
-          <Route path="/add-pet/" component={auth(AddPet)} />
+          <Route path="/add-pet/" component={AddPet} />
           <Route path="/vet-page" component={VetPage} />
           <Route
             path="/pet-profile/:id/add-med-note"
-            component={auth(AddMedNote)}
+            component={AddMedNote}
           />
-          <Route path="/pet-to-vet/:petId/:vetName" component={auth(PetToVet)} />
-          <Route path="/client-list/:vetId/" component={auth(ClientList)} />
+          <Route path="/pet-to-vet/:petId/:vetName" component={PetToVet} />
+          <Route path="/client-list/:vetId/" component={ClientList} />
           <Route
             path="/vet-client-pets/:vetId/:ownerId"
-            component={auth(VetClientPets)}
+            component={VetClientPets}
           />
           {/* <Route path="/*" component={Footer} /> */}
           {this.renderActivateModal()}
