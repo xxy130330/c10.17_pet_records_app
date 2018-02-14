@@ -36,8 +36,9 @@ class LoginPage extends Component {
           method: 'post',
           dataType: 'json',
           data: {
-              auth: true,
-              logout: false,
+              id: 1,
+              auth: false,
+              logout: true,
           }
       }).then(function(res) {
         url = '/server/database_connect/server.php?action=get&resource=read_session';
