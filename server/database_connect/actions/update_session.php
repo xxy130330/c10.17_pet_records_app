@@ -13,11 +13,14 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 $id = $post['id'];
 $auth = $post['auth'];
 $logout = $post['logout'];
+$output['logoutSuccess'] = false;
 
 if ($logout) {
     //clear the session if the user is logging out
     session_destroy();
     $output['success'] = true;
+    $output['logoutSuccess'] = true;
+    $output['authorized'] = false;
 } else {
     //set the session auth to whatever is passed to the backend
     $authObj = (object) array($id => $auth);
