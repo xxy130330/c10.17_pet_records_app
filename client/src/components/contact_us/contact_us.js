@@ -19,13 +19,9 @@ class ParentPage extends Component {
   }) {
     return (
       <div className="form-group row">
-        <div>
           <label className="col-form-label">{label}</label>
-          <p className="text-danger errorMessage">
-            {input.name === "confirmpassword" ? touched && visited && error : touched && !active && error}
-          </p>
-        </div>
-        <input className="form-control" type={type} {...input} />
+          <input className="form-control" type={type} {...input} />
+          <p className="text-danger">{input.name === "confirmpassword" ? touched && visited && error : touched && !active && error}</p>
       </div>
     );
   }
@@ -33,9 +29,9 @@ class ParentPage extends Component {
   renderTextArea({ input, label, meta: { touched, error, active } }) {
     return (
       <div className="form-group">
-        <label>{label}</label>
-        <textarea {...input} cols="30" rows="6" className="form-control" />
-        <p className="text-danger">{touched && !active && error}</p>
+          <label>{label}</label>
+          <textarea {...input} cols="30" rows="6" className="form-control" />
+          <p className="text-danger">{touched && !active && error}</p>
       </div>
     );
   }
