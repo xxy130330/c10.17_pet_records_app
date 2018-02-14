@@ -2,6 +2,7 @@ import React from "react";
 import simonPic from  '../../../dist/assets/images/simon_profile.jpg';
 import sangwooPic from '../../../dist/assets/images/sangwooPic.jpg';
 import christianPic from '../../../dist/assets/images/christian_profile.jpg';
+import christinPic from '../../../dist/assets/images/christinPic.JPG';
 
 const AboutUs = () => {
   return (
@@ -55,13 +56,13 @@ const AboutUs = () => {
         <div className="row teamContainer">
           <div className="profileContainer">
             <img
-              src="https://www.akingump.com/images/content/3/0/v2/30920/Carey-Christin-highres.jpg"
-              className="img-fluid"
+                src={christinPic}
+                className="img-fluid"
             />
           </div>
           <div className="textContainer">
-            <h3>this is christin</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quod enim perspiciatis mollitia pariatur id cumque voluptatibus dolor, veniam ad fugiat repellat dolorum alias ipsam quibusdam soluta maxime magni animi?</p>
+            <h3>Christin</h3>
+            <p>Christin, the PetVet app idea owner, worked as a UX designer and back-end developer on the PetVet team. She crafted delightful user-centered prototypes in order to enhance user experience. She also worked on the database connection endpoints with the front-end, and other back-end development tasks such as setting up CRON jobs and error-logging on the live server.</p>
 
           </div>
         </div>
