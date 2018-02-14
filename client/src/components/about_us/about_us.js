@@ -1,6 +1,7 @@
 import React from "react";
 import simonPic from  '../../../dist/assets/images/simon_profile.jpg';
 import sangwooPic from '../../../dist/assets/images/sangwooPic.jpg';
+import christianPic from '../../../dist/assets/images/christian_profile.jpg';
 
 const AboutUs = () => {
   return (
@@ -25,13 +26,15 @@ const AboutUs = () => {
         <div className="row teamContainer">
           <div className="profileContainer">
             <img
-              src="http://clipart.printcolorcraft.com/wp-content/uploads/the-cross/jesus%20on%20the%20cross%20clipart%201.jpg"
+              src={christianPic}
               className="img-fluid"
             />
           </div>
           <div className="textContainer">
-            <h3>this is christian</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore quod enim perspiciatis mollitia pariatur id cumque voluptatibus dolor, veniam ad fugiat repellat dolorum alias ipsam quibusdam soluta maxime magni animi?</p>
+            <h3>Christian</h3>
+              <p>Christian was a part of the front-end team, focusing on the majority of logic, page-routing, and form-handling. He also played a pivotal role in team cohesion and task management.
+              Despite Christian's focus on the front-end, he also worked closely with Simon and Christin for front/back-end integration.
+              </p>
           </div>
         </div>
 
