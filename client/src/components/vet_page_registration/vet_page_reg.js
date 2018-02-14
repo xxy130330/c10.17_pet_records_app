@@ -43,9 +43,9 @@ class VetPage extends Component {
                       onSubmit={this.props.handleSubmit(this.handleSubmits.bind(this))}>
                       <Field name="fullName" label="Full Name" type="text" component={this.renderInput}/>
                       <Field name="phone" label="Phone" type="text" component={this.renderInput}/>
+                      <Field name="email" label="Email" type="email" component={this.renderInput}/>
                       <Field name="password" label="Password" type="password" component={this.renderInput}/>
                       <Field name="confirmpassword" label="Confirm Password" type="password" component={this.renderInput}/>
-                      <Field name="email" label="Email" type="email" component={this.renderInput}/>
                       <div className="buttonContainer row">
                           <button className="btn btn-success">Sign Up</button>
                       </div>
