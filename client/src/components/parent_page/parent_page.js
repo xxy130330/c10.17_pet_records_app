@@ -20,11 +20,7 @@ class ParentPage extends Component {
       <div className="form-group row">
         <label className="col-form-label">{label}</label>
         <input className="form-control" type={type} {...input} />
-        <p className="text-danger">
-          {input.name === "confirmpassword"
-            ? touched && visited && error
-            : touched && !active && error}
-        </p>
+        <p className="text-danger">{ !input.name ? touched && visited && error : touched && !active && error }</p>
       </div>
     );
   }
@@ -80,6 +76,9 @@ function validate(values) {
   }
   if (!(values.password === values.confirmpassword)) {
     error.confirmpassword = "Passwords do not match";
+  }
+  if(!values.confirmpassword){
+      error.confirmpassword = "Please confirm your password";
   }
   if (!values.email) {
     error.email = "Please enter your email";
