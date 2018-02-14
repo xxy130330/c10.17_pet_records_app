@@ -59,6 +59,11 @@
     .content-modal {
         width: 40% !important;
     }
+    .hamburger {
+        position: relative;
+        left: 100%;
+        transform: translateX(-34px);
+    }
     /********* landing_page ********/
     .loginLogo {
         width: 20%;
@@ -186,8 +191,8 @@
         transition-duration: 1s;
     }
     .menuContainer {
-        width: 20vw;
-        padding: 1%;
+        width: 190px;
+        padding: 3%;
         float: right;
     }
     .menuContainer div {

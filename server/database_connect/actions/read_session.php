@@ -9,8 +9,9 @@ session_start();
 if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
-$id = $post['id'];
+//$id = $post['id'];
 $auth = json_decode($_SESSION['petVetAuth']);
-$output['authorized'] = $auth->$id;
+$output['authorized'] = $auth->auth;
+$output['id'] = $auth->id;
 $output['success'] = true;
 ?>
