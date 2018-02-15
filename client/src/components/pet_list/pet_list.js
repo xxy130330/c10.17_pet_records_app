@@ -96,7 +96,7 @@ class PetList extends Component {
       const {petIndex}= this.state;
       const petDataProps= this.props.petdata;
       this.setState({...this.state, showModal:false, canDelete: false});
-      this.props.delete_pet(petDataProps[petIndex]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')).then(
+      this.props.delete_pet(petDataProps[petIndex]["ID"]).then(()=>this.props.fetchPetData(this.props.sessionId).then(
           ()=>this.setState({...this.state, showModal: false, canDelete: false,})
       ));
   }

@@ -28,40 +28,6 @@ class LoginPage extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-
-      // then(function(res) {
-      //     url = '/server/database_connect/server.php?action=post&resource=read_session';
-      //     axios({
-      //         url: url,
-      //         method: 'post',
-      //         dataType: 'json',
-      //         data: {
-      //             id: 1,
-      //         }
-      //     })
-      // });
-    ///////////////////////////////////just for testing purposes
-    //   let url = '/server/database_connect/server.php?action=post&resource=update_session';
-    //   axios({
-    //       url: url,
-    //       method: 'post',
-    //       dataType: 'json',
-    //       data: {
-    //           id: 1,
-    //           auth: false,
-    //           logout: true,
-    //       }
-    //   }).then(function(res) {
-    //     url = '/server/database_connect/server.php?action=get&resource=read_session';
-    //     axios({
-    //         url: url,
-    //         method: 'get',
-    //         dataType: 'json',
-    //     })
-    //   });
-      // //////////////////////////////
-
     this.props.login(this.state.form.username, this.state.form.password)
       .then(() => {
         if (this.props.loginSuccess) {

@@ -4,7 +4,7 @@ import photo from "../../../../server/images/photo.png";
 import "./add_pet.css";
 import axios from "axios";
 import { connect } from "react-redux";
-import { addPet, uploadImage } from "../../actions/";
+import { addPet, uploadImage, readSessions } from "../../actions/";
 import "../../../node_modules/croppie/croppie.css";
 import croppie from "croppie";
 import loading from '../../../dist/assets/images/loading.gif';
@@ -236,5 +236,6 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   addPet,
-  uploadImage
+  uploadImage,
+    readSessions
 })(AddPet);
