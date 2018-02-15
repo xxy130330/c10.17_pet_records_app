@@ -7,7 +7,7 @@ import jayPic from '../../../dist/assets/images/jay.jpg';
 
 const AboutUs = () => {
   return (
-    <div className="container">
+    <div className="bgAboutUsContainer">
       <div className="aboutUsContainer">
       <h1 className="col-12">Meet the team</h1>
         <div className="row teamContainer">
@@ -49,8 +49,7 @@ const AboutUs = () => {
           </div>
           <div className="textContainer">
             <h3>Jay</h3>
-            <p>As part of the front-end development team, Jay helped with a lot of css and basic foundation of each components and pages. He also helped with modals and front-end user authentication. </p>
-
+            <p>As part of the front-end development team, Jay helped with a lot of css and basic foundation of each components and pages. He also helped with modals, menu, and front-end user authentication.</p>
           </div>
         </div>
 

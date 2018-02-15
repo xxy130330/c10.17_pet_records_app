@@ -8,6 +8,7 @@ import App from "./components/app";
 import {LOCALAUTH} from './actions';
 
 const store = createStore(rootReducers, {}, applyMiddleware(ReduxPromise));
+
 if(localStorage.auth){
     store.dispatch({type: LOCALAUTH})
 }
