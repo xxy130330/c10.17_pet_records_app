@@ -21,10 +21,10 @@ export function updateSessions(id,auth, logout){
     console.log(' we made it to the action', id, auth, logout);
     const url = '/server/database_connect/server.php?action=post&resource=update_session';
 
-    if(!auth){
+    // if(!auth){
 
-        sessionStorage.removeItem('auth')
-    }
+    //     sessionStorage.removeItem('auth')
+    // }
 
     const request =axios({
         url: url,
@@ -51,10 +51,10 @@ export function readSessions(){
         dataType: 'json',
     });
 
-    request.then(resp=>{
-        console.log('RESP from sessions', resp);
-        sessionStorage.setItem('auth', resp.data.authorized);
-    })
+    // request.then(resp=>{
+    //     console.log('RESP from sessions', resp);
+    //     sessionStorage.setItem('auth', resp.data.authorized);
+    // })
 
     return {
         type: READ_SESSIONS,
