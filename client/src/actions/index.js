@@ -20,6 +20,12 @@ export const UPDATE_SESSIONS = "SESSIONS";
 export function updateSessions(id,auth, logout){
     console.log(' we made it to the action', id, auth, logout);
     const url = '/server/database_connect/server.php?action=post&resource=update_session';
+
+    if(!auth){
+
+        sessionStorage.removeItem('auth')
+    }
+
     const request =axios({
         url: url,
         method: 'post',
@@ -44,6 +50,12 @@ export function readSessions(){
         method: 'get',
         dataType: 'json',
     });
+
+    request.then(resp=>{
+        console.log('RESP from sessions', resp);
+        sessionStorage.setItem('auth', resp.data.authorized);
+    })
+
     return {
         type: READ_SESSIONS,
         payload: request
