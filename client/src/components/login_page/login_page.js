@@ -36,7 +36,7 @@ class LoginPage extends Component {
             const {id}= this.props;
             // this.props.switchAuthentication(true);
             this.props.updateSessions(id, auth, logout).then(()=>{
-                this.props.readSessions(id).then(()=>{
+                this.props.readSessions().then(()=>{
                     console.log('after updating sessions we get this user object ', this.props.auth);
                     this.props.history.push("/pet-list/");
                 });
