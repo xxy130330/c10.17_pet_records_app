@@ -15,11 +15,11 @@ class PetList extends Component {
     };
   }
   componentWillMount() {
-      if(!this.props.auth){
-          this.props.history.push('/');
-      }
       this.props.readSessions().then(()=>{
           console.log('this is the current auth', this.props.auth);
+          if(!this.props.auth){
+              this.props.history.push('/');
+          }
           let currentOwnerId= null;
           if(this.props.auth){
               currentOwnerId= this.props.sessionId;

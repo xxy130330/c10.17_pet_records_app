@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchPetData, fetchProfileData, deleteMedicalRecordItem } from "../../actions/";
 import '../assets/css/modal.css';
 import axios from 'axios';
+import {readSessions} from "../../actions/index";
 
 class PetProfile extends Component {
     constructor(props){
@@ -16,15 +17,20 @@ class PetProfile extends Component {
         }
     }
     componentWillMount() {
-        let currentOwnerId = null;
-        if(this.props.id){
-          currentOwnerId = this.props.id;
-          localStorage.id = currentOwnerId;
-        } else {
-          currentOwnerId = localStorage.id;
-        }
-        this.props.fetchProfileData(this.props.match.params.id)
-        .then(()=>this.props.fetchPetData(currentOwnerId))
+
+        this.props.readSessions().then(()=>{
+            if(!this.props.auth){
+                this.props.history.push('/');
+            }
+            console.log('these are the current props after read sessions', this.props);
+            let currentOwnerId= null;
+            if(this.props.auth){
+                currentOwnerId= this.props.sessionId;
+            }
+            this.props.fetchProfileData(this.props.match.params.id)
+                .then(()=>this.props.fetchPetData(currentOwnerId));
+        });
+
     }
     softDeleteRecord() {
         const {recordIndex} =this.state;
@@ -56,13 +62,14 @@ class PetProfile extends Component {
                 ownerID: ownerId,
             }
         }).then(res => {
-            let currentOwnerId = null;
-            if(this.props.id){
-                currentOwnerId = this.props.id;
-                localStorage.id = currentOwnerId;
-            } else {
-                currentOwnerId = localStorage.id;
-            }
+            console.log('these are the props after clicking disconnect vet', this.props);
+            let currentOwnerId = this.props.sessionId;
+            // if(this.props.id){
+            //     currentOwnerId = this.props.id;
+            //     localStorage.id = currentOwnerId;
+            // } else {
+            //     currentOwnerId = localStorage.id;
+            // }
             this.props.fetchProfileData(this.props.match.params.id)
                 .then(()=>this.props.fetchPetData(currentOwnerId));
         });
@@ -204,11 +211,14 @@ function mapStateToProps(state) {
         petProfile: state.petProfile,
         deleteMedicalRecordItem: state.deleteMedicalRecordItem,
         vetAccessLevel: state.vetlogin.accessLevel,
-        ownerId: state.login.id
+        ownerId: state.login.id,
+        auth: state.sessions.auth,
+        sessionId: state.sessions.id
   };
 }
 export default connect(mapStateToProps, {
     fetchPetData: fetchPetData,
     fetchProfileData: fetchProfileData,
     deleteMedicalRecordItem: deleteMedicalRecordItem,
+    readSessions: readSessions
 })(PetProfile);
