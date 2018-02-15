@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
-import { fetchVetClientData } from "../../actions/";
+import { fetchVetClientData, readSessions } from "../../actions/";
 import "../assets/css/modal.css";
 
 class ClientList extends Component {
@@ -14,6 +14,9 @@ class ClientList extends Component {
     };
   }
   componentWillMount() {
+    this.props.readSessions().then(()=>{
+        console.log('these are now the props in client list ', this.props);
+    });
     const params = this.props.match.params;
     this.props.fetchVetClientData(params.vetId).then(() => {
       if (!this.props.clientList.length) {
@@ -25,7 +28,7 @@ class ClientList extends Component {
   }
   handleClientClick(index) {
     this.props.history.push(
-      "/vet-client-pets/" + this.props.match.params.vetId + "/" + this.props.clientList[index].ownerID 
+      "/vet-client-pets/" + this.props.match.params.vetId + "/" + this.props.clientList[index].ownerID
     );
   }
   infoModal() {
@@ -97,10 +100,11 @@ function mapStateToProps(state) {
     clientList: state.vetClientData.clientList,
     vetAccessLevel: state.vetlogin.accessLevel,
     email: state.vetClientData.email,
-    ref_id: state.vetClientData.ref_id
+    ref_id: state.vetClientData.ref_id,
+      auth: state.sessions.auth,
+      id: state.sessions.id
+
   };
 }
 
-export default connect(mapStateToProps, {
-  fetchVetClientData
-})(ClientList);
+export default connect(mapStateToProps, {fetchVetClientData, readSessions})(ClientList);

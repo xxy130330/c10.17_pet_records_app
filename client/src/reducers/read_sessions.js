@@ -9,13 +9,10 @@ const DEFAULT_STATE = {
 export default function(state = DEFAULT_STATE, action) {
     switch (action.type) {
         case UPDATE_SESSIONS:
-            console.log('we are updating the sessions and this is the action.payload ', action.payload.data.authorized);
             return {auth: action.payload.data.authorized, ...state};
         case READ_SESSIONS:
-            console.log('please work this is the action payload, ', action.payload);
             return  {id: action.payload.data.id, auth: action.payload.data.authorized};
         default:
-            console.log('going through the default state in read sessions');
             return state;
     }
 }

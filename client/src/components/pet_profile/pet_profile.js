@@ -14,7 +14,7 @@ class PetProfile extends Component {
             canDelete: false,
             showModal: false,
             recordIndex: null,
-        }
+        };
     }
     componentWillMount() {
 
@@ -23,12 +23,11 @@ class PetProfile extends Component {
                 this.props.history.push('/');
             }
             console.log('these are the current props after read sessions', this.props);
-            let currentOwnerId= null;
             if(this.props.auth){
-                currentOwnerId= this.props.sessionId;
+                let currentOwnerId= this.props.sessionId;
+                this.props.fetchProfileData(this.props.match.params.id)
+                    .then(()=>this.props.fetchPetData(currentOwnerId));
             }
-            this.props.fetchProfileData(this.props.match.params.id)
-                .then(()=>this.props.fetchPetData(currentOwnerId));
         });
 
     }
@@ -44,7 +43,7 @@ class PetProfile extends Component {
     //////****THIS IS WHERE YOU DISCONNECT VET FUNCTION. THROW AXIOS CALL IN HERE.****/////////
     disconnectVet(){
         const petDataArray= this.props.petdata;
-        const ownerId = this.props.ownerId;
+        const ownerId = this.props.sessionId;
         const petId= this.props.match.params.id;
         for (var i =0; i< petDataArray.length; i++){
             if(petDataArray[i]['ID']===petId){
@@ -64,12 +63,6 @@ class PetProfile extends Component {
         }).then(res => {
             console.log('these are the props after clicking disconnect vet', this.props);
             let currentOwnerId = this.props.sessionId;
-            // if(this.props.id){
-            //     currentOwnerId = this.props.id;
-            //     localStorage.id = currentOwnerId;
-            // } else {
-            //     currentOwnerId = localStorage.id;
-            // }
             this.props.fetchProfileData(this.props.match.params.id)
                 .then(()=>this.props.fetchPetData(currentOwnerId));
         });
@@ -211,9 +204,10 @@ function mapStateToProps(state) {
         petProfile: state.petProfile,
         deleteMedicalRecordItem: state.deleteMedicalRecordItem,
         vetAccessLevel: state.vetlogin.accessLevel,
-        ownerId: state.login.id,
+        // ownerId: state.login.id,
         auth: state.sessions.auth,
-        sessionId: state.sessions.id
+        sessionId: state.sessions.id,
+
   };
 }
 export default connect(mapStateToProps, {

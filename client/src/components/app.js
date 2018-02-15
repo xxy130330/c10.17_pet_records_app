@@ -72,7 +72,7 @@ class App extends Component {
         <div className="mainContainer">
           <Route path="/*" component={Header} />
           <Route path="/about-us" component={AboutUs} />
-          <Route path="/contact-us/" component={ContactUs}/>
+          <Route path="/contact-us/" component={(ContactUs)}/>
           <Route exact path="/" component={LandingPage} />
           <Route path="/login-page/" component={LoginPage} />
           <Route path="/vet-login-page/" component={VetLoginPage} />

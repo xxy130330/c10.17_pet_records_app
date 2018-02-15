@@ -3,7 +3,7 @@ import Logo from "../../../../server/images/petvet_logo.png";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {fetchVetClientPets} from "../../actions/";
+import {fetchVetClientPets,readSessions} from "../../actions/";
 import '../assets/css/modal.css';
 
 
@@ -13,9 +13,12 @@ class VetClientPets extends Component {
 
     }
     componentWillMount() {
+        this.props.readSessions().then(()=>{
+            console.log('these are the props in vet client pets ', this.props);
+        });
         const params= this.props.match.params;
         this.props.fetchVetClientPets(params.ownerId, params.vetId);
-        localStorage.id = params.ownerId;
+        // localStorage.id = params.ownerId;
 
 
 
@@ -54,8 +57,10 @@ class VetClientPets extends Component {
 function mapStateToProps(state) {
     return {
         clientPetList: state.vetClientPetsData,
-        vetAccessLevel: state.vetlogin.accessLevel
+        vetAccessLevel: state.vetlogin.accessLevel,
+        sessionId: state.sessions.id,
+        auth: state.sessions.auth
     };
 }
 
-export default connect(mapStateToProps, {fetchVetClientPets: fetchVetClientPets})(VetClientPets);
+export default connect(mapStateToProps, {fetchVetClientPets: fetchVetClientPets, readSessions})(VetClientPets);

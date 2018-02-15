@@ -32,13 +32,17 @@ class AddPet extends Component {
   }
 
   componentWillMount() {
-    if (this.props.id) {
-      this.currentOwnerId = this.props.id;
-      localStorage.id = this.currentOwnerId;
-    } else {
-      this.currentOwnerId = localStorage.id;
-    }
+      this.props.readSessions().then(()=>{
+          console.log('this is the current auth', this.props);
+          if(!this.props.auth){
+              this.props.history.push('/');
+          }
+          if(this.props.auth){
+              this.currentOwnerId= this.props.sessionId;
+          }
+      });
   }
+
 
   handleInputChange(e) {
     const { name, value } = e.target;
@@ -230,12 +234,14 @@ function mapStateToProps(state) {
   return {
     id: state.login.id,
     url: state.uploadImage,
-    petId: state.addPet.petId
+    petId: state.addPet.petId,
+    auth: state.sessions.auth,
+    sessionId: state.sessions.id
   };
 }
 
 export default connect(mapStateToProps, {
   addPet,
   uploadImage,
-    readSessions
+    readSessions:readSessions
 })(AddPet);

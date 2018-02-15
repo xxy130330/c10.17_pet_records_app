@@ -70,7 +70,7 @@ class NavBar extends Component {
           <Link to="/contact-us" onClick={this.handleOnClick}>
             <div> CONTACT US </div>
           </Link>
-          <Link to="/" onClick={this.handleLogout()}>
+          <Link to="/" onClick={()=>this.handleLogout()}>
             <div> LOG OUT </div>
           </Link>
         </div>
