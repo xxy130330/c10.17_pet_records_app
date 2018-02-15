@@ -11,6 +11,7 @@ export default function(state = DEFAULT_STATE, action) {
         case UPDATE_SESSIONS:
             return {auth: action.payload.data.authorized, ...state};
         case READ_SESSIONS:
+            console.log('read sessions', action);
             return  {id: action.payload.data.id, auth: action.payload.data.authorized};
         default:
             return state;
