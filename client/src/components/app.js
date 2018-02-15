@@ -27,15 +27,9 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			visible: true,
-			landingPg: true
+			visible: true
 		};
 		this.handleConfirm = this.handleConfirm.bind(this);
-		this.toggleLanding = this.toggleLanding.bind(this);
-	}
-
-	componentDidMount() {
-		console.log("app.js props", this.props);
 	}
 
 	handleConfirm() {
@@ -80,13 +74,7 @@ class App extends Component {
 		}
 	}
 
-	toggleLanding = () => {
-		this.setState({ landingPg: false });
-		console.log("after toggleLanding - app.js state: ", this.state);
-	};
-
 	render() {
-		console.log("app.js state: ", this.state);
 		return (
 			<Router>
 				<div id="mainBox" className="mainContainer">
