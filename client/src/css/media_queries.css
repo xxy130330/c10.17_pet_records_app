@@ -7,6 +7,9 @@
 
 /*Mobile styles*/
 @media (min-width:320px) AND (max-width:641px)  {
+    .mainContainer {
+        margin: 0;
+    }
     .deleteButton {
         display: inline-block;
         position: relative;
@@ -91,20 +94,20 @@
     .logoContainer {
         margin: 2% 10% 0;
     }
-    .formContainer {
+    /* .formContainer {
         background-color: initial;
         width: 35%;
         height: 50%;
         border-radius: 25px;
-    }
-    form {
+    } */
+    /* form {
         padding: 10px;
         width: 33%;
         margin: auto;
         background-color: rgba(0,0,0, 0.7);
         border-radius: 0%;
         color: white;
-    }
+    } */
 
     .buttonContainer {
         padding-bottom: 20px;
@@ -280,15 +283,15 @@
     .bodyContainer .pictureContainer {
         /* margin-top: 20vh; */
         position: relative;
-        width: 11%;
+        width: 25%;
         height: 35%;
         /* border: 4px dashed orange; */
         /* border-radius: 5px; */
         margin: 0 auto;
     }
-    .bodyContainer form.container {
+    /* .bodyContainer form.container {
         width: 40%;
-    }
+    } */
     form.container .btn-primary {
         position: relative;
         left: 10%;

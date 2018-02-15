@@ -7,7 +7,7 @@ import jayPic from '../../../dist/assets/images/jay.jpg';
 
 const AboutUs = () => {
   return (
-    <div className="container">
+    <div className="bgAboutUsContainer">
       <div className="aboutUsContainer">
       <h1 className="col-12">Meet the team</h1>
         <div className="row teamContainer">

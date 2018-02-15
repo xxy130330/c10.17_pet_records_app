@@ -9,7 +9,7 @@ html, body, #root {
 
 body {
   background-image: url(../../dist/assets/images/bg_lines.png);  
-  background-color: rgb(255, 232, 208);
+  background-color: rgb(255, 224, 176);
   font-family: text-font;
 }
 
@@ -154,6 +154,12 @@ form {
 }
 
 /************* landing_page *************/
+
+.mainLandingContainer{
+  height: 100%;
+  position: relative;
+}
+
 .loginLogo {
   width: 80%;
 }
@@ -480,7 +486,6 @@ h3.medicalRecord {
   height: 5vh;
   transition-duration: 1s;
   cursor: pointer;
-  margin-left: 30%;
 }
 
 .hamburger:hover {
@@ -556,6 +561,14 @@ h3.medicalRecord {
 
 
 /************* about_us page *************/
+.bgAboutUsContainer {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  background-color: #ffebd6;
+  margin-left: auto;
+}
 .aboutUsContainer {
   background: #f46b45; 
   background: -webkit-linear-gradient(80deg, #f8be73b2, #f48545d8);

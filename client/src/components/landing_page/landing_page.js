@@ -6,31 +6,31 @@ import vetBtn from "../../../dist/assets/images/vet_btn.png";
 import backgroundImg from "../../../dist/assets/images/landing_bg.png";
 
 export default props => {
-  return (
-    <div className="landingContainer">
-      <div className="contentContainer">
-        <div className="landinglogoContainer">
-          <img className="loginLogo" src={Logo} />
-        </div>
-        <div className="msgBtnContainer">
-          <div className="home-msg">
-            Welcome to PetVet!
-            <br />The easiest way to care for your pet's health and happiness!
-          </div>
-          <div className="loginBtnContainer">
-            <Link to="/login-page">
-              <div className="homeBtn">
-                <img src={petBtn} />Owner Login
-              </div>
-            </Link>
-            <Link to="/vet-login-page">
-              <div className="homeBtn">
-                <img src={vetBtn} />Vet Login
-              </div>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+			<div className="landingContainer">
+				<div className="contentContainer">
+					<div className="landinglogoContainer">
+						<img className="loginLogo" src={Logo} />
+					</div>
+					<div className="msgBtnContainer">
+						<div className="home-msg">
+							Welcome to PetVet!
+							<br />The easiest way to care for your pet's health and happiness!
+						</div>
+						<div className="loginBtnContainer">
+							<Link to="/login-page">
+								<div className="homeBtn">
+									<img src={petBtn} />Owner Login
+								</div>
+							</Link>
+							<Link to="/vet-login-page">
+								<div className="homeBtn">
+									<img src={vetBtn} />Vet Login
+								</div>
+							</Link>
+						</div>
+					</div>
+				</div>
+			</div>
+	);
 };
