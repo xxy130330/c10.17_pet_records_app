@@ -18,7 +18,6 @@ import axios from "axios";
 // }
 export const UPDATE_SESSIONS = "SESSIONS";
 export function updateSessions(id,auth, logout){
-    console.log(' we made it to the action', id, auth, logout);
     const url = '/server/database_connect/server.php?action=post&resource=update_session';
 
     // if(!auth){

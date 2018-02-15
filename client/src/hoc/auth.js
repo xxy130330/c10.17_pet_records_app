@@ -5,13 +5,17 @@ import {readSessions} from "../actions/index";
 export default function(WrappedComponent) {
     class Auth extends Component {
         componentWillMount() {
+            console.log('before everything in auth', this.props.auth);
             if (!this.props.auth) {
                 this.props.readSessions().then(()=>{
                     console.log('we are still not authorized after calling the function ', this.props);
                 });
-              // this.props.history.push("/");
+              this.props.history.push("/");
             }else{
-                console.log('we are authorized ', this.props);
+                this.props.readSessions().then(()=>{
+                    console.log('else part!!!', this.props.id);
+                })
+
             }
         }
         componentWillReceiveProps(nextProps) {

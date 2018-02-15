@@ -24,11 +24,12 @@ class PetList extends Component {
     // }
     console.log('props.id in petlist', this.props.id);
     this.props.fetchPetData(this.props.id).then(()=>{
-        if(!this.props.petdata.length) {
-            this.setState({
-                infoModal: true
-            })
-        }
+        // if(!this.props.petdata.length) {
+        //     this.setState({
+        //         infoModal: true
+        //     })
+        // }
+        console.log('after fetchPetDat');
     });
   }
   infoModal(){
@@ -98,6 +99,7 @@ class PetList extends Component {
       ));
   }
   render() {
+    if(!this.props.id) return <h1>Loading</h1>
     const {showModal,infoModal}= this.state;
     const toggleCanDelete= !this.state.canDelete;
     const userPetList = this.props.petdata.map((item, index) => {
