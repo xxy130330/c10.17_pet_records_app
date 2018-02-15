@@ -15,24 +15,20 @@ class PetList extends Component {
     };
   }
   componentWillMount() {
-      this.props.readSessions().then(()=>{
-          console.log('this is the current auth', this.props.auth);
-          if(!this.props.auth){
-              this.props.history.push('/');
-          }
-          let currentOwnerId= null;
-          if(this.props.auth){
-              currentOwnerId= this.props.sessionId;
-          }
-          this.props.fetchPetData(currentOwnerId).then(()=>{
-              if(!this.props.petdata.length) {
-                  this.setState({
-                      infoModal: true
-                  })
-              }
-          });
-      });
-
+    let currentOwnerId = null;
+    if(this.props.id){
+      currentOwnerId = this.props.id;
+      localStorage.id = currentOwnerId;
+    } else {
+      currentOwnerId = localStorage.id;
+    }
+    this.props.fetchPetData(currentOwnerId).then(()=>{
+        if(!this.props.petdata.length) {
+            this.setState({
+                infoModal: true
+            })
+        }
+    });
   }
   infoModal(){
     return(
