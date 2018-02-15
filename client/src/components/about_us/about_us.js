@@ -49,8 +49,7 @@ const AboutUs = () => {
           </div>
           <div className="textContainer">
             <h3>Jay</h3>
-            <p>As part of the front-end development team, Jay helped with a lot of css and basic foundation of each components and pages. He also helped with modals and front-end user authentication. </p>
-
+            <p>As part of the front-end development team, Jay helped with a lot of css and basic foundation of each components and pages. He also helped with modals, menu, and front-end user authentication.</p>
           </div>
         </div>
 

@@ -59,11 +59,11 @@
     .content-modal {
         width: 40% !important;
     }
-    .hamburger {
+    /* .hamburger {
         position: relative;
         left: 100%;
         transform: translateX(-34px);
-    }
+    } */
     /********* landing_page ********/
     .loginLogo {
         width: 20%;
@@ -247,6 +247,7 @@
         margin: auto;
         border-left: 1px solid black;
         border-right: 1px solid black;
+        border-bottom: 1px solid black;
     }
     .petInfoContainer {
         height: 30vh;
