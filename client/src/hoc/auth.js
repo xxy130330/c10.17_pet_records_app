@@ -26,7 +26,8 @@ export default function(WrappedComponent) {
     }
     function mapStateToProps(state) {
         return {
-            auth: state.sessions.auth
+            auth: state.sessions.auth,
+            id: state.sessions.id
         };
     }
     return connect(mapStateToProps, {readSessions})(Auth);
