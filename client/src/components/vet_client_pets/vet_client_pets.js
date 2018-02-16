@@ -13,14 +13,16 @@ class VetClientPets extends Component {
 
     }
     componentWillMount() {
+        console.log('these are the props in vet client list ', this.props);
         this.props.readSessions().then(()=>{
-            console.log('these are the props in vet client pets ', this.props);
+            console.log('this is the current auth', this.props);
+            if(!this.props.auth || !this.props.vetAccess){
+                this.props.history.push('/');
+            }
         });
         const params= this.props.match.params;
         this.props.fetchVetClientPets(params.ownerId, params.vetId);
         // localStorage.id = params.ownerId;
-
-
 
     }
     render() {
@@ -30,7 +32,7 @@ class VetClientPets extends Component {
             };
             const pet_name = pet.name.length>8 ? <h4 className='petListName'>{pet.name}</h4> : <h2 className='petListName'>{pet.name}</h2>
             return (
-                <Link key={index} to={"/pet-profile/" + this.props.clientPetList[index]['petID']}>
+                <Link key={index} to={"/pet-profile/" + this.props.clientPetList[index]['petID']+ "/"+this.props.match.params.ownerId}>
                 <div key={index} className='row justify-content-center petRow'>
                     <div>
                         <div className="petAvatar" style={petAvatar} />
@@ -59,7 +61,8 @@ function mapStateToProps(state) {
         clientPetList: state.vetClientPetsData,
         vetAccessLevel: state.vetlogin.accessLevel,
         sessionId: state.sessions.id,
-        auth: state.sessions.auth
+        auth: state.sessions.auth,
+        vetAccess: state.sessions.vetAccess
     };
 }
 

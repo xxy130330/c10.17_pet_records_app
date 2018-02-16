@@ -14,9 +14,12 @@ class ClientList extends Component {
     };
   }
   componentWillMount() {
-    this.props.readSessions().then(()=>{
-        console.log('these are now the props in client list ', this.props);
-    });
+      this.props.readSessions().then(()=>{
+          console.log('this is the current auth', this.props);
+          if(!this.props.auth || !this.props.vetAccess){
+              this.props.history.push('/');
+          }
+      });
     const params = this.props.match.params;
     this.props.fetchVetClientData(params.vetId).then(() => {
       if (!this.props.clientList.length) {
@@ -102,7 +105,8 @@ function mapStateToProps(state) {
     email: state.vetClientData.email,
     ref_id: state.vetClientData.ref_id,
       auth: state.sessions.auth,
-      id: state.sessions.id
+      id: state.sessions.id,
+      vetAccess: state.sessions.vetAccess
 
   };
 }

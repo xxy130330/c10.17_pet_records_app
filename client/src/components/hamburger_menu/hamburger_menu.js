@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateSessions } from "../../actions";
+import { updateSessions, readSessions } from "../../actions";
 import Logo from "../../../../server/images/petvet_logo.png";
 import ReactDOM from "react-dom";
 
@@ -15,6 +15,14 @@ class NavBar extends Component {
     this.state = {
       menu: false
     };
+  }
+  componentWillMount(){
+      this.props.readSessions().then(()=>{
+          console.log('this is the current auth', this.props);
+          // if(!this.props.auth){
+          //     this.props.history.push('/');
+          // }
+      });
   }
 
   handleWindowClick() {
@@ -35,7 +43,10 @@ class NavBar extends Component {
       //hard coded id cus it doesnt matter
       const {id}= 1;
       this.props.updateSessions(id, auth, logout).then(()=>{
-            console.log('this is the current authorization', this.props.auth);
+          this.props.readSessions().then(()=>{
+              localStorage.removeItem('auth');
+              console.log('these are the props after logging out', this.props);
+          });
       })
   }
   showMenu() {
@@ -45,7 +56,7 @@ class NavBar extends Component {
         onClick={this.handleWindowClick}
       >
         <div className="menuContainer">
-          {!this.props.vetAccessLevel ? (
+          {!this.props.vetAccess ? (
             <Link to="/pet-list/" onClick={this.handleOnClick}>
               <div> PET LIST </div>
             </Link>
@@ -57,7 +68,7 @@ class NavBar extends Component {
               <div> CLIENT LIST </div>
             </Link>
           )}
-          {!this.props.vetAccessLevel ? (
+          {!this.props.vetAccess ? (
             <Link to="/add-pet/" onClick={this.handleOnClick}>
               <div> ADD PET </div>
             </Link>
@@ -135,9 +146,9 @@ function mapStateToProps(state) {
   return {
       id: state.login.id,
       auth: state.sessions.auth,
-      vetAccessLevel: state.vetlogin.accessLevel,
+      vetAccess: state.sessions.vetAccess,
       vetId: state.vetlogin.id
   };
 }
 
-export default connect(mapStateToProps, {updateSessions} )(NavBar);
+export default connect(mapStateToProps,  {readSessions, updateSessions} )(NavBar);

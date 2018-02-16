@@ -14,4 +14,5 @@ $auth = json_decode($_SESSION['petVetAuth']);
 $output['authorized'] = $auth->auth;
 $output['id'] = $auth->id;
 $output['success'] = true;
+$output['vetAccess']= $auth->vetAccess;
 ?>

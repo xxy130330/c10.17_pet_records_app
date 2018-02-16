@@ -1,9 +1,10 @@
-import { READ_SESSIONS, UPDATE_SESSIONS } from "../actions"
+import { READ_SESSIONS, UPDATE_SESSIONS, LOCAL_AUTH } from "../actions"
 
 const DEFAULT_STATE = {
     auth: null,
     id: null,
-    logoutSuccess: null
+    logoutSuccess: null,
+    vetAccess: null
 
 };
 export default function(state = DEFAULT_STATE, action) {
@@ -11,7 +12,9 @@ export default function(state = DEFAULT_STATE, action) {
         case UPDATE_SESSIONS:
             return {auth: action.payload.data.authorized, ...state};
         case READ_SESSIONS:
-            return  {id: action.payload.data.id, auth: action.payload.data.authorized};
+            return  {id: action.payload.data.id, vetAccess:action.payload.data.vetAccess, auth: action.payload.data.authorized};
+        case LOCAL_AUTH:
+
         default:
             return state;
     }

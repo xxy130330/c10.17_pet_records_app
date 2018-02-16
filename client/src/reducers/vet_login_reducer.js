@@ -1,4 +1,4 @@
-import { VET_LOGIN, VET_REGISTER, UPDATE_SESSIONS  } from "../actions/index";
+import {VET_LOGIN, VET_REGISTER, LOG_OUT} from "../actions/index";
 
 const CURRENT_VET = {
   loginSuccess: false,
@@ -22,7 +22,7 @@ export default function(state = CURRENT_VET, action) {
                 success: action.payload.data.success,
                 id: action.payload.data.data.ID,
             };
-        case UPDATE_SESSIONS:
+        case LOG_OUT:
             return{
                 ...state,
                 accessLevel: null

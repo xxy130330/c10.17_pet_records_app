@@ -32,12 +32,13 @@ class VetLoginPage extends Component {
         if (this.props.loginSuccess) {
             const auth= true;
             const logout= false;
-          this.props.updateSessions(this.props.id, auth, logout ).then(()=>{
+            const vetAccess= true;
+          this.props.updateSessions(this.props.id, auth, logout, vetAccess ).then(()=>{
               this.props.readSessions().then(()=>{
+                  this.props.history.push("/client-list/" + this.props.id);
                   console.log('these are now the props after logging into vet portal ', this.props);
               })
           });
-          this.props.history.push("/client-list/" + this.props.id);
         }else{
           this.setState({
             loginSuccess: false

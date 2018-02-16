@@ -5,28 +5,32 @@
 // export default function(WrappedComponent) {
 //     class Auth extends Component {
 //         componentWillMount() {
-//             if (!this.props.auth) {
-//                 this.props.readSessions().then(()=>{
-//                     console.log('we are still not authorized after calling the function ', this.props);
-//                 });
-//               // this.props.history.push("/");
-//             }else{
-//                 console.log('we are authorized ', this.props);
-//             }
+//             this.props.readSessions().then(()=>{
+//                 console.log('this is the current auth level and props ', this.props);
+//                 if (this.props.auth) {
+//                     localStorage.setItem('auth', true);
+//                 }else{
+//                     console.log('we are not authorized to access this ', this.props);
+//                     this.props.history.push("/");
+//                 }
+//             })
+//
 //         }
 //         componentWillReceiveProps(nextProps) {
 //             if (!nextProps.auth) {
 //                 console.log('our next props are not authorized ', this.props);
-//                 // this.props.history.push("/");
+//                 this.props.history.push("/");
 //             }
 //         }
 //         render() {
-//             return <WrappedComponent {...this.props} />;
+//             return <WrappedComponent newSessionId= {this.props.sessionId} {...this.props} />;
 //         }
 //     }
 //     function mapStateToProps(state) {
 //         return {
-//             auth: state.sessions.auth
+//             auth: state.sessions.auth,
+//             sessionId: state.sessions.id,
+//             vetAccess: state.sessions.vetAccess
 //         };
 //     }
 //     return connect(mapStateToProps, {readSessions})(Auth);

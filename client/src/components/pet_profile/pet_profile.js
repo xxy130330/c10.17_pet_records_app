@@ -17,14 +17,19 @@ class PetProfile extends Component {
         };
     }
     componentWillMount() {
-
         this.props.readSessions().then(()=>{
             if(!this.props.auth){
                 this.props.history.push('/');
             }
             console.log('these are the current props after read sessions', this.props);
             if(this.props.auth){
-                let currentOwnerId= this.props.sessionId;
+                let currentOwnerId= null;
+                if(this.props.vetAccess){
+                    currentOwnerId = this.props.match.params.alternativeId;
+                    console.log('this is the currentOwner Id ', currentOwnerId);
+                }else{
+                    currentOwnerId = this.props.sessionId;
+                }
                 this.props.fetchProfileData(this.props.match.params.id)
                     .then(()=>this.props.fetchPetData(currentOwnerId));
             }
@@ -89,7 +94,7 @@ class PetProfile extends Component {
                 <Link to={petObj.vet==='No vet connected'? `/pet-to-vet/${this.props.match.params.id}/null`:
                     `/pet-to-vet/${this.props.match.params.id}/${petObj.vet}`}>
                     <button className='btn btn-warning'
-                        style={this.props.vetAccessLevel || this.state.canDelete && petObj.vet !== 'No vet connected' ? {'display':'none'}: {'display':'inline-block'}}>
+                        style={this.props.vetAccess || this.state.canDelete && petObj.vet !== 'No vet connected' ? {'display':'none'}: {'display':'inline-block'}}>
                         {petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}
                     </button>
                 </Link>
@@ -159,6 +164,7 @@ class PetProfile extends Component {
         )
     }
     render() {
+        console.log('this is the pet data after rendering ', this.props);
         var found = false;
         for(var i = 0; i <this.props.petdata.length; i++){
           if(this.props.petdata[i]['ID'] === this.props.match.params.id){
@@ -181,11 +187,11 @@ class PetProfile extends Component {
               <div className="text-center">
                 <h1 className='listTitle'>Record List for {petName}</h1>
                   {this.props.petProfile.length ?  this.listMedicalRecords() : <h1 className="noPetData">No Pet Data</h1>}
-                  <div className='btnContainerPetProfile' style={this.props.vetAccessLevel ? {'display': 'none'}: {'display': 'inline'} }>
+                  <div className='btnContainerPetProfile' style={this.props.vetAccess ? {'display': 'none'}: {'display': 'inline'} }>
                       <button className={!this.state.canDelete? 'editBtn btn btn-outline-danger':'editBtn btn btn-outline-warning'}
                               onClick={()=>{this.setState({canDelete: toggleCanDelete})}}>{!this.state.canDelete? "Edit Profile": 'Cancel'}
                       </button>
-                      <Link to={`/pet-profile/${this.props.match.params.id}/add-med-note/`}>
+                      <Link to={`/pet-profile/${this.props.match.params.id}/add/med-note/`}>
                           <button className= "btn btn-outline-success addMedicalRecord">
                               Add Medical Record
                           </button>
@@ -203,10 +209,11 @@ function mapStateToProps(state) {
         petdata: state.petdata,
         petProfile: state.petProfile,
         deleteMedicalRecordItem: state.deleteMedicalRecordItem,
-        vetAccessLevel: state.vetlogin.accessLevel,
+        // vetAccessLevel: state.vetlogin.accessLevel,
         // ownerId: state.login.id,
         auth: state.sessions.auth,
         sessionId: state.sessions.id,
+        vetAccess: state.sessions.vetAccess
 
   };
 }

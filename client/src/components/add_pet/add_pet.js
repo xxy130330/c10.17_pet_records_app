@@ -34,7 +34,7 @@ class AddPet extends Component {
   componentWillMount() {
       this.props.readSessions().then(()=>{
           console.log('this is the current auth', this.props);
-          if(!this.props.auth){
+          if(!this.props.auth || this.props.vetAccess){
               this.props.history.push('/');
           }
           if(this.props.auth){
@@ -236,7 +236,8 @@ function mapStateToProps(state) {
     url: state.uploadImage,
     petId: state.addPet.petId,
     auth: state.sessions.auth,
-    sessionId: state.sessions.id
+    sessionId: state.sessions.id,
+      vetAccess: state.sessions.vetAccess
   };
 }
 

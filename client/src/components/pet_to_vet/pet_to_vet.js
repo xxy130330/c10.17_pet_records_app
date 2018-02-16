@@ -20,7 +20,7 @@ class PetToVet extends Component {
   componentDidMount() {
       this.props.readSessions().then(()=>{
           console.log('this is the current auth', this.props);
-          if(!this.props.auth){
+          if(!this.props.auth || this.props.vetAccess){
               this.props.history.push('/');
           }
           if(this.props.auth){
@@ -158,7 +158,8 @@ function mapStateToProps(state) {
   return {
     id: state.login.id,
     sessionId: state.sessions.id,
-    auth: state.sessions.auth
+    auth: state.sessions.auth,
+      vetAccess: state.sessions.vetAccess
   };
 }
 

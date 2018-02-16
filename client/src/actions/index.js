@@ -1,5 +1,5 @@
 import axios from "axios";
-// export const LOCALAUTH = "LOCALAUTH";
+export const LOCAL_AUTH = "LOCAL_AUTH";
 //******** user Log in auth **********/
 // export const SWITCH_AUTHENTICATION = "SWITCH_AUTHENTICATION";
 // export function switchAuthentication(auth) {
@@ -15,10 +15,9 @@ import axios from "axios";
 //       };
 //   }
 // }
+export const LOG_OUT = "LOG_OUT";
 export const UPDATE_SESSIONS = "SESSIONS";
-export function updateSessions(id,auth, logout){
-
-    console.log(' we made it to the action', id, auth, logout);
+export function updateSessions(id,auth, logout,vetAccess){
     const url = '/server/database_connect/server.php?action=post&resource=update_session';
     const request =axios({
         url: url,
@@ -28,9 +27,15 @@ export function updateSessions(id,auth, logout){
             id: id,
             auth: auth,
             logout: logout,
+            vetAccess: vetAccess
         }
     });
-
+    if(logout){
+        return{
+            type: LOG_OUT,
+            payload: request
+        }
+    }
     return{
         type: UPDATE_SESSIONS,
         payload: request
