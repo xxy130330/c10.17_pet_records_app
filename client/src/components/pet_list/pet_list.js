@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchPetData, delete_pet } from "../../actions/";
+import { fetchPetData, delete_pet,readSessions } from "../../actions/";
 import '../assets/css/modal.css';
 
 class PetList extends Component {
@@ -15,20 +15,24 @@ class PetList extends Component {
     };
   }
   componentWillMount() {
-    let currentOwnerId = null;
-    if(this.props.id){
-      currentOwnerId = this.props.id;
-      localStorage.id = currentOwnerId;
-    } else {
-      currentOwnerId = localStorage.id;
-    }
-    this.props.fetchPetData(currentOwnerId).then(()=>{
-        if(!this.props.petdata.length) {
-            this.setState({
-                infoModal: true
-            })
-        }
-    });
+      this.props.readSessions().then(()=>{
+          console.log('this is the current auth', this.props);
+          if(!this.props.auth || this.props.vetAccess){
+              this.props.history.push('/');
+          }
+          let currentOwnerId= null;
+          if(this.props.auth){
+              currentOwnerId= this.props.sessionId;
+          }
+          this.props.fetchPetData(currentOwnerId).then(()=>{
+              if(!this.props.petdata.length) {
+                  this.setState({
+                      infoModal: true
+                  })
+              }
+          });
+      });
+
   }
   infoModal(){
     return(
@@ -92,7 +96,7 @@ class PetList extends Component {
       const {petIndex}= this.state;
       const petDataProps= this.props.petdata;
       this.setState({...this.state, showModal:false, canDelete: false});
-      this.props.delete_pet(petDataProps[petIndex]["ID"]).then(()=>this.props.fetchPetData(localStorage.getItem('id')).then(
+      this.props.delete_pet(petDataProps[petIndex]["ID"]).then(()=>this.props.fetchPetData(this.props.sessionId).then(
           ()=>this.setState({...this.state, showModal: false, canDelete: false,})
       ));
   }
@@ -148,7 +152,10 @@ function mapStateToProps(state) {
         id: state.login.id,
         success: state.login.success,
         errorMessage: state.login.errorMessage,
-        delete_pet: state.deletePet.delete_pet
+        delete_pet: state.deletePet.delete_pet,
+        auth: state.sessions.auth,
+        sessionId: state.sessions.id,
+        vetAccess: state.sessions.vetAccess
     };
 }
-export default connect(mapStateToProps, { fetchPetData: fetchPetData, delete_pet: delete_pet})(PetList);
+export default connect(mapStateToProps, { fetchPetData: fetchPetData, delete_pet: delete_pet, readSessions:readSessions} )(PetList);

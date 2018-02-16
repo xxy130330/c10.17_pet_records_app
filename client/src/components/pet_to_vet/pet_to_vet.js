@@ -3,27 +3,30 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+import {readSessions} from "../../actions/index";
 
 class PetToVet extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      ownerID: localStorage.id,
       petID: null,
       successModal: false,
       numError: false
     };
+    this.currentOwnerId=null;
   }
 
   componentDidMount() {
-    let currentOwnerId = null;
-    if (this.props.id) {
-      currentOwnerId = this.props.id;
-      localStorage.id = currentOwnerId;
-    } else {
-      currentOwnerId = localStorage.id;
-    }
+      this.props.readSessions().then(()=>{
+          console.log('this is the current auth', this.props);
+          if(!this.props.auth || this.props.vetAccess){
+              this.props.history.push('/');
+          }
+          if(this.props.auth){
+              this.currentOwnerId= this.props.sessionId;
+          }
+      });
   }
 
   handleSubmitss(values) {
@@ -36,7 +39,7 @@ class PetToVet extends Component {
       data: {
         vetEmail: values.email,
         refNum: values.vetRefNum,
-        ownerID: this.props.id,
+        ownerID: this.props.sessionId,
         petID: this.props.match.params.petId,
         oldVetName: this.props.match.params.vetName
       }
@@ -153,8 +156,11 @@ PetToVet = reduxForm({
 
 function mapStateToProps(state) {
   return {
-    id: state.login.id
+    id: state.login.id,
+    sessionId: state.sessions.id,
+    auth: state.sessions.auth,
+      vetAccess: state.sessions.vetAccess
   };
 }
 
-export default connect(mapStateToProps)(PetToVet);
+export default connect(mapStateToProps, {readSessions})(PetToVet);

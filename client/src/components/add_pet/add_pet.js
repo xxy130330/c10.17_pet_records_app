@@ -4,7 +4,7 @@ import photo from "../../../../server/images/photo.png";
 import "./add_pet.css";
 import axios from "axios";
 import { connect } from "react-redux";
-import { addPet, uploadImage } from "../../actions/";
+import { addPet, uploadImage, readSessions } from "../../actions/";
 import "../../../node_modules/croppie/croppie.css";
 import croppie from "croppie";
 import loading from '../../../dist/assets/images/loading.gif';
@@ -28,15 +28,20 @@ class AddPet extends Component {
   }
 
   componentWillMount() {
-    if (this.props.id) {
-      this.currentOwnerId = this.props.id;
-      localStorage.id = this.currentOwnerId;
-    } else {
-      this.currentOwnerId = localStorage.id;
-    }
+      this.props.readSessions().then(()=>{
+          console.log('this is the current auth', this.props);
+          if(!this.props.auth || this.props.vetAccess){
+              this.props.history.push('/');
+          }
+          if(this.props.auth){
+              this.currentOwnerId= this.props.sessionId;
+          }
+      });
   }
 
+
   handleSubmit(values) {
+
     this.setState({
       imageUpload:false
     })
@@ -230,11 +235,15 @@ function mapStateToProps(state) {
   return {
     id: state.login.id,
     url: state.uploadImage,
-    petId: state.addPet.petId
+    petId: state.addPet.petId,
+    auth: state.sessions.auth,
+    sessionId: state.sessions.id,
+      vetAccess: state.sessions.vetAccess
   };
 }
 
 export default connect(mapStateToProps, {
   addPet,
-  uploadImage
+  uploadImage,
+    readSessions:readSessions
 })(AddPet);

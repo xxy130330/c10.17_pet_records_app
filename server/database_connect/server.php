@@ -77,6 +77,10 @@ switch($_GET['action']) {
                 }
                 break;
             }
+            case 'read_session': {
+                require('./actions/read_session.php');
+                break;
+            }
 
         }
     case 'post':
@@ -189,12 +193,6 @@ switch($_GET['action']) {
             case 'update_session': {
                 if (!empty($post)) {
                     require('./actions/update_session.php');
-                }
-                break;
-            }
-            case 'read_session': {
-                if (!empty($post)) {
-                    require('./actions/read_session.php');
                 }
                 break;
             }

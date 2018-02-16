@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { addMedicalItem } from "../../actions/";
+import { addMedicalItem,readSessions } from "../../actions/";
 import { Field, reduxForm } from "redux-form";
 
 class AddMedNote extends Component {
   constructor(props) {
     super(props);
   }
+    componentWillMount() {
+        this.props.readSessions().then(()=>{
+            console.log('this is the current auth', this.props);
+            if(!this.props.auth || this.props.vetAccess){
+                this.props.history.push('/');
+            }
+        });
+    }
   renderInput({ placeholder, input, type, meta: { touched, error, active } }) {
     return (
       <div className="form-group row">
@@ -91,5 +99,11 @@ AddMedNote = reduxForm({
   validate: validate
 })(AddMedNote);
 
+function mapStateToProps(state){
+    return{
+        vetAccess: state.sessions.vetAccess,
+        auth: state.sessions.auth
+    }
+}
 
-export default connect(null, { addMedicalItem })(AddMedNote);
+export default connect(mapStateToProps, { addMedicalItem, readSessions })(AddMedNote);

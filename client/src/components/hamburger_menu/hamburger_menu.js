@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { switchAuthentication } from "../../actions";
+import { updateSessions, readSessions } from "../../actions";
 import Logo from "../../../../server/images/petvet_logo.png";
 import ReactDOM from "react-dom";
 
@@ -16,6 +16,14 @@ class NavBar extends Component {
       menu: false
     };
   }
+  componentWillMount(){
+      this.props.readSessions().then(()=>{
+          console.log('this is the current auth', this.props);
+          // if(!this.props.auth){
+          //     this.props.history.push('/');
+          // }
+      });
+  }
 
   handleWindowClick() {
     this.setState({
@@ -29,7 +37,18 @@ class NavBar extends Component {
       menu: menuState
     });
   }
-
+  handleLogout(){
+      const auth = false;
+      const logout = true;
+      //hard coded id cus it doesnt matter
+      const {id}= 1;
+      this.props.updateSessions(id, auth, logout).then(()=>{
+          this.props.readSessions().then(()=>{
+              localStorage.removeItem('auth');
+              console.log('these are the props after logging out', this.props);
+          });
+      })
+  }
   showMenu() {
     return (
       <div
@@ -37,7 +56,7 @@ class NavBar extends Component {
         onClick={this.handleWindowClick}
       >
         <div className="menuContainer">
-          {!this.props.vetAccessLevel ? (
+          {!this.props.vetAccess ? (
             <Link to="/pet-list/" onClick={this.handleOnClick}>
               <div> PET LIST </div>
             </Link>
@@ -49,7 +68,7 @@ class NavBar extends Component {
               <div> CLIENT LIST </div>
             </Link>
           )}
-          {!this.props.vetAccessLevel ? (
+          {!this.props.vetAccess ? (
             <Link to="/add-pet/" onClick={this.handleOnClick}>
               <div> ADD PET </div>
             </Link>
@@ -62,7 +81,7 @@ class NavBar extends Component {
           <Link to="/contact-us" onClick={this.handleOnClick}>
             <div> CONTACT US </div>
           </Link>
-          <Link to="/" onClick={() => this.props.switchAuthentication(false)}>
+          <Link to="/" onClick={()=>this.handleLogout()}>
             <div> LOG OUT </div>
           </Link>
         </div>
@@ -125,10 +144,11 @@ class NavBar extends Component {
 }
 function mapStateToProps(state) {
   return {
-    auth: state.user.auth,
-    vetAccessLevel: state.vetlogin.accessLevel,
-    vetId: state.vetlogin.id
+      id: state.login.id,
+      auth: state.sessions.auth,
+      vetAccess: state.sessions.vetAccess,
+      vetId: state.vetlogin.id
   };
 }
 
-export default connect(mapStateToProps, { switchAuthentication })(NavBar);
+export default connect(mapStateToProps,  {readSessions, updateSessions} )(NavBar);

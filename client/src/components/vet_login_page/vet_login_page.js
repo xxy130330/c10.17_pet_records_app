@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import Logo from "../../../../server/images/petvet_logo.png";
 import axios from "axios";
 import { connect } from "react-redux";
-import { vet_login, switchAuthentication } from "../../actions/";
+import { vet_login , readSessions,updateSessions} from "../../actions/";
 import vetBtn from "../../../dist/assets/images/vet_btn.png";
+
 
 class VetLoginPage extends Component {
   constructor(props) {
@@ -29,8 +30,15 @@ class VetLoginPage extends Component {
     e.preventDefault();
     this.props.vet_login(this.state.form.username, this.state.form.password).then(() => {
         if (this.props.loginSuccess) {
-          this.props.switchAuthentication(true);
-          this.props.history.push("/client-list/" + this.props.id);
+            const auth= true;
+            const logout= false;
+            const vetAccess= true;
+          this.props.updateSessions(this.props.id, auth, logout, vetAccess ).then(()=>{
+              this.props.readSessions().then(()=>{
+                  this.props.history.push("/client-list/" + this.props.id);
+                  console.log('these are now the props after logging into vet portal ', this.props);
+              })
+          });
         }else{
           this.setState({
             loginSuccess: false
@@ -106,6 +114,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { vet_login, switchAuthentication })(
+export default connect(mapStateToProps, { vet_login, readSessions, updateSessions })(
   VetLoginPage
 );

@@ -5,12 +5,12 @@ import { createStore, applyMiddleware } from "redux";
 import ReduxPromise from "redux-promise";
 import rootReducers from "./reducers";
 import App from "./components/app";
-import {LOCALAUTH} from './actions';
+import {LOCAL_AUTH} from './actions';
 
 const store = createStore(rootReducers, {}, applyMiddleware(ReduxPromise));
 
 if(localStorage.auth){
-    store.dispatch({type: LOCALAUTH})
+    store.dispatch({type: LOCAL_AUTH})
 }
 ReactDOM.render(
     <Provider store={store}>

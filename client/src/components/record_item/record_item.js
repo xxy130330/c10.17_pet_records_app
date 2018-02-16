@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchMedicalData, editMedicalRecord } from "../../actions/";
+import { fetchMedicalData, editMedicalRecord, readSessions } from "../../actions/";
 
 class RecordItem extends Component {
     constructor(props){
@@ -15,16 +15,20 @@ class RecordItem extends Component {
         }
     }
   componentWillMount() {
-    this.props.fetchMedicalData(this.props.match.params.recordId).then(()=>{
-        this.setState({
-            canEdit: false,
-            form:{
-                type: this.props.petMedical[0].type,
-                date: this.props.petMedical[0].date,
-                details: this.props.petMedical[0].details,
+        this.props.readSessions().then(()=>{
+            if(this.props.auth){
+                this.props.fetchMedicalData(this.props.match.params.recordId).then(()=>{
+                    this.setState({
+                        canEdit: false,
+                        form:{
+                            type: this.props.petMedical[0].type,
+                            date: this.props.petMedical[0].date,
+                            details: this.props.petMedical[0].details,
+                        }
+                    })
+                });
             }
         })
-    });
   }
   handleEditClick(){
       this.setState({
@@ -70,7 +74,7 @@ class RecordItem extends Component {
                   <h2 className='text-center medicalRecordHeader'>Medical Record</h2>
                   <button onClick={()=>this.handleEditClick()}
                           className='btn btn-warning editBtn'
-                          style={this.props.vetAccessLevel? {'display':'none'}: {'display':'inline-block'}}>Edit</button>
+                          style={this.props.vetAccess? {'display':'none'}: {'display':'inline-block'}}>Edit</button>
                   <h4 className="record_item_header">Type: {type}</h4>
                   <h4 className="record_item_date" >Date: {date}</h4>
                   <hr/>
@@ -117,9 +121,11 @@ class RecordItem extends Component {
 function mapStateToProps(state) {
   return {
     petMedical: state.petMedical,
-      vetAccessLevel: state.vetlogin.accessLevel
+      // vetAccessLevel: state.vetlogin.accessLevel
+      vetAccess: state.sessions.vetAccess,
+      auth: state.sessions.auth
   };
 }
 export default connect(mapStateToProps,
-    {fetchMedicalData: fetchMedicalData, editMedicalRecord: editMedicalRecord})
+    {fetchMedicalData: fetchMedicalData, editMedicalRecord: editMedicalRecord, readSessions})
 (RecordItem);

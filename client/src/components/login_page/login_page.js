@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
-import { login, switchAuthentication } from "../../actions/";
+import { login, updateSessions, readSessions } from "../../actions/";
 import petBtn from "../../../dist/assets/images/pet_btn.png";
 
 class LoginPage extends Component {
@@ -26,48 +26,28 @@ class LoginPage extends Component {
 		this.setState({ form: { ...form } });
 	}
 
-	handleSubmit(e) {
-		e.preventDefault();
 
-		/////////////////////////////////////just for testing purposes
-		let url =
-			"/server/database_connect/server.php?action=post&resource=update_session";
-		axios({
-			url: url,
-			method: "post",
-			dataType: "json",
-			data: {
-				id: 1,
-				auth: true,
-				logout: true
-			}
-		}).then(function(res) {
-			url =
-				"/server/database_connect/server.php?action=post&resource=read_session";
-			axios({
-				url: url,
-				method: "post",
-				dataType: "json",
-				data: {
-					id: 1
-				}
-			});
-		});
-		// //////////////////////////////
-
-		this.props
-			.login(this.state.form.username, this.state.form.password)
-			.then(() => {
-				if (this.props.loginSuccess) {
-					this.props.switchAuthentication(true);
-					this.props.history.push("/pet-list/");
-				} else {
-					this.setState({
-						loginSuccess: false
-					});
-				}
-			});
-
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.login(this.state.form.username, this.state.form.password)
+      .then(() => {
+        if (this.props.loginSuccess) {
+            const logout = false;
+            const auth = true;
+            const {id}= this.props;
+            // this.props.switchAuthentication(true);
+            this.props.updateSessions(id, auth, logout).then(()=>{
+                this.props.readSessions().then(()=>{
+                    console.log('after updating sessions we get this user object ', this.props.auth);
+                    this.props.history.push("/pet-list/");
+                });
+            });
+        }else{
+          this.setState({
+            loginSuccess: false
+          })
+        }
+      });
 		this.setState({
 			form: {
 				username: "",
@@ -154,12 +134,12 @@ class LoginPage extends Component {
 }
 
 function mapStateToProps(state) {
-	return {
-		id: state.login.id,
-		loginSuccess: state.login.loginSuccess
-	};
+
+  return {
+    id: state.login.id,
+    loginSuccess: state.login.loginSuccess,
+    auth: state.sessions.auth
+  };
 }
 
-export default connect(mapStateToProps, { login, switchAuthentication })(
-	LoginPage
-);
+export default connect(mapStateToProps, { login, updateSessions, readSessions })(LoginPage);

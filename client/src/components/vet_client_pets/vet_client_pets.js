@@ -3,7 +3,7 @@ import Logo from "../../../../server/images/petvet_logo.png";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {fetchVetClientPets} from "../../actions/";
+import {fetchVetClientPets,readSessions} from "../../actions/";
 import '../assets/css/modal.css';
 
 
@@ -13,11 +13,16 @@ class VetClientPets extends Component {
 
     }
     componentWillMount() {
+        console.log('these are the props in vet client list ', this.props);
+        this.props.readSessions().then(()=>{
+            console.log('this is the current auth', this.props);
+            if(!this.props.auth || !this.props.vetAccess){
+                this.props.history.push('/');
+            }
+        });
         const params= this.props.match.params;
         this.props.fetchVetClientPets(params.ownerId, params.vetId);
-        localStorage.id = params.ownerId;
-
-
+        // localStorage.id = params.ownerId;
 
     }
     render() {
@@ -27,7 +32,7 @@ class VetClientPets extends Component {
             };
             const pet_name = pet.name.length>8 ? <h4 className='petListName'>{pet.name}</h4> : <h2 className='petListName'>{pet.name}</h2>
             return (
-                <Link key={index} to={"/pet-profile/" + this.props.clientPetList[index]['petID']}>
+                <Link key={index} to={"/pet-profile/" + this.props.clientPetList[index]['petID']+ "/"+this.props.match.params.ownerId}>
                 <div key={index} className='row justify-content-center petRow'>
                     <div>
                         <div className="petAvatar" style={petAvatar} />
@@ -54,8 +59,11 @@ class VetClientPets extends Component {
 function mapStateToProps(state) {
     return {
         clientPetList: state.vetClientPetsData,
-        vetAccessLevel: state.vetlogin.accessLevel
+        vetAccessLevel: state.vetlogin.accessLevel,
+        sessionId: state.sessions.id,
+        auth: state.sessions.auth,
+        vetAccess: state.sessions.vetAccess
     };
 }
 
-export default connect(mapStateToProps, {fetchVetClientPets: fetchVetClientPets})(VetClientPets);
+export default connect(mapStateToProps, {fetchVetClientPets: fetchVetClientPets, readSessions})(VetClientPets);

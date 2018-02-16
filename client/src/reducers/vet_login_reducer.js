@@ -1,4 +1,4 @@
-import { VET_LOGIN, VET_REGISTER, LOG_OUT  } from "../actions/index";
+import {VET_LOGIN, VET_REGISTER, LOG_OUT} from "../actions/index";
 
 const CURRENT_VET = {
   loginSuccess: false,
