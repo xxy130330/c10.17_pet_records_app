@@ -111,7 +111,7 @@ class ParentPage extends Component {
             <Field
               name="email"
               label="Your Email"
-              type="email"
+              type="text"
               component={this.renderInput}
             />
             <Field
