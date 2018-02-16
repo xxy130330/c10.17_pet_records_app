@@ -169,8 +169,8 @@
         position: relative;
     }
     .petAvatar {
-        height: 25vh;
-        width: 25vh;
+        height: 20vh;
+        width: 20vh;
         background-size: 100%;
         background-size: cover;
         transform: translateX(-50%);
@@ -194,7 +194,7 @@
         transition-duration: 1s;
     }
     .menuContainer {
-        width: 190px;
+        width: 30%;
         padding: 3%;
         float: right;
     }
@@ -226,8 +226,8 @@
 /************** pet_profile *****************/
 
     .petAvatarProfile {
-        height: 30vh;
-        width: 30vh;
+        /* height: 30vh;
+        width: 30vh; */
         margin-left: 55%;
         top: 50%;
     }
@@ -254,18 +254,18 @@
     }
     .petInfoContainer {
         height: 30vh;
-        background-color: rgba(0,0,0, .8);
+        background-color: rgba(88, 55, 0, 0.75);
         color: white;
     }
-    .connectPetBtn {
+    /* .connectPetBtn {
         position: absolute;
         display: inline-block;
         top: 50%;
         left: 35%;
         z-index: 10;
-    }
+    } */
     .petImgContainer .petAvatar {
-        top: 0vh;
+        top: 2.5vh;
         left: 37%;
     }
     .petInfo {
