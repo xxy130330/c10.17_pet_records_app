@@ -28,6 +28,7 @@ if ($logout) {
         'id' => $post['id'],
         'vetAccess'=> $vetAccess
     ];
+    $output['id'] = $post['id'];
     $_SESSION['petVetAuth'] = json_encode($authObj);
 
 } else {
