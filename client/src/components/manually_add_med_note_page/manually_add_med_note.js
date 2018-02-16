@@ -61,14 +61,14 @@ class AddMedNote extends Component {
         >
           <Field
             name="title"
-            placeholder="Title"
+            label="Title"
             type="text"
             component={this.renderInput}
           />
-          <Field name="date" type="date" component={this.renderInput} />
+          <Field name="date" label="Date" type="date" component={this.renderInput} />
           <Field
             name="message"
-            placeholder="Comment"
+            label="Details"
             component={this.renderTextArea}
           />
           <div className="buttonContainer row">

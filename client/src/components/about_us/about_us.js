@@ -3,10 +3,11 @@ import simonPic from  '../../../dist/assets/images/simon_profile.jpg';
 import sangwooPic from '../../../dist/assets/images/sangwooPic.jpg';
 import christianPic from '../../../dist/assets/images/christian_profile.jpg';
 import christinPic from '../../../dist/assets/images/christinPic.JPG';
+import jayPic from '../../../dist/assets/images/jay.jpg';
 
 const AboutUs = () => {
   return (
-    <div className="container">
+    <div className="bgAboutUsContainer">
       <div className="aboutUsContainer">
       <h1 className="col-12">Meet the team</h1>
         <div className="row teamContainer">
@@ -17,7 +18,7 @@ const AboutUs = () => {
             />
           </div>
           <div className="textContainer">
-            <h3>this is Simon</h3>
+            <h3>Simon</h3>
             <p>Simon was the team's primary back end developer. He created endpoints that facilitated CRUD operations throughout the application as well as worked with Amazon Web Services to launch the live app and host content with Amazon S3.
             In addition Simon worked closely with the front end team, creating media queries for a fresh looking desktop view that utilized the extra real estate on the DOM.
             </p>
@@ -42,14 +43,13 @@ const AboutUs = () => {
         <div className="row teamContainer">
           <div className="profileContainer">
             <img
-              src="https://www.allaboutbirds.org/guide/PHOTO/LARGE/blue_jay_glamour.jpg"
+              src={jayPic}
               className="img-fluid"
             />
           </div>
           <div className="textContainer">
-            <h3>This is Jay.</h3>
-            <p>Jay worked mainly on front-end development.</p>
-
+            <h3>Jay</h3>
+            <p>As part of the front-end development team, Jay helped with a lot of css and basic foundation of each components and pages. He also helped with modals, menu, and front-end user authentication.</p>
           </div>
         </div>
 

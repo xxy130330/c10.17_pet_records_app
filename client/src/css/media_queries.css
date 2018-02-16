@@ -7,6 +7,9 @@
 
 /*Mobile styles*/
 @media (min-width:320px) AND (max-width:641px)  {
+    .mainContainer {
+        margin: 0;
+    }
     .deleteButton {
         display: inline-block;
         position: relative;
@@ -59,11 +62,11 @@
     .content-modal {
         width: 40% !important;
     }
-    .hamburger {
+    /* .hamburger {
         position: relative;
         left: 100%;
         transform: translateX(-34px);
-    }
+    } */
     /********* landing_page ********/
     .loginLogo {
         width: 20%;
@@ -91,20 +94,20 @@
     .logoContainer {
         margin: 2% 10% 0;
     }
-    .formContainer {
+    /* .formContainer {
         background-color: initial;
         width: 35%;
         height: 50%;
         border-radius: 25px;
-    }
-    form {
+    } */
+    /* form {
         padding: 10px;
         width: 33%;
         margin: auto;
         background-color: rgba(0,0,0, 0.7);
         border-radius: 0%;
         color: white;
-    }
+    } */
 
     .buttonContainer {
         padding-bottom: 20px;
@@ -166,8 +169,8 @@
         position: relative;
     }
     .petAvatar {
-        height: 25vh;
-        width: 25vh;
+        height: 20vh;
+        width: 20vh;
         background-size: 100%;
         background-size: cover;
         transform: translateX(-50%);
@@ -191,7 +194,7 @@
         transition-duration: 1s;
     }
     .menuContainer {
-        width: 190px;
+        width: 30%;
         padding: 3%;
         float: right;
     }
@@ -223,8 +226,8 @@
 /************** pet_profile *****************/
 
     .petAvatarProfile {
-        height: 30vh;
-        width: 30vh;
+        /* height: 30vh;
+        width: 30vh; */
         margin-left: 55%;
         top: 50%;
     }
@@ -247,21 +250,22 @@
         margin: auto;
         border-left: 1px solid black;
         border-right: 1px solid black;
+        border-bottom: 1px solid black;
     }
     .petInfoContainer {
         height: 30vh;
-        background-color: rgba(0,0,0, .8);
+        background-color: rgba(88, 55, 0, 0.75);
         color: white;
     }
-    .connectPetBtn {
+    /* .connectPetBtn {
         position: absolute;
         display: inline-block;
         top: 50%;
         left: 35%;
         z-index: 10;
-    }
+    } */
     .petImgContainer .petAvatar {
-        top: 0vh;
+        top: 2.5vh;
         left: 37%;
     }
     .petInfo {
@@ -279,15 +283,15 @@
     .bodyContainer .pictureContainer {
         /* margin-top: 20vh; */
         position: relative;
-        width: 11%;
+        width: 25%;
         height: 35%;
         /* border: 4px dashed orange; */
         /* border-radius: 5px; */
         margin: 0 auto;
     }
-    .bodyContainer form.container {
+    /* .bodyContainer form.container {
         width: 40%;
-    }
+    } */
     form.container .btn-primary {
         position: relative;
         left: 10%;
