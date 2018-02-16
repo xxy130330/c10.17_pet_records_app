@@ -147,7 +147,7 @@ function mapStateToProps(state) {
       id: state.login.id,
       auth: state.sessions.auth,
       vetAccess: state.sessions.vetAccess,
-      vetId: state.vetlogin.id
+      vetId: state.sessions.id,
   };
 }
 
