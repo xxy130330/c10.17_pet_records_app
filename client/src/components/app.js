@@ -80,7 +80,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="mainContainer">
+        <div id='mainBox' className="mainContainer">
           <Route path="/*" component={Header} />
           <Route path="/about-us" component={(AboutUs)} />
           <Route path="/contact-us/" component={(ContactUs)}/>
