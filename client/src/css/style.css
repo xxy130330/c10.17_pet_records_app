@@ -7,6 +7,10 @@ html, body, #root {
   height: 100%;
 }
 
+a:hover, .hamburger:hover, .fa-times-circle:hover, .recordContainer.recordContainerClientList:hover {
+  cursor: pointer;
+}
+
 body {
   background-image: url(../../dist/assets/images/bg_lines.png);
   background-color: rgb(255, 224, 176);
@@ -25,9 +29,6 @@ h1.listTitle {
 }
 .fa-times-circle {
   color: #cc0000;
-}
-.fa-times-circle:hover {
-  cursor: pointer;
 }
 
 .btn-danger {
@@ -417,9 +418,7 @@ h3.medicalRecord {
 .recordContainer.recordContainerClientList {
   height: auto;
 }
-.recordContainer.recordContainerClientList:hover {
-  cursor: pointer;
-}
+
 .petList h3 {
   margin: 0;
   position: relative;
@@ -486,11 +485,6 @@ h3.medicalRecord {
   width: 5vmax;
   height: 5vh;
   transition-duration: 1s;
-  cursor: pointer;
-}
-
-.hamburger:hover {
-  cursor: pointer;
 }
 
 .hamburger:hover .burger-line {
@@ -515,9 +509,6 @@ h3.medicalRecord {
   border-bottom: solid 1px rgb(133, 133, 133);
   cursor: pointer;
   color: white;
-}
-.backBtn {
-  cursor: pointer;
 }
 
 .slideDown {
