@@ -79,6 +79,7 @@ else if ($post['contact']) {
     $mail->addBCC('ccamposs23@gmail.com');
     $mail->addBCC('sangwoo89118@gmail.com');
     $mail->addBCC('christin0708@gmail.com');
+    $mail->addBCC('jamesjayko@gmail.com');
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 
