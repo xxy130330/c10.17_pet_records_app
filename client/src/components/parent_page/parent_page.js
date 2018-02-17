@@ -72,6 +72,8 @@ class ParentPage extends Component {
 }
 
 function validate(values) {
+  var strengthBar = document.getElementById("pwStrength");
+	var strength = 0;
   const error = {};
 
   if (!values.fullName) {
@@ -89,7 +91,11 @@ function validate(values) {
   if (!values.email) {
     error.email = "Please enter your email";
   }
-  
+  if (values.email !== undefined) {
+		if (!values.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+			error.email = "Please enter a valid email address"
+		}
+	}
   // password strength regex
 	if (values.password !== undefined) {
 		if (values.password.match(/[a-zA-Z][a-zA-Z0-9]+/)) {
