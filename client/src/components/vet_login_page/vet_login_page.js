@@ -82,11 +82,8 @@ class VetLoginPage extends Component {
               />
               <p className="text-danger">{!this.state.loginSuccess? 'Incorrect username or password': ''}</p>
             </div>
-            <div className="buttonContainer">
-              <div className="register float-left text-left">
-                <p className="d-inline">
-                  <small>New User?</small>
-                </p>
+            <div className="loginBtnContainer">
+              <div>
                 <Link className="d-inline" to="/vet-page/">
                   <button
                     type="button"

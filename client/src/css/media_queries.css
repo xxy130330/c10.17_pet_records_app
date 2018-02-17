@@ -73,8 +73,7 @@
     }
     .loginBtnContainer {
         margin: auto;
-        width: 40vw;
-
+        width: 80%;
     }
     .homeBtn {
         text-align: center;
@@ -254,6 +253,7 @@
     }
     .petInfoContainer {
         height: 30vh;
+        position: relative;
         background-color: rgba(88, 55, 0, 0.75);
         color: white;
     }
@@ -280,15 +280,15 @@
     }
 
     /******* add_pet ********/
-    .bodyContainer .pictureContainer {
+    /* .bodyContainer .pictureContainer { */
         /* margin-top: 20vh; */
-        position: relative;
+        /* position: relative;
         width: 25%;
-        height: 35%;
+        height: 35%; */
         /* border: 4px dashed orange; */
         /* border-radius: 5px; */
-        margin: 0 auto;
-    }
+        /* margin: 0 auto; */
+    /* } */
     /* .bodyContainer form.container {
         width: 40%;
     } */
