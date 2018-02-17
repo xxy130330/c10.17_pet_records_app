@@ -144,12 +144,19 @@ function validate(values) {
 		error.email = "Please enter your email";
 	}
 	if (values.email !== undefined) {
-		if (!values.email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-			error.email = "Please enter a valid email address"
+		if (
+			!values.email.match(
+				/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+			)
+		) {
+			error.email = "Please enter a valid email address";
 		}
 	}
 	// password strength regex
 	if (values.password !== undefined) {
+		if (values.password.length === 0) {
+			strength = 0;
+		}
 		if (values.password.match(/[a-zA-Z][a-zA-Z0-9]+/)) {
 			strength += 1;
 		}
@@ -164,6 +171,9 @@ function validate(values) {
 		}
 		// debugger;
 		switch (strength) {
+			case 0:
+				strengthBar.value = 0;
+				break;
 			case 1:
 				strengthBar.value = 25;
 				break;
