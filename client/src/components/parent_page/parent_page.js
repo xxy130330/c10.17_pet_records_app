@@ -98,6 +98,9 @@ function validate(values) {
 	}
   // password strength regex
 	if (values.password !== undefined) {
+    if (values.password.length === 0) {
+			strength = 0;
+		}
 		if (values.password.match(/[a-zA-Z][a-zA-Z0-9]+/)) {
 			strength += 1;
 		}
@@ -112,6 +115,9 @@ function validate(values) {
 		}
 		// debugger;
 		switch (strength) {
+      case 0:
+				strengthBar.value = 0;
+				break;
 			case 1:
 				strengthBar.value = 25;
 				break;
