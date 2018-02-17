@@ -47,7 +47,7 @@ class VetPage extends Component {
                       <Field name="password" label="Password" type="password" component={this.renderInput}/>
                       <Field name="confirmpassword" label="Confirm Password" type="password" component={this.renderInput}/>
                       <div className="buttonContainer row">
-                          <button className="btn btn-success">Sign Up</button>
+                          <button className="signUpBtn btn btn-success">Sign Up</button>
                       </div>
                       {this.state.toggleModal ? <RegisterModal routeUrl='/vet-login-page' {...this.props} confirm={this.props.id}/> : ''}
                 </form>

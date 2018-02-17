@@ -31,9 +31,12 @@
         position: relative;
         transform: translateY(-50%);
     }
-    button.btn.btn-success {
+    .btn-success {
         position: relative;
         left: 16px;
+    }
+    button.signUpBtn {
+        left:0px;
     }
 }
 /*special media query for about us page, tablets will have the same view as phones do*/
