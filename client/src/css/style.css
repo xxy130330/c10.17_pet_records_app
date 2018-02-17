@@ -465,9 +465,9 @@ h3.medicalRecord {
   border-radius: 25px;
   padding: 5%;
 }
-/* .register {
-  width: 65%;
-} */
+.register {
+  width: 70%;
+}
 .register a {
   margin-left: 10%;
 }
