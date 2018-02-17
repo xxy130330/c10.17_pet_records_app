@@ -131,6 +131,10 @@ function validate(values) {
 				strengthBar.value = 100;
 				break;
 		}
+
+    if(strengthBar.value!==100){
+      error.password = "Please enter a valid password"
+    }
 	}
 
   return error;
