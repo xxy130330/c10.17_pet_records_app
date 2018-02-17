@@ -105,12 +105,9 @@ class LoginPage extends Component {
 										: ""}
 								</p>
 							</div>
-							<div className="buttonContainer">
-								<div className="register float-left text-left">
-									<p className="d-inline">
-										<small>New User?</small>
-									</p>
-									<Link className="d-inline" to="/parent-page/">
+							<div className="loginBtnContainer">
+								<div>
+									<Link to="/parent-page/">
 										<button
 											type="button"
 											className="btn btn-outline-success btn-sm"
