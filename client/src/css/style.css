@@ -42,6 +42,17 @@ a {
   color: black;
 }
 
+progress {
+  -webkit-appearance: none;
+}
+
+::-webkit-progress-bar {
+  height: 10px;
+  width: 250px;
+  margin-top: 1.5%;
+  background-color: orange;
+}
+
 .mainContainer {
   /* height: 100%; */
   position: relative;
