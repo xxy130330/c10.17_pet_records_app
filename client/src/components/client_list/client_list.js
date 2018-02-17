@@ -88,7 +88,7 @@ class ClientList extends Component {
         <hr />
         <div className="clientList">
           <div className="text-center">
-            <h2>Client List</h2>
+            <h1>Client List</h1>
             {this.props.clientList.length ? (clientInformation) : (<h1>No Client Data</h1>)}
             {this.state.showModal ? this.infoModal() : ""}
           </div>
