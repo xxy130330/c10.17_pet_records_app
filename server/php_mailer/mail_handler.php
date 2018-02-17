@@ -36,7 +36,7 @@ if (isset($activationLink)) {
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
     $mail->isHTML(true);                                  // Set email format to HTML
 
-    $mail->Subject = 'The PetVet Team';
+    $mail->Subject = 'Please confirm your email';
     $mail->Body    = 'Thank you for signing up for PetVet, the easiest way to care for your pets health and happiness. Follow the link to activate your account: ' . $activationLink;
     $mail->AltBody = htmlentities('something went wrong');
 
