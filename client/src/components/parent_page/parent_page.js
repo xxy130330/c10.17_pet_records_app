@@ -53,6 +53,12 @@ class ParentPage extends Component {
             <Field name="fullName" label="Full Name" type="text" component={this.renderInput}/>
             <Field name="email" label="Email" type="text" component={this.renderInput}/>
             <Field name="password" label="Password" type="password" component={this.renderInput}/>
+            <progress
+						className="form-group row"
+						max="100"
+						value="0"
+						id="pwStrength"
+					/>
             <Field name="confirmpassword" label="Confirm Password" type="password" component={this.renderInput}/>
             <div className="buttonContainer row">
               <button className="signUpBtn btn btn-success">Sign Up</button>
@@ -83,6 +89,37 @@ function validate(values) {
   if (!values.email) {
     error.email = "Please enter your email";
   }
+  
+  // password strength regex
+	if (values.password !== undefined) {
+		if (values.password.match(/[a-zA-Z][a-zA-Z0-9]+/)) {
+			strength += 1;
+		}
+		if (values.password.match(/[!@#$%^&*()]+/)) {
+			strength += 1;
+		}
+		if (values.password.length > 5) {
+			strength += 1;
+		}
+		if (values.password.length > 8) {
+			strength += 1;
+		}
+		// debugger;
+		switch (strength) {
+			case 1:
+				strengthBar.value = 25;
+				break;
+			case 2:
+				strengthBar.value = 50;
+				break;
+			case 3:
+				strengthBar.value = 75;
+				break;
+			case 4:
+				strengthBar.value = 100;
+				break;
+		}
+	}
 
   return error;
 }

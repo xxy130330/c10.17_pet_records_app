@@ -10,6 +10,9 @@
     .mainContainer {
         margin: 0;
     }
+    #pwStrength{
+        margin-left: 0;
+    }
     .deleteButton {
         display: inline-block;
         position: relative;
@@ -57,10 +60,13 @@
 }
 
 /*Laptops and monitors*/
-@media (min-width: 1025px)  {
+@media (min-width: 550px)  {
     body {
         overflow: hidden;
         overflow-y: visible;
+    }
+    #pwStrength {
+        margin-left: 10%;
     }
     .content-modal {
         width: 40% !important;
@@ -76,7 +82,7 @@
     }
     .loginBtnContainer {
         margin: auto;
-        width: 40%;
+        width: 80%;
     }
     .homeBtn {
         text-align: center;
