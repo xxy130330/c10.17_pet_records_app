@@ -98,11 +98,7 @@ function validate(values) {
 	}
   if(values.fullName !== undefined){
     if(!values.fullName.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)){
-<<<<<<< HEAD
-      error.fullName = "Full name should only contain letters"
-=======
       error.fullName = "Please enter a valid name"
->>>>>>> 12f75dc9167b1470edc51a1689fee0522356b1db
     }
   }
   // password strength regex
