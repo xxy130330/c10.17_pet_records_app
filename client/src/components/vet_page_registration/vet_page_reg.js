@@ -153,6 +153,11 @@ function validate(values) {
 		}
 	}
 	// password strength regex
+	if(values.fullName !== undefined){
+		if(!values.fullName.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)){
+			error.fullName = "Full name should be contains letters"
+		}
+	}
 	if (values.password !== undefined) {
 		if (values.password.length === 0) {
 			strength = 0;
@@ -187,6 +192,9 @@ function validate(values) {
 				strengthBar.value = 100;
 				break;
 		}
+	    if(strengthBar.value!==100){
+	      error.password = "Please enter a valid password"
+	    }
 	}
 
 	return error;
