@@ -98,7 +98,11 @@ function validate(values) {
 	}
   if(values.fullName !== undefined){
     if(!values.fullName.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)){
+<<<<<<< HEAD
+      error.fullName = "Full name should only contain letters"
+=======
       error.fullName = "Please enter a valid name"
+>>>>>>> 12f75dc9167b1470edc51a1689fee0522356b1db
     }
   }
   // password strength regex
@@ -112,13 +116,12 @@ function validate(values) {
 		if (values.password.match(/[!@#$%^&*()]+/)) {
 			strength += 1;
 		}
-		if (values.password.length > 5) {
+		if (values.password.length >= 5) {
 			strength += 1;
 		}
-		if (values.password.length > 8) {
+		if (values.password.length >= 8) {
 			strength += 1;
 		}
-		// debugger;
 		switch (strength) {
       case 0:
 				strengthBar.value = 0;
@@ -138,7 +141,7 @@ function validate(values) {
 		}
 
     if(strengthBar.value!==100){
-      error.password = "Please enter a valid password"
+      error.password = "Password must be at least 5 characters and 1 symbol"
     }
 	}
 

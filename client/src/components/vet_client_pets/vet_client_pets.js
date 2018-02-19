@@ -13,9 +13,9 @@ class VetClientPets extends Component {
 
     }
     componentWillMount() {
-        console.log('these are the props in vet client list ', this.props);
+        // console.log('these are the props in vet client list ', this.props);
         this.props.readSessions().then(()=>{
-            console.log('this is the current auth', this.props);
+            // console.log('this is the current auth', this.props);
             if(!this.props.auth || !this.props.vetAccess){
                 this.props.history.push('/');
             }

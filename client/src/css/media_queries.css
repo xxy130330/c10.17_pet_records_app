@@ -21,9 +21,7 @@
         width: 0% !important;
     }
     .petRow>a, .petRow>div {
-        /* margin: auto; */
         float: left;
-        /* height: 100%; */
         width: 37%;
     }
     .card .card-block {
@@ -46,7 +44,6 @@
 @media (max-width: 800px) and (min-width: 320px) {
     .profileContainer {
         width: 100%;
-        /* float: left; */
         display: block;
         position: relative;
         left: 50%;
@@ -71,11 +68,7 @@
     .content-modal {
         width: 40% !important;
     }
-    /* .hamburger {
-        position: relative;
-        left: 100%;
-        transform: translateX(-34px);
-    } */
+
     /********* landing_page ********/
     .loginLogo {
         width: 20%;
@@ -103,20 +96,6 @@
     .logoContainer {
         margin: 2% 10% 0;
     }
-    /* .formContainer {
-        background-color: initial;
-        width: 35%;
-        height: 50%;
-        border-radius: 25px;
-    } */
-    /* form {
-        padding: 10px;
-        width: 33%;
-        margin: auto;
-        background-color: rgba(0,0,0, 0.7);
-        border-radius: 0%;
-        color: white;
-    } */
 
     .buttonContainer {
         padding-bottom: 20px;
@@ -156,8 +135,6 @@
         width: 100%;
         margin: auto;
         padding: 20px;
-        /* background-color: rgba(0,0,0, .7); */
-        /* border-radius: 8%; */
     }
     .deleteNAddContainer button {
        margin: 0 10px;
@@ -187,17 +164,12 @@
         position: relative;
         vertical-align: top;
     }
-    /*.petAvatar:hover {*/
-        /*height: 30vh;*/
-        /*width: 30vh;*/
-    /*}*/
     .petRow {
         vertical-align: top;
     }
     .burger-line {
         width: 70%;
         height: 17%;
-        /*margin: 10% 0;*/
         background-color: rgba(214, 117, 5, 0.89);
         border-radius: 1vmin;
         transition-duration: 1s;
@@ -213,7 +185,6 @@
     .petRow>a, .petRow>div {
         margin: auto;
         float: none;
-        /* height: 100%; */
         width: 40%;
         display: block;
     }
@@ -235,8 +206,6 @@
 /************** pet_profile *****************/
 
     .petAvatarProfile {
-        /* height: 30vh;
-        width: 30vh; */
         margin-left: 55%;
         top: 50%;
     }
@@ -248,9 +217,7 @@
         margin: 0;
         position: relative;
         top: 50%;
-        /*height: 100%;*/
         transform: translateY(-50%);
-        /*width: 100%;*/
     }
     .recordContainer {
         height: 8vh;
@@ -267,13 +234,7 @@
         background-color: rgba(88, 55, 0, 0.75);
         color: white;
     }
-    /* .connectPetBtn {
-        position: absolute;
-        display: inline-block;
-        top: 50%;
-        left: 35%;
-        z-index: 10;
-    } */
+
     .petImgContainer .petAvatar {
         top: 2.5vh;
         left: 37%;
@@ -290,18 +251,7 @@
     }
 
     /******* add_pet ********/
-    /* .bodyContainer .pictureContainer { */
-        /* margin-top: 20vh; */
-        /* position: relative;
-        width: 25%;
-        height: 35%; */
-        /* border: 4px dashed orange; */
-        /* border-radius: 5px; */
-        /* margin: 0 auto; */
-    /* } */
-    /* .bodyContainer form.container {
-        width: 40%;
-    } */
+  
     form.container .btn-primary {
         position: relative;
         left: 10%;

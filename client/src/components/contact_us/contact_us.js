@@ -53,7 +53,6 @@ class ParentPage extends Component {
         contact: true
       }
     }).then((data)=>{
-      console.log("contact us:" , data);
       this.props.reset();
       this.setState({
         thankyouModal: true,

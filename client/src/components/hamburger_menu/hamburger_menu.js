@@ -18,7 +18,7 @@ class NavBar extends Component {
 	}
 	componentWillMount() {
 		this.props.readSessions().then(() => {
-			console.log("this is the current auth", this.props);
+			// console.log("this is the current auth", this.props);
 			// if(!this.props.auth){
 			//     this.props.history.push('/');
 			// }
@@ -45,7 +45,7 @@ class NavBar extends Component {
 		this.props.updateSessions(id, auth, logout).then(() => {
 			this.props.readSessions().then(() => {
 				localStorage.removeItem("auth");
-				console.log("these are the props after logging out", this.props);
+				// console.log("these are the props after logging out", this.props);
 			});
 		});
 	}
@@ -92,8 +92,6 @@ class NavBar extends Component {
 	render() {
 		const showBackButton = () => {
 			switch (this.props.match.url) {
-				// case "/login-page":
-				// case "/vet-login-page":
 				case "/pet-list/":
 				case `/client-list/${this.props.vetId}`:
 					return "";

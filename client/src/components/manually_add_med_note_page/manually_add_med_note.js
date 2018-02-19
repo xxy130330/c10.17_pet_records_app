@@ -10,7 +10,7 @@ class AddMedNote extends Component {
   }
     componentWillMount() {
         this.props.readSessions().then(()=>{
-            console.log('this is the current auth', this.props);
+            // console.log('this is the current auth', this.props);
             if(!this.props.auth || this.props.vetAccess){
                 this.props.history.push('/');
             }
