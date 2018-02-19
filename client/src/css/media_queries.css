@@ -87,6 +87,7 @@
     .homeBtn {
         text-align: center;
         width: 11vw;
+        font-size: 0.85rem;
     }
     .msgBtnContainer {
         padding: 0 5%;
