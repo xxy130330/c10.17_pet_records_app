@@ -96,6 +96,11 @@ function validate(values) {
 			error.email = "Please enter a valid email address"
 		}
 	}
+  if(values.fullName !== undefined){
+    if(!values.fullName.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)){
+      error.fullName = "Full name should be contains letters"
+    }
+  }
   // password strength regex
 	if (values.password !== undefined) {
     if (values.password.length === 0) {
