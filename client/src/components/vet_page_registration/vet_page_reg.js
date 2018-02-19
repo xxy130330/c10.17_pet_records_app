@@ -155,7 +155,7 @@ function validate(values) {
 	// password strength regex
 	if(values.fullName !== undefined){
 		if(!values.fullName.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)){
-			error.fullName = "Full name should be contains letters"
+			error.fullName = "Please enter a valid name"
 		}
 	}
 	if (values.password !== undefined) {
