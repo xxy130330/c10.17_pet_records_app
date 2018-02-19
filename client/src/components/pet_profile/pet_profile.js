@@ -21,12 +21,12 @@ class PetProfile extends Component {
             if(!this.props.auth){
                 this.props.history.push('/');
             }
-            console.log('these are the current props after read sessions', this.props);
+            // console.log('these are the current props after read sessions', this.props);
             if(this.props.auth){
                 let currentOwnerId= null;
                 if(this.props.vetAccess){
                     currentOwnerId = this.props.match.params.alternativeId;
-                    console.log('this is the currentOwner Id ', currentOwnerId);
+                    // console.log('this is the currentOwner Id ', currentOwnerId);
                 }else{
                     currentOwnerId = this.props.sessionId;
                 }
@@ -66,7 +66,7 @@ class PetProfile extends Component {
                 ownerID: ownerId,
             }
         }).then(res => {
-            console.log('these are the props after clicking disconnect vet', this.props);
+            // console.log('these are the props after clicking disconnect vet', this.props);
             let currentOwnerId = this.props.sessionId;
             this.props.fetchProfileData(this.props.match.params.id)
                 .then(()=>this.props.fetchPetData(currentOwnerId));
@@ -164,7 +164,7 @@ class PetProfile extends Component {
         )
     }
     render() {
-        console.log('this is the pet data after rendering ', this.props);
+        // console.log('this is the pet data after rendering ', this.props);
         var found = false;
         for(var i = 0; i <this.props.petdata.length; i++){
           if(this.props.petdata[i]['ID'] === this.props.match.params.id){

@@ -9,14 +9,13 @@ class PetListModal extends Component{
         this.handleConfirm=this.handleConfirm.bind(this);
     }
     handleConfirm(){
-        console.log('handling confirm in modal ');
         this.props.callback();
         this.setState({
             visible: false
         })
     }
     render(){
-        console.log('modal props', this.props);
+        // console.log('modal props', this.props);
         const button= <button onClick={()=>this.setState({visible:true})} className={this.props.className? this.props.className: 'btn'}>
             {this.props.children? this.props.children: 'click me'};
         </button>;

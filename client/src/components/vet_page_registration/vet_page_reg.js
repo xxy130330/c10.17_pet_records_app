@@ -8,24 +8,16 @@ import RegisterModal from "../register_modal/register_modal";
 class VetPage extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			toggleModal: false
 		};
-		// this.checkPwStrength = this.checkPwStrength.bind(this);
 	}
-
-	// checkPwStrength(password){
-	//     console.log("pw str::::", password);
-	// }
-
 	renderInput({
 		label,
 		input,
 		type,
 		meta: { touched, error, active, visited }
 	}) {
-		// console.log("pw value: ", input.name);
 		return (
 			<div className="form-group row">
 				<label className="col-form-label">{label}</label>
@@ -59,6 +51,7 @@ class VetPage extends Component {
 				}, 4000);
 			});
 	}
+
 	render() {
 		return (
 			<div className="bodyContainer">
@@ -121,6 +114,7 @@ class VetPage extends Component {
 		);
 	}
 }
+
 function validate(values) {
 	var strengthBar = document.getElementById("pwStrength");
 	var strength = 0;
@@ -155,7 +149,7 @@ function validate(values) {
 	// password strength regex
 	if(values.fullName !== undefined){
 		if(!values.fullName.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)){
-			error.fullName = "Full name should be contains letters"
+			error.fullName = "Full name should only contain letters"
 		}
 	}
 	if (values.password !== undefined) {
@@ -168,13 +162,12 @@ function validate(values) {
 		if (values.password.match(/[!@#$%^&*()]+/)) {
 			strength += 1;
 		}
-		if (values.password.length > 5) {
+		if (values.password.length >= 5) {
 			strength += 1;
 		}
-		if (values.password.length > 8) {
+		if (values.password.length >= 8) {
 			strength += 1;
 		}
-		// debugger;
 		switch (strength) {
 			case 0:
 				strengthBar.value = 0;
@@ -192,8 +185,8 @@ function validate(values) {
 				strengthBar.value = 100;
 				break;
 		}
-	    if(strengthBar.value!==100){
-	      error.password = "Please enter a valid password"
+	    if(strengthBar.value!==75){
+	      error.password = "Password must be at least 5 characters and 1 symbol"
 	    }
 	}
 
