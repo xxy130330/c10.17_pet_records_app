@@ -85,6 +85,9 @@ class VetPage extends Component {
 						type="password"
 						component={this.renderInput}
 					/>
+					<div className='form-group row'>
+					<label className='col-form-label'>Password Strength</label>
+					</div>
 					<progress
 						className="form-group row"
 						max="100"

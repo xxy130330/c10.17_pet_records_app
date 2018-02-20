@@ -16,29 +16,21 @@ class AddMedNote extends Component {
             }
         });
     }
-  renderInput({ placeholder, input, type, meta: { touched, error, active } }) {
+  renderInput({ placeholder, label, input, type, meta: { touched, error, active } }) {
     return (
       <div className="form-group row">
-        <input
-          placeholder={placeholder}
-          className="form-control"
-          type={type}
-          {...input}
-        />
+        <label className="col-form-label">{label}</label>
+        <input placeholder={placeholder} className="form-control" type={type} {...input}/>
         <p className="text-danger">{touched && !active && error}</p>
       </div>
     );
   }
 
-  renderTextArea({ input, placeholder, meta: { touched, error, active } }) {
+  renderTextArea({ input, label, placeholder, meta: { touched, error, active } }) {
     return (
       <div className="form-group row">
-        <textarea
-          {...input}
-          placeholder={placeholder}
-          rows="6"
-          className="form-control "
-        />
+        <label className="col-form-label">{label}</label>
+        <textarea {...input} placeholder={placeholder} rows="6" className="form-control "/>
         <p className="text-danger">{touched && !active && error}</p>
       </div>
     );
@@ -85,6 +77,11 @@ function validate(values) {
   if (!values.title) {
     error.title = "Please enter the title";
   }
+  if(values.title !== undefined){
+		if(!values.title.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)){
+			error.title = "Please enter a valid title"
+		}
+	}
   if (!values.date) {
     error.date = "Passwords enter the date";
   }

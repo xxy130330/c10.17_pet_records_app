@@ -53,6 +53,7 @@ class ParentPage extends Component {
             <Field name="fullName" label="Full Name" type="text" component={this.renderInput}/>
             <Field name="email" label="Email" type="text" component={this.renderInput}/>
             <Field name="password" label="Password" type="password" component={this.renderInput}/>
+            <label>Password Strength</label>
             <progress
 						className="form-group row"
 						max="100"

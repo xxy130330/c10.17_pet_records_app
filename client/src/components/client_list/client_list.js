@@ -15,7 +15,7 @@ class ClientList extends Component {
   }
   componentWillMount() {
       this.props.readSessions().then(()=>{
-          // console.log('this is the current auth', this.props);
+          console.log('this is the current props', this.props);
           if(!this.props.auth || !this.props.vetAccess){
               this.props.history.push('/');
           }
@@ -88,7 +88,7 @@ class ClientList extends Component {
         <hr />
         <div className="clientList">
           <div className="text-center">
-            <h1>Client List</h1>
+            <h1 className='clientListHeader'>Client List</h1>
             {this.props.clientList.length ? (clientInformation) : (<h1>No Client Data</h1>)}
             {this.state.showModal ? this.infoModal() : ""}
           </div>
