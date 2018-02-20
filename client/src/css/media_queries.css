@@ -150,7 +150,7 @@
         right: 10%;
     }
     .row.justify-content-center.petRow {
-        display: inline-block;
+        /* display: inline-block; */
         min-width: 36%;
         position: relative;
     }
