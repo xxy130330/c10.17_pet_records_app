@@ -190,7 +190,7 @@
     .petRow>a, .petRow>div {
         margin: auto;
         float: none;
-        width: 40%;
+        width: 100%;
         display: block;
     }
     .h2, h2 {
