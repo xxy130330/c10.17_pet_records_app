@@ -90,25 +90,25 @@ class PetProfile extends Component {
               <div className="petAvatar petAvatarProfile" style={petImage} />
             </div>
             <div className="petInfoDiv">
-              <div className='connectPetBtn'>
-                <Link to={petObj.vet==='No vet connected'? `/pet-to-vet/${this.props.match.params.id}/null`:
-                    `/pet-to-vet/${this.props.match.params.id}/${petObj.vet}`}>
-                    <button className='btn btn-warning'
-                        style={this.props.vetAccess || this.state.canDelete && petObj.vet !== 'No vet connected' ? {'display':'none'}: {'display':'inline-block'}}>
-                        {petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}
-                    </button>
-                </Link>
-                  <button className='btn btn-danger'
-                      onClick={()=>this.disconnectVet()}
-                      style={this.state.canDelete && petObj.vet!=='No vet connected'? {'display':'inline-block'}: {'display':'none'}}>
-                      Disconnect Vet
-                  </button>
-              </div>
-              <div className="petInfo">
+              <div className="innerPetInfoContainer">
                 <h4>Name: {petObj.name}</h4>
                 <h4>DOB: {petObj.dob}</h4>
                 <h4>Breed: {petObj.breed}</h4>
                 <h4>Vet: {petObj.vet}</h4>
+                  <div className='connectPetBtn'>
+                      <Link to={petObj.vet==='No vet connected'? `/pet-to-vet/${this.props.match.params.id}/null`:
+                          `/pet-to-vet/${this.props.match.params.id}/${petObj.vet}`}>
+                          <button className='btn btn-warning'
+                                  style={this.props.vetAccess || this.state.canDelete && petObj.vet !== 'No vet connected' ? {'display':'none'}: {'display':'inline-block'}}>
+                              {petObj.vet!=='No vet connected'? 'Change Current Vet?' :'Connect this Pet to Vet?'}
+                          </button>
+                      </Link>
+                      <button className='btn btn-danger'
+                              onClick={()=>this.disconnectVet()}
+                              style={this.state.canDelete && petObj.vet!=='No vet connected'? {'display':'inline-block'}: {'display':'none'}}>
+                          Disconnect Vet
+                      </button>
+                  </div>
               </div>
             </div>
           </div>
