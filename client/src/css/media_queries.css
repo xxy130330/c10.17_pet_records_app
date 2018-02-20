@@ -63,7 +63,7 @@
         overflow-y: visible;
     }
     #pwStrength {
-        margin-left: 10%;
+        /* margin-left: 10%; */
     }
     .content-modal {
         width: 40% !important;
@@ -108,7 +108,7 @@
 
     .buttonContainer {
         position : relative;
-        width: 80%;
+        /* width: 80%; */
         margin: inherit;
         top: 2vh;
 
