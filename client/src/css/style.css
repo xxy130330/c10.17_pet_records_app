@@ -270,15 +270,14 @@ form {
 /************* pet_list *************/
 
 .petAvatar {
-  height: 15vh;
-  width: 15vh;
+  height: 17vh;
+  width: 17vh;
   background-position: center;
   border: 2px solid orange;
   border-radius: 50%;
-  background-size: 100%;
+  /*background-size: 100%;*/
   background-size: cover;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: auto;
 }
 
 .petName {
@@ -360,6 +359,7 @@ h3.medicalRecord {
   height: 100%;
   position: relative;
   display: inline-block;
+  vertical-align: middle;
 }
 .petImg {
   left: 5%;
@@ -388,6 +388,8 @@ body {
   height: 100%;
   position: relative;
   display: inline-block;
+  vertical-align: middle;
+  margin: 5px 0;
 }
 .petInfo {
   top: 2%;
