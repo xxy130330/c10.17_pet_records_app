@@ -268,7 +268,7 @@ form {
   height: 10%;
 }
 /************* pet_list *************/
-.container {
+.petListContainer > .container {
   text-align: center !important;
 }
 .petAvatar {
