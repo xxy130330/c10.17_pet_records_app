@@ -143,6 +143,20 @@ function validate(values) {
   if (!values.message) {
     error.message = "Please enter a message";
   }
+  if(values.name !== undefined){
+		if(!values.name.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)){
+			error.name = "Please enter a valid name"
+		}
+  }
+  if (values.email !== undefined) {
+		if (
+			!values.email.match(
+				/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+			)
+		) {
+			error.email = "Please enter a valid email address";
+		}
+	}
   return error;
 }
 

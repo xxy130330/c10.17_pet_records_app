@@ -34,7 +34,7 @@
     }
     .btn-success {
         position: relative;
-        left: 16px;
+        /* left: 16px; */
     }
     button.signUpBtn {
         left:0px;
