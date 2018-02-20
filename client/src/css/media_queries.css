@@ -114,7 +114,7 @@
 
     }
     .form-group {
-        width: 80%;
+        width: 100%;
         margin: auto;
     }
     /************* pet_title ****************/
@@ -258,8 +258,8 @@
 /*apply to submit button*/
 .submitBtnPetToVet {
     position: relative;
-    left: 10%;
-    top: 2vh;
+    /* left: 10%; */
+    top: 3vh;
     margin-bottom: 10px;
 }
 
