@@ -434,6 +434,15 @@ body {
 .medicalRecordHeader{
     margin-top: 2%
 }
+.medicalRecordInfoDiv{    
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.medicalRecordDescription{
+  padding-right: 15px;
+  padding-left: 15px;
+}
 /************* client_list *************/
 
 .recordContainer.recordContainerClientList {

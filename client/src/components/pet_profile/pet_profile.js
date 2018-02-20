@@ -94,7 +94,7 @@ class PetProfile extends Component {
                 <h4>Name: {petObj.name}</h4>
                 <h4>DOB: {petObj.dob}</h4>
                 <h4>Breed: {petObj.breed}</h4>
-                <h4>Vet: {petObj.vet}</h4>
+                <h4>Vet: Dr. {petObj.vet}</h4>
                   <div className='connectPetBtn'>
                       <Link to={petObj.vet==='No vet connected'? `/pet-to-vet/${this.props.match.params.id}/null`:
                           `/pet-to-vet/${this.props.match.params.id}/${petObj.vet}`}>

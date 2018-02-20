@@ -225,7 +225,7 @@
         transform: translateY(-50%);
     }
     .recordContainer {
-        height: 8vh;
+        /* height: 8vh; */
         position: relative;
         width: 60%;
         margin: auto;

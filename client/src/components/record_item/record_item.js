@@ -70,16 +70,16 @@ class RecordItem extends Component {
     const {form: {type,date,details},canEdit}= this.state;
     const staticData = (
           <div>
-              <div>
+              <div className='medicalRecordInfoDiv'>
                   <h2 className='text-center medicalRecordHeader'>Medical Record</h2>
                   <button onClick={()=>this.handleEditClick()}
                           className='btn btn-warning editBtn'
                           style={this.props.vetAccess? {'display':'none'}: {'display':'inline-block'}}>Edit</button>
                   <h4 className="record_item_header">Type: {type}</h4>
                   <h4 className="record_item_date" >Date: {date}</h4>
-                  <hr/>
+                  <hr style={{"width": "100%"}}/>
               </div>
-              <div>
+              <div className='medicalRecordDescription'>
                   <h4 className='text-center'>Details</h4>
                   <p className="record_item_detail">{details}</p>
               </div>
