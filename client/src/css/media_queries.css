@@ -56,14 +56,21 @@
     }
 }
 
+/* ipad view  */
+@media (min-width: 641px) and (max-width: 911px){
+
+.mainContainer {
+    margin: 0;
+}
+
+}
+
 /*Laptops and monitors*/
 @media (min-width: 550px)  {
+   
     body {
         overflow: hidden;
         overflow-y: visible;
-    }
-    #pwStrength {
-        /* margin-left: 10%; */
     }
     .content-modal {
         width: 40% !important;

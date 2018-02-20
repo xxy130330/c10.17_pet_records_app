@@ -27,7 +27,7 @@ class VetClientPets extends Component {
 
     }
     render() {
-        console.log('these are the props in vet client pets ', this.props);
+        // console.log('these are the props in vet client pets ', this.props);
         const clientName= this.props.clientList.map((item, index)=>{
             if(this.props.match.params.ownerId===item.ownerID){
                 console.log('this is the owners name ', item.name);
