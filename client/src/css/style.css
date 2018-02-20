@@ -460,6 +460,9 @@ h3.medicalRecord {
 .clientList h2{
   font-weight:bold;
 }
+.clientListHeader{
+  margin-bottom: 0
+}
 /************* pet log_in *************/
 .formContainer {
   background-color: rgba(255, 255, 255, 0.8);
