@@ -30,7 +30,7 @@
     h2.petListName, h4.petListName {
         top: 50%;
         position: relative;
-        transform: translateY(-50%);
+        /*transform: translateY(-50%);*/
     }
     .btn-success {
         position: relative;
