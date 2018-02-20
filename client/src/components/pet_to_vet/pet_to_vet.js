@@ -89,7 +89,7 @@ class PetToVet extends Component {
 
   renderInput({ label, input, type, meta: { touched, error, active, visited }}) {
     return (
-      <div className="form-group">
+      <div className="form-group row">
         <label className="col-form-label">{label}</label>
         <input className="form-control input-lg" type={type} {...input} />
         <p className="text-danger">{touched && error}</p>
@@ -120,7 +120,7 @@ class PetToVet extends Component {
             component={this.renderInput}
           />
           {this.state.numError ? (<p className="text-danger">reference number invalid</p>) : ( "" )}
-          <button className="btn btn-primary">Submit</button>
+          <button className="btn btn-primary submitBtnPetToVet">Submit</button>
           <Link to="/pet-list" className="pull-right my-5">
             Skip
           </Link>
