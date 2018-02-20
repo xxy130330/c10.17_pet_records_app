@@ -15,7 +15,7 @@ class ClientList extends Component {
   }
   componentWillMount() {
       this.props.readSessions().then(()=>{
-          console.log('this is the current props', this.props);
+          // console.log('this is the current props', this.props);
           if(!this.props.auth || !this.props.vetAccess){
               this.props.history.push('/');
           }
