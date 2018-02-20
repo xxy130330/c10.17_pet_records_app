@@ -58,10 +58,17 @@
 
 /* ipad view  */
 @media (min-width: 641px) and (max-width: 1024px){
-
-.mainContainer {
-    margin: 0;
-}
+    .mainContainer {
+        margin: 0;
+    }
+    .msgBtnContainer > .home-msg {
+        font-size: 2rem;
+    }
+    .homeBtn {
+        text-align: center;
+        width: 24vw;
+        font-size: 1.85rem;
+    }
 
 }
 
@@ -286,5 +293,77 @@
     }
     .petInfo {
         top: 3.5vh;
+    }
+}
+/*ipad pro*/
+@media only screen and (min-device-width: 768px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)  {
+    .home-msg {
+        text-align: center;
+        font-size: 3rem;
+    }
+    .homeBtn {
+        text-align: center;
+        width: 24vw;
+        font-size: 2.85rem;
+    }
+    a.backBtn {
+        font-size: 2rem;
+    }
+    body {
+        font-size: 2.5rem;
+    }
+    .form-control {
+        font-size: 2.5rem;
+    }
+    .btn-group-sm>.btn, .btn-sm {
+        font-size: 1.6rem;
+    }
+    .petListTitle {
+        font-size: 4rem;
+    }
+    .btn {
+        font-size: 2rem;
+    }
+    .h2, h2 {
+        font-size: 3rem;
+    }
+    .h4, h4 {
+        font-size: 2.5rem;
+    }
+    .h3, h3 {
+        font-size: 2.75rem;
+    }
+    .h5, h5 {
+        font-size: 2.25rem;
+    }
+    .petAvatar {
+        height: 17vh;
+        width: 17vh;
+    }
+    .innerPetInfoContainer h4 {
+        font-size: 2.3rem !important;
+    }
+    .editBtn {
+        width: 185px;
+    }
+    h1 {
+        font-size: 3.5rem;
+    }
+    .menuContainer {
+        font-size: 2rem;
+    }
+    .textContainer {
+        width: 100%;
+        /* margin-left: 20px; */
+        margin-top: 20px;
+    }
+    .profileContainer {
+        width: 70%;
+        display: block;
+        margin: auto;
+    }
+    .small, small {
+        font-size: 100%;
+        font-weight: 400;
     }
 }
