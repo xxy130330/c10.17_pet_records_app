@@ -57,7 +57,7 @@
 }
 
 /* ipad view  */
-@media (min-width: 641px) and (max-width: 911px){
+@media (min-width: 641px) and (max-width: 1024px){
 
 .mainContainer {
     margin: 0;
@@ -158,8 +158,9 @@
     }
     .row.justify-content-center.petRow {
         display: inline-block;
-        min-width: 36%;
+        min-width: 33%;
         position: relative;
+        margin-right: 0;
     }
     .petAvatar {
         height: 20vh;
@@ -257,7 +258,7 @@
 
     form.container .btn-primary {
         position: relative;
-        left: 10%;
+        /* left: 10%; */
         margin-top: 10px;
     }
 }

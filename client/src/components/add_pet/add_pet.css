@@ -24,8 +24,8 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20vw;
-    height: 30vh;
+    width: 200px;
+    height: 200px;
     margin: 0 auto;
 }
 
