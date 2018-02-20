@@ -30,7 +30,7 @@
     h2.petListName, h4.petListName {
         top: 50%;
         position: relative;
-        transform: translateY(-50%);
+        /*transform: translateY(-50%);*/
     }
     .btn-success {
         position: relative;
@@ -157,10 +157,7 @@
     .petAvatar {
         height: 20vh;
         width: 20vh;
-        background-size: 100%;
         background-size: cover;
-        transform: translateX(-50%);
-        left: 50%;
         position: relative;
         vertical-align: top;
     }
@@ -205,10 +202,10 @@
 
 /************** pet_profile *****************/
 
-    .petAvatarProfile {
-        margin-left: 55%;
-        top: 50%;
-    }
+    /*.petAvatarProfile {*/
+        /*margin-left: 55%;*/
+        /*top: 50%;*/
+    /*}*/
     .listTitle {
         width: 60%;
         margin: auto;
@@ -229,16 +226,15 @@
         border-bottom: 1px solid black;
     }
     .petInfoContainer {
-        height: 30vh;
         position: relative;
         background-color: rgba(88, 55, 0, 0.75);
         color: white;
     }
 
-    .petImgContainer .petAvatar {
-        top: 2.5vh;
-        left: 37%;
-    }
+    /*.petImgContainer .petAvatar {*/
+        /*top: 5.5vh;*/
+        /*left: 37%;*/
+    /*}*/
     .petInfo {
         top: 20%;
     }
@@ -251,7 +247,7 @@
     }
 
     /******* add_pet ********/
-  
+
     form.container .btn-primary {
         position: relative;
         left: 10%;
@@ -272,4 +268,15 @@
     left: 75%;
     top: 1vh;
     color: white;
+}
+/*huge screens*/
+@media (min-width: 1440px) {
+    .petInfoContainer {
+        position: relative;
+        background-color: rgba(88, 55, 0, 0.75);
+        color: white;
+    }
+    .petInfo {
+        top: 3.5vh;
+    }
 }
