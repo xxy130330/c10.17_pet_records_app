@@ -270,12 +270,12 @@ form {
 /************* pet_list *************/
 
 .petAvatar {
-  height: 15vh;
-  width: 15vh;
+  height: 17vh;
+  width: 17vh;
   background-position: center;
   border: 2px solid orange;
   border-radius: 50%;
-  background-size: 100%;
+  /*background-size: 100%;*/
   background-size: cover;
   margin: auto;
 }
@@ -322,7 +322,11 @@ form {
 
 .connectPetBtn {
   position: relative;
-  top: 75%;
+}
+.innerPetInfoContainer {
+  position: relative;
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
 }
 .deleteBtnPetProfile {
   position: relative;
@@ -338,15 +342,14 @@ h3.medicalRecord {
   transform: translateY(-50%);
 }
 
-.petImgContainer .petAvatar {
-  position: absolute;
-  margin-left: 15%;
-  top: 5vh;
-}
+/*.petImgContainer .petAvatar {*/
+  /*position: absolute;*/
+  /*margin-left: 15%;*/
+  /*top: 5vh;*/
+/*}*/
 
 .petInfoContainer {
   position: relative;
-  height: 25vh;
   background-color: rgba(88, 55, 0, 0.75);
   color: white;
 }
@@ -354,7 +357,9 @@ h3.medicalRecord {
 .petImgContainer {
   width: 45%;
   height: 100%;
-  position: absolute;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
 }
 .petImg {
   left: 5%;
@@ -370,20 +375,26 @@ h3.medicalRecord {
 .petImg > img {
   width: 100%;
 }
-.petInfo h4 {
-  font-size: 1.2rem;
+.innerPetInfoContainer h4 {
+  font-size: 1.1rem !important;
 }
-
+body {
+  position: relative;
+  height: auto;
+  min-height: 100% !important;
+}
 .petInfoDiv {
   width: 55%;
   height: 100%;
-  left: 45%;
-  position: absolute;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px 0;
 }
 .petInfo {
   top: 2%;
   width: 100%;
-  position: absolute;
+  position: relative;
 }
 .recordContainer {
   height: 10vh;
