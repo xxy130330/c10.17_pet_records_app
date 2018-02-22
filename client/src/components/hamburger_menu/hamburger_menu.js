@@ -95,12 +95,12 @@ class NavBar extends Component {
 			switch (this.props.match.url) {
 				case "/pet-list/":
 				case `/client-list/${this.props.vetId}`:
-					return "";
+					return <div className="col-2"></div>;
 				default:
 					return (
-						<a
+						<div
 							href="#"
-							className="backBtn"
+							className="col-2 backBtn"
 							   onClick={() => {
 							   	this.props.history.goBack();
 							   }}
@@ -110,7 +110,7 @@ class NavBar extends Component {
 							  }}
 						>
 							BACK
-						</a>
+						</div>
 					);
 			}
 		};
@@ -138,7 +138,7 @@ class NavBar extends Component {
 		return (
 			<div className="container">
 				<div className="row align-items-center">
-					<div className="col-2">{showBackButton()}</div>
+					{showBackButton()}
 					<div className="logoImgContainer col-8">
 						<img className="logoImg" src={Logo} />
 					</div>
