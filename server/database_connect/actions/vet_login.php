@@ -14,14 +14,14 @@ $output['loginSuccess'] = false;
     unset($post['password']);
 
     //Sanitizing inputs
-    $sanitizeUsername1 = stripslashes($username);
+    $sanitizeUsername1 = stripslashes(($username));
     $sanitizedUsername = htmlentities($sanitizeUsername1);
 
     $sanitizePassword1 = stripslashes($password);
     $sanitizedPassword = htmlentities($sanitizePassword1);
 
-$query = "SELECT * FROM `vets` 
-          WHERE BINARY email = '$sanitizedUsername' 
+$query = "SELECT * FROM `vets`
+          WHERE BINARY LOWER(email) = LOWER('$sanitizedUsername')
           AND password = '$sanitizedPassword'";
 
 $result = mysqli_query($conn, $query);

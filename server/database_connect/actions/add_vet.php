@@ -7,8 +7,8 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
 function getRandomRefID($conn){
     do{
         $refId = uniqid();
-        $checkQuery = "SELECT * 
-                       FROM vets 
+        $checkQuery = "SELECT *
+                       FROM vets
                        WHERE `ref_ID` = '$refId'";
         $result = mysqli_query($conn, $checkQuery);
     }while( mysqli_num_rows($result)>0);
@@ -16,8 +16,10 @@ function getRandomRefID($conn){
     return $refId;
 }
 
-$queryCheckEmail = "SELECT `email` 
-                    FROM `vets` 
+$strtolowerEmail = strtolower($post[email]);
+
+$queryCheckEmail = "SELECT `email`
+                    FROM `vets`
                     WHERE `email` = '$post[email]'";
 
 $checkResult = mysqli_query($conn, $queryCheckEmail);
@@ -25,10 +27,10 @@ $checkResult = mysqli_query($conn, $queryCheckEmail);
 if ($checkResult) {
     if (mysqli_num_rows($checkResult) === 0) {
         $ref_ID = getRandomRefID($conn);
-      
-        $query = "INSERT INTO `vets` 
-                  (`name`, `email`, `phone`, `ID`, `ref_ID`, `active_pets`, `password`, `status`, `updated`, `level`) 
-                  VALUES ('$post[name]', '$post[email]', '$post[phone]', NULL, '$ref_ID', 'NULL', SHA1('$post[password]'), 'inactive', CURRENT_DATE, '2')";
+
+        $query = "INSERT INTO `vets`
+                  (`name`, `email`, `phone`, `ID`, `ref_ID`, `active_pets`, `password`, `status`, `updated`, `level`)
+                  VALUES ('$post[name]', '$strtolowerEmail', '$post[phone]', NULL, '$ref_ID', 'NULL', SHA1('$post[password]'), 'inactive', CURRENT_DATE, '2')";
         $result = mysqli_query($conn, $query);
         if ($result) {
             if (mysqli_affected_rows($conn) > 0) {
@@ -37,8 +39,8 @@ if ($checkResult) {
                 $authStr2 = uniqid();
                 $authStr = $authStr1 . $authStr2;
 
-                $query = "INSERT INTO `activation` 
-                          (`ID`, `activation_code`) 
+                $query = "INSERT INTO `activation`
+                          (`ID`, `activation_code`)
                           VALUES ('$ref_ID', '$authStr')";
                 $results = mysqli_query($conn, $query);
 

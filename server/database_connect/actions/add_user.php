@@ -4,19 +4,21 @@ if(!isset($PAGEACCESS) || $PAGEACCESS===false){
     die('NO DIRECT ACCESS ALLOWED');
 }
 
-$queryCheckEmail = "SELECT `email` 
-                    FROM `owner` 
+$queryCheckEmail = "SELECT `email`
+                    FROM `owner`
                     WHERE `email` = '$post[email]'";
 
 $checkResult = mysqli_query($conn, $queryCheckEmail);
 
+$strtolowerEmail = strtolower($post[email]);
+
 if ($checkResult) {
     if (mysqli_num_rows($checkResult) === 0) {
-        $query = "INSERT INTO `owner` 
-                  (`ID`, `name`, `created`, `updated`, `level`, `email`, `password`, `status`) 
-                  VALUES (NULL, '$post[name]', CURRENT_DATE(), CURRENT_TIMESTAMP, '1', '$post[email]', SHA1('$post[password]'), 'inactive')";
+        $query = "INSERT INTO `owner`
+                  (`ID`, `name`, `created`, `updated`, `level`, `email`, `password`, `status`)
+                  VALUES (NULL, '$post[name]', CURRENT_DATE(), CURRENT_TIMESTAMP, '1', '$strtolowerEmail', SHA1('$post[password]'), 'inactive')";
         $result = mysqli_query($conn, $query);
-        
+
       if ($result) {
             if (mysqli_affected_rows($conn) > 0) {
                 $output['success'] = true;
@@ -26,8 +28,8 @@ if ($checkResult) {
                 $authStr = $hashRef_ID . $resultID;
 
 
-                $query = "INSERT INTO `activation` 
-                          (`ID`, `activation_code`) 
+                $query = "INSERT INTO `activation`
+                          (`ID`, `activation_code`)
                           VALUES ('$resultID', '$authStr')";
                 $results = mysqli_query($conn, $query);
 
