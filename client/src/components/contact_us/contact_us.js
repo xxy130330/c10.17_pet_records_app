@@ -29,7 +29,7 @@ class ParentPage extends Component {
   renderTextArea({ input, label, meta: { touched, error, active } }) {
     return (
       <div className="form-group">
-          <label>{label}</label>
+          <label className="col-form-label">{label}</label>
           <textarea {...input} cols="30" rows="6" className="form-control" />
           <p className="text-danger">{touched && !active && error}</p>
       </div>
@@ -120,7 +120,7 @@ class ParentPage extends Component {
             />
             <div className="buttonContainer row">
             {!this.state.load ? <button className="btn btn-success">
-                Send 
+                Send
                 </button> : <img src={loading}/>}
             </div>
           </form>

@@ -169,7 +169,7 @@ class AddPet extends Component {
 
     return (
       <div className="bodyContainer">
-        <h2 className="text-center">Add Pet</h2>
+        <h1 className="text-center">Add Pet</h1>
         <p className="text-center" style={{ color: "red" }}>
           {this.state.errorMessage}
         </p>
