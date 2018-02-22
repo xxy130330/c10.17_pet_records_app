@@ -14,6 +14,7 @@ class PetProfile extends Component {
             canDelete: false,
             showModal: false,
             recordIndex: null,
+            disconnect: false
         };
     }
     componentWillMount() {
@@ -69,7 +70,8 @@ class PetProfile extends Component {
             // console.log('these are the props after clicking disconnect vet', this.props);
             let currentOwnerId = this.props.sessionId;
             this.props.fetchProfileData(this.props.match.params.id)
-                .then(()=>this.props.fetchPetData(currentOwnerId));
+                .then(()=>this.props.fetchPetData(currentOwnerId)).then(
+                this.setState({...this.state, showModal: false, disconnect: false}))
         });
 
     }
@@ -104,7 +106,8 @@ class PetProfile extends Component {
                           </button>
                       </Link>
                       <button className='btn btn-danger'
-                              onClick={()=>this.disconnectVet()}
+                              /* onClick={()=>this.disconnectVet()} */
+                              onClick={()=>this.triggerDisconnectModal()}
                               style={this.state.canDelete && petObj.vet!=='No vet connected'? {'display':'inline-block'}: {'display':'none'}}>
                           Disconnect Vet
                       </button>
@@ -136,6 +139,9 @@ class PetProfile extends Component {
     triggerModal(index) {
         this.setState({...this.state, showModal:true, recordIndex: index});
     }
+    triggerDisconnectModal() {
+        this.setState({...this.state, showModal:true, disconnect: true});
+    }
     //////////SHOW MODAL HERE//////////
     showModal(){
         const {recordIndex}= this.state;
@@ -144,7 +150,9 @@ class PetProfile extends Component {
               <div className='confirm-modal '>
                   <div className="content-modal">
                       <div className="card">
-                          <div className="card-header">Are you sure you want to delete:</div>
+                          <div className="card-header">Are you sure you want to {!this.state.disconnect ? "delete:" : "disconnect from vet?"}</div>
+                          {!this.state.disconnect ?  
+                          <div>
                           <div className="card-block">
                               <div className="card-title">
                                   <h5>Medical Record:</h5>
@@ -152,10 +160,15 @@ class PetProfile extends Component {
                           </div>
                           <div className='card-block'>
                               <h2 className='font-weight-bold'>{this.props.petProfile[recordIndex].type}</h2>
+                          </div> 
                           </div>
+                          : ""}
                           <div className="card-footer">
-                                <button onClick={()=> this.softDeleteRecord()} className='btn btn-outline-success'>Confirm</button>
-                                <button onClick={()=> this.setState({...this.state, showModal: false, canDelete: false})} className='btn btn-outline-danger'>Cancel</button>
+                                <button onClick={!this.state.disconnect 
+                                    ? ()=> this.softDeleteRecord() 
+                                    : ()=>this.disconnectVet() }
+                                    className='btn btn-outline-success'>Confirm</button>
+                                <button onClick={()=> this.setState({...this.state, showModal: false, canDelete: false, disconnect: false})} className='btn btn-outline-danger'>Cancel</button>
                           </div>
                       </div>
                   </div>
