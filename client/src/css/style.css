@@ -9,6 +9,12 @@ html, body, #root {
 
 a:hover, .hamburger:hover, .fa-times-circle:hover, .recordContainer.recordContainerClientList:hover {
   cursor: pointer;
+  color: orange;
+  text-decoration: none;
+}
+
+.menuContainer div:hover {
+  color: orange;
 }
 
 body {
@@ -166,6 +172,10 @@ form {
   display: none;
 }
 
+.card.petListCard {
+font-size: 1.5vmax;
+}
+
 /************* landing_page *************/
 
 .mainLandingContainer{
@@ -182,8 +192,7 @@ form {
   margin-top: 15%;
 }
 .contentContainer {
-  height: 90%;
-  width: 90%;
+  height: 100%;
   flex-wrap: wrap;
 }
 .contentContainer::after {
@@ -199,12 +208,13 @@ form {
   z-index: -1;
 }
 .landingContainer {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 5%;
 }
 .msgBtnContainer {
   padding: 5%;
@@ -222,7 +232,6 @@ form {
 }
 .homeBtn > img {
   width: 100%;
-  height: 100%;
 }
 
 .loginBtnContainer {
@@ -277,7 +286,6 @@ form {
   background-position: center;
   border: 2px solid orange;
   border-radius: 50%;
-  /*background-size: 100%;*/
   background-size: cover;
   margin: auto;
 }
@@ -327,8 +335,6 @@ form {
 }
 .innerPetInfoContainer {
   position: relative;
-  /* top: 50%; */
-  /* transform: translateY(-50%); */
 }
 .deleteBtnPetProfile {
   position: relative;
@@ -343,12 +349,6 @@ h3.medicalRecord {
   top: 50%;
   transform: translateY(-50%);
 }
-
-/*.petImgContainer .petAvatar {*/
-  /*position: absolute;*/
-  /*margin-left: 15%;*/
-  /*top: 5vh;*/
-/*}*/
 
 .petInfoContainer {
   position: relative;
@@ -447,6 +447,7 @@ body {
 
 .recordContainer.recordContainerClientList {
   height: auto;
+  padding: 10px;
 }
 
 .petList h3 {
@@ -459,13 +460,10 @@ body {
 .vetInfoContainer {
   position: relative;
   margin-top: 5vh;
-  height: 10vh;
 }
 
 .vetInfoDiv {
-  width: 100%;
   height: 100%;
-  position: absolute;
 }
 
 .btnContainerPetProfile {
