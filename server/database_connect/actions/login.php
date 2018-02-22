@@ -13,13 +13,13 @@ unset($post['password']);
 
 $username = $post['username'];
 
-$sanitizeUsername1 = stripslashes($username);
+$sanitizeUsername1 = stripslashes(strtolower($username));
 $sanitizePassword1 = stripslashes($password);
 $sanitizedUsername = htmlentities($sanitizeUsername1);
 $sanitizedPassword = htmlentities($sanitizePassword1);
 
-$query = "SELECT * FROM `owner` 
-          WHERE BINARY email = '$sanitizedUsername' 
+$query = "SELECT * FROM `owner`
+          WHERE BINARY email = '$sanitizedUsername'
           AND password = '$sanitizedPassword'";
 
 $result = mysqli_query($conn, $query);
