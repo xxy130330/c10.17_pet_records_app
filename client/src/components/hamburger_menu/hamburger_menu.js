@@ -23,7 +23,8 @@ class NavBar extends Component {
 			//     this.props.history.push('/');
 			// }
 		});
-	}
+
+    }
 
 	handleWindowClick() {
 		this.setState({
@@ -100,9 +101,13 @@ class NavBar extends Component {
 						<a
 							href="#"
 							className="backBtn"
-							onClick={() => {
-								this.props.history.goBack();
-							}}
+							   onClick={() => {
+							   	this.props.history.goBack();
+							   }}
+							  onTouchStart={() => {
+							  	console.log(this.props.history);
+							  	this.props.history.goBack();
+							  }}
 						>
 							BACK
 						</a>
