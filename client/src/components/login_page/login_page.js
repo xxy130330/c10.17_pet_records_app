@@ -10,8 +10,8 @@ class LoginPage extends Component {
 		super(props);
 		this.state = {
 			form: {
-				username: "",
-				password: ""
+				username: "jacob12@gmail.com",
+				password: "jacob12"
 			},
 			loginSuccess: true
 		};
@@ -28,7 +28,7 @@ class LoginPage extends Component {
 
 
   handleSubmit(e) {
-    e.preventDefault();
+	e.preventDefault();
     this.props.login(this.state.form.username, this.state.form.password)
       .then(() => {
         if (this.props.loginSuccess) {
