@@ -12,16 +12,16 @@ PetVet is a mobile-first dynamic app, available on all major platforms. This dua
 React/Redux were the main frameworks used in the front-end while PHP and MySQL were used in the back-end.
 Data was transferred using axios calls and pictures uploaded were stored using AmazonS3 Storage.
 
-##Additional Packages Installed
+## Additional Packages Installed
 
-*Axios
-*React-Router
-*React-Router-Dom
-*Redux
-*Redux-Form
-*Redux-Promise
-*React-Redux
-*Croppie
+* Axios
+* React-Router
+* React-Router-Dom
+* Redux
+* Redux-Form
+* Redux-Promise
+* React-Redux
+* Croppie
 
 
 ## Front-End Team
