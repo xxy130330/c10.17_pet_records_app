@@ -12,8 +12,8 @@ class VetLoginPage extends Component {
     super(props);
     this.state = {
       form: {
-        username: "",
-        password: ""
+        username: "paul21@gmail.com",
+        password: "paul21"
       },
       loginSuccess: true
     };
