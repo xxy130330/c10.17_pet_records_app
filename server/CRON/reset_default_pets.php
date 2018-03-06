@@ -13,7 +13,7 @@ $output = [
 ];
 
 //delete all pets from test account
-$query = 'DELETE * FROM `pets`
+$query = 'DELETE FROM `pets`
           WHERE `ownerID` = "12"';
 $result = mysqli_query($conn, $query);
 
@@ -47,15 +47,14 @@ if ($result) {
 (24, ' Tick Treatment ', ' hardcoded for now ', 43, ' Received A and C type tick treatments ', '2018-02-19', 'active', '2018-02-20'),
 (25, ' Nail Trim ', ' hardcoded for now ', 43, ' Needed a nail trim due to overgrown nails, the vet wants me to check back in 6 months. ', '2018-02-20', 'active', '2018-02-20'),
 (26, ' Eye Infection ', ' hardcoded for now ', 43, ' Minor eye infection received by poor water conditions at the local lake. We received multiPlex eye wash to use 3 times daily for 6 weeks. ', '2017-01-30', 'active', '2018-02-20');", "INSERT INTO `medical_records` (`ID`, `title`, `type`, `petID`, `record_data`, `treatment_date`, `status`, `updated`) VALUES
-(27, ' Ear Infection ', ' hardcoded for now ', 44, ' Received K9 Plus ear medication to be used for five weeks twice daily. ', '2018-01-31', 'inactive', '2018-02-23'),
-(28, ' Deworming ', ' hardcoded for now ', 44, ' Needed some MX Feline deworming medication to be taken once a day for two weeks. ', '2017-11-29', 'inactive', '2018-02-23');", "INSERT INTO `medical_records` (`ID`, `title`, `type`, `petID`, `record_data`, `treatment_date`, `status`, `updated`) VALUES
+(27, ' Ear Infection ', ' hardcoded for now ', 44, ' Received K9 Plus ear medication to be used for five weeks twice daily. ', '2018-01-31', 'active', '2018-02-23'),
+(28, ' Deworming ', ' hardcoded for now ', 44, ' Needed some MX Feline deworming medication to be taken once a day for two weeks. ', '2017-11-29', 'active', '2018-02-23');", "INSERT INTO `medical_records` (`ID`, `title`, `type`, `petID`, `record_data`, `treatment_date`, `status`, `updated`) VALUES
 (29, ' Eye Infection ', ' hardcoded for now ', 45, ' Polly needed some Aviary Eye Treatment Plus for 2 weeks administered 3 times a day\n ', '2016-10-30', 'active', '2018-02-20'),
 (30, ' Chipped Beak ', ' hardcoded for now ', 45, ' Polly needed beak reconstruction surgery after a careless low altitude maneuver. ', '2018-01-29', 'active', '2018-02-20');"];
 
     for ($i=0; $i < 4; $i++) {
-        $query = 'DELETE * FROM `medical_records` WHERE `petID` = $defaultPetIDs[$i]';
+        $query = 'DELETE FROM `medical_records` WHERE `petID` = "'.$defaultPetIDs[$i].'"';
         $result = mysqli_query($conn, $query);
-        $output['data'][] = $query;
         if (!$result) {
             $output['success'] = false;
             $output['errors'][] = 'couldn\'t delete a pets medical records';
