@@ -9,7 +9,7 @@
 require_once ('../database_connect/connect.php');
 
 $output = [
-  'success' => false,
+  'success' => true,
 ];
 
 //delete all pets from test account
