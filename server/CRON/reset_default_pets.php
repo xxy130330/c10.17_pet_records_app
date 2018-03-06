@@ -15,8 +15,7 @@ $output = [
 //delete all pets from test account
 $query = 'DELETE FROM `pets`
           WHERE `ownerID` = "12"';
-$result = mysqli_connect($conn, $query);
-$output['data'][] = $query;
+$result = mysqli_query($conn, $query);
 
 if ($result) {
     //restore pet defaults
@@ -53,7 +52,7 @@ if ($result) {
     for ($i=0; $i < 4; $i++) {
         $query = 'DELETE FROM `medical_records`
           WHERE `petID` = $defaultPetIDs[$i]';
-        $result = mysqli_connect($conn, $query);
+        $result = mysqli_query($conn, $query);
         if (!$result) {
             $output['success'] = false;
             $output['errors'][] = 'couldn\'t delete a pets medical records';
