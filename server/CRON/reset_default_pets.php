@@ -16,6 +16,7 @@ $output = [
 $query = 'DELETE FROM `pets`
           WHERE `ownerID` = "12"';
 $result = mysqli_connect($conn, $query);
+$output['data'][] = $query;
 
 if ($result) {
     //restore pet defaults
