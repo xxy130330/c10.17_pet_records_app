@@ -13,7 +13,7 @@ $output = [
 ];
 
 //delete all pets from test account
-$query = 'DELETE FROM `pets`
+$query = 'DELETE * FROM `pets`
           WHERE `ownerID` = "12"';
 $result = mysqli_query($conn, $query);
 
@@ -34,6 +34,9 @@ if ($result) {
     $output['success'] = false;
 }
 
+
+
+
 //delete all medical records from test account
     $defaultPetIDs = ['42', '43', '44', '45'];
     $defaultRecordQueries = ["INSERT INTO `medical_records` (`ID`, `title`, `type`, `petID`, `record_data`, `treatment_date`, `status`, `updated`) VALUES
@@ -50,9 +53,9 @@ if ($result) {
 (30, ' Chipped Beak ', ' hardcoded for now ', 45, ' Polly needed beak reconstruction surgery after a careless low altitude maneuver. ', '2018-01-29', 'active', '2018-02-20');"];
 
     for ($i=0; $i < 4; $i++) {
-        $query = 'DELETE FROM `medical_records`
-          WHERE `petID` = $defaultPetIDs[$i]';
+        $query = 'DELETE * FROM `medical_records` WHERE `petID` = $defaultPetIDs[$i]';
         $result = mysqli_query($conn, $query);
+        $output['data'][] = $query;
         if (!$result) {
             $output['success'] = false;
             $output['errors'][] = 'couldn\'t delete a pets medical records';
